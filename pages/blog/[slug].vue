@@ -2,6 +2,14 @@
 	<div class="container mx-auto max-w-3xl">
 		<UILink to="/" class="mb-12 block">&larr; Back to Home</UILink>
 		<h1>{{ data.post?.title }}</h1>
+		<UIArticleMetadata
+			v-bind="{
+				item: {
+					date: data.post.date,
+					author: data.post.author,
+					tags: data.post.tags,
+				},
+			}" />
 		<RichtextContainer :blocksRaw="data?.post?.blocks" :slugKey="slug" />
 	</div>
 </template>

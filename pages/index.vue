@@ -2,7 +2,7 @@
 	<div class="container max-w-3xl">
 		<h1>{{ data.page?.title }}</h1>
 		<RichtextContainer :blocksRaw="data?.page?.blocks" slugKey="/" />
-		<LayoutHome />
+		<LayoutHome class="mt-12" />
 	</div>
 </template>
 

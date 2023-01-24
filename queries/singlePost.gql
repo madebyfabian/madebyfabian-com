@@ -2,6 +2,7 @@ query SinglePostBySlug($slug: ID!) {
 	post(id: $slug, idType: SLUG) {
 		id
 		title
+		date
 		blocks {
 			attributesJSON
 			name

@@ -19,18 +19,15 @@
 				<p class="my-2">
 					<span v-text="item.excerpt"></span>
 				</p>
-				<div class="flex gap-3 flex-wrap">
-					<p v-if="item.date" class="text-gray-500">From {{ formatDate({ date: item.date }) }}</p>
-					<p v-if="item.author?.node.name">By {{ item.author?.node.name }}</p>
-					<ul v-if="item.tags?.edges.length">
-						<li
-							v-for="tag of item.tags.edges"
-							:key="tag.node.id"
-							class="text-gray-500 underline underline-offset-2 decoration-gray-300">
-							# {{ tag.node.name }}
-						</li>
-					</ul>
-				</div>
+
+				<UIArticleMetadata
+					v-bind="{
+						item: {
+							date: item.date,
+							author: item.author,
+							tags: item.tags,
+						},
+					}" />
 			</div>
 		</NuxtLink>
 	</div>
@@ -40,12 +37,4 @@
 	const { data } = await useAsyncGql({
 		operation: 'Posts',
 	})
-
-	const formatDate = ({ date }: { date: string }) => {
-		return new Date(date).toLocaleDateString('en-US', {
-			month: 'long',
-			day: 'numeric',
-			year: 'numeric',
-		})
-	}
 </script>
