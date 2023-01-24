@@ -9,6 +9,7 @@
 			anchor?: string
 			align?: string
 		}
+		innerBlocks?: any[]
 	}>()
 
 	const alignClass = computed(() => {

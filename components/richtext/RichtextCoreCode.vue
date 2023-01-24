@@ -8,6 +8,7 @@
 			content: string
 			anchor?: string
 		}
+		innerBlocks: any[]
 	}>()
 
 	const id = computed(() => props.block.anchor || undefined)
