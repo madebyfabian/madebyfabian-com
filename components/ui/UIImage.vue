@@ -1,10 +1,11 @@
 <template>
-	<img
-		class="UIImage rounded-xl shadow-inner"
+	<NuxtImg
+		class="UIImage rounded-xl shadow-inner h-auto w-full select-none"
 		:src="props.url"
 		:alt="props.alt"
-		:width="props.width"
-		:height="props.height" />
+		fit="cover"
+		width="720"
+		height="405" />
 </template>
 
 <script setup lang="ts">

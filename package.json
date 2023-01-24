@@ -8,6 +8,7 @@
 		"typecheck": "nuxt typecheck"
 	},
 	"devDependencies": {
+		"@nuxt/image-edge": "^1.0.0-27907872.f4dd19d",
 		"@nuxtjs/tailwindcss": "^6.2.0",
 		"nuxt": "^3.0.0",
 		"nuxt-graphql-client": "^0.2.24",

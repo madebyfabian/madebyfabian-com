@@ -5,6 +5,7 @@
 			v-if="props.block.href"
 			:href="props.block.href"
 			:target="props.block.linkTarget"
+			:title="props.block.title || 'Decorative Image'"
 			:rel="props.block.rel"
 			:id="id">
 			<UIImage v-bind="imageProps" />

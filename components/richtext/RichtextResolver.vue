@@ -7,7 +7,10 @@
 		<slot />
 	</component>
 
-	<div v-else class="p-4 bg-red-100 my-6 rounded-xl text-red-600">Component "{{ props.item.name }}" not found</div>
+	<div v-else class="p-4 bg-red-100 my-6 rounded-xl text-red-600">
+		<p>Component "{{ props.item.name }}" not found</p>
+		<pre>{{ props }}</pre>
+	</div>
 </template>
 
 <script lang="ts" setup>

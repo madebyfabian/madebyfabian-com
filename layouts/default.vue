@@ -13,6 +13,9 @@
 
 	useHead({
 		title: 'Start',
+		htmlAttrs: {
+			lang: 'en-US',
+		},
 		titleTemplate: `%s - ${data.value?.allSettings?.generalSettingsTitle}`,
 		meta: [{ name: 'description', content: data.value?.allSettings?.generalSettingsDescription }],
 	})
