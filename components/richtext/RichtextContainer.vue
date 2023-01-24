@@ -1,8 +1,6 @@
 <template>
 	<article class="RichtextContainer">
 		<RichtextResolver v-for="item of blocks" :key="item.id" :item="item" />
-
-		<pre class="pt-8 border-t !mt-56">{{ blocks }}</pre>
 	</article>
 </template>
 
@@ -11,6 +9,7 @@
 
 	const props = defineProps<{
 		blocksRaw: any
+		slugKey: string
 	}>()
 
 	type Item = ItemBase & {
@@ -42,7 +41,7 @@
 		return newItem
 	}
 
-	const blocks = useState('blocks', () => {
+	const blocks = useState(`blocks:${props.slugKey}`, () => {
 		const blocksRaw = props.blocksRaw
 		if (!Array.isArray(props.blocksRaw) || !blocksRaw.length) return []
 
@@ -66,7 +65,11 @@
 			@apply leading-relaxed my-5 text-lg;
 
 			a {
-				@apply text-cyan-700 underline font-bold;
+				@apply text-cyan-700 underline font-bold decoration-cyan-700/30;
+
+				&[target='_blank']::after {
+					content: ' ↗';
+				}
 			}
 
 			code {
@@ -82,16 +85,12 @@
 			}
 		}
 
-		:deep(h1) {
-			@apply text-5xl font-bold mt-8 my-5;
-		}
-
 		:deep(h2) {
-			@apply text-4xl font-bold mt-8 my-5;
+			@apply text-4xl font-bold mt-12 my-7;
 		}
 
 		:deep(h3) {
-			@apply text-2xl font-bold mt-5 mb-4;
+			@apply text-2xl font-bold mt-8 mb-5;
 		}
 
 		:deep(h4) {
@@ -116,7 +115,7 @@
 		}
 
 		:deep(pre) {
-			@apply bg-gray-100 p-4 rounded-xl my-6 text-sm leading-relaxed overflow-x-auto;
+			@apply bg-gray-100 shadow-inner p-4 rounded-xl my-6 text-sm leading-relaxed overflow-x-auto;
 		}
 	}
 </style>

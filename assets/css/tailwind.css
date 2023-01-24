@@ -3,8 +3,21 @@
 @tailwind utilities;
 
 @layer base {
+	html {
+		@apply scroll-smooth;
+	}
+
+	body,
+	#__nuxt {
+		@apply min-h-screen;
+	}
+
+	#__nuxt {
+		@apply flex flex-col;
+	}
+
 	body {
-		@apply overflow-y-scroll;
+		@apply overflow-x-hidden overflow-y-scroll;
 	}
 
 	pre {

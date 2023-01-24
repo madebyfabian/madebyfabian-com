@@ -5,6 +5,14 @@ query Posts {
 			title
 			date
 			slug
+			excerpt(format: RAW)
+			featuredImage {
+				node {
+					id
+					sourceUrl
+					altText
+				}
+			}
 			tags {
 				edges {
 					node {
