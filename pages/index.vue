@@ -14,7 +14,6 @@
 	})
 
 	useHead({
-		title: data.value?.postBy?.title,
-		meta: [{ name: 'description', content: data.value?.postBy?.excerpt }],
+		title: data.value?.page?.title,
 	})
 </script>

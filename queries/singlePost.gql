@@ -23,6 +23,13 @@ query SinglePostBySlug($slug: ID!) {
 				}
 			}
 		}
+		featuredImage {
+			node {
+				id
+				sourceUrl
+				altText
+			}
+		}
 		date
 		slug
 		tags {

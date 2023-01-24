@@ -26,6 +26,5 @@
 
 	useHead({
 		title: data.value?.page?.title,
-		meta: [{ name: 'description', content: data.value?.page?.excerpt }],
 	})
 </script>

@@ -32,6 +32,11 @@
 
 	useHead({
 		title: data.value.post?.title,
-		meta: [{ name: 'description', content: data.value.post?.excerpt }],
+		meta: [
+			{ name: 'description', content: data.value.post?.excerpt },
+			data.value.post?.featuredImage?.node?.sourceUrl
+				? { property: 'og:image', content: data.value.post?.featuredImage?.node?.sourceUrl }
+				: {},
+		],
 	})
 </script>
