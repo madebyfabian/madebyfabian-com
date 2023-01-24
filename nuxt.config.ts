@@ -1,5 +1,5 @@
 export default defineNuxtConfig({
-	modules: ['@nuxtjs/tailwindcss', 'nuxt-graphql-client', '@nuxt/image-edge'],
+	modules: ['@nuxtjs/tailwindcss', 'nuxt-graphql-client'],
 
 	typescript: {
 		shim: false,
@@ -11,10 +11,5 @@ export default defineNuxtConfig({
 		 * We had to disable the codegen, so this is a temporary replacement.
 		 */
 		codegen: false,
-	},
-
-	image: {
-		provider: process.env.VERCEL_ENV ? 'vercel' : 'ipx',
-		domains: [process.env.WP_HOST as string],
 	},
 })

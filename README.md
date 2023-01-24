@@ -7,5 +7,4 @@
 ```bash
 GQL_HOST="https://example.com/graphql"
 GQL_TOKEN="Basic xxx"
-WP_HOST="https://example.com"
 ```
