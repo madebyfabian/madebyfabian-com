@@ -58,14 +58,10 @@
 <style lang="postcss" scoped>
 	.RichtextContainer {
 		:deep(p) {
-			@apply leading-relaxed my-5 text-lg;
+			@apply leading-relaxed my-6 text-lg;
 
 			a {
 				@apply text-cyan-700 underline font-bold decoration-cyan-700/30;
-
-				&[target='_blank']::after {
-					content: ' ↗';
-				}
 			}
 
 			code {
@@ -74,7 +70,7 @@
 		}
 
 		:deep(figure) {
-			@apply my-5;
+			@apply my-6;
 
 			p {
 				@apply my-0 text-sm text-gray-500;
@@ -82,20 +78,20 @@
 		}
 
 		:deep(h2) {
-			@apply text-4xl font-bold mt-14 my-7;
+			@apply text-4xl font-bold mt-14 my-7 tracking-tighter;
 		}
 
 		:deep(h3) {
-			@apply text-2xl font-bold mt-10 mb-5;
+			@apply text-2xl font-bold mt-10 mb-6;
 		}
 
 		:deep(h4) {
-			@apply text-xl font-bold mt-5 mb-5;
+			@apply text-xl font-bold mt-6 mb-6;
 		}
 
 		:deep(ul),
 		:deep(ol) {
-			@apply my-5 ml-4;
+			@apply my-6 ml-4;
 
 			li p {
 				@apply my-3;

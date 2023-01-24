@@ -2,13 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+	font-family: 'PlusJakartaSans';
+	font-display: swap;
+	src: url('/fonts/PlusJakartaSans-VariableFont_wght.ttf') format('truetype');
+	font-weight: 400 700;
+}
+
+@font-face {
+	font-family: 'PlusJakartaSans';
+	font-display: swap;
+	src: url('/fonts/PlusJakartaSans-Italic-VariableFont_wght.ttf') format('truetype');
+	font-weight: 400 700;
+	font-style: italic;
+}
+
 @layer base {
 	html {
-		@apply scroll-smooth;
-	}
-
-	* {
-		@apply text-gray-700 underline-offset-2;
+		@apply font-display scroll-smooth text-gray-700 accent-cyan-700 underline-offset-2;
 	}
 
 	body,
@@ -26,5 +37,9 @@
 
 	pre {
 		@apply bg-gray-100 p-4 rounded-xl my-6 text-xs overflow-x-auto;
+	}
+
+	h1 {
+		@apply text-5xl font-bold mb-8 tracking-tight;
 	}
 }

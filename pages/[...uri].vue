@@ -1,6 +1,6 @@
 <template>
 	<div class="container mx-auto max-w-3xl">
-		<h1 class="text-5xl font-bold mb-8">{{ data.postBy?.title }}</h1>
+		<h1>{{ data.postBy?.title }}</h1>
 		<RichtextContainer :blocksRaw="data?.postBy?.blocks" :slugKey="uri" />
 	</div>
 </template>
