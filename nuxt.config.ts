@@ -3,11 +3,6 @@ export default defineNuxtConfig({
 	typescript: {
 		shim: false,
 	},
-	runtimeConfig: {
-		public: {
-			GQL_HOST: process.env.GQL_HOST,
-		},
-	},
 	'graphql-client': {
 		/**
 		 * @see https://github.com/Diizzayy/nuxt-graphql-client/issues/298
