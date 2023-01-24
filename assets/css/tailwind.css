@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer base {
+	body {
+		@apply overflow-y-scroll;
+	}
+
 	pre {
 		@apply bg-gray-100 p-4 rounded-xl my-6 text-xs overflow-x-auto;
 	}

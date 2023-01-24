@@ -1,13 +1,11 @@
 export default defineNuxtConfig({
-	modules: ['@nuxtjs/tailwindcss', '@nuxtjs/apollo'],
+	modules: ['@nuxtjs/tailwindcss', 'nuxt-graphql-client'],
 	typescript: {
 		shim: false,
 	},
-	apollo: {
-		clients: {
-			default: {
-				httpEndpoint: process.env.WP_GRAPHQL_BASE_URL as string,
-			},
+	runtimeConfig: {
+		public: {
+			GQL_HOST: process.env.GQL_HOST,
 		},
 	},
 })

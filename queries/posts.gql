@@ -1,0 +1,24 @@
+query Posts {
+	posts {
+		nodes {
+			id
+			title
+			content
+			date
+			slug
+			tags {
+				edges {
+					node {
+						id
+						name
+					}
+				}
+			}
+			author {
+				node {
+					name
+				}
+			}
+		}
+	}
+}

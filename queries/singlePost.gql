@@ -1,0 +1,22 @@
+query SinglePostBySlug($slug: String!) {
+	postBy(slug: $slug) {
+		id
+		title
+		content
+		date
+		slug
+		tags {
+			edges {
+				node {
+					id
+					name
+				}
+			}
+		}
+		author {
+			node {
+				name
+			}
+		}
+	}
+}
