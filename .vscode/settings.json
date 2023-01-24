@@ -1,0 +1,9 @@
+{
+	// Tailwind Support, see https://tailwindcss.nuxt.dev/tailwind/editor-support
+	"tailwindCSS.experimental.configFile": ".nuxt/tailwind.config.cjs",
+	"files.associations": {
+		"*.css": "tailwindcss"
+	},
+	// Auto-complete `.value` attribute when volar is installed
+	"volar.autoCompleteRefs": true
+}
