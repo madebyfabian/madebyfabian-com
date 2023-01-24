@@ -1,6 +1,7 @@
 <template>
 	<div class="container max-w-3xl">
-		<RichtextContainer :blocksRaw="data?.page?.blocks" slugKey="/" />
+		<h1>{{ data?.page?.title }}</h1>
+		<RichtextContainer :blocksRaw="data?.page?.blocks" slugKey="/blog" />
 		<LayoutBlogList />
 	</div>
 </template>
@@ -9,7 +10,7 @@
 	const { data } = await useAsyncGql({
 		operation: 'SinglePageByUri',
 		variables: {
-			uri: '/',
+			uri: '/blog/',
 		},
 	})
 

@@ -13,6 +13,12 @@ export default defineNuxtConfig({
 		 * We had to disable the codegen, so this is a temporary replacement.
 		 */
 		codegen: false,
+		clients: {
+			default: {
+				host: process.env.GQL_HOST as string,
+				retainToken: process.env.NODE_ENV === 'development',
+			},
+		},
 	},
 
 	sitemap: {
@@ -23,6 +29,7 @@ export default defineNuxtConfig({
 		urls: generateSitemap,
 	},
 	routeRules: {
-		'/': { index: false },
+		'/': { index: false, swr: 60 },
+		'/**': { swr: 60 },
 	},
 })

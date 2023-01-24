@@ -1,0 +1,17 @@
+query SingleMenuById($id: ID!) {
+	menu(id: $id, idType: ID) {
+		id
+		name
+		menuItems {
+			edges {
+				node {
+					id
+					label
+					order
+					uri
+					target
+				}
+			}
+		}
+	}
+}

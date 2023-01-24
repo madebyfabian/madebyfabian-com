@@ -1,10 +1,10 @@
 {
 	"private": true,
 	"scripts": {
-		"build": "nuxt build",
+		"build": "nuxt generate",
 		"start": "nuxt dev",
 		"preview": "nuxt preview",
-		"build-and-preview": "nuxt build && nuxt preview",
+		"build-and-preview": "npm run build && npm run preview",
 		"postinstall": "nuxt prepare",
 		"typecheck": "nuxt typecheck"
 	},
