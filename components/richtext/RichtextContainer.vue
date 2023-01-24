@@ -57,10 +57,6 @@
 
 <style lang="postcss" scoped>
 	.RichtextContainer {
-		* {
-			@apply text-gray-700 underline-offset-2;
-		}
-
 		:deep(p) {
 			@apply leading-relaxed my-5 text-lg;
 

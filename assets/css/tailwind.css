@@ -7,6 +7,10 @@
 		@apply scroll-smooth;
 	}
 
+	* {
+		@apply text-gray-700 underline-offset-2;
+	}
+
 	body,
 	#__nuxt {
 		@apply min-h-screen;
