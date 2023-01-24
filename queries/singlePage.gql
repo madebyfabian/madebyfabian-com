@@ -1,7 +1,8 @@
-query SinglePostBySlug($slug: ID!) {
-	post(id: $slug, idType: SLUG) {
+query SinglePageByUri($uri: ID!) {
+	page(id: $uri, idType: URI) {
 		id
 		title
+		isFrontPage
 		blocks {
 			attributesJSON
 			name
@@ -20,21 +21,6 @@ query SinglePostBySlug($slug: ID!) {
 						}
 					}
 				}
-			}
-		}
-		date
-		slug
-		tags {
-			edges {
-				node {
-					id
-					name
-				}
-			}
-		}
-		author {
-			node {
-				name
 			}
 		}
 	}
