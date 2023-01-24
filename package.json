@@ -9,7 +9,7 @@
 		"typecheck": "nuxt typecheck"
 	},
 	"devDependencies": {
-		"@nuxtjs/apollo": "^4.0.1-rc.5",
+		"@nuxtjs/apollo": "^5.0.0-alpha.5",
 		"@nuxtjs/tailwindcss": "^6.2.0",
 		"nuxt": "^3.0.0",
 		"typescript": "^4.9.4",

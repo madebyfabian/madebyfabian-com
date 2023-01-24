@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="container">
 		<h1 class="text-4xl">Welcome to your page!</h1>
 		<pre>{{ data }}</pre>
 	</div>
