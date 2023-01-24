@@ -109,5 +109,9 @@
 		:deep(pre) {
 			@apply bg-gray-100 shadow-inner p-4 rounded-xl my-6 text-sm leading-relaxed overflow-x-auto;
 		}
+
+		*:has(+ .RichtextCoreColumns) {
+			@apply mb-0;
+		}
 	}
 </style>
