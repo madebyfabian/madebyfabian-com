@@ -1,6 +1,5 @@
 <template>
 	<div class="container max-w-3xl">
-		<h1 class="text-center">{{ data.page?.title }}</h1>
 		<RichtextContainer :blocksRaw="data?.page?.blocks" slugKey="/" />
 		<LayoutHome class="mt-12" />
 	</div>
