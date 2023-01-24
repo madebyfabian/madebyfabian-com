@@ -3,7 +3,6 @@ query Posts {
 		nodes {
 			id
 			title
-			content
 			date
 			slug
 			tags {

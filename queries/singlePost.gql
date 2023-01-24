@@ -2,7 +2,26 @@ query SinglePostBySlug($slug: String!) {
 	postBy(slug: $slug) {
 		id
 		title
-		content
+		blocks {
+			attributesJSON
+			name
+			innerBlocks {
+				attributesJSON
+				name
+				innerBlocks {
+					attributesJSON
+					name
+					innerBlocks {
+						attributesJSON
+						name
+						innerBlocks {
+							attributesJSON
+							name
+						}
+					}
+				}
+			}
+		}
 		date
 		slug
 		tags {

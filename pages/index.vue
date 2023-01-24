@@ -1,6 +1,6 @@
 <template>
 	<div class="container">
-		<h1 class="text-4xl">Welcome to your page!</h1>
+		<h1 class="text-5xl">Welcome to your page!</h1>
 		<div v-if="data?.posts?.nodes">
 			<NuxtLink
 				v-for="item of data.posts.nodes"

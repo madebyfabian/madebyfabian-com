@@ -8,4 +8,11 @@ export default defineNuxtConfig({
 			GQL_HOST: process.env.GQL_HOST,
 		},
 	},
+	'graphql-client': {
+		/**
+		 * @see https://github.com/Diizzayy/nuxt-graphql-client/issues/298
+		 * We had to disable the codegen, so this is a temporary replacement.
+		 */
+		codegen: false,
+	},
 })
