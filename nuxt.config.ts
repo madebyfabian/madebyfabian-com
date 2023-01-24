@@ -29,7 +29,7 @@ export default defineNuxtConfig({
 		urls: generateSitemap,
 	},
 	routeRules: {
-		'/': { index: false, swr: 60 },
-		'/**': { swr: 60 },
+		'/': { index: false, swr: true },
+		'/**': { swr: true },
 	},
 })
