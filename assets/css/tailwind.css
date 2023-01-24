@@ -6,14 +6,14 @@
 	font-family: 'PlusJakartaSans';
 	font-display: swap;
 	src: url('/fonts/PlusJakartaSans-VariableFont_wght.ttf') format('truetype');
-	font-weight: 400 700;
+	font-weight: 400 900;
 }
 
 @font-face {
 	font-family: 'PlusJakartaSans';
 	font-display: swap;
 	src: url('/fonts/PlusJakartaSans-Italic-VariableFont_wght.ttf') format('truetype');
-	font-weight: 400 700;
+	font-weight: 400 900;
 	font-style: italic;
 }
 
@@ -40,6 +40,6 @@
 	}
 
 	h1 {
-		@apply text-5xl font-bold mb-8 tracking-tight;
+		@apply text-5xl font-extrabold mb-8 tracking-tight;
 	}
 }
