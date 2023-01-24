@@ -14,7 +14,7 @@
 
 	const route = useRoute()
 	const data = await gql<'SinglePostBySlug', TempDataResponse, unknown>('SinglePostBySlug', {
-		slug,
+		slug: slug.value,
 	})
 
 	if (!data?.postBy) {

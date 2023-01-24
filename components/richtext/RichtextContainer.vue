@@ -86,11 +86,11 @@
 		}
 
 		:deep(h2) {
-			@apply text-4xl font-bold mt-12 my-7;
+			@apply text-4xl font-bold mt-14 my-7;
 		}
 
 		:deep(h3) {
-			@apply text-2xl font-bold mt-8 mb-5;
+			@apply text-2xl font-bold mt-10 mb-5;
 		}
 
 		:deep(h4) {
