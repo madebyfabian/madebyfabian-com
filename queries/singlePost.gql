@@ -3,6 +3,7 @@ query SinglePostBySlug($slug: ID!) {
 		id
 		title
 		dateGmt
+		excerpt(format: RAW)
 		blocks {
 			attributesJSON
 			name
