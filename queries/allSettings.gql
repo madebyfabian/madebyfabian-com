@@ -1,7 +1,6 @@
 query AllSettings {
 	allSettings {
 		generalSettingsTitle
-		generalSettingsLanguage
 		generalSettingsDescription
 	}
 }

@@ -23,7 +23,7 @@
 				<UIArticleMetadata
 					v-bind="{
 						item: {
-							date: item.date,
+							date: item.dateGmt,
 							author: item.author,
 							tags: item.tags,
 						},

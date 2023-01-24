@@ -5,7 +5,7 @@
 		<UIArticleMetadata
 			v-bind="{
 				item: {
-					date: data.post.date,
+					date: data.post.dateGmt,
 					author: data.post.author,
 					tags: data.post.tags,
 				},

@@ -3,7 +3,7 @@ query Posts {
 		nodes {
 			id
 			title
-			date
+			dateGmt
 			slug
 			excerpt(format: RAW)
 			featuredImage {
