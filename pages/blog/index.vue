@@ -1,5 +1,5 @@
 <template>
-	<LayoutPage :uri="uri">
+	<LayoutPage hasH1 :uri="uri">
 		<LayoutBlogList />
 	</LayoutPage>
 </template>

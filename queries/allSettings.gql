@@ -1,6 +1,0 @@
-query AllSettings {
-	allSettings {
-		generalSettingsTitle
-		generalSettingsDescription
-	}
-}
