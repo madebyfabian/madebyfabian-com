@@ -25,14 +25,6 @@ export default defineNuxtConfig({
 				urls: generateSitemap,
 			},
 		],
-		[
-			'nuxt-basic-auth',
-			{
-				username: process.env.STAGING_USERNAME,
-				password: process.env.STAGING_PASSWORD,
-				enabled: process.env.STAGING_PASSWORD,
-			},
-		],
 	],
 
 	typescript: {
