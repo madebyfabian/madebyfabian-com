@@ -9,7 +9,11 @@ export default defineNitroPlugin(nitroApp => {
 			enabled: process.env.STAGING_PASSWORD,
 		}
 
+		console.log({ config })
+
 		const header = event.node.req.rawHeaders.find((header: string) => header.startsWith('Basic '))
+
+		console.log({ header })
 		const credentials = auth.parse(header)
 
 		if (
