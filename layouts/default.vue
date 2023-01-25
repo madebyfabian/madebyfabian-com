@@ -7,9 +7,12 @@
 </template>
 
 <script lang="ts" setup>
-	const { data } = await useAsyncGql({
+	const { data, error } = await useAsyncGql({
 		operation: 'AllSettings',
 	})
+	if (error.value) {
+		throw createError({ statusCode: 500, message: 'Error fetching settings' })
+	}
 
 	useHead({
 		title: 'Start',

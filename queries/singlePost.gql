@@ -1,4 +1,4 @@
-query SinglePostBySlug($slug: ID!) {
+query SinglePost($slug: ID!) {
 	post(id: $slug, idType: SLUG) {
 		id
 		title

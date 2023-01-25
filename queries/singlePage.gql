@@ -1,4 +1,4 @@
-query SinglePageByUri($uri: ID!) {
+query SinglePage($uri: ID!) {
 	page(id: $uri, idType: URI) {
 		id
 		title

@@ -5,12 +5,11 @@ const removeTrailingSlash = (str: string) => {
 export const getMenu = async ({ menuId }: { menuId: string }) => {
 	try {
 		const { data, error } = await useAsyncGql({
-			operation: 'SingleMenuById',
+			operation: 'SingleMenu',
 			variables: {
 				id: menuId,
 			},
 		})
-
 		if (!data.value || error.value) {
 			throw new Error('Error fetching menu')
 		}

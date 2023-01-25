@@ -19,14 +19,13 @@
 
 	const slug = computed(() => route.params.slug as string)
 
-	const { data } = await useAsyncGql({
-		operation: 'SinglePostBySlug',
+	const { data, error } = await useAsyncGql({
+		operation: 'SinglePost',
 		variables: {
 			slug: slug.value,
 		},
 	})
-
-	if (!data.value?.post) {
+	if (!data.value?.post || error.value) {
 		throw createError({ statusCode: 404, message: 'Blog post not found' })
 	}
 

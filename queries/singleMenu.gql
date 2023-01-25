@@ -1,4 +1,4 @@
-query SingleMenuById($id: ID!) {
+query SingleMenu($id: ID!) {
 	menu(id: $id, idType: ID) {
 		id
 		name

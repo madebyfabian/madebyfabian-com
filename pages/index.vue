@@ -6,12 +6,15 @@
 </template>
 
 <script lang="ts" setup>
-	const { data } = await useAsyncGql({
-		operation: 'SinglePageByUri',
+	const { data, error } = await useAsyncGql({
+		operation: 'SinglePage',
 		variables: {
 			uri: '/',
 		},
 	})
+	if (!data.value?.page || error.value) {
+		throw createError({ statusCode: 404, message: 'Page not found' })
+	}
 
 	useHead({
 		title: data.value?.page?.title,

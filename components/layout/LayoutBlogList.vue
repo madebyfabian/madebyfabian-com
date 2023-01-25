@@ -34,7 +34,10 @@
 </template>
 
 <script lang="ts" setup>
-	const { data } = await useAsyncGql({
-		operation: 'Posts',
+	const { data, error } = await useAsyncGql({
+		operation: 'ListPosts',
 	})
+	if (error.value) {
+		throw createError({ statusCode: 500, message: 'Error fetching posts in blog list' })
+	}
 </script>

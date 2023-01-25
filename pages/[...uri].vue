@@ -13,14 +13,13 @@
 		return `/${base}/`
 	})
 
-	const { data } = await useAsyncGql({
-		operation: 'SinglePageByUri',
+	const { data, error } = await useAsyncGql({
+		operation: 'SinglePage',
 		variables: {
 			uri: uri.value,
 		},
 	})
-
-	if (!data.value?.page) {
+	if (!data.value?.page || error.value) {
 		throw createError({ statusCode: 404, message: 'Page not found' })
 	}
 

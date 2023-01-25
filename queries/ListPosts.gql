@@ -1,4 +1,4 @@
-query Posts {
+query ListPosts {
 	posts {
 		nodes {
 			id
