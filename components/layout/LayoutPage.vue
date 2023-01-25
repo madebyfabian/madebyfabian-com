@@ -1,0 +1,28 @@
+<template>
+	<div class="container max-w-3xl">
+		<h1 v-if="props.hasH1 && data.page?.title">{{ data.page?.title }}</h1>
+		<RichtextContainer :blocksRaw="data?.page?.blocks" :slugKey="props.uri" />
+		<slot />
+	</div>
+</template>
+
+<script lang="ts" setup>
+	const props = defineProps<{
+		hasH1?: boolean
+		uri: string
+	}>()
+
+	const { data, error } = await useAsyncGql({
+		operation: 'SinglePage',
+		variables: {
+			uri: props.uri,
+		},
+	})
+	if (!data.value?.page || error.value) {
+		throw createError({ statusCode: 404, message: 'Page not found' })
+	}
+
+	useSeoMeta({
+		title: data.value.page?.title,
+	})
+</script>
