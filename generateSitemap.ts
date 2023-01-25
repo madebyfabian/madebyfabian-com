@@ -1,5 +1,6 @@
 import { EnumChangefreq, type SitemapItemLoose } from 'sitemap'
 import { joinURL } from 'ufo'
+import { fetch } from 'ofetch'
 
 const sitemapDefaults: Pick<SitemapItemLoose, 'changefreq' | 'priority'> = {
 	changefreq: EnumChangefreq.MONTHLY,

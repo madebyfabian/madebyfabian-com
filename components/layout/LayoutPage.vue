@@ -12,11 +12,38 @@
 		uri: string
 	}>()
 
-	const { data, error } = await useAsyncGql({
-		operation: 'SinglePage',
-		variables: {
-			uri: props.uri,
-		},
+	const query = gql`
+		query SinglePage($uri: ID!) {
+			page(id: $uri, idType: URI) {
+				id
+				title
+				isFrontPage
+				blocks {
+					attributesJSON
+					name
+					innerBlocks {
+						attributesJSON
+						name
+						innerBlocks {
+							attributesJSON
+							name
+							innerBlocks {
+								attributesJSON
+								name
+								innerBlocks {
+									attributesJSON
+									name
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	`
+
+	const { data, error } = await useAsyncQuery<any>(query, {
+		uri: props.uri,
 	})
 	if (!data.value?.page || error.value) {
 		throw createError({ statusCode: 404, message: 'Page not found' })

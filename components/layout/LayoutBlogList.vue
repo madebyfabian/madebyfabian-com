@@ -9,8 +9,8 @@
 				<img
 					class="h-full w-full object-cover object-center"
 					v-if="item?.featuredImage?.node"
-					:src="item.featuredImage.node.sourceUrl"
-					:alt="item.featuredImage.node.altText || item.title" />
+					:src="item.featuredImage.node.sourceUrl || undefined"
+					:alt="item.featuredImage.node.altText || item.title || undefined" />
 				<span v-else class="text-3xl">🏡</span>
 			</div>
 
@@ -34,9 +34,43 @@
 </template>
 
 <script lang="ts" setup>
-	const { data, error } = await useAsyncGql({
-		operation: 'ListPosts',
-	})
+	import { graphql } from '@/gql'
+
+	const query = graphql(`
+		query ListPosts {
+			posts {
+				nodes {
+					id
+					title
+					dateGmt
+					slug
+					excerpt(format: RAW)
+					featuredImage {
+						node {
+							id
+							sourceUrl
+							altText
+						}
+					}
+					tags {
+						edges {
+							node {
+								id
+								name
+							}
+						}
+					}
+					author {
+						node {
+							name
+						}
+					}
+				}
+			}
+		}
+	`)
+
+	const { data, error } = await useAsyncQuery(query)
 	if (error.value) {
 		throw createError({ statusCode: 500, message: 'Error fetching posts in blog list' })
 	}

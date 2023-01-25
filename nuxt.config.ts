@@ -4,17 +4,13 @@ export default defineNuxtConfig({
 	modules: [
 		'@nuxtjs/tailwindcss',
 		[
-			'nuxt-graphql-client',
+			'@nuxtjs/apollo',
 			{
-				/**
-				 * @see https://github.com/Diizzayy/nuxt-graphql-client/issues/298
-				 * We had to disable the codegen, so this is a temporary replacement.
-				 */
-				codegen: false,
 				clients: {
 					default: {
-						host: process.env.GQL_HOST as string,
-						retainToken: process.env.NODE_ENV === 'development',
+						httpEndpoint: process.env.GQL_HOST,
+						authType: 'Basic',
+						proxyCookies: process.env.NODE_ENV === 'development',
 					},
 				},
 			},
@@ -33,6 +29,12 @@ export default defineNuxtConfig({
 
 	typescript: {
 		shim: false,
+	},
+
+	runtimeConfig: {
+		public: {
+			GQL_TOKEN: process.env.NODE_ENV === 'development' ? process.env.GQL_TOKEN : '',
+		},
 	},
 
 	app: {

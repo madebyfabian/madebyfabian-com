@@ -7,16 +7,25 @@
 </template>
 
 <script lang="ts" setup>
-	const { data, error } = await useAsyncGql({
-		operation: 'AllSettings',
-	})
+	import { graphql } from '@/gql'
+
+	const query = graphql(`
+		query AllSettings {
+			allSettings {
+				generalSettingsTitle
+				generalSettingsDescription
+			}
+		}
+	`)
+
+	const { data, error } = await useAsyncQuery(query)
 	if (!data.value?.allSettings || error.value) {
 		throw createError({ statusCode: 500, message: 'Error fetching settings' })
 	}
 
 	useSeoMeta({
 		title: 'Home',
-		titleTemplate: `%s - ${data.value.allSettings?.generalSettingsTitle}`,
-		description: data.value.allSettings?.generalSettingsDescription,
+		titleTemplate: `%s - ${data.value.allSettings.generalSettingsTitle}`,
+		description: data.value.allSettings.generalSettingsDescription,
 	})
 </script>
