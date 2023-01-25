@@ -47,4 +47,6 @@ GQL_HOST="https://example.com/graphql"
 GQL_TOKEN="Basic xxx"
 SITE_URL="https://example.com"
 NUXT_PUBLIC_GQL_TOKEN="Basic xxx"
+STAGING_USERNAME="username"
+STAGING_PASSWORD="password"
 ```
