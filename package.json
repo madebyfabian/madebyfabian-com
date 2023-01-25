@@ -16,6 +16,7 @@
 		"@graphql-codegen/client-preset": "^1.2.3",
 		"@nuxtjs/apollo": "^5.0.0-alpha.5",
 		"@nuxtjs/tailwindcss": "^6.2.0",
+		"basic-auth": "^2.0.1",
 		"npm-run-all": "^4.1.5",
 		"nuxt": "^3.1.0",
 		"nuxt-basic-auth": "^1.0.2",
