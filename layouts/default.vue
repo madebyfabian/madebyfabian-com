@@ -10,16 +10,13 @@
 	const { data, error } = await useAsyncGql({
 		operation: 'AllSettings',
 	})
-	if (error.value) {
+	if (!data.value?.allSettings || error.value) {
 		throw createError({ statusCode: 500, message: 'Error fetching settings' })
 	}
 
-	useHead({
-		title: 'Start',
-		htmlAttrs: {
-			lang: 'en-US',
-		},
-		titleTemplate: `%s - ${data.value?.allSettings?.generalSettingsTitle}`,
-		meta: [{ name: 'description', content: data.value?.allSettings?.generalSettingsDescription }],
+	useSeoMeta({
+		title: 'Home',
+		titleTemplate: `%s - ${data.value.allSettings?.generalSettingsTitle}`,
+		description: data.value.allSettings?.generalSettingsDescription,
 	})
 </script>

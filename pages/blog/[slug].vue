@@ -29,13 +29,9 @@
 		throw createError({ statusCode: 404, message: 'Blog post not found' })
 	}
 
-	useHead({
+	useSeoMeta({
 		title: data.value.post?.title,
-		meta: [
-			{ name: 'description', content: data.value.post?.excerpt },
-			data.value.post?.featuredImage?.node?.sourceUrl
-				? { property: 'og:image', content: data.value.post?.featuredImage?.node?.sourceUrl }
-				: {},
-		],
+		description: data.value.post?.excerpt,
+		ogImage: data.value.post?.featuredImage?.node?.sourceUrl,
 	})
 </script>

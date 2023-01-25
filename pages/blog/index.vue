@@ -17,7 +17,7 @@
 		throw createError({ statusCode: 404, message: 'Page not found' })
 	}
 
-	useHead({
-		title: data.value?.page?.title,
+	useSeoMeta({
+		title: data.value.page?.title,
 	})
 </script>
