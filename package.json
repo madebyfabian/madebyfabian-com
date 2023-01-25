@@ -4,9 +4,10 @@
 		"start": "run-p start:*",
 		"start:nuxt": "nuxt dev",
 		"start:gql": "graphql-codegen --watch",
-		"build": "graphql-codegen && nuxt generate",
-		"build-and-preview": "npm run build && npm run preview",
-		"preview": "nuxt preview",
+		"build:prod": "graphql-codegen && nuxt generate",
+		"build:staging": "graphql-codegen && nuxt build",
+		"preview:prod": "nuxt preview",
+		"preview:staging": "echo \"Check readme to preview staging\"",
 		"typecheck": "nuxt typecheck",
 		"postinstall": "nuxt prepare"
 	},

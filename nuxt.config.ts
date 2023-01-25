@@ -33,7 +33,7 @@ export default defineNuxtConfig({
 
 	runtimeConfig: {
 		public: {
-			GQL_TOKEN: process.env.NODE_ENV === 'development' ? process.env.GQL_TOKEN : '',
+			gqlToken: '',
 		},
 	},
 
