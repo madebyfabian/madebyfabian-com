@@ -1,7 +1,7 @@
 export default defineEventHandler(event => {
-	const headers = getHeaders(event)
+	const runtimeConfig = useRuntimeConfig()
 
 	return {
-		headers,
+		runtimeConfig,
 	}
 })
