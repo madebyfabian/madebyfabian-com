@@ -36,9 +36,4 @@ export default defineNuxtConfig({
 			},
 		},
 	},
-
-	routeRules: {
-		'/': { index: false, static: true },
-		'/**': { static: true },
-	},
 })
