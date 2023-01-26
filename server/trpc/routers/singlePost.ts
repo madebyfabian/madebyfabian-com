@@ -11,6 +11,7 @@ export const singlePostRouter = router({
 					id
 					title
 					dateGmt
+					status
 					excerpt(format: RAW)
 					blocks {
 						attributesJSON
@@ -70,6 +71,8 @@ export const singlePostRouter = router({
 		})
 
 		if (content.previewData?.post) return content.previewData
-		return content.data
+		if (content.data?.post.status === 'publish') {
+			return content.data
+		}
 	}),
 })

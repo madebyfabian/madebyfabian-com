@@ -12,6 +12,7 @@ export const singlePageRouter = router({
 					id
 					title
 					isFrontPage
+					status
 					blocks {
 						attributesJSON
 						name
@@ -49,6 +50,8 @@ export const singlePageRouter = router({
 		})
 
 		if (content.previewData?.page) return content.previewData
-		return content.data
+		if (content.data?.page.status === 'publish') {
+			return content.data
+		}
 	}),
 })
