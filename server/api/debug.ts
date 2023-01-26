@@ -10,6 +10,7 @@ export default defineEventHandler(event => {
 		url,
 		host,
 		runtimeConfig,
+		headers,
 	}
 
 	//return url === runtimeConfig.public.siteUrlPreview
