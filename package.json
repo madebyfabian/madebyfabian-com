@@ -4,7 +4,7 @@
 		"start": "run-p start:*",
 		"start:nuxt": "nuxt dev",
 		"start:gql": "graphql-codegen --watch",
-		"build": "graphql-codegen && nuxt generate",
+		"build": "graphql-codegen && nuxt build",
 		"preview:prod": "nuxt preview",
 		"typecheck": "nuxt typecheck",
 		"postinstall": "nuxt prepare"
