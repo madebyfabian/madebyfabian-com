@@ -2,7 +2,20 @@
 
 ## Setup
 
-1. Create a `.env` file and add the following variables:
+1. Enable corepack
+
+```bash
+npx corepack enable
+
+```
+
+2. Make sure to install the dependencies
+
+```bash
+npm i
+```
+
+3. Create a `.env` file and add the following variables:
 
 ```bash
 GQL_HOST="https://example.com/graphql"
