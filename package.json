@@ -4,13 +4,10 @@
 		"start": "run-p start:*",
 		"start:nuxt": "nuxt dev",
 		"start:gql": "graphql-codegen --watch",
-		"build:prod": "graphql-codegen && nuxt generate",
-		"build:staging": "graphql-codegen && nuxt build",
+		"build": "graphql-codegen && nuxt generate",
 		"preview:prod": "nuxt preview",
-		"preview:staging": "echo \"Check readme to preview staging\"",
 		"typecheck": "nuxt typecheck",
-		"postinstall": "nuxt prepare",
-		"generate": "graphql-codegen"
+		"postinstall": "nuxt prepare"
 	},
 	"devDependencies": {
 		"@graphql-codegen/cli": "^2.16.1",

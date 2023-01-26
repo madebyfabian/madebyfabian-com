@@ -8,14 +8,7 @@
 GQL_HOST="https://example.com/graphql"
 GQL_TOKEN="Basic xxx"
 SITE_URL="https://example.com"
-```
-
-## Preview Staging
-
-To preview the staging environment, (after build) run the following command:
-
-```bash
-NUXT_PUBLIC_GQL_TOKEN=\"Basic xxx\" node .output/server/index.mjs
+SITE_URL_PREVIEW="https://example-preview.com"
 ```
 
 ## Hosting
@@ -26,27 +19,7 @@ NUXT_PUBLIC_GQL_TOKEN=\"Basic xxx\" node .output/server/index.mjs
 npm run build:prod
 ```
 
-and these environment variables:
-
-```bash
-GQL_HOST="https://example.com/graphql"
-GQL_TOKEN="Basic xxx"
-SITE_URL="https://example.com"
-```
-
-2. Create a second vercel project with the following build command:
-
-```bash
-npm run build:staging
-```
-
-and these environment variables:
-
-```bash
-GQL_HOST="https://example.com/graphql"
-GQL_TOKEN="Basic xxx"
-SITE_URL="https://example.com"
-NUXT_PUBLIC_GQL_TOKEN="Basic xxx"
-STAGING_USERNAME="username"
-STAGING_PASSWORD="password"
-```
+2. Add the env variables from the `.env` file to the vercel project.
+3. Configure 2 domains
+    1. Should be the same as `SITE_URL`
+    2. Should be the same as `SITE_URL_PREVIEW`

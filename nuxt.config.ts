@@ -23,6 +23,12 @@ export default defineNuxtConfig({
 		transpile: ['trpc-nuxt'],
 	},
 
+	runtimeConfig: {
+		public: {
+			isPreview: process.env.VERCEL_URL === process.env.SITE_URL_PREVIEW,
+		},
+	},
+
 	app: {
 		head: {
 			htmlAttrs: {
