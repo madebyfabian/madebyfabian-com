@@ -11,6 +11,7 @@ export default defineEventHandler(event => {
 		host,
 		runtimeConfig,
 		headers,
+		env: process.env,
 	}
 
 	//return url === runtimeConfig.public.siteUrlPreview
