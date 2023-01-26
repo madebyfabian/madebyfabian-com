@@ -2,7 +2,7 @@
 	<component
 		v-if="dynamicComponent"
 		:is="dynamicComponent"
-		:block="props.item.block"
+		:attributes="props.item?.block"
 		:innerBlocks="props.item.innerBlocks">
 		<slot />
 	</component>
@@ -14,7 +14,8 @@
 </template>
 
 <script lang="ts" setup>
-	import type { ItemBase } from '@/types'
+	import type { InnerBlocksDefault, ItemBase } from '@/types'
+	import type { Block } from '@/types/gen/graphql/graphql'
 
 	import {
 		RichtextCoreCode,
@@ -25,6 +26,7 @@
 		RichtextCoreList,
 		RichtextCoreListItem,
 		RichtextCoreParagraph,
+		RichtextCustomTeaser,
 	} from '#components'
 
 	const components = {
@@ -36,11 +38,16 @@
 		'core/list': RichtextCoreList,
 		'core/list-item': RichtextCoreListItem,
 		'core/paragraph': RichtextCoreParagraph,
+
+		// Custom blocks
+		'lazyblock/richtext-teaser': RichtextCustomTeaser,
 	}
 
-	type Item = ItemBase & {
-		block: any
-		innerBlocks?: Item[]
+	type Item = {
+		id?: ItemBase['id']
+		name: ItemBase['name']
+		block?: Block
+		innerBlocks?: InnerBlocksDefault<Item>
 	}
 
 	const props = defineProps<{

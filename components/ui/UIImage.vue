@@ -7,12 +7,24 @@
 		:height="405" />
 </template>
 
-<script setup lang="ts">
-	const props = defineProps<{
+<script lang="ts">
+	export type UIImageProps = {
 		alt: string
 		height?: number
 		title?: string
 		url?: string
 		width?: number
+	}
+
+	//
+</script>
+
+<script setup lang="ts">
+	const props = defineProps<{
+		alt: UIImageProps['alt']
+		height: UIImageProps['height']
+		title: UIImageProps['title']
+		url: UIImageProps['url']
+		width: UIImageProps['width']
 	}>()
 </script>

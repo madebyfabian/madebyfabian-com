@@ -1,0 +1,26 @@
+<template>
+	<li class="RichtextCoreListItem" :id="id">
+		<p v-html="props.attributes?.content" />
+	</li>
+</template>
+
+<script lang="ts">
+	import type { CoreHeadingBlock } from '@/types/gen/graphql/graphql'
+	import { InnerBlocksExtended } from '@/types'
+
+	export type RichtextCoreListItemProps = {
+		attributes: CoreHeadingBlock['attributes']
+		innerBlocks: InnerBlocksExtended
+	}
+
+	//
+</script>
+
+<script setup lang="ts">
+	const props = defineProps<{
+		attributes: RichtextCoreListItemProps['attributes']
+		innerBlocks: RichtextCoreListItemProps['innerBlocks']
+	}>()
+
+	const id = computed(() => props.attributes?.anchor || undefined)
+</script>

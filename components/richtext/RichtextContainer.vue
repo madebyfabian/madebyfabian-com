@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts" setup>
-	import type { ItemBase } from '@/types'
+	import type { ItemBase, InnerBlocksDefault, BlockDefault } from '@/types'
 
 	const props = defineProps<{
 		blocksRaw: any
@@ -13,8 +13,8 @@
 	}>()
 
 	type Item = ItemBase & {
-		block: Record<string, any>
-		innerBlocks?: Item[]
+		block: BlockDefault
+		innerBlocks?: InnerBlocksDefault<Item>
 	}
 
 	const uid = () => Math.random().toString(36).slice(2, 9)
@@ -23,7 +23,7 @@
 		const baseBlock: Item = {
 			id: uid(),
 			name: item.name,
-			block: JSON.parse(item.attributesJSON || '{}') as Record<string, any>,
+			block: JSON.parse(item.attributesJSON || '{}'),
 		}
 
 		if (!('innerBlocks' in item)) return baseBlock
@@ -57,8 +57,10 @@
 
 <style lang="postcss" scoped>
 	.RichtextContainer {
+		@apply mt-12;
+
 		:deep(p) {
-			@apply leading-relaxed my-6 text-lg;
+			@apply leading-relaxed my-6 first:mt-0 last:mb-0 text-lg;
 
 			a {
 				@apply text-cyan-700 underline font-bold decoration-cyan-700/30;
@@ -70,7 +72,7 @@
 		}
 
 		:deep(figure) {
-			@apply my-6;
+			@apply my-6 first:mt-0 last:mb-0;
 
 			p {
 				@apply my-0 text-sm text-gray-500;
@@ -78,20 +80,20 @@
 		}
 
 		:deep(h2) {
-			@apply text-4xl font-bold mt-14 my-7 tracking-tighter;
+			@apply text-4xl font-bold mt-14 mb-7 first:mt-0 last:mb-0 tracking-tighter;
 		}
 
 		:deep(h3) {
-			@apply text-2xl font-bold mt-10 mb-6;
+			@apply text-2xl font-bold mt-10 mb-6 first:mt-0 last:mb-0;
 		}
 
 		:deep(h4) {
-			@apply text-xl font-bold mt-6 mb-6;
+			@apply text-xl font-bold mt-6 mb-6 first:mt-0 last:mb-0;
 		}
 
 		:deep(ul),
 		:deep(ol) {
-			@apply my-6 ml-4;
+			@apply my-6 first:mt-0 last:mb-0 ml-4;
 
 			li p {
 				@apply my-3;
@@ -107,11 +109,7 @@
 		}
 
 		:deep(pre) {
-			@apply bg-gray-100 shadow-inner p-4 rounded-xl my-6 text-sm leading-relaxed overflow-x-auto;
-		}
-
-		*:has(+ .RichtextCoreColumns) {
-			@apply mb-0;
+			@apply bg-gray-100 shadow-inner p-4 rounded-xl my-6 first:mt-0 last:mb-0 text-sm leading-relaxed overflow-x-auto;
 		}
 	}
 </style>
