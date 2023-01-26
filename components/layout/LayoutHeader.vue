@@ -8,10 +8,8 @@
 			</div>
 		</div>
 	</header>
-	<pre>{{ runtimeConfig }}</pre>
 </template>
 
 <script lang="ts" setup>
 	const isPreview = computed(() => useIsPreview())
-	const runtimeConfig = useRuntimeConfig()
 </script>

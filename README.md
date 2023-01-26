@@ -8,7 +8,7 @@
 GQL_HOST="https://example.com/graphql"
 GQL_TOKEN="Basic xxx"
 SITE_URL="https://example.com"
-SITE_URL_PREVIEW="https://example-preview.com"
+NUXT_PUBLIC_SITE_URL_PREVIEW="https://example-preview.com"
 ```
 
 ## Hosting
@@ -22,4 +22,4 @@ npm run build:prod
 2. Add the env variables from the `.env` file to the vercel project.
 3. Configure 2 domains
     1. Should be the same as `SITE_URL`
-    2. Should be the same as `SITE_URL_PREVIEW`
+    2. Should be the same as `NUXT_PUBLIC_SITE_URL_PREVIEW`
