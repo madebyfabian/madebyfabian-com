@@ -23,6 +23,10 @@ export default defineNuxtConfig({
 		transpile: ['trpc-nuxt'],
 	},
 
+	nitro: {
+		preset: 'vercel-edge',
+	},
+
 	runtimeConfig: {
 		public: {
 			siteUrlPreview: '',
@@ -35,5 +39,10 @@ export default defineNuxtConfig({
 				lang: 'en-US',
 			},
 		},
+	},
+
+	// Do not include the index route in the sitemap. (Because it would be duplicated),
+	routeRules: {
+		'/': { index: false },
 	},
 })
