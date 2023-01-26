@@ -25,6 +25,7 @@ export default defineNuxtConfig({
 
 	runtimeConfig: {
 		public: {
+			vercelUrl: '',
 			isPreview: process.env.VERCEL_URL === process.env.SITE_URL_PREVIEW,
 		},
 	},
