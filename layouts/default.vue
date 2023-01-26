@@ -13,9 +13,11 @@
 		throw createError({ statusCode: 500, message: 'Error fetching settings' })
 	}
 
+	const prefix = process.env.NODE_ENV === 'development' ? '⚙️ ' : ''
+
 	useSeoMeta({
 		title: 'Home',
-		titleTemplate: `%s - ${data.value.allSettings.generalSettingsTitle}`,
+		titleTemplate: `${prefix}%s — ${data.value.allSettings.generalSettingsTitle}`,
 		description: data.value.allSettings.generalSettingsDescription,
 	})
 </script>
