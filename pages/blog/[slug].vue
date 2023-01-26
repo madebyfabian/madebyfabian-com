@@ -15,67 +15,13 @@
 </template>
 
 <script setup lang="ts">
+	const { $client } = useNuxtApp()
 	const route = useRoute()
-
-	const query = gql`
-		query SinglePost($slug: ID!) {
-			post(id: $slug, idType: SLUG) {
-				id
-				title
-				dateGmt
-				excerpt(format: RAW)
-				blocks {
-					attributesJSON
-					name
-					innerBlocks {
-						attributesJSON
-						name
-						innerBlocks {
-							attributesJSON
-							name
-							innerBlocks {
-								attributesJSON
-								name
-								innerBlocks {
-									attributesJSON
-									name
-								}
-							}
-						}
-					}
-				}
-				featuredImage {
-					node {
-						id
-						sourceUrl
-						altText
-					}
-				}
-				date
-				slug
-				tags {
-					edges {
-						node {
-							id
-							name
-						}
-					}
-				}
-				author {
-					node {
-						name
-					}
-				}
-			}
-		}
-	`
-
 	const slug = computed(() => route.params.slug as string)
 
-	const { data, error } = await useAsyncQuery<any>(query, {
+	const { data, error } = await $client.singlePost.get.useQuery({
 		slug: slug.value,
 	})
-
 	if (!data.value?.post || error.value) {
 		throw createError({ statusCode: 404, message: 'Blog post not found' })
 	}

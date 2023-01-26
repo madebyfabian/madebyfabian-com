@@ -14,20 +14,16 @@
 </template>
 
 <script setup lang="ts">
+	import { User, Tag } from '@/types/gen/graphql/graphql'
 	const props = defineProps<{
 		item: {
 			date?: string
 			author?: {
-				node: {
-					name?: string
-				}
+				node: Pick<User, 'name'>
 			}
 			tags?: {
 				edges: {
-					node: {
-						id: string
-						name: string
-					}
+					node: Pick<Tag, 'id' | 'name'>
 				}[]
 			}
 		}

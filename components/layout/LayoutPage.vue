@@ -7,42 +7,14 @@
 </template>
 
 <script lang="ts" setup>
+	const { $client } = useNuxtApp()
+
 	const props = defineProps<{
 		hasH1?: boolean
 		uri: string
 	}>()
 
-	const query = gql`
-		query SinglePage($uri: ID!) {
-			page(id: $uri, idType: URI) {
-				id
-				title
-				isFrontPage
-				blocks {
-					attributesJSON
-					name
-					innerBlocks {
-						attributesJSON
-						name
-						innerBlocks {
-							attributesJSON
-							name
-							innerBlocks {
-								attributesJSON
-								name
-								innerBlocks {
-									attributesJSON
-									name
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	`
-
-	const { data, error } = await useAsyncQuery<any>(query, {
+	const { data, error } = await $client.singlePage.get.useQuery({
 		uri: props.uri,
 	})
 	if (!data.value?.page || error.value) {

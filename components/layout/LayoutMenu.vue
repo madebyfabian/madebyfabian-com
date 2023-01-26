@@ -12,41 +12,21 @@
 </template>
 
 <script setup lang="ts">
-	import { graphql } from '@/gql'
-
-	const removeTrailingSlash = (str: string) => {
-		return str !== '/' ? str.replace(/\/$/, '') : str
-	}
-
-	const query = graphql(`
-		query SingleMenu($id: ID!) {
-			menu(id: $id, idType: ID) {
-				id
-				name
-				menuItems {
-					edges {
-						node {
-							id
-							label
-							order
-							uri
-							target
-						}
-					}
-				}
-			}
-		}
-	`)
+	const { $client } = useNuxtApp()
 
 	const props = defineProps<{
 		menuId: string
 	}>()
 
-	const { data, error } = await useAsyncQuery(query, {
-		id: props.menuId,
+	const { data, error } = await $client.general.singleMenu.useQuery({
+		menuId: props.menuId,
 	})
 	if (!data.value || error.value) {
 		throw new Error('Error fetching menu')
+	}
+
+	const removeTrailingSlash = (str: string) => {
+		return str !== '/' ? str.replace(/\/$/, '') : str
 	}
 
 	const menuData = computed(() => {

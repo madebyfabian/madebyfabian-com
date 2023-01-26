@@ -10,21 +10,19 @@ const config: CodegenConfig = {
 			},
 		},
 	} as any,
-	documents: [
-		'./**/*.vue',
 
-		// Not using the `import { graphql } from '@/gql'` here because of the
-		// repeating fields crash the geenrator.
-		'!./components/layout/LayoutPage.vue',
-		'!./pages/blog/[slug].vue',
+	documents: [
+		'./server/trpc/**/*.ts',
+		'!./types/gen/**/*',
+
+		// Exclude due to infinite loop
+		'!./server/trpc/routers/singlePage.ts',
+		'!./server/trpc/routers/singlePost.ts',
 	],
-	ignoreNoDocuments: true, // for better experience with the watcher
+
 	generates: {
-		'./gql/': {
+		'./types/gen/graphql/': {
 			preset: 'client',
-			config: {
-				useTypeImports: true,
-			},
 			plugins: [],
 		},
 	},

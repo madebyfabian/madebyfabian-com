@@ -4,18 +4,6 @@ export default defineNuxtConfig({
 	modules: [
 		'@nuxtjs/tailwindcss',
 		[
-			'@nuxtjs/apollo',
-			{
-				clients: {
-					default: {
-						httpEndpoint: process.env.GQL_HOST,
-						authType: 'Basic',
-						proxyCookies: process.env.NODE_ENV === 'development',
-					},
-				},
-			},
-		],
-		[
 			'nuxt-simple-sitemap',
 			{
 				hostname: process.env.SITE_URL,
@@ -31,10 +19,8 @@ export default defineNuxtConfig({
 		shim: false,
 	},
 
-	runtimeConfig: {
-		public: {
-			gqlToken: '',
-		},
+	build: {
+		transpile: ['trpc-nuxt'],
 	},
 
 	app: {

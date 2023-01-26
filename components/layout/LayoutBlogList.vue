@@ -23,9 +23,9 @@
 				<UIArticleMetadata
 					v-bind="{
 						item: {
-							date: item.dateGmt,
-							author: item.author,
-							tags: item.tags,
+							date: item.dateGmt || undefined,
+							author: item.author || undefined,
+							tags: item.tags || undefined,
 						},
 					}" />
 			</div>
@@ -34,43 +34,8 @@
 </template>
 
 <script lang="ts" setup>
-	import { graphql } from '@/gql'
-
-	const query = graphql(`
-		query ListPosts {
-			posts {
-				nodes {
-					id
-					title
-					dateGmt
-					slug
-					excerpt(format: RAW)
-					featuredImage {
-						node {
-							id
-							sourceUrl
-							altText
-						}
-					}
-					tags {
-						edges {
-							node {
-								id
-								name
-							}
-						}
-					}
-					author {
-						node {
-							name
-						}
-					}
-				}
-			}
-		}
-	`)
-
-	const { data, error } = await useAsyncQuery(query)
+	const { $client } = useNuxtApp()
+	const { data, error } = await $client.general.listPosts.useQuery()
 	if (error.value) {
 		throw createError({ statusCode: 500, message: 'Error fetching posts in blog list' })
 	}
