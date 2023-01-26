@@ -21,7 +21,7 @@
 		}[]
 	}>()
 
-	useSchemaOrg([
+	/*useSchemaOrg([
 		defineWebPage({
 			'@type': 'FAQPage',
 		}),
@@ -30,6 +30,26 @@
 				name: item.block?.title,
 				acceptedAnswer: item.block?.content,
 			})
+		}),
+	])
+	*/
+	const data = [
+		{
+			name: 'How long is a piece of string?',
+			acceptedAnswer: 'The length of a piece of string is the number of characters in the string.',
+		},
+		{
+			name: 'How big is a giraffe?',
+			acceptedAnswer: 'A giraffe is 12 feet tall',
+		},
+	]
+
+	useSchemaOrg([
+		defineWebPage({
+			'@type': 'FAQPage',
+		}),
+		...data.map(entry => {
+			return defineQuestion(entry)
 		}),
 	])
 
