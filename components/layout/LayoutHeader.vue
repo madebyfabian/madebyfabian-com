@@ -4,12 +4,7 @@
 			<NuxtLink to="/" class="text-2xl font-bold tracking-tight block">madebyfabian.com</NuxtLink>
 			<div class="flex gap-6">
 				<LayoutMenu menuId="dGVybTo3" class="flex gap-6" />
-				Preview?<code>{{ isPreview }}</code>
 			</div>
 		</div>
 	</header>
 </template>
-
-<script lang="ts" setup>
-	const isPreview = computed(() => useIsPreview())
-</script>

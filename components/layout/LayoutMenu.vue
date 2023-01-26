@@ -25,10 +25,6 @@
 		throw new Error('Error fetching menu')
 	}
 
-	const removeTrailingSlash = (str: string) => {
-		return str !== '/' ? str.replace(/\/$/, '') : str
-	}
-
 	const menuData = computed(() => {
 		const menuData = data.value?.menu?.menuItems?.edges?.map((edge: any) => ({
 			node: {
