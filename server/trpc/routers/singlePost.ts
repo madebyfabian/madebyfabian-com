@@ -1,9 +1,10 @@
 import { z } from 'zod'
 import { publicProcedure, router } from '../trpc'
-import { graphQLClient, gqlUntyped } from '@/server/utils/graphQLClient'
+import { gqlUntyped } from '@/server/utils/graphQLClient'
+import { requestContent } from '@/server/utils/requestContent'
 
 export const singlePostRouter = router({
-	get: publicProcedure.input(z.object({ slug: z.string() })).query(({ input }) => {
+	get: publicProcedure.input(z.object({ slug: z.string() })).query(async ({ input }) => {
 		const query = gqlUntyped/* GraphQL */ `
 			query SinglePost($slug: ID!) {
 				post(id: $slug, idType: SLUG) {
@@ -57,6 +58,14 @@ export const singlePostRouter = router({
 			}
 		`
 
-		return graphQLClient.request(query as any, { slug: input.slug })
+		const getPreviewInput = () => {
+			return `${input.slug}-2`
+		}
+
+		return requestContent({
+			query,
+			input: { slug: input.slug },
+			previewInput: { slug: getPreviewInput() },
+		})
 	}),
 })

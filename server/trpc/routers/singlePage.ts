@@ -1,6 +1,8 @@
 import { z } from 'zod'
 import { publicProcedure, router } from '../trpc'
-import { graphQLClient, gqlUntyped } from '@/server/utils/graphQLClient'
+import { gqlUntyped } from '@/server/utils/graphQLClient'
+import { requestContent } from '@/server/utils/requestContent'
+import { removeTrailingSlash } from '@/utils/removeTrailingSlash'
 
 export const singlePageRouter = router({
 	get: publicProcedure.input(z.object({ uri: z.string() })).query(({ input }) => {
@@ -34,6 +36,15 @@ export const singlePageRouter = router({
 			}
 		`
 
-		return graphQLClient.request(query as any, { uri: input.uri })
+		const getPreviewInput = () => {
+			const withoutTrailingSlash = removeTrailingSlash(input.uri)
+			return `${withoutTrailingSlash}-2/`
+		}
+
+		return requestContent({
+			query,
+			input: { uri: input.uri },
+			previewInput: { uri: getPreviewInput() },
+		})
 	}),
 })
