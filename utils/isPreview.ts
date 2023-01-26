@@ -6,6 +6,8 @@ export const isPreview = (): boolean => {
 		const nuxtApp = useNuxtApp()
 		const runtimeConfig = useRuntimeConfig()
 
+		console.log(nuxtApp.ssrContext?.event.node.req.headers)
+
 		let host: string | undefined = ''
 		if (process.server) {
 			host = nuxtApp.ssrContext?.event.node.req.headers?.host
