@@ -10,7 +10,9 @@ export const useIsPreview = () => {
 			host = window.location.host
 		}
 
-		return host === runtimeConfig.public.siteUrlPreview
+		const url = host ? `https://${host}` : undefined
+
+		return url === runtimeConfig.public.siteUrlPreview
 	} catch (error) {
 		return false
 	}
