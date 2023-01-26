@@ -12,13 +12,7 @@ export const isPreview = ({
 	try {
 		const runtimeConfig = useRuntimeConfig()
 
-		let host: string | undefined = ''
-		if (process.server) {
-			host = headers?.host
-		} else {
-			host = window.location.host
-		}
-
+		const host = headers?.host
 		const url = host ? `https://${host}` : undefined
 
 		return url === runtimeConfig.public.siteUrlPreview
