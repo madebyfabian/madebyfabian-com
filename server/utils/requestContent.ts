@@ -1,6 +1,7 @@
 import { isPreview } from '@/utils/isPreview'
 import type { TypedDocumentNode } from '@graphql-typed-document-node/core'
 import type { RequestDocument } from 'graphql-request'
+import type { RequestHeaders } from 'h3'
 
 /**
  * Depending on whether we are in a preview environment or not, we need to
@@ -9,15 +10,17 @@ import type { RequestDocument } from 'graphql-request'
  * return. Since most of the times there is no draft post.
  */
 export const requestContent = async <I extends Record<string, any>>({
+	headers,
 	query,
 	input,
 	previewInput,
 }: {
+	headers: RequestHeaders
 	query: RequestDocument | TypedDocumentNode<any, I>
 	input: I
 	previewInput?: I
 }) => {
-	const currentlyInPreview = isPreview()
+	const currentlyInPreview = isPreview({ headers: headers })
 
 	// @ts-expect-error - @todo improve typings
 	const promises = [graphQLClient.request(query, input)]

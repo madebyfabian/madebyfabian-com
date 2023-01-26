@@ -5,7 +5,7 @@ import { requestContent } from '@/server/utils/requestContent'
 import { removeTrailingSlash } from '@/utils/removeTrailingSlash'
 
 export const singlePageRouter = router({
-	get: publicProcedure.input(z.object({ uri: z.string() })).query(async ({ input }) => {
+	get: publicProcedure.input(z.object({ uri: z.string() })).query(async ({ ctx, input }) => {
 		const query = gqlUntyped/* GraphQL */ `
 			query SinglePage($uri: ID!) {
 				page(id: $uri, idType: URI) {
@@ -42,6 +42,7 @@ export const singlePageRouter = router({
 		}
 
 		const content = await requestContent({
+			headers: ctx.headers,
 			query,
 			input: { uri: input.uri },
 			previewInput: { uri: getPreviewInput() },

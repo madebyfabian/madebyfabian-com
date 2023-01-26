@@ -4,7 +4,7 @@ import { gqlUntyped } from '@/server/utils/graphQLClient'
 import { requestContent } from '@/server/utils/requestContent'
 
 export const singlePostRouter = router({
-	get: publicProcedure.input(z.object({ slug: z.string() })).query(async ({ input }) => {
+	get: publicProcedure.input(z.object({ slug: z.string() })).query(async ({ ctx, input }) => {
 		const query = gqlUntyped/* GraphQL */ `
 			query SinglePost($slug: ID!) {
 				post(id: $slug, idType: SLUG) {
@@ -64,6 +64,7 @@ export const singlePostRouter = router({
 
 		const content = await requestContent({
 			query,
+			headers: ctx.headers,
 			input: { slug: input.slug },
 			previewInput: { slug: getPreviewInput() },
 		})
