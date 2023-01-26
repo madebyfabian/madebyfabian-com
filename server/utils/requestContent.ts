@@ -27,9 +27,11 @@ export const requestContent = async <I extends Record<string, any>>({
 	}
 
 	const [res, previewRes] = await Promise.allSettled(promises)
+	const data = res?.status === 'fulfilled' ? res.value : null
+	const previewData = previewRes !== undefined && previewRes?.status === 'fulfilled' ? previewRes.value : null
 
-	const data = res !== undefined && 'value' in res && res.value
-	const previewData = previewRes !== undefined && 'value' in previewRes && previewRes.value
-
-	return previewData || data
+	return {
+		data,
+		previewData,
+	}
 }

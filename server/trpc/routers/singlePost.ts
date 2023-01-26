@@ -62,10 +62,13 @@ export const singlePostRouter = router({
 			return `${input.slug}-2`
 		}
 
-		return requestContent({
+		const content = await requestContent({
 			query,
 			input: { slug: input.slug },
 			previewInput: { slug: getPreviewInput() },
 		})
+
+		if (content.previewData?.post) return content.previewData
+		return content.data
 	}),
 })
