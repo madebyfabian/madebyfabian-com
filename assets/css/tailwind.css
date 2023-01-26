@@ -20,6 +20,13 @@
 @layer base {
 	html {
 		@apply font-display scroll-smooth text-gray-700 accent-cyan-700 underline-offset-2;
+		font-size: 0.875rem;
+	}
+
+	@screen md {
+		html {
+			font-size: 1rem;
+		}
 	}
 
 	body,
