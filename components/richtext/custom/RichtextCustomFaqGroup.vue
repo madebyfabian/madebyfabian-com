@@ -21,7 +21,7 @@
 		}[]
 	}>()
 
-	const questions = props.innerBlocks?.map(item => {
+	/*const questions = props.innerBlocks?.map(item => {
 		return defineQuestion({
 			name: item.block?.title,
 			acceptedAnswer: item.block?.content,
@@ -33,6 +33,20 @@
 			'@type': 'FAQPage',
 		}),
 		...questions,
+	])
+	*/
+	useSchemaOrg([
+		defineWebPage({
+			'@type': 'FAQPage',
+		}),
+		defineQuestion({
+			name: 'How long is a piece of string?',
+			acceptedAnswer: 'The length of a piece of string is the number of characters in the string.',
+		}),
+		defineQuestion({
+			name: 'How big is a giraffe?',
+			acceptedAnswer: 'A giraffe is 12 feet tall',
+		}),
 	])
 
 	const id = computed(() => props.attributes?.anchor || undefined)
