@@ -23,10 +23,6 @@ export default defineNuxtConfig({
 		transpile: ['trpc-nuxt'],
 	},
 
-	nitro: {
-		preset: 'vercel-edge',
-	},
-
 	runtimeConfig: {
 		public: {
 			siteUrlPreview: '',
