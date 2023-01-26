@@ -7,7 +7,7 @@
 		<slot />
 	</component>
 
-	<div v-else class="p-4 bg-red-100 my-6 rounded-xl text-red-600">
+	<div v-else-if="displayNotFoundError" class="p-4 bg-red-100 my-6 rounded-xl text-red-600">
 		<p>Component "{{ props.item.name }}" not found</p>
 		<pre>{{ props }}</pre>
 	</div>
@@ -48,4 +48,8 @@
 	}>()
 
 	const dynamicComponent = components?.[props.item.name as keyof typeof components]
+
+	const displayNotFoundError = computed(() => {
+		return !isProduction().value
+	})
 </script>

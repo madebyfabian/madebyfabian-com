@@ -26,6 +26,7 @@ export default defineNuxtConfig({
 	runtimeConfig: {
 		public: {
 			siteUrlPreview: '',
+			isProduction: process.env.NODE_ENV === 'production',
 		},
 	},
 
