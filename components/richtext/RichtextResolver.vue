@@ -7,7 +7,7 @@
 		<slot />
 	</component>
 
-	<div v-else-if="displayNotFoundError" class="p-4 bg-red-100 my-6 rounded-xl text-red-600">
+	<div v-else-if="displayNotFoundError" class="p-4 bg-red-100 my-6 first:mt-0 last:mb-0 rounded-xl text-red-600">
 		<p>Component "{{ props.item.name }}" not found</p>
 		<pre>{{ props }}</pre>
 	</div>
@@ -26,7 +26,11 @@
 		RichtextCoreList,
 		RichtextCoreListItem,
 		RichtextCoreParagraph,
+
+		// Custom blocks
 		RichtextCustomTeaser,
+		RichtextCustomFaqGroup,
+		RichtextCustomFaqItem,
 	} from '#components'
 
 	const components = {
@@ -41,6 +45,8 @@
 
 		// Custom blocks
 		'lazyblock/richtext-teaser': RichtextCustomTeaser,
+		'lazyblock/faq-group': RichtextCustomFaqGroup,
+		'lazyblock/faq-item': RichtextCustomFaqItem,
 	}
 
 	type Item = {

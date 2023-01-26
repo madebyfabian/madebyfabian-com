@@ -4,6 +4,12 @@ export default defineNuxtConfig({
 	modules: [
 		'@nuxtjs/tailwindcss',
 		[
+			'nuxt-schema-org',
+			{
+				host: process.env.SITE_URL,
+			},
+		],
+		[
 			'nuxt-simple-sitemap',
 			{
 				hostname: process.env.SITE_URL,
