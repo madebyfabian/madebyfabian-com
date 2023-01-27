@@ -19,8 +19,8 @@ export default defineNuxtPlugin(nuxtApp => {
 		requireCookieConsent: false,
 		enableHeartBeatTimer: true,
 
-		// Defined in `generateVercelJson.ts`:
+		// Defined in `vercel.json`:
 		trackerUrl: `/_mtmo/t`,
-		trackerScriptUrl: `/_mtmo/s`,
+		trackerScriptUrl: `/_mtmo/s.js`,
 	})
 })
