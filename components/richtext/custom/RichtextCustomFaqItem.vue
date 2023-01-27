@@ -1,6 +1,6 @@
 <template>
 	<details v-if="props.attributes?.content" class="RichtextCustomFaqItem appearance-none group/details" :id="id">
-		<summary class="list-none font-bold cursor-pointer p-6 text-lg flex items-center justify-between">
+		<summary class="font-bold cursor-pointer p-6 text-lg flex items-center justify-between">
 			<span>{{ props.attributes?.title }}</span>
 			<span class="group-open/details:rotate-180 select-none">⬇️</span>
 		</summary>
@@ -20,3 +20,13 @@
 
 	const id = computed(() => props.attributes?.anchor || undefined)
 </script>
+
+<style lang="postcss" scoped>
+	details > summary {
+		list-style: none;
+	}
+
+	details summary::-webkit-details-marker {
+		display: none;
+	}
+</style>
