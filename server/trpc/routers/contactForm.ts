@@ -6,29 +6,6 @@ import { createSSRApp, reactive } from 'vue'
 import { renderToString } from 'vue/server-renderer'
 import { TRPCError } from '@trpc/server'
 
-const verifyTurnstileToken = async ({ turnstileToken }: { turnstileToken: string }) => {
-	try {
-		const secretKey = process.env.NUXT_TURNSTILE_SECRET_KEY
-		if (!secretKey || typeof secretKey !== 'string') throw new Error('No secret key found')
-		const url = 'https://challenges.cloudflare.com/turnstile/v0/siteverify'
-		let formData = new FormData()
-		formData.append('secret', secretKey)
-		formData.append('response', turnstileToken)
-		formData.append('remoteip', '1.1.1.1')
-
-		const res = await fetch(url, {
-			body: formData,
-			method: 'POST',
-		})
-
-		const outcome = await res.json()
-
-		return !!outcome?.success
-	} catch (error) {
-		return false
-	}
-}
-
 const getContactFormEmail = async () => {
 	const query = gql(/* GraphQL */ `
 		query AdminEmail {
@@ -61,8 +38,8 @@ export const contactFormRouter = router({
 			`)
 
 			// Verify the turnstile token
-			const isValid = await verifyTurnstileToken({ turnstileToken: _input.turnstileToken })
-			if (!isValid)
+			const validationResponse = await verifyTurnstileToken(_input.turnstileToken)
+			if (!validationResponse.success)
 				throw new TRPCError({
 					message: 'Failed to verify the turnstile token.',
 					code: 'UNAUTHORIZED',
