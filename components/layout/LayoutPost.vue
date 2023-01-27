@@ -1,6 +1,8 @@
 <template>
 	<div v-if="data?.post" class="container mx-auto max-w-3xl">
-		<UILink to="/" class="mb-12 block">&larr; Back to Home</UILink>
+		<UILink @click="router.go(-1)" class="mb-12 inline-block cursor-pointer" aria-label="Go back" tabindex="0"
+			>&larr; Back</UILink
+		>
 		<h1>{{ data.post?.title }}</h1>
 		<UIArticleMetadata
 			linkAvatar
@@ -15,6 +17,7 @@
 
 <script setup lang="ts">
 	const { $client } = useNuxtApp()
+	const router = useRouter()
 
 	const props = defineProps<{
 		slug: string
