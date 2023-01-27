@@ -61,8 +61,9 @@ export default defineNuxtConfig({
 		},
 	},
 
-	// Do not include the index route in the sitemap. (Because it would be duplicated),
 	routeRules: {
+		// Do not include the index route in the sitemap. (Because it would be duplicated),
 		'/': { index: false },
+		'/_vercel/image/**': { headers: { 'cache-control': `public, max-age=${60 * 60 * 24}` } },
 	},
 })
