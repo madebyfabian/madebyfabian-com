@@ -9,20 +9,20 @@
 							placeholder="Name"
 							v-model="state.form.name"
 							required
-							class="block w-full h-12 px-6 bg-gray-100 border rounded-xl" />
+							class="block w-full h-12 px-4 bg-gray-100 border rounded-xl" />
 						<input
 							type="email"
 							placeholder="Email"
 							v-model="state.form.email"
 							required
-							class="block w-full h-12 px-6 bg-gray-100 border rounded-xl" />
+							class="block w-full h-12 px-4 bg-gray-100 border rounded-xl" />
 					</div>
 					<textarea
 						placeholder="Message"
 						v-model="state.form.message"
 						required
 						rows="5"
-						class="block w-full py-3 px-6 bg-gray-100 border rounded-xl" />
+						class="block w-full py-3 px-4 bg-gray-100 border rounded-xl overflow-hidden" />
 				</div>
 
 				<Turnstile

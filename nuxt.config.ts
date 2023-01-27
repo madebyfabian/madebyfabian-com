@@ -46,6 +46,12 @@ export default defineNuxtConfig({
 		transpile: ['trpc-nuxt'],
 	},
 
+	nitro: {
+		externals: {
+			traceInclude: ['./node_modules/vue/server-renderer'],
+		},
+	},
+
 	runtimeConfig: {
 		turnstile: {
 			secretKey: process.env.NUXT_TURNSTILE_SECRET_KEY || '',
