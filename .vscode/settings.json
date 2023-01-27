@@ -5,5 +5,7 @@
 		"*.css": "tailwindcss"
 	},
 	// Auto-complete `.value` attribute when volar is installed
-	"volar.autoCompleteRefs": true
+	"volar.autoCompleteRefs": true,
+	"volar.completion.preferredTagNameCase": "pascal",
+	"volar.completion.preferredAttrNameCase": "camel"
 }
