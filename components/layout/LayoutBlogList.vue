@@ -5,12 +5,17 @@
 			:key="item.id"
 			:to="`/blog/${item.slug}`"
 			class="my-6 border rounded-xl flex flex-col md:flex-row overflow-hidden">
-			<div class="w-full h-36 md:h-auto md:w-56 shrink-0 bg-gray-100 flex items-center justify-center">
-				<img
-					class="h-full w-full object-cover object-center"
+			<div class="w-full h-[144px] md:h-auto md:w-[224px] shrink-0 bg-gray-100 flex items-center justify-center">
+				<NuxtImg
 					v-if="item?.featuredImage?.node"
-					:src="item.featuredImage.node.sourceUrl || undefined"
-					:alt="item.featuredImage.node.altText || item.title || undefined" />
+					fit="cover"
+					class="w-full h-full object-cover object-center"
+					:height="144"
+					:width="224"
+					:alt="item.featuredImage?.node.altText || ''"
+					:src="item.featuredImage?.node.sourceUrl || undefined"
+					:sizes="`lg:${224 * 1.5}`" />
+
 				<span v-else class="text-3xl">🏡</span>
 			</div>
 
