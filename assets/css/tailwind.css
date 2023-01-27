@@ -23,6 +23,10 @@
 		font-size: 0.875rem;
 	}
 
+	*:focus-visible {
+		@apply outline-accent-700 outline-offset-2 outline-dashed outline-2;
+	}
+
 	@screen md {
 		html {
 			font-size: 1rem;
