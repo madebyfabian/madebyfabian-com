@@ -1,34 +1,9 @@
 <template>
-	<div class="container mx-auto max-w-3xl">
-		<UILink to="/" class="mb-12 block">&larr; Back to Home</UILink>
-		<h1>{{ data.post?.title }}</h1>
-		<UIArticleMetadata
-			v-bind="{
-				item: {
-					date: data.post.dateGmt,
-					author: data.post.author,
-					tags: data.post.tags,
-				},
-			}" />
-		<RichtextContainer :blocksRaw="data?.post?.blocks" :slugKey="slug" />
-	</div>
+	<LayoutPost :slug="slug" />
 </template>
 
 <script setup lang="ts">
-	const { $client } = useNuxtApp()
 	const route = useRoute()
+
 	const slug = computed(() => route.params.slug as string)
-
-	const { data, error } = await $client.singlePost.get.useQuery({
-		slug: slug.value,
-	})
-	if (!data.value?.post || error.value) {
-		throw createError({ statusCode: 404, message: 'Blog post not found' })
-	}
-
-	useSeoMeta({
-		title: data.value.post?.title,
-		description: data.value.post?.excerpt,
-		ogImage: data.value.post?.featuredImage?.node?.sourceUrl,
-	})
 </script>
