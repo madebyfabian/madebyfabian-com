@@ -6,7 +6,7 @@ export default defineNuxtPlugin(nuxtApp => {
 	const wpHost = runtimeConfig.public.wpHost
 
 	// Don't track in dev.
-	if (process?.env?.VERCEL_ENV !== 'production') return
+	if (!runtimeConfig.public.isProduction) return
 
 	nuxtApp.vueApp.use(VueMatomo, {
 		host: `https://${wpHost}`,
