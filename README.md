@@ -21,7 +21,9 @@ npm i
 GQL_HOST="https://example.com/graphql"
 GQL_TOKEN="Basic xxx"
 SITE_URL="https://example.com"
+NUXT_TURNSTILE_SECRET_KEY="xxx"
 NUXT_PUBLIC_IMAGE_DOMAIN="wordpress.com"
+NUXT_PUBLIC_TURNSTILE_SITE_KEY="xxx"
 NUXT_PUBLIC_SITE_URL_PREVIEW="https://example-preview.com"
 ```
 

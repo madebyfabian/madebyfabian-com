@@ -30,6 +30,12 @@ export default defineNuxtConfig({
 				},
 			},
 		],
+		[
+			'@nuxtjs/turnstile',
+			{
+				secretKey: process.env.NUXT_TURNSTILE_SECRET_KEY || '',
+			},
+		],
 	],
 
 	typescript: {
@@ -43,6 +49,7 @@ export default defineNuxtConfig({
 	runtimeConfig: {
 		public: {
 			siteUrlPreview: '',
+			turnstileSiteKey: '',
 			isProduction: process.env.NODE_ENV === 'production',
 		},
 	},
