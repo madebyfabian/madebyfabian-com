@@ -93,3 +93,5 @@ export const generateBlocksData = async ({
 
 	return { blocks, mediaItems: undefined }
 }
+
+export type GenerateBlocksDataReturnType = Awaited<ReturnType<typeof generateBlocksData>>

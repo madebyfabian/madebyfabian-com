@@ -1,11 +1,16 @@
 <template>
-	<component
-		v-if="dynamicComponent"
-		:is="dynamicComponent"
-		:attributes="props.item?.block"
-		:innerBlocks="props.item.innerBlocks">
-		<slot />
-	</component>
+	<template v-if="dynamicComponent">
+		<RichtextCoreImage
+			v-if="isImage"
+			v-bind="({ attributes, innerBlocks } as any)"
+			:mediaItemsStorageKey="props.mediaItemsStorageKey">
+			<slot />
+		</RichtextCoreImage>
+
+		<component v-else :is="dynamicComponent" v-bind="{ attributes, innerBlocks }">
+			<slot />
+		</component>
+	</template>
 
 	<div v-else-if="displayNotFoundError" class="p-4 bg-red-100 my-6 first:mt-0 last:mb-0 rounded-xl text-red-600">
 		<p>Component "{{ props.item.name }}" not found</p>
@@ -61,9 +66,13 @@
 
 	const props = defineProps<{
 		item: RichtextItem
+		mediaItemsStorageKey?: string
 	}>()
 
 	const dynamicComponent = components?.[props.item.name as keyof typeof components]
+	const isImage = computed(() => props.item.name === ('core/image' as keyof typeof components))
+	const attributes = computed(() => props.item?.block)
+	const innerBlocks = computed(() => props.item?.innerBlocks)
 
 	const displayNotFoundError = computed(() => {
 		return !isProduction().value

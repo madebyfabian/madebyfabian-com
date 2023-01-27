@@ -1,6 +1,6 @@
 <template>
 	<article class="RichtextContainer">
-		<RichtextResolver v-for="item of props.blocks" :key="item.id" :item="item" />
+		<RichtextResolver v-for="item of props.blocks" :key="item.id" :item="item" :mediaItemsStorageKey="storageKey" />
 	</article>
 </template>
 
@@ -8,8 +8,17 @@
 	import type { RichtextItem } from '@/components/richtext/RichtextResolver.vue'
 
 	const props = defineProps<{
+		mediaItems?: any
 		blocks: RichtextItem[]
+		uniqueKey: string
 	}>()
+
+	const storageKey = `RichtextContainer:${props.uniqueKey}:mediaItems`
+
+	// Inject the media items data into the global storage
+	useState(storageKey, () => {
+		return props.mediaItems
+	})
 </script>
 
 <style lang="postcss" scoped>

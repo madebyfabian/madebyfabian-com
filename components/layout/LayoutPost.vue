@@ -10,7 +10,7 @@
 					tags: data.post.tags,
 				},
 			}" />
-		<RichtextContainer :blocks="data.post?.blocks" />
+		<RichtextContainer :blocks="data.post?.blocks" :mediaItems="data.mediaItems" :uniqueKey="props.slug" />
 	</div>
 </template>
 

@@ -91,26 +91,14 @@ export const generalRouter = router({
 						edges {
 							node {
 								id
-								altText
-								caption
+								databaseId
+								sourceUrl
 								description
+								caption
 								mediaDetails {
-									file
 									height
 									width
-									sizes {
-										file
-										fileSize
-										height
-										mimeType
-										name
-										sourceUrl
-										width
-									}
 								}
-								sizes
-								srcSet
-								title
 							}
 						}
 					}
