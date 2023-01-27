@@ -1,58 +1,15 @@
 <template>
 	<article class="RichtextContainer">
-		<RichtextResolver v-for="item of blocks" :key="item.id" :item="item" />
+		<RichtextResolver v-for="item of props.blocks" :key="item.id" :item="item" />
 	</article>
 </template>
 
 <script lang="ts" setup>
-	import type { ItemBase, InnerBlocksDefault, BlockDefault } from '@/types'
+	import type { RichtextItem } from '@/components/richtext/RichtextResolver.vue'
 
 	const props = defineProps<{
-		blocksRaw: any
-		slugKey: string
+		blocks: RichtextItem[]
 	}>()
-
-	type Item = ItemBase & {
-		block: BlockDefault
-		innerBlocks?: InnerBlocksDefault<Item>
-	}
-
-	const uid = () => Math.random().toString(36).slice(2, 9)
-
-	const parseItemJson = (item: { attributesJSON: string | null | undefined; name: string; innerBlocks?: any[] }) => {
-		const baseBlock: Item = {
-			id: uid(),
-			name: item.name,
-			block: JSON.parse(item.attributesJSON || '{}'),
-		}
-
-		if (!('innerBlocks' in item)) return baseBlock
-
-		const innerBlocks: Item[] = []
-		for (const innerItem of item.innerBlocks || []) {
-			innerBlocks.push(parseItemJson(innerItem))
-		}
-
-		const newItem: Item = {
-			...baseBlock,
-			innerBlocks,
-		}
-
-		return newItem
-	}
-
-	const blocks = useState(`blocks:${props.slugKey}`, () => {
-		const blocksRaw = props.blocksRaw
-		if (!Array.isArray(props.blocksRaw) || !blocksRaw.length) return []
-
-		const blocks: Item[] = []
-
-		for (const item of blocksRaw) {
-			blocks.push(parseItemJson(item as any))
-		}
-
-		return blocks
-	})
 </script>
 
 <style lang="postcss" scoped>

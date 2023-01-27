@@ -13,9 +13,19 @@
 	</div>
 </template>
 
+<script lang="ts">
+	export type RichtextItem = {
+		id?: ItemBase['id']
+		name: ItemBase['name']
+		block?: BlockDefault
+		innerBlocks?: InnerBlocksDefault<RichtextItem>
+	}
+
+	//
+</script>
+
 <script lang="ts" setup>
-	import type { InnerBlocksDefault, ItemBase } from '@/types'
-	import type { Block } from '@/types/gen/graphql/graphql'
+	import type { InnerBlocksDefault, BlockDefault, ItemBase } from '@/types'
 
 	import {
 		RichtextCoreCode,
@@ -49,15 +59,8 @@
 		'lazyblock/faq-item': RichtextCustomFaqItem,
 	}
 
-	type Item = {
-		id?: ItemBase['id']
-		name: ItemBase['name']
-		block?: Block
-		innerBlocks?: InnerBlocksDefault<Item>
-	}
-
 	const props = defineProps<{
-		item: Item
+		item: RichtextItem
 	}>()
 
 	const dynamicComponent = components?.[props.item.name as keyof typeof components]

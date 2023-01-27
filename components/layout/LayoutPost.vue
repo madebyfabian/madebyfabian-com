@@ -10,7 +10,7 @@
 					tags: data.post.tags,
 				},
 			}" />
-		<RichtextContainer :blocksRaw="data.post?.blocks" :slugKey="slug" />
+		<RichtextContainer :blocks="data.post?.blocks" />
 	</div>
 </template>
 

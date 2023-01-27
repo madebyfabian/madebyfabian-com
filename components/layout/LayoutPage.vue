@@ -1,7 +1,7 @@
 <template>
-	<div class="container max-w-3xl">
+	<div v-if="data?.page" class="container max-w-3xl">
 		<h1 v-if="props.hasH1 && data.page?.title">{{ data.page?.title }}</h1>
-		<RichtextContainer :blocksRaw="data?.page?.blocks" :slugKey="props.uri" />
+		<RichtextContainer :blocks="data.page?.blocks" />
 		<slot />
 	</div>
 </template>

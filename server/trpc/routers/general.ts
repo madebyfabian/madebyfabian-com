@@ -77,4 +77,48 @@ export const generalRouter = router({
 
 		return graphQLClient.request(query)
 	}),
+
+	mediaItems: publicProcedure
+		.input(
+			z.object({
+				imageIds: z.array(z.string()),
+			})
+		)
+		.query(async ({ input }) => {
+			const query = gql(/* GraphQL */ `
+				query MediaItems($inIds: [ID]!) {
+					mediaItems(where: { in: $inIds }) {
+						edges {
+							node {
+								id
+								altText
+								caption
+								description
+								mediaDetails {
+									file
+									height
+									width
+									sizes {
+										file
+										fileSize
+										height
+										mimeType
+										name
+										sourceUrl
+										width
+									}
+								}
+								sizes
+								srcSet
+								title
+							}
+						}
+					}
+				}
+			`)
+
+			return graphQLClient.request(query, {
+				inIds: input.imageIds,
+			})
+		}),
 })
