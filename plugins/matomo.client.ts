@@ -11,8 +11,6 @@ export default defineNuxtPlugin(nuxtApp => {
 	nuxtApp.vueApp.use(VueMatomo, {
 		host: `https://${wpHost}`,
 		siteId: 1,
-		trackerUrl: `https://${wpHost}/wp-content/plugins/matomo/app/matomo.php`,
-		trackerScriptUrl: `https://${wpHost}/wp-content/uploads/matomo/matomo.js`,
 		router: nuxtApp.$router,
 		enableLinkTracking: true,
 		requireConsent: false,
@@ -20,5 +18,9 @@ export default defineNuxtPlugin(nuxtApp => {
 		disableCookies: true,
 		requireCookieConsent: false,
 		enableHeartBeatTimer: true,
+
+		// Defined in `generateVercelJson.ts`:
+		trackerUrl: `/_mtmo/t`,
+		trackerScriptUrl: `/_mtmo/s`,
 	})
 })

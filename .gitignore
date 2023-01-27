@@ -10,3 +10,6 @@ dist
 
 # Generated types
 types/gen
+
+# Generated files
+vercel.json
