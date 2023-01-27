@@ -2,7 +2,7 @@
 	<figure class="RichtextCoreImage" :id="id">
 		<component :is="props.attributes?.href ? 'a' : 'div'" v-bind="containerProps">
 			<NuxtImg
-				class="UIImage rounded-xl shadow-inner h-auto w-full select-none object-cover object-center"
+				class="rounded-xl shadow-inner h-auto w-full select-none"
 				:height="mediaData.mediaDetails.height"
 				:width="mediaData.mediaDetails.width"
 				:alt="props.attributes?.alt || ''"
