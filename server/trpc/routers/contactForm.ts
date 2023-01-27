@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import DOMPurify from 'isomorphic-dompurify'
+import sanitizeHtml from 'sanitize-html'
 import { publicProcedure, router } from '../trpc'
 import { graphQLClient, gql } from '@/server/utils/graphQLClient'
 import { createSSRApp, reactive } from 'vue'
@@ -58,7 +58,7 @@ export const contactFormRouter = router({
 					const getMessage = () => {
 						let message = _input.message
 						message = message.replace(/\n/g, '<br />')
-						message = DOMPurify.sanitize(message)
+						message = sanitizeHtml(message)
 						return message
 					}
 
