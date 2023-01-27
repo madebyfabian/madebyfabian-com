@@ -62,7 +62,14 @@
 			@apply my-6 first:mt-0 last:mb-0 ml-4;
 
 			li p {
-				@apply my-3;
+				@apply !my-2;
+			}
+		}
+
+		:deep(li) {
+			& ul,
+			& ol {
+				@apply first-of-type:mt-0;
 			}
 		}
 

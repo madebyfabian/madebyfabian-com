@@ -1,6 +1,8 @@
 <template>
 	<li class="RichtextCoreListItem" :id="id">
 		<p v-html="props.attributes?.content" />
+
+		<RichtextResolver v-for="item of props.innerBlocks" :key="item.id" :item="item" />
 	</li>
 </template>
 
