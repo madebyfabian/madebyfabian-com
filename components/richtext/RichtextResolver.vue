@@ -1,16 +1,14 @@
 <template>
-	<template v-if="dynamicComponent">
-		<RichtextCoreImage
-			v-if="isImage"
-			v-bind="({ attributes, innerBlocks } as any)"
-			:mediaItemsStorageKey="props.mediaItemsStorageKey">
-			<slot />
-		</RichtextCoreImage>
+	<RichtextCoreImage
+		v-if="dynamicComponent && isImage"
+		v-bind="({ attributes, innerBlocks } as any)"
+		:mediaItemsStorageKey="props.mediaItemsStorageKey">
+		<slot />
+	</RichtextCoreImage>
 
-		<component v-else :is="dynamicComponent" v-bind="{ attributes, innerBlocks }">
-			<slot />
-		</component>
-	</template>
+	<component v-else-if="dynamicComponent" :is="dynamicComponent" v-bind="{ attributes, innerBlocks }">
+		<slot />
+	</component>
 
 	<div v-else-if="displayNotFoundError" class="p-4 bg-red-100 my-6 first:mt-0 last:mb-0 rounded-xl text-red-600">
 		<p>Component "{{ props.item.name }}" not found</p>
