@@ -7,10 +7,13 @@
  * @see https://trpc.io/docs/v10/router
  * @see https://trpc.io/docs/v10/procedures
  */
+import superjson from 'superjson'
 import { initTRPC } from '@trpc/server'
 import { Context } from '~/server/trpc/context'
 
-const t = initTRPC.context<Context>().create()
+const t = initTRPC.context<Context>().create({
+	transformer: superjson,
+})
 
 /**
  * Unprotected procedure
