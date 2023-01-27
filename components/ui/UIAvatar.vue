@@ -1,14 +1,13 @@
 <template>
 	<div
-		class="UIAvatar shrink-0 flex items-center justify-center rounded-xl shadow-inner overflow-hidden"
+		class="UIAvatar shrink-0 flex items-center justify-center shadow-inner overflow-hidden"
 		:class="{ 'bg-gray-100': notFound }"
-		:style="{ height: `${size}`, width: `${size}` }">
+		:style="{ height: `${size}`, width: `${size}`, borderRadius }">
 		<NuxtImg
 			v-if="!notFound && url"
 			:src="url || undefined"
 			fit="cover"
 			class="object-cover object-center"
-			:style="{ borderRadius }"
 			:alt="name || ''"
 			:height="size"
 			:width="size"
