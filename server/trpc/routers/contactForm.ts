@@ -4,7 +4,6 @@ import { publicProcedure, router } from '../trpc'
 import { graphQLClient, gql } from '@/server/utils/graphQLClient'
 import { createSSRApp, reactive } from 'vue'
 import { renderToString } from 'vue/server-renderer'
-import { generateUid } from '@/utils/generateUid'
 import { TRPCError } from '@trpc/server'
 
 const verifyTurnstileToken = async ({ turnstileToken }: { turnstileToken: string }) => {
@@ -115,7 +114,6 @@ export const contactFormRouter = router({
 
 			return graphQLClient.request(mutation, {
 				input: {
-					clientMutationId: generateUid(),
 					to: admin,
 					from: admin,
 					replyTo: `${_input.name} <${_input.email}>`,
