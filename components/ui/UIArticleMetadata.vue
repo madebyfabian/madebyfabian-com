@@ -1,7 +1,21 @@
 <template>
-	<div class="UIArticleMetadata flex gap-x-5 gap-y-2 flex-wrap">
-		<p v-if="item.date" class="text-gray-500">{{ dateFormatted }}</p>
-		<p v-if="item.author?.node.name">By {{ item.author?.node.name }}</p>
+	<div class="UIArticleMetadata flex gap-x-6 gap-y-2 flex-wrap items-center">
+		<component
+			v-if="item.author?.node.name"
+			:is="linkAvatar ? NuxtLink : 'div'"
+			:title="linkAvatar ? `View all posts by ${item.author.node.name}` : undefined"
+			:to="linkAvatar ? `/author/${item.author.node.databaseId}` : undefined"
+			class="flex items-center gap-2.5 font-bold">
+			<UIAvatar
+				:url="item.author?.node.avatar?.url"
+				:size="32"
+				:name="item.author?.node.name || ''"
+				:notFound="!item.author.node.avatar?.foundAvatar" />
+			{{ item.author?.node.name }}
+		</component>
+
+		<p v-if="item.dateGmt" class="text-gray-500">{{ dateFormatted }}</p>
+
 		<ul v-if="item.tags?.edges.length">
 			<li
 				v-for="tag of item.tags.edges"
@@ -14,18 +28,15 @@
 </template>
 
 <script setup lang="ts">
-	import { User, Tag } from '@/types/gen/graphql/graphql'
+	import type { NodeWithAuthorToUserConnectionEdge, PostToTagConnection, Post } from '@/types/gen/graphql/graphql'
+	const NuxtLink = resolveComponent('NuxtLink')
+
 	const props = defineProps<{
+		linkAvatar?: boolean
 		item: {
-			date?: string
-			author?: {
-				node: Pick<User, 'name'>
-			}
-			tags?: {
-				edges: {
-					node: Pick<Tag, 'id' | 'name'>
-				}[]
-			}
+			dateGmt?: Post['dateGmt']
+			author?: NodeWithAuthorToUserConnectionEdge
+			tags?: PostToTagConnection
 		}
 	}>()
 
@@ -38,6 +49,6 @@
 	}
 
 	const dateFormatted = computed(() => {
-		return props.item.date ? formatDate({ date: props.item.date }) : null
+		return props.item.dateGmt ? formatDate({ date: props.item.dateGmt }) : null
 	})
 </script>

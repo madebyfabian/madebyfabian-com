@@ -14,23 +14,13 @@ export const singlePostRouter = router({
 					dateGmt
 					status
 					excerpt(format: RAW)
-					blocks {
-						attributesJSON
-						name
-						innerBlocks {
-							attributesJSON
+					author {
+						node {
 							name
-							innerBlocks {
-								attributesJSON
-								name
-								innerBlocks {
-									attributesJSON
-									name
-									innerBlocks {
-										attributesJSON
-										name
-									}
-								}
+							databaseId
+							avatar(size: 360) {
+								url
+								foundAvatar
 							}
 						}
 					}
@@ -51,9 +41,24 @@ export const singlePostRouter = router({
 							}
 						}
 					}
-					author {
-						node {
+					blocks {
+						attributesJSON
+						name
+						innerBlocks {
+							attributesJSON
 							name
+							innerBlocks {
+								attributesJSON
+								name
+								innerBlocks {
+									attributesJSON
+									name
+									innerBlocks {
+										attributesJSON
+										name
+									}
+								}
+							}
 						}
 					}
 				}

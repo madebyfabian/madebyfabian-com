@@ -29,7 +29,7 @@
 			@apply leading-relaxed my-6 first:mt-0 last:mb-0 text-lg;
 
 			a {
-				@apply text-cyan-700 underline font-bold decoration-cyan-700/30;
+				@apply text-accent-700 underline font-bold decoration-accent-700/30;
 			}
 
 			code {

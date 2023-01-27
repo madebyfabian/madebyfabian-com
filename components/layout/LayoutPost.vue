@@ -3,12 +3,11 @@
 		<UILink to="/" class="mb-12 block">&larr; Back to Home</UILink>
 		<h1>{{ data.post?.title }}</h1>
 		<UIArticleMetadata
-			v-bind="{
-				item: {
-					date: data.post.dateGmt,
-					author: data.post.author,
-					tags: data.post.tags,
-				},
+			linkAvatar
+			:item="{
+				dateGmt: data.post.dateGmt,
+				author: data.post.author,
+				tags: data.post.tags,
 			}" />
 		<RichtextContainer :blocks="data.post?.blocks" :mediaItems="data.mediaItems" :uniqueKey="props.slug" />
 	</div>

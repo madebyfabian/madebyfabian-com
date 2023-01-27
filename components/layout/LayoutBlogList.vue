@@ -1,7 +1,7 @@
 <template>
-	<div v-if="data?.posts?.nodes" class="LayoutBlogList mt-12">
+	<div v-if="data" class="LayoutBlogList mt-12">
 		<NuxtLink
-			v-for="item of data.posts.nodes"
+			v-for="item of data"
 			:key="item.id"
 			:to="`/blog/${item.slug}`"
 			class="my-6 border rounded-xl flex flex-col md:flex-row overflow-hidden">
@@ -26,12 +26,11 @@
 				</p>
 
 				<UIArticleMetadata
-					v-bind="{
-						item: {
-							date: item.dateGmt || undefined,
-							author: item.author || undefined,
-							tags: item.tags || undefined,
-						},
+					class="mt-4"
+					:item="{
+						dateGmt: item.dateGmt || undefined,
+						author: item.author || undefined as any,
+						tags: item.tags || undefined as any,
 					}" />
 			</div>
 		</NuxtLink>
@@ -39,9 +38,29 @@
 </template>
 
 <script lang="ts" setup>
+	import type { Post } from '@/types/gen/graphql/graphql'
+
 	const { $client } = useNuxtApp()
-	const { data, error } = await $client.general.listPosts.useQuery()
+
+	const props = defineProps<{
+		posts?: Partial<Post>[]
+		uniqueKey: string
+	}>()
+
+	const { data, error } = await useAsyncData(async () => {
+		if (props.posts) {
+			return props.posts
+		}
+
+		const { data: queryData, error: queryError } = await $client.general.listPosts.useQuery()
+		if (queryError.value) {
+			throw createError({ statusCode: 500, message: 'Error fetching posts in blog list' })
+		}
+
+		return queryData.value?.posts?.nodes
+	})
+
 	if (error.value) {
-		throw createError({ statusCode: 500, message: 'Error fetching posts in blog list' })
+		throw createError({ statusCode: 500, message: 'Error displaying posts in blog list' })
 	}
 </script>

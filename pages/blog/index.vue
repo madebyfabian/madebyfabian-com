@@ -1,6 +1,6 @@
 <template>
 	<LayoutPage hasH1 :uri="uri">
-		<LayoutBlogList />
+		<LayoutBlogList uniqueKey="blogPage" />
 	</LayoutPage>
 </template>
 

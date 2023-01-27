@@ -23,7 +23,7 @@ export default defineNuxtConfig({
 			'@nuxt/image-edge',
 			{
 				provider: process.env.VERCEL_ENV ? 'vercel' : 'ipx',
-				domains: [process.env.NUXT_PUBLIC_IMAGE_DOMAIN],
+				domains: [process.env.NUXT_PUBLIC_IMAGE_DOMAIN, 'secure.gravatar.com'],
 				screens: {
 					'md': 768,
 					'lg': 1024,

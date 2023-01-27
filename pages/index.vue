@@ -1,6 +1,6 @@
 <template>
 	<LayoutPage :uri="uri">
-		<LayoutBlogList />
+		<LayoutBlogList :uniqueKey="`homePage`" />
 	</LayoutPage>
 </template>
 

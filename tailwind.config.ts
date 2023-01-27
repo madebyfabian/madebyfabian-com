@@ -1,5 +1,6 @@
 import type { Config } from 'tailwindcss'
 import defaultTheme from 'tailwindcss/defaultTheme'
+import colors from 'tailwindcss/colors'
 
 export default <Partial<Config>>{
 	theme: {
@@ -19,6 +20,9 @@ export default <Partial<Config>>{
 		extend: {
 			fontFamily: {
 				display: ['PlusJakartaSans', ...defaultTheme.fontFamily.sans],
+			},
+			colors: {
+				accent: colors.sky,
 			},
 		},
 	},

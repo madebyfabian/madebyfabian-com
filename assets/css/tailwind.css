@@ -19,7 +19,7 @@
 
 @layer base {
 	html {
-		@apply font-display scroll-smooth text-gray-700 accent-cyan-700 underline-offset-2;
+		@apply font-display scroll-smooth text-gray-700 accent-accent-700 underline-offset-2;
 		font-size: 0.875rem;
 	}
 
@@ -48,5 +48,9 @@
 
 	h1 {
 		@apply text-5xl font-extrabold mb-8 tracking-tight;
+	}
+
+	h2 {
+		@apply text-4xl font-bold tracking-tighter;
 	}
 }

@@ -24,10 +24,10 @@
 
 	useSchemaOrg([
 		definePerson({
-			name: 'Fabian Beer',
-			sameAs: ['https://github.com/madebyfabian', 'https://twitter.com/madebyfabian', 'https://figma.com/@f'],
+			name: `${data.value.viewer?.firstName} ${data.value.viewer?.lastName}`,
+			logo: data.value.viewer?.avatar?.url || undefined,
+			sameAs: data.value.viewer?.url || undefined,
 		}),
-		// @todo Select Identity: https://unhead-schema-org.harlanzw.com//guide/guides/identity
 		defineWebSite({
 			name,
 		}),

@@ -10,6 +10,15 @@ export const generalRouter = router({
 					generalSettingsTitle
 					generalSettingsDescription
 				}
+				viewer {
+					firstName
+					lastName
+					url
+					avatar(size: 360) {
+						url
+						foundAvatar
+					}
+				}
 			}
 		`)
 
@@ -50,6 +59,16 @@ export const generalRouter = router({
 						dateGmt
 						slug
 						excerpt(format: RAW)
+						author {
+							node {
+								name
+								databaseId
+								avatar(size: 360) {
+									url
+									foundAvatar
+								}
+							}
+						}
 						featuredImage {
 							node {
 								id
@@ -63,11 +82,6 @@ export const generalRouter = router({
 									id
 									name
 								}
-							}
-						}
-						author {
-							node {
-								name
 							}
 						}
 					}
@@ -107,6 +121,78 @@ export const generalRouter = router({
 
 			return graphQLClient.request(query, {
 				inIds: input.imageIds,
+			})
+		}),
+
+	authorDetails: publicProcedure
+		.input(
+			z.object({
+				authorId: z.string(),
+			})
+		)
+		.query(async ({ input }) => {
+			const query = gql(/* GraphQL */ `
+				query AuthorDetails($id: ID!) {
+					user(id: $id, idType: DATABASE_ID) {
+						id
+						name
+						databaseId
+						avatar(size: 360) {
+							url
+							foundAvatar
+						}
+						roles {
+							edges {
+								node {
+									id
+									displayName
+								}
+							}
+						}
+
+						# Same as listPosts query
+						posts {
+							edges {
+								node {
+									id
+									title
+									dateGmt
+									slug
+									excerpt(format: RAW)
+									author {
+										node {
+											name
+											databaseId
+											avatar(size: 360) {
+												url
+												foundAvatar
+											}
+										}
+									}
+									featuredImage {
+										node {
+											id
+											sourceUrl
+											altText
+										}
+									}
+									tags {
+										edges {
+											node {
+												id
+												name
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			`)
+
+			return graphQLClient.request(query, {
+				id: input.authorId,
 			})
 		}),
 })
