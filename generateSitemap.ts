@@ -24,7 +24,7 @@ export const generateSitemap = async () => {
 			body: JSON.stringify({
 				query: /* GraphQL */ `
 					query PagesAndPosts {
-						pages {
+						pages(where: { status: PUBLISH }) {
 							edges {
 								node {
 									id
@@ -35,7 +35,7 @@ export const generateSitemap = async () => {
 								}
 							}
 						}
-						posts {
+						posts(where: { status: PUBLISH }) {
 							edges {
 								node {
 									id

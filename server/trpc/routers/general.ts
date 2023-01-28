@@ -51,7 +51,7 @@ export const generalRouter = router({
 	listPosts: publicProcedure.query(async () => {
 		const query = gql(/* GraphQL */ `
 			query ListPosts {
-				posts {
+				posts(where: { status: PUBLISH }) {
 					nodes {
 						id
 						title
