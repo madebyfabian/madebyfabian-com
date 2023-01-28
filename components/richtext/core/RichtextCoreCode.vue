@@ -4,7 +4,7 @@
 
 <script setup lang="ts">
 	import type { CoreCodeBlock } from '@/types/gen/graphql/graphql'
-	import { InnerBlocksExtended } from '@/types'
+	import type { InnerBlocksExtended } from '@/types'
 
 	const props = defineProps<{
 		attributes: CoreCodeBlock['attributes']

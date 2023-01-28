@@ -6,7 +6,7 @@
 
 <script lang="ts">
 	import type { CoreColumnBlock } from '@/types/gen/graphql/graphql'
-	import { InnerBlocksExtended } from '@/types'
+	import type { InnerBlocksExtended } from '@/types'
 
 	export type RichtextCoreColumnProps = {
 		attributes: CoreColumnBlock['attributes']

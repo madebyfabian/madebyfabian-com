@@ -2,7 +2,7 @@ import { z } from 'zod'
 import { publicProcedure, router } from '../trpc'
 import { gqlUntyped } from '@/server/utils/graphQLClient'
 import { requestContent } from '@/server/utils/requestContent'
-import { generateBlocksData } from '@/utils/generateBlocksData'
+import { generateBlocksData } from '@/server/utils/generateBlocksData'
 import { removeTrailingSlash } from '@/utils/removeTrailingSlash'
 
 export const singlePageRouter = router({

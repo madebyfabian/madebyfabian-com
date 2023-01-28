@@ -8,7 +8,7 @@
 
 <script lang="ts">
 	import type { CoreHeadingBlock } from '@/types/gen/graphql/graphql'
-	import { InnerBlocksExtended } from '@/types'
+	import type { InnerBlocksExtended } from '@/types'
 
 	export type RichtextCoreListItemProps = {
 		attributes: CoreHeadingBlock['attributes']

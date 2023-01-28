@@ -27,7 +27,7 @@
 
 <script setup lang="ts">
 	import type { CoreHeadingBlock } from '@/types/gen/graphql/graphql'
-	import { InnerBlocksExtended } from '@/types'
+	import type { InnerBlocksExtended } from '@/types'
 
 	const props = defineProps<{
 		attributes: CoreHeadingBlock['attributes']
