@@ -13,7 +13,6 @@ export default defineNuxtConfig({
 	runtimeConfig: {
 		turnstile: {
 			secretKey: process.env.NUXT_TURNSTILE_SECRET_KEY || '',
-			siteUrl: process.env.SITE_URL,
 		},
 		public: {
 			siteUrlPreview: '',
@@ -22,6 +21,7 @@ export default defineNuxtConfig({
 			isVercelProduction: process.env.VERCEL_ENV === 'production',
 
 			// nuxt-seo-kit
+			siteUrl: process.env.SITE_URL,
 			titleSeparator: globalConfig.titleSeperator,
 			trailingSlash: true,
 			language: globalConfig.language,
@@ -68,18 +68,6 @@ export default defineNuxtConfig({
 	nitro: {
 		externals: {
 			traceInclude: ['./node_modules/vue/server-renderer'],
-		},
-	},
-
-	runtimeConfig: {
-		turnstile: {
-			secretKey: process.env.NUXT_TURNSTILE_SECRET_KEY || '',
-		},
-		public: {
-			siteUrlPreview: '',
-			wpHost: '',
-			isProduction: process.env.NODE_ENV === 'production',
-			isVercelProduction: process.env.VERCEL_ENV === 'production',
 		},
 	},
 
