@@ -29,7 +29,7 @@
 		const menuData = data.value?.menu?.menuItems?.edges?.map((edge: any) => ({
 			node: {
 				...edge.node,
-				uri: removeTrailingSlash(edge.node.uri),
+				uri: edge.node.uri,
 			},
 		}))
 

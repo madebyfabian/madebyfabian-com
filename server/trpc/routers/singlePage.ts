@@ -1,6 +1,9 @@
 import { z } from 'zod'
 import { publicProcedure, router } from '../trpc'
-import { removeTrailingSlash } from '@/utils/removeTrailingSlash'
+
+const removeTrailingSlash = (str: string) => {
+	return str !== '/' ? str.replace(/\/$/, '') : str
+}
 
 export const singlePageRouter = router({
 	get: publicProcedure.input(z.object({ uri: z.string() })).query(async ({ ctx, input }) => {
