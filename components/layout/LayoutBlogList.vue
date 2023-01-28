@@ -3,7 +3,7 @@
 		<NuxtLink
 			v-for="item of data"
 			:key="item.id"
-			:to="`/blog/${item.slug}/`"
+			:to="{ name: 'blog-slug', params: { slug: String(item.slug) } }"
 			class="my-6 border rounded-xl flex flex-col md:flex-row overflow-hidden">
 			<div class="w-full h-[144px] md:h-auto md:w-[224px] shrink-0 bg-gray-100 flex items-center justify-center">
 				<NuxtImg

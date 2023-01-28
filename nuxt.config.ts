@@ -8,7 +8,7 @@ const globalConfig = {
 export default defineNuxtConfig({
 	extends: ['nuxt-seo-kit'],
 
-	modules: ['@nuxtjs/tailwindcss', '@nuxt/image-edge', '@nuxtjs/turnstile'],
+	modules: ['@nuxtjs/tailwindcss', '@nuxt/image-edge', '@nuxtjs/turnstile', 'nuxt-typed-router'],
 
 	runtimeConfig: {
 		turnstile: {
@@ -23,14 +23,13 @@ export default defineNuxtConfig({
 			// nuxt-seo-kit
 			siteUrl: process.env.SITE_URL,
 			titleSeparator: globalConfig.titleSeperator,
-			trailingSlash: true,
 			language: globalConfig.language,
 		},
 	},
 
 	// nuxt-link-checker
 	linkChecker: {
-		// failOn404: true,
+		failOn404: false,
 	},
 
 	// nuxt-simple-sitemap

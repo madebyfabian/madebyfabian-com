@@ -58,3 +58,9 @@
 		@apply text-4xl font-bold tracking-tighter;
 	}
 }
+
+@layer components {
+	.UILink {
+		@apply text-accent-700 underline font-bold decoration-accent-700/30 underline-offset-2;
+	}
+}

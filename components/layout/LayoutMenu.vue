@@ -1,12 +1,13 @@
 <template>
 	<ul class="LayoutMenu">
 		<li v-for="menuItem of menuData">
-			<UILink
+			<NuxtLink
+				class="UILink"
 				:to="menuItem?.node?.uri"
 				:external="menuItem?.node?.target === '_blank'"
 				:target="menuItem?.node?.target">
 				{{ menuItem?.node?.label }}
-			</UILink>
+			</NuxtLink>
 		</li>
 	</ul>
 </template>
