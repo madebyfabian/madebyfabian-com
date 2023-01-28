@@ -1,8 +1,8 @@
 <template>
 	<div v-if="data?.post" class="container mx-auto max-w-3xl">
-		<UILink @click="router.go(-1)" class="mb-12 inline-block cursor-pointer" aria-label="Go back" tabindex="0"
-			>&larr; Back</UILink
-		>
+		<NuxtLink :to="{ name: 'index' }" class="UILink mb-12 inline-block cursor-pointer">
+			<span>&larr; Back</span>
+		</NuxtLink>
 		<h1>{{ data.post?.title }}</h1>
 		<UIArticleMetadata
 			linkAvatar

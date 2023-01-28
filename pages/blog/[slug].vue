@@ -3,7 +3,6 @@
 </template>
 
 <script setup lang="ts">
-	const route = useRoute()
-
-	const slug = computed(() => route.params.slug as string)
+	const route = useRoute('blog-slug')
+	const slug = computed(() => route.params.slug)
 </script>

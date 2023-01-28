@@ -1,4 +1,5 @@
 <template>
+	<SeoKit />
 	<NuxtLoadingIndicator :color="colors.sky[300]" :height="4" />
 	<LayoutHeader />
 	<div class="flex-1">
@@ -16,23 +17,25 @@
 		throw createError({ statusCode: 500, message: 'Error fetching settings' })
 	}
 
-	const prefix = process.env.NODE_ENV === 'development' ? '⚙️ ' : ''
-	const name = data.value.allSettings.generalSettingsTitle || ''
+	// const prefix = process.env.NODE_ENV === 'development' ? '⚙️ ' : ''
+	const siteTitle = data.value.allSettings.generalSettingsTitle || ''
+	const siteDescription = data.value.allSettings.generalSettingsDescription || undefined
 
 	useSeoMeta({
+		/** @see https://github.com/harlan-zw/nuxt-seo-kit/issues/20 */
+		// titleTemplate: `${prefix}%s — ${siteTitle}`,
 		title: 'Home',
-		titleTemplate: `${prefix}%s — ${data.value.allSettings.generalSettingsTitle}`,
-		description: data.value.allSettings.generalSettingsDescription,
+		description: siteDescription,
 	})
 
 	useSchemaOrg([
 		definePerson({
-			name: `${data.value.viewer?.firstName} ${data.value.viewer?.lastName}`,
-			logo: data.value.viewer?.avatar?.url || undefined,
-			sameAs: data.value.viewer?.url || undefined,
+			name: () => `${data.value?.viewer?.firstName} ${data.value?.viewer?.lastName}`,
+			logo: () => data.value?.viewer?.avatar?.url || undefined,
+			sameAs: () => data.value?.viewer?.url || undefined,
 		}),
 		defineWebSite({
-			name,
+			name: siteTitle,
 		}),
 		defineWebPage(),
 	])
@@ -46,14 +49,14 @@
 	.page-enter-from,
 	.page-leave-to {
 		opacity: 0;
-		filter: blur(0.5rem);
+		filter: blur(0.25rem);
 	}
 
 	.page-enter-from {
-		transform: translate(1rem, 0);
+		transform: translate(0, 0.5rem);
 	}
 
 	.page-leave-to {
-		transform: translate(-1rem, 0);
+		transform: translate(0, -0.5rem);
 	}
 </style>

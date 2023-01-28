@@ -1,42 +1,61 @@
 import { generateSitemap } from './generateSitemap'
 
+const globalConfig = {
+	language: 'en-US',
+	titleSeperator: '·',
+}
+
 export default defineNuxtConfig({
-	modules: [
-		'@nuxtjs/tailwindcss',
-		[
-			'nuxt-schema-org',
-			{
-				host: process.env.SITE_URL,
-			},
-		],
-		[
-			'nuxt-simple-sitemap',
-			{
-				hostname: process.env.SITE_URL,
-				defaults: {
-					lastmod: new Date().toString(),
-				},
-				urls: generateSitemap,
-			},
-		],
-		[
-			'@nuxt/image-edge',
-			{
-				provider: process.env.VERCEL_ENV ? 'vercel' : 'ipx',
-				domains: [process.env.NUXT_PUBLIC_WP_HOST, 'secure.gravatar.com'],
-				screens: {
-					'md': 768,
-					'lg': 1024,
-				},
-			},
-		],
-		[
-			'@nuxtjs/turnstile',
-			{
-				siteKey: process.env.NUXT_PUBLIC_TURNSTILE_SITE_KEY || '',
-			},
-		],
-	],
+	extends: ['nuxt-seo-kit'],
+
+	modules: ['@nuxtjs/tailwindcss', '@nuxt/image-edge', '@nuxtjs/turnstile', 'nuxt-typed-router'],
+
+	runtimeConfig: {
+		turnstile: {
+			secretKey: process.env.NUXT_TURNSTILE_SECRET_KEY || '',
+		},
+		public: {
+			siteUrlPreview: '',
+			wpHost: '',
+			isProduction: process.env.NODE_ENV === 'production',
+			isVercelProduction: process.env.VERCEL_ENV === 'production',
+
+			// nuxt-seo-kit
+			siteUrl: process.env.SITE_URL,
+			siteName: 'madebyfabian' /** @see https://github.com/harlan-zw/nuxt-seo-kit/issues/20 */,
+			titleSeparator: globalConfig.titleSeperator,
+			language: globalConfig.language,
+		},
+	},
+
+	// nuxt-link-checker
+	linkChecker: {
+		failOn404: false,
+	},
+
+	// nuxt-simple-sitemap
+	sitemap: {
+		hostname: process.env.SITE_URL,
+		defaults: {
+			lastmod: new Date().toString(),
+		},
+		urls: generateSitemap,
+	},
+
+	// @nuxt/image-edge
+	image: {
+		provider: process.env.VERCEL_ENV ? 'vercel' : 'ipx',
+		domains: [process.env.NUXT_PUBLIC_WP_HOST as string, 'secure.gravatar.com'],
+		screens: {
+			'md': 768,
+			'lg': 1024,
+		},
+	},
+
+	// @nuxtjs/turnstile
+	turnstile: {
+		siteKey: process.env.NUXT_PUBLIC_TURNSTILE_SITE_KEY || '',
+	},
 
 	typescript: {
 		shim: false,
@@ -52,23 +71,8 @@ export default defineNuxtConfig({
 		},
 	},
 
-	runtimeConfig: {
-		turnstile: {
-			secretKey: process.env.NUXT_TURNSTILE_SECRET_KEY || '',
-		},
-		public: {
-			siteUrlPreview: '',
-			wpHost: '',
-			isProduction: process.env.NODE_ENV === 'production',
-			isVercelProduction: process.env.VERCEL_ENV === 'production',
-		},
-	},
-
 	app: {
 		head: {
-			htmlAttrs: {
-				lang: 'en-US',
-			},
 			link: [
 				{
 					rel: 'icon',
@@ -78,10 +82,5 @@ export default defineNuxtConfig({
 		},
 
 		pageTransition: { name: 'page', mode: 'out-in' },
-	},
-
-	routeRules: {
-		// Do not include the index route in the sitemap. (Because it would be duplicated),
-		'/': { index: false },
 	},
 })

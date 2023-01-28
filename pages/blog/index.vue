@@ -1,9 +1,10 @@
 <template>
 	<LayoutPage hasH1 :uri="uri">
-		<LayoutBlogList uniqueKey="blogPage" />
+		<LayoutBlogList :uniqueKey="uri" />
 	</LayoutPage>
 </template>
 
 <script setup lang="ts">
-	const uri = '/blog/'
+	const route = useRoute('blog')
+	const uri = computed(() => route.fullPath)
 </script>

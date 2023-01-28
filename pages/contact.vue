@@ -51,13 +51,13 @@
 
 <script lang="ts" setup>
 	const { $client } = useNuxtApp()
+	const route = useRoute('contact')
+	const uri = computed(() => route.fullPath)
 
 	const turnstile = ref()
 	const turnstileToken = ref()
 
 	const isTurnstileDone = computed(() => !!turnstileToken.value?.length)
-
-	const uri = '/contact/'
 
 	const state = reactive({
 		form: {

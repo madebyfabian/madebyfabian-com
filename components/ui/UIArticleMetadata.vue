@@ -4,7 +4,7 @@
 			v-if="item.author?.node.name"
 			:is="linkAvatar ? NuxtLink : 'div'"
 			:title="linkAvatar ? `View all posts by ${item.author.node.name}` : undefined"
-			:to="linkAvatar ? `/author/${item.author.node.databaseId}` : undefined"
+			:to="resolveLinkAvatar({ id: String(item.author.node.databaseId) })"
 			class="flex items-center gap-2.5 font-bold">
 			<UIAvatar
 				:url="item.author?.node.avatar?.url"
@@ -30,6 +30,7 @@
 <script setup lang="ts">
 	import type { NodeWithAuthorToUserConnectionEdge, PostToTagConnection, Post } from '@/types/gen/graphql/graphql'
 	const NuxtLink = resolveComponent('NuxtLink')
+	const router = useRouter()
 
 	const props = defineProps<{
 		linkAvatar?: boolean
@@ -51,4 +52,12 @@
 	const dateFormatted = computed(() => {
 		return props.item.dateGmt ? formatDate({ date: props.item.dateGmt }) : null
 	})
+
+	const resolveLinkAvatar = ({ id }: { id: string }) => {
+		if (!props.linkAvatar) return undefined
+		return router.resolve({
+			name: 'author-id',
+			params: { id },
+		})
+	}
 </script>
