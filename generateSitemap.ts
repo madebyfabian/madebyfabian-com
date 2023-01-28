@@ -23,7 +23,7 @@ export const generateSitemap = async () => {
 			},
 			body: JSON.stringify({
 				query: /* GraphQL */ `
-					{
+					query PagesAndPosts {
 						pages {
 							edges {
 								node {
@@ -40,8 +40,8 @@ export const generateSitemap = async () => {
 								node {
 									id
 									title
-									slug
 									modifiedGmt
+									uri
 								}
 							}
 						}
@@ -65,7 +65,7 @@ export const generateSitemap = async () => {
 		json.data.posts.edges?.forEach((edge: any) => {
 			pages.push({
 				...sitemapDefaults,
-				url: joinURL(siteUrl, edge.node.slug),
+				url: joinURL(siteUrl, edge.node.uri),
 				lastmodISO: new Date(edge.node.modifiedGmt).toISOString(),
 			})
 		})

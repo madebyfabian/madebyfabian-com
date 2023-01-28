@@ -1,4 +1,5 @@
 <template>
+	<SeoKit />
 	<NuxtLoadingIndicator :color="colors.sky[300]" :height="4" />
 	<LayoutHeader />
 	<div class="flex-1">
