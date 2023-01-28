@@ -71,6 +71,18 @@ export default defineNuxtConfig({
 		},
 	},
 
+	runtimeConfig: {
+		turnstile: {
+			secretKey: process.env.NUXT_TURNSTILE_SECRET_KEY || '',
+		},
+		public: {
+			siteUrlPreview: '',
+			wpHost: '',
+			isProduction: process.env.NODE_ENV === 'production',
+			isVercelProduction: process.env.VERCEL_ENV === 'production',
+		},
+	},
+
 	app: {
 		head: {
 			link: [
