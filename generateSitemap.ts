@@ -22,7 +22,7 @@ export const generateSitemap = async () => {
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify({
-				query: `
+				query: /* GraphQL */ `
 					{
 						pages {
 							edges {
