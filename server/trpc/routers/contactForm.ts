@@ -1,9 +1,8 @@
+import { createSSRApp, reactive } from 'vue'
+import { renderToString } from 'vue/server-renderer'
 import { z } from 'zod'
 import sanitizeHtml from 'sanitize-html'
 import { publicProcedure, router } from '../trpc'
-import { graphQLClient, gql } from '@/server/utils/graphQLClient'
-import { createSSRApp, reactive } from 'vue'
-import { renderToString } from 'vue/server-renderer'
 import { TRPCError } from '@trpc/server'
 
 const getContactFormEmail = async () => {

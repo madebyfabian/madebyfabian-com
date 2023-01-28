@@ -1,4 +1,3 @@
-import { isPreview } from '@/server/utils/isPreview'
 import type { TypedDocumentNode } from '@graphql-typed-document-node/core'
 import type { RequestDocument } from 'graphql-request'
 import type { RequestHeaders } from 'h3'

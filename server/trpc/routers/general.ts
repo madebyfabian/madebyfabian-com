@@ -1,6 +1,5 @@
 import { z } from 'zod'
 import { publicProcedure, router } from '../trpc'
-import { graphQLClient, gql } from '@/server/utils/graphQLClient'
 
 export const generalRouter = router({
 	allSettings: publicProcedure.query(async () => {
