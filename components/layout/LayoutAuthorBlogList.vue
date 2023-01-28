@@ -36,6 +36,6 @@
 		authorId: props.authorId,
 	})
 	if (error.value) {
-		throw createError({ statusCode: 500, message: 'Error fetching author details' })
+		throw createError({ statusCode: 500, message: 'Error fetching author details', fatal: true })
 	}
 </script>

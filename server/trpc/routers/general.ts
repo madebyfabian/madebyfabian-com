@@ -56,7 +56,7 @@ export const generalRouter = router({
 						id
 						title
 						dateGmt
-						slug
+						uri
 						excerpt(format: RAW)
 						author {
 							node {
@@ -156,7 +156,7 @@ export const generalRouter = router({
 									id
 									title
 									dateGmt
-									slug
+									uri
 									excerpt(format: RAW)
 									author {
 										node {

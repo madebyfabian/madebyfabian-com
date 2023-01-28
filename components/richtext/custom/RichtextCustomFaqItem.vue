@@ -20,13 +20,3 @@
 
 	const id = computed(() => props.attributes?.anchor || undefined)
 </script>
-
-<style lang="postcss" scoped>
-	details > summary {
-		list-style: none;
-	}
-
-	details summary::-webkit-details-marker {
-		display: none;
-	}
-</style>

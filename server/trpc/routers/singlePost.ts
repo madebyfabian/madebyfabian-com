@@ -2,10 +2,10 @@ import { z } from 'zod'
 import { publicProcedure, router } from '../trpc'
 
 export const singlePostRouter = router({
-	get: publicProcedure.input(z.object({ slug: z.string() })).query(async ({ ctx, input }) => {
+	get: publicProcedure.input(z.object({ uri: z.string() })).query(async ({ ctx, input }) => {
 		const query = gqlUntyped/* GraphQL */ `
-			query SinglePost($slug: ID!) {
-				post(id: $slug, idType: SLUG) {
+			query SinglePost($uri: ID!) {
+				post(id: $uri, idType: URI) {
 					id
 					title
 					dateGmt
@@ -29,7 +29,7 @@ export const singlePostRouter = router({
 						}
 					}
 					date
-					slug
+					uri
 					tags {
 						edges {
 							node {
@@ -64,23 +64,26 @@ export const singlePostRouter = router({
 
 		const getData = async () => {
 			const getPreviewInput = () => {
-				return `${input.slug}-2`
+				const withoutTrailingSlash = removeTrailingSlash(input.uri)
+				return `${withoutTrailingSlash}-2/`
 			}
 
 			const content = await requestContent({
 				query,
 				headers: ctx.headers,
-				input: { slug: input.slug },
-				previewInput: { slug: getPreviewInput() },
+				input: { uri: input.uri },
+				previewInput: { uri: getPreviewInput() },
 			})
 
+			if (!content.data?.post) return null
 			if (content.previewData?.post) return content.previewData
-			if (content.data?.post.status === 'publish') {
+			if (content.data?.post?.status === 'publish') {
 				return content.data
 			}
 		}
 
 		const data = await getData()
+		if (!data) return { page: null, mediaItems: [] }
 		const blocksData = await generateBlocksData({ blocksRaw: data?.post?.blocks, ctx })
 		return {
 			post: {

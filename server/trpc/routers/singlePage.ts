@@ -1,10 +1,6 @@
 import { z } from 'zod'
 import { publicProcedure, router } from '../trpc'
 
-const removeTrailingSlash = (str: string) => {
-	return str !== '/' ? str.replace(/\/$/, '') : str
-}
-
 export const singlePageRouter = router({
 	get: publicProcedure.input(z.object({ uri: z.string() })).query(async ({ ctx, input }) => {
 		const query = gqlUntyped/* GraphQL */ `
@@ -51,13 +47,15 @@ export const singlePageRouter = router({
 				previewInput: { uri: getPreviewInput() },
 			})
 
+			if (!content.data?.page) return null
 			if (content.previewData?.page) return content.previewData
-			if (content.data?.page.status === 'publish') {
+			if (content.data?.page?.status === 'publish') {
 				return content.data
 			}
 		}
 
 		const data = await getData()
+		if (!data) return { page: null, mediaItems: [] }
 		const blocksData = await generateBlocksData({ blocksRaw: data?.page?.blocks, ctx })
 		return {
 			page: {

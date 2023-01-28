@@ -1,8 +1,8 @@
 <template>
-	<LayoutPost :slug="slug" />
+	<LayoutPost :uri="uri" />
 </template>
 
 <script setup lang="ts">
 	const route = useRoute('blog-slug')
-	const slug = computed(() => route.params.slug)
+	const uri = computed(() => route.fullPath)
 </script>

@@ -1,11 +1,8 @@
 <template>
-	<SeoKit />
-	<NuxtLoadingIndicator :color="colors.sky[300]" :height="4" />
-	<LayoutHeader />
-	<div class="flex-1">
+	<Page>
+		<NuxtLoadingIndicator :color="colors.sky[300]" :height="4" />
 		<NuxtPage />
-	</div>
-	<LayoutFooter />
+	</Page>
 </template>
 
 <script lang="ts" setup>

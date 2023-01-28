@@ -3,7 +3,7 @@
 		<NuxtLink
 			v-for="item of data"
 			:key="item.id"
-			:to="{ name: 'blog-slug', params: { slug: String(item.slug) } }"
+			:to="(item.uri as string)"
 			class="my-6 border rounded-xl flex flex-col md:flex-row overflow-hidden">
 			<div class="w-full h-[144px] md:h-auto md:w-[224px] shrink-0 bg-gray-100 flex items-center justify-center">
 				<NuxtImg
@@ -54,13 +54,13 @@
 
 		const { data: queryData, error: queryError } = await $client.general.listPosts.useQuery()
 		if (queryError.value) {
-			throw createError({ statusCode: 500, message: 'Error fetching posts in blog list' })
+			throw createError({ statusCode: 500, message: 'Error fetching posts in blog list', fatal: true })
 		}
 
 		return queryData.value?.posts?.nodes
 	})
 
 	if (error.value) {
-		throw createError({ statusCode: 500, message: 'Error displaying posts in blog list' })
+		throw createError({ statusCode: 500, message: 'Error displaying posts in blog list', fatal: true })
 	}
 </script>

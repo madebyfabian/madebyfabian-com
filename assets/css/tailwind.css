@@ -47,7 +47,7 @@
 	}
 
 	pre {
-		@apply bg-gray-100 p-4 rounded-xl my-6 text-xs overflow-x-auto;
+		@apply bg-gray-100 p-4 rounded-xl text-xs overflow-x-auto;
 	}
 
 	h1 {
@@ -56,6 +56,14 @@
 
 	h2 {
 		@apply text-4xl font-bold tracking-tighter;
+	}
+
+	details > summary {
+		list-style: none;
+	}
+
+	details summary::-webkit-details-marker {
+		display: none;
 	}
 }
 
