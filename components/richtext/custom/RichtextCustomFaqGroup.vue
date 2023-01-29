@@ -1,7 +1,7 @@
 <template>
 	<section
 		v-if="props.innerBlocks?.length"
-		class="RichtextCustomFaqGroup my-6 first:mt-0 last:mb-0 rounded-xl border divide-y"
+		class="RichtextCustomFaqGroup my-6 first:mt-0 last:mb-0 rounded-xl bg-frost outline-border divide-y"
 		:id="id">
 		<RichtextResolver
 			v-for="(item, key) of props.innerBlocks"

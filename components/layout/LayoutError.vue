@@ -1,6 +1,6 @@
 <template>
 	<div class="container max-w-3xl">
-		<h1 class="mb-8 text-center mt-8">Oops! Error {{ props.error?.statusCode || 500 }} 🫣</h1>
+		<h1 class="text-center mt-8">Oops! Error {{ props.error?.statusCode || 500 }} 🫣</h1>
 
 		<p class="text-xl text-center">{{ props.error?.message || 'An error occured' }}</p>
 

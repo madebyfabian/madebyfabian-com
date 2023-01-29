@@ -2,7 +2,7 @@
 	<ul class="LayoutMenu">
 		<li v-for="menuItem of menuData">
 			<NuxtLink
-				class="UILink"
+				class="UILink whitespace-nowrap"
 				:to="menuItem?.node?.uri"
 				:external="menuItem?.node?.target === '_blank'"
 				:target="menuItem?.node?.target">

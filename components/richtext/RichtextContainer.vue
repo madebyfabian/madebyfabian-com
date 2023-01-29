@@ -23,17 +23,24 @@
 
 <style lang="postcss" scoped>
 	.RichtextContainer {
-		@apply mt-12;
-
 		:deep(p) {
 			@apply leading-relaxed my-6 first:mt-0 last:mb-0 text-lg;
 
 			a {
 				@apply text-accent-700 underline font-bold decoration-accent-700/30;
+
+				/* These are technically the same, but use both */
+				overflow-wrap: break-word;
+				word-wrap: break-word;
+
+				word-break: break-word;
+
+				/* Adds a hyphen where the word breaks, if supported (No Blink) */
+				hyphens: auto;
 			}
 
 			code {
-				@apply bg-gray-100 px-1 rounded text-sm align-baseline font-bold inline-block;
+				@apply bg-frost-2 outline-border px-1 mx-0.5 rounded text-sm align-baseline font-bold inline-block;
 			}
 		}
 
@@ -86,7 +93,7 @@
 		}
 
 		:deep(pre) {
-			@apply bg-gray-100 shadow-inner p-4 rounded-xl my-6 first:mt-0 last:mb-0 text-sm leading-relaxed overflow-x-auto;
+			@apply bg-frost-2 shadow-inner outline-border p-4 rounded-xl my-6 first:mt-0 last:mb-0 text-sm leading-relaxed overflow-x-auto;
 		}
 	}
 </style>

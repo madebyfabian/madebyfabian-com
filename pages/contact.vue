@@ -9,35 +9,37 @@
 							placeholder="Name"
 							v-model="state.form.name"
 							required
-							class="block w-full h-12 px-4 bg-gray-100 border rounded-xl" />
+							class="block w-full h-12 px-4 bg-frost-2 outline-border rounded-xl" />
 						<input
 							type="email"
 							placeholder="Email"
 							v-model="state.form.email"
 							required
-							class="block w-full h-12 px-4 bg-gray-100 border rounded-xl" />
+							class="block w-full h-12 px-4 bg-frost-2 outline-border rounded-xl" />
 					</div>
 					<textarea
 						placeholder="Message"
 						v-model="state.form.message"
 						required
 						rows="5"
-						class="block w-full py-3 px-4 bg-gray-100 border rounded-xl overflow-hidden" />
+						class="block w-full py-3 px-4 bg-frost-2 outline-border rounded-xl overflow-hidden" />
 				</div>
 
-				<div class="mt-8">
-					<Turnstile
-						v-if="turnstileIsPermitted"
-						ref="turnstileRef"
-						v-model="turnstileToken"
-						:options="{
-							theme: 'light',
-						}" />
+				<div class="flex justify-between flex-wrap gap-8 mt-8">
+					<div>
+						<Turnstile
+							v-if="turnstileIsPermitted"
+							ref="turnstileRef"
+							v-model="turnstileToken"
+							:options="{
+								theme: 'light',
+							}" />
 
-					<CookieControlDenied v-else />
+						<CookieControlDenied v-else />
+					</div>
+
+					<button :disabled="!turnstileIsDone" class="w-full md:w-[33%] UIButton">Send!</button>
 				</div>
-
-				<button :disabled="!turnstileIsDone" class="mt-8 UIButton">Send!</button>
 			</form>
 
 			<div v-if="state.status === 'success'" class="mt-8 text-green-700 font-bold">

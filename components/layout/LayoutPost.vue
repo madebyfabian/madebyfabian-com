@@ -6,6 +6,7 @@
 			</NuxtLink>
 			<h1>{{ data.post?.title }}</h1>
 			<UIArticleMetadata
+				class="mb-8"
 				linkAvatar
 				:item="{
 					dateGmt: data.post.dateGmt,

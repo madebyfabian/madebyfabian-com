@@ -33,6 +33,22 @@
 	.H4Like {
 		@apply text-xl font-bold tracking-tight;
 	}
+
+	.outline-border {
+		@apply outline outline-1 outline-gray-800/10;
+	}
+
+	.outline-border-2 {
+		@apply outline outline-2 outline-gray-800/10;
+	}
+
+	.bg-frost {
+		@apply bg-white/25;
+	}
+
+	.bg-frost-2 {
+		@apply bg-white/75;
+	}
 }
 
 @layer base {
@@ -101,7 +117,7 @@
 	}
 
 	.UIButton {
-		@apply inline-flex items-center justify-center;
+		@apply inline-flex items-center justify-center whitespace-nowrap;
 		@apply font-bold;
 		@apply px-6 h-12 rounded-xl disabled:opacity-25;
 		@apply bg-accent-700 text-white;
@@ -110,8 +126,8 @@
 	}
 
 	.UIButton-secondary {
-		@apply bg-white text-accent-700;
-		@apply border-solid border-2 border-gray-200;
+		@apply bg-frost text-accent-700 shadow-sm;
+		@apply outline-border;
 		@apply hover:bg-gray-50;
 	}
 }

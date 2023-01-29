@@ -1,6 +1,6 @@
 <template>
 	<div
-		class="UIAvatar shrink-0 flex items-center justify-center shadow-inner overflow-hidden"
+		class="UIAvatar shrink-0 flex items-center justify-center shadow-inner outline-border overflow-hidden"
 		:class="{ 'bg-gray-100': notFound }"
 		:style="{ height: `${size}`, width: `${size}`, borderRadius }">
 		<NuxtImg

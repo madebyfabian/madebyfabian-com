@@ -10,6 +10,7 @@ export default defineNuxtConfig({
 	extends: ['nuxt-seo-kit'],
 
 	modules: [
+		'@vueuse/nuxt',
 		'@nuxtjs/tailwindcss',
 		'@nuxt/image-edge',
 		'@nuxtjs/turnstile',
