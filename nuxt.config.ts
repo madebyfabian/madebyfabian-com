@@ -29,7 +29,7 @@ export default defineNuxtConfig({
 			isVercelProduction: process.env.VERCEL_ENV === 'production',
 
 			// nuxt-seo-kit
-			siteUrl: process.env.SITE_URL,
+			siteUrl: '',
 			siteName: 'madebyfabian' /** @see https://github.com/harlan-zw/nuxt-seo-kit/issues/20 */,
 			titleSeparator: globalConfig.titleSeperator,
 			language: globalConfig.language,
@@ -43,7 +43,7 @@ export default defineNuxtConfig({
 
 	// nuxt-simple-sitemap
 	sitemap: {
-		hostname: process.env.SITE_URL,
+		hostname: process.env.NUXT_PUBLIC_SITE_URL,
 		defaults: {
 			lastmod: new Date().toString(),
 		},

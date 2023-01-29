@@ -13,7 +13,7 @@ npm i
 ```bash
 GQL_HOST="https://example.com/graphql"
 GQL_TOKEN="Basic xxx"
-SITE_URL="https://example.vercel.app" # Where your Nuxt site is deployed to
+NUXT_PUBLIC_SITE_URL="https://example.vercel.app" # Where your Nuxt site is deployed to
 NUXT_TURNSTILE_SECRET_KEY="xxx"
 NUXT_PUBLIC_TURNSTILE_SITE_KEY="xxx"
 NUXT_PUBLIC_SITE_URL_PREVIEW="https://example-preview.com"
@@ -48,5 +48,5 @@ npm run build:prod
 
 2. Add the env variables from the `.env` file to the vercel project.
 3. Configure 2 domains
-    1. Should be the same as `SITE_URL`
+    1. Should be the same as `NUXT_PUBLIC_SITE_URL`
     2. Should be the same as `NUXT_PUBLIC_SITE_URL_PREVIEW`

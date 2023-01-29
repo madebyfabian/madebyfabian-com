@@ -11,9 +11,9 @@ export const generateSitemap = async () => {
 	try {
 		const graphqlBase = process.env.GQL_HOST
 		const graphqlToken = process.env.GQL_TOKEN
-		const siteUrl = process.env.SITE_URL
+		const siteUrl = process.env.NUXT_PUBLIC_SITE_URL
 		if (!graphqlBase || !graphqlToken || !siteUrl)
-			throw new Error('GQL_HOST or GQL_TOKEN or SITE_URL is not defined')
+			throw new Error('GQL_HOST or GQL_TOKEN or NUXT_PUBLIC_SITE_URL is not defined')
 
 		const req = await fetch(graphqlBase, {
 			method: 'POST',
