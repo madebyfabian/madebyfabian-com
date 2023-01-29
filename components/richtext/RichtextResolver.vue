@@ -41,12 +41,16 @@
 		RichtextCoreList,
 		RichtextCoreListItem,
 		RichtextCoreParagraph,
+		RichtextCoreSeperator,
 		RichtextCoreSpacer,
 
-		// Custom blocks
-		RichtextCustomTeaser,
-		RichtextCustomFaqGroup,
-		RichtextCustomFaqItem,
+		// lazyblock
+		RichtextLazyblockTeaser,
+		RichtextLazyblockFaqGroup,
+		RichtextLazyblockFaqItem,
+
+		// matomo
+		RichtextMatamoOptOut,
 	} from '#components'
 
 	const components = {
@@ -60,12 +64,16 @@
 		'core/list': RichtextCoreList,
 		'core/list-item': RichtextCoreListItem,
 		'core/paragraph': RichtextCoreParagraph,
+		'core/separator': RichtextCoreSeperator,
 		'core/spacer': RichtextCoreSpacer,
 
-		// Custom blocks
-		'lazyblock/richtext-teaser': RichtextCustomTeaser,
-		'lazyblock/faq-group': RichtextCustomFaqGroup,
-		'lazyblock/faq-item': RichtextCustomFaqItem,
+		// lazyblock
+		'lazyblock/richtext-teaser': RichtextLazyblockTeaser,
+		'lazyblock/faq-group': RichtextLazyblockFaqGroup,
+		'lazyblock/faq-item': RichtextLazyblockFaqItem,
+
+		// matomo
+		'matomo/matomo-opt-out': RichtextMatamoOptOut,
 	}
 
 	const props = defineProps<{

@@ -1,5 +1,5 @@
 <template>
-	<article class="RichtextContainer">
+	<article v-if="props.blocks.length" class="RichtextContainer">
 		<RichtextResolver v-for="item of props.blocks" :key="item.id" :item="item" :mediaItemsStorageKey="storageKey" />
 	</article>
 </template>
@@ -39,7 +39,7 @@
 
 		:deep(.RichtextCoreParagraph),
 		:deep(p) {
-			@apply my-6 first:mt-0 last:mb-0;
+			@apply PLike my-6 first:mt-0 last:mb-0;
 
 			a {
 				@apply UILink;
@@ -93,7 +93,7 @@
 			}
 
 			&:has(h4) {
-				@apply mt-6 mb-6 first:mt-0 last:mb-0;
+				@apply mt-10 mb-6 first:mt-0 last:mb-0;
 
 				h4 {
 					@apply H4Like;
@@ -103,26 +103,36 @@
 
 		:deep(ul),
 		:deep(ol) {
-			@apply my-6 first:mt-0 last:mb-0 ml-4;
+			@apply my-6 first:mt-0 last:mb-0 ml-6;
 
-			li p {
-				@apply !my-2;
-			}
-		}
+			li {
+				&::marker {
+					@apply PLike;
+				}
 
-		:deep(li) {
-			& ul,
-			& ol {
-				@apply first-of-type:mt-0;
+				p {
+					@apply !my-4;
+				}
+
+				& ul,
+				& ol {
+					@apply first-of-type:mt-0;
+				}
 			}
 		}
 
 		:deep(ul) {
-			@apply list-disc;
+			@apply list-[circle];
 		}
 
 		:deep(ol) {
 			@apply list-decimal;
+
+			li {
+				&::marker {
+					@apply text-gray-400;
+				}
+			}
 		}
 
 		:deep(pre) {
