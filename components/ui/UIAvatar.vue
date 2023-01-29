@@ -1,8 +1,7 @@
 <template>
 	<div
 		class="UIAvatar shrink-0 flex items-center justify-center shadow-inner outline-border overflow-hidden"
-		:class="{ 'bg-gray-100': notFound }"
-		:style="{ height: `${size}`, width: `${size}`, borderRadius }">
+		:class="{ 'bg-gray-100': notFound }">
 		<NuxtImg
 			v-if="!notFound && url"
 			:src="url || undefined"
@@ -25,13 +24,22 @@
 		notFound?: boolean
 	}>()
 
-	const borderRadius = computed(() => {
+	const sizePx = computed(() => `${props.size}px`)
+	const borderRadiusPx = computed(() => {
 		if (props.size === 32) {
 			return `12px`
 		}
 		if (props.size === 128) {
 			return `24px`
 		}
-		return ''
+		return '0px'
 	})
 </script>
+
+<style lang="postcss" scoped>
+	.UIAvatar {
+		height: v-bind(sizePx);
+		width: v-bind(sizePx);
+		border-radius: v-bind(borderRadiusPx);
+	}
+</style>

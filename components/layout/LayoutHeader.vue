@@ -1,9 +1,8 @@
 <template>
-	<header class="LayoutHeader z-10 py-6 md:py-14 mb-8 md:sticky" :style="{ top: `-${offset}px` }">
+	<header class="LayoutHeader z-10 py-6 md:py-14 mb-8 md:sticky">
 		<div
 			aria-hidden="true"
-			class="hidden md:block absolute left-0 top-0 right-0 w-full transition"
-			:style="{ height: `calc(100% - ${offset * 2}px)`, top: `${offset}px` }"
+			class="LayoutHeader-underlay hidden md:block absolute left-0 top-0 right-0 w-full transition"
 			:class="{ 'bg-frost-2 backdrop-blur-md outline-border': isSticky }"></div>
 		<div
 			class="relative container flex flex-col md:flex-row justify-between md:items-center h-full gap-x-6 gap-y-2">
@@ -34,10 +33,21 @@
 <script lang="ts" setup>
 	const { y } = useScroll(process.client ? window : undefined)
 	const offset = 28
+	const offsetPx = `${offset}px`
+	const offset2xPx = `${offset * 2}px`
 	const isSticky = computed(() => y.value >= offset)
 </script>
 
 <style lang="postcss" scoped>
+	.LayoutHeader {
+		top: calc(v-bind(offsetPx) * -1);
+	}
+
+	.LayoutHeader-underlay {
+		height: calc(100% - v-bind(offset2xPx));
+		top: v-bind(offsetPx);
+	}
+
 	.LayoutHeader-mobile {
 		/* Fade out */
 		--width-fade-out: 20px;
