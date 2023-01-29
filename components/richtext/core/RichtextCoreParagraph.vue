@@ -15,23 +15,26 @@
 	}>()
 
 	const classes = computed(() => {
-		const classes = ['']
+		const classList = ['']
 
 		if (props.attributes?.align) {
 			switch (props.attributes?.align) {
 				case 'left':
-					classes.push('text-left')
+					classList.push('text-left')
+					break
 				case 'center':
-					classes.push('text-center mx-auto')
+					classList.push('text-center mx-auto')
+					break
 				case 'right':
-					classes.push('text-right ml-auto')
+					classList.push('text-right ml-auto')
+					break
 			}
 		}
 
 		if (props.attributes?.fontSize) {
 			switch (props.attributes?.fontSize) {
 				case 'large':
-					classes.push('RichtextCoreParagraph-large')
+					classList.push('RichtextCoreParagraph-large')
 					break
 				case 'medium':
 				default:
@@ -39,7 +42,7 @@
 			}
 		}
 
-		return classes
+		return classList
 	})
 
 	const id = computed(() => props.attributes?.anchor || undefined)

@@ -1,5 +1,5 @@
 <template>
-	<Balancer as="div" class="RichtextCoreHeading !block" :class="alignClass">
+	<Balancer as="div" class="RichtextCoreHeading !block" :class="classes">
 		<h1 v-if="props.attributes?.level === 1" v-html="props.attributes?.content" :id="id" />
 		<h2 v-else-if="props.attributes?.level === 2" v-html="props.attributes?.content" :id="id" />
 		<h3 v-else-if="props.attributes?.level === 3" v-html="props.attributes?.content" :id="id" />
@@ -17,17 +17,24 @@
 		innerBlocks: InnerBlocksExtended
 	}>()
 
-	const alignClass = computed(() => {
-		switch (props.attributes?.textAlign) {
-			case 'left':
-				return 'text-left'
-			case 'center':
-				return 'text-center mx-auto'
-			case 'right':
-				return 'text-right ml-auto'
-			default:
-				return ''
+	const classes = computed(() => {
+		const classList = ['']
+
+		if (props.attributes?.textAlign) {
+			switch (props.attributes?.textAlign) {
+				case 'left':
+					classList.push('text-left')
+					break
+				case 'center':
+					classList.push('text-center', 'mx-auto')
+					break
+				case 'right':
+					classList.push('text-right', 'ml-auto')
+					break
+			}
 		}
+
+		return classList
 	})
 
 	const id = computed(() => props.attributes?.anchor || undefined)
