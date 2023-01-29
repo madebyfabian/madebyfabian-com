@@ -47,11 +47,13 @@
 	}
 
 	.outline-border {
-		@apply outline outline-1 outline-gray-800/10;
+		@apply outline outline-1;
+		outline-color: theme('borderColor.DEFAULT');
 	}
 
 	.outline-border-2 {
-		@apply outline outline-2 outline-gray-800/10;
+		@apply outline outline-2;
+		outline-color: theme('borderColor.DEFAULT');
 	}
 
 	.bg-frost {

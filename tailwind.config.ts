@@ -27,6 +27,9 @@ export default <Partial<Config>>{
 					700: '#2A5ACB',
 				},
 			},
+			borderColor: {
+				DEFAULT: 'rgb(31 41 55 / 0.1)', // border-gray-800/10
+			},
 			borderRadius: {
 				'box': '1rem',
 			},
