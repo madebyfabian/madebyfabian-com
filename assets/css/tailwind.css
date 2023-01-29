@@ -34,14 +34,13 @@
 		@apply text-xl font-bold tracking-tight;
 	}
 
+	.PLargeLike {
+		@apply text-xl font-normal tracking-tight;
+	}
+
 	.PLike {
 		@apply text-lg font-normal leading-relaxed;
 	}
-
-	.PLargeLike {
-		@apply text-xl font-normal leading-normal;
-	}
-
 	.outline-border {
 		@apply outline outline-1 outline-gray-800/10;
 	}
@@ -65,7 +64,7 @@
 
 @layer base {
 	html {
-		@apply font-display scroll-smooth text-gray-700 accent-accent-700 underline-offset-2;
+		@apply font-display  scroll-smooth text-gray-700 accent-accent-700 underline-offset-2;
 		font-size: 0.875rem;
 	}
 
@@ -124,13 +123,13 @@
 
 @layer components {
 	.UILink {
-		@apply underline font-bold underline-offset-2;
+		@apply underline font-semibold underline-offset-2;
 		@apply text-accent-700 decoration-accent-700/30;
 	}
 
 	.UIButton {
 		@apply inline-flex items-center justify-center whitespace-nowrap;
-		@apply font-bold;
+		@apply font-semibold;
 		@apply px-8 h-14 rounded-xl disabled:opacity-25;
 		@apply bg-accent-700 text-white;
 		@apply transition-colors;
