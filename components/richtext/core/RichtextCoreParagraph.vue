@@ -1,5 +1,5 @@
 <template>
-	<Balancer as="div" class="RichtextCoreParagraph !block" :class="alignClass">
+	<Balancer as="div" class="RichtextCoreParagraph !block" :class="classes">
 		<p v-html="props.attributes?.content" :id="id" />
 	</Balancer>
 </template>
@@ -14,17 +14,32 @@
 		innerBlocks?: InnerBlocksExtended
 	}>()
 
-	const alignClass = computed(() => {
-		switch (props.attributes?.align) {
-			case 'left':
-				return 'text-left'
-			case 'center':
-				return 'text-center mx-auto'
-			case 'right':
-				return 'text-right ml-auto'
-			default:
-				return ''
+	const classes = computed(() => {
+		const classes = ['']
+
+		if (props.attributes?.align) {
+			switch (props.attributes?.align) {
+				case 'left':
+					classes.push('text-left')
+				case 'center':
+					classes.push('text-center mx-auto')
+				case 'right':
+					classes.push('text-right ml-auto')
+			}
 		}
+
+		if (props.attributes?.fontSize) {
+			switch (props.attributes?.fontSize) {
+				case 'large':
+					classes.push('RichtextCoreParagraph-large')
+					break
+				case 'medium':
+				default:
+					break
+			}
+		}
+
+		return classes
 	})
 
 	const id = computed(() => props.attributes?.anchor || undefined)

@@ -26,7 +26,17 @@
 		@apply flow-root;
 
 		:deep(.RichtextCoreParagraph) {
-			@apply leading-relaxed my-6 first:mt-0 last:mb-0 text-lg;
+			@apply my-6 first:mt-0 last:mb-0;
+
+			p {
+				@apply PLike;
+			}
+
+			&.RichtextCoreParagraph-large {
+				p {
+					@apply PLargeLike;
+				}
+			}
 
 			a {
 				@apply text-accent-700 underline font-bold decoration-accent-700/30;

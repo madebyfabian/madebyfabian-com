@@ -34,6 +34,14 @@
 		@apply text-xl font-bold tracking-tight;
 	}
 
+	.PLike {
+		@apply text-lg font-normal leading-relaxed;
+	}
+
+	.PLargeLike {
+		@apply text-xl font-normal leading-normal;
+	}
+
 	.outline-border {
 		@apply outline outline-1 outline-gray-800/10;
 	}

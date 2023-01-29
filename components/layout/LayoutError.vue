@@ -5,7 +5,7 @@
 		<p class="text-xl text-center">{{ props.error?.message || 'An error occured' }}</p>
 
 		<details class="group/details mt-12">
-			<summary class="font-bold cursor-pointer p-6 text-lg flex items-center justify-center gap-2">
+			<summary class="font-bold cursor-pointer p-6 PLike flex items-center justify-center gap-2">
 				<span>Details</span>
 				<span class="group-open/details:rotate-180 select-none">⬇️</span>
 			</summary>
