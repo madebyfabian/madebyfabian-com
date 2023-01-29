@@ -14,7 +14,7 @@ export default defineNuxtConfig({
 		'@nuxt/image-edge',
 		'@nuxtjs/turnstile',
 		'nuxt-typed-router',
-		'@dargmuesli/nuxt-cookie-control',
+		// '@dargmuesli/nuxt-cookie-control',
 	],
 
 	runtimeConfig: {
@@ -65,7 +65,7 @@ export default defineNuxtConfig({
 	},
 
 	// @dargmuesli/nuxt-cookie-control
-	cookieControl: cookieConfig,
+	// cookieControl: cookieConfig,
 
 	typescript: {
 		shim: false,

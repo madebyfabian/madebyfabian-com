@@ -1,5 +1,5 @@
 <template>
-	<CookieControl :locale="locale" />
+	<!--<CookieControl :locale="locale" />-->
 </template>
 
 <script lang="ts" setup>

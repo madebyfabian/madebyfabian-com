@@ -1,5 +1,5 @@
 <template>
-	<CookieIframe :locale="locale" />
+	<!--<CookieIframe :locale="locale" />-->
 </template>
 
 <script lang="ts" setup>
