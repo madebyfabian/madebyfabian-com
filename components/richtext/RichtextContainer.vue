@@ -26,8 +26,6 @@
 		@apply flow-root;
 
 		:deep(.RichtextCoreParagraph) {
-			@apply my-6 first:mt-0 last:mb-0;
-
 			p {
 				@apply PLike;
 			}
@@ -37,6 +35,11 @@
 					@apply PLargeLike;
 				}
 			}
+		}
+
+		:deep(.RichtextCoreParagraph),
+		:deep(p) {
+			@apply my-6 first:mt-0 last:mb-0;
 
 			a {
 				@apply text-accent-700 underline font-bold decoration-accent-700/30;
@@ -102,7 +105,7 @@
 		:deep(ol) {
 			@apply my-6 first:mt-0 last:mb-0 ml-4;
 
-			li .RichtextCoreParagraph {
+			li p {
 				@apply !my-2;
 			}
 		}
