@@ -23,7 +23,9 @@
 
 <style lang="postcss" scoped>
 	.RichtextContainer {
-		:deep(p) {
+		@apply flow-root;
+
+		:deep(.RichtextCoreParagraph) {
 			@apply leading-relaxed my-6 first:mt-0 last:mb-0 text-lg;
 
 			a {
@@ -47,32 +49,50 @@
 		:deep(figure) {
 			@apply my-6 first:mt-0 last:mb-0;
 
-			p {
+			.RichtextCoreParagraph {
 				@apply my-0 text-sm text-gray-500;
 			}
 		}
 
-		:deep(h1) {
-			@apply H1Like mb-8 last:mb-0;
-		}
+		:deep(.RichtextCoreHeading) {
+			&:has(h1) {
+				@apply mb-6 last:mb-0;
 
-		:deep(h2) {
-			@apply H2Like mt-14 mb-7 first:mt-0 last:mb-0;
-		}
+				h1 {
+					@apply H1Like !m-0;
+				}
+			}
 
-		:deep(h3) {
-			@apply H3Like mt-10 mb-6 first:mt-0 last:mb-0;
-		}
+			&:has(h2) {
+				@apply mt-14 mb-7 first:mt-0 last:mb-0;
 
-		:deep(h4) {
-			@apply H4Like mt-6 mb-6 first:mt-0 last:mb-0;
+				h2 {
+					@apply H2Like;
+				}
+			}
+
+			&:has(h3) {
+				@apply mt-10 mb-6 first:mt-0 last:mb-0;
+
+				h3 {
+					@apply H3Like;
+				}
+			}
+
+			&:has(h4) {
+				@apply mt-6 mb-6 first:mt-0 last:mb-0;
+
+				h4 {
+					@apply H4Like;
+				}
+			}
 		}
 
 		:deep(ul),
 		:deep(ol) {
 			@apply my-6 first:mt-0 last:mb-0 ml-4;
 
-			li p {
+			li .RichtextCoreParagraph {
 				@apply !my-2;
 			}
 		}

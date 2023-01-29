@@ -1,11 +1,17 @@
 <template>
-	<BgBlur />
-	<SeoKit />
-	<div class="flex-1 flex flex-col relative">
-		<LayoutHeader />
-		<div class="flex-1">
-			<slot />
+	<WrapBalancerProvider>
+		<BgBlur />
+		<SeoKit />
+		<div class="flex-1 flex flex-col relative">
+			<LayoutHeader />
+			<div class="flex-1">
+				<slot />
+			</div>
+			<LayoutFooter />
 		</div>
-		<LayoutFooter />
-	</div>
+	</WrapBalancerProvider>
 </template>
+
+<script setup lang="ts">
+	import { Provider as WrapBalancerProvider } from 'vue-wrap-balancer'
+</script>

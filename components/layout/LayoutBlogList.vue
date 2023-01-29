@@ -1,5 +1,5 @@
 <template>
-	<div v-if="data" class="LayoutBlogList mt-12">
+	<div v-if="data" class="LayoutBlogList mt-8">
 		<NuxtLink
 			v-for="item of data"
 			:key="item.id"
