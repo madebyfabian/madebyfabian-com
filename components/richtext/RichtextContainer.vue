@@ -42,7 +42,7 @@
 			@apply my-6 first:mt-0 last:mb-0;
 
 			a {
-				@apply text-accent-700 underline font-bold decoration-accent-700/30;
+				@apply UILink;
 
 				/* These are technically the same, but use both */
 				overflow-wrap: break-word;
