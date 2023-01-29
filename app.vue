@@ -1,13 +1,15 @@
 <template>
 	<Page>
-		<NuxtLoadingIndicator :color="colors.sky[300]" :height="4" />
+		<NuxtLoadingIndicator :color="color" :height="4" />
 		<CookieControlBanner />
 		<NuxtPage />
 	</Page>
 </template>
 
 <script lang="ts" setup>
-	import colors from 'tailwindcss/colors'
+	import tailwindConfig from '@/tailwind.config'
+
+	const color = (tailwindConfig.theme?.extend?.colors as any)?.['accent']?.['700']
 
 	const { $client } = useNuxtApp()
 	const { data, error } = await $client.general.allSettings.useQuery()
