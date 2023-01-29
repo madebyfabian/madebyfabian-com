@@ -20,7 +20,7 @@
 			</div>
 
 			<div class="p-6">
-				<h2 class="text-2xl font-bold mb-2">{{ item.title }}</h2>
+				<h2 class="H3Like mb-2">{{ item.title }}</h2>
 				<p class="my-2">
 					<span v-text="item.excerpt"></span>
 				</p>
