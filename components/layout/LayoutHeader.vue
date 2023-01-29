@@ -1,5 +1,5 @@
 <template>
-	<header class="LayoutHeader z-10 py-6 md:py-14 mb-8 md:sticky">
+	<header class="LayoutHeader z-10 py-6 md:py-14 mb-12 md:sticky">
 		<div
 			aria-hidden="true"
 			class="LayoutHeader-underlay hidden md:block absolute left-0 top-0 right-0 w-full transition"
@@ -31,7 +31,7 @@
 			</div>
 
 			<!-- Mobile only -->
-			<div class="LayoutHeader-mobile md:sr-only overflow-x-scroll md:overflow-hidden -mx-5">
+			<div class="LayoutHeader-mobile md:invisible md:sr-only overflow-x-scroll md:overflow-hidden -mx-5">
 				<LayoutMenu menuId="dGVybTo3" class="flex gap-x-5 w-full px-5 pr-5" />
 			</div>
 		</div>
