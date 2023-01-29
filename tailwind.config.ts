@@ -1,8 +1,11 @@
 import type { Config } from 'tailwindcss'
 import defaultTheme from 'tailwindcss/defaultTheme'
-import colors from 'tailwindcss/colors'
 
 export default <Partial<Config>>{
+	future: {
+		hoverOnlyWhenSupported: true,
+	},
+
 	theme: {
 		container: {
 			center: true,
@@ -20,7 +23,9 @@ export default <Partial<Config>>{
 				display: ['PlusJakartaSans', ...defaultTheme.fontFamily.sans],
 			},
 			colors: {
-				accent: colors.sky,
+				accent: {
+					700: '#2A5ACB',
+				},
 			},
 		},
 	},

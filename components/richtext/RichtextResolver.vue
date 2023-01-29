@@ -31,6 +31,8 @@
 	import type { InnerBlocksDefault, BlockDefault, ItemBase } from '@/types'
 
 	import {
+		RichtextCoreButton,
+		RichtextCoreButtons,
 		RichtextCoreCode,
 		RichtextCoreColumn,
 		RichtextCoreColumns,
@@ -39,6 +41,7 @@
 		RichtextCoreList,
 		RichtextCoreListItem,
 		RichtextCoreParagraph,
+		RichtextCoreSpacer,
 
 		// Custom blocks
 		RichtextCustomTeaser,
@@ -47,6 +50,8 @@
 	} from '#components'
 
 	const components = {
+		'core/button': RichtextCoreButton,
+		'core/buttons': RichtextCoreButtons,
 		'core/code': RichtextCoreCode,
 		'core/column': RichtextCoreColumn,
 		'core/columns': RichtextCoreColumns,
@@ -55,6 +60,7 @@
 		'core/list': RichtextCoreList,
 		'core/list-item': RichtextCoreListItem,
 		'core/paragraph': RichtextCoreParagraph,
+		'core/spacer': RichtextCoreSpacer,
 
 		// Custom blocks
 		'lazyblock/richtext-teaser': RichtextCustomTeaser,

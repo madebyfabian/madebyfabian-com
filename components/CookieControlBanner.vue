@@ -61,7 +61,7 @@
 			}
 
 			.cookieControl__BarButtons {
-				@apply flex mt-6 gap-3;
+				@apply UIButtonGroup mt-6;
 
 				button {
 					@apply m-0 flex-1;
@@ -121,7 +121,7 @@
 			}
 
 			.cookieControl__ModalButtons {
-				@apply mt-12 sticky z-10 bottom-0 bg-frost pt-4 border-t p-6 md:p-10 flex gap-3;
+				@apply UIButtonGroup mt-12 sticky z-10 bottom-0 bg-frost pt-4 border-t p-6 md:p-10;
 
 				button {
 					@apply m-0 flex-1;

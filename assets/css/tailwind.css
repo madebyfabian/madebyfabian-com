@@ -49,6 +49,10 @@
 	.bg-frost-2 {
 		@apply bg-white/75;
 	}
+
+	.UIButtonGroup {
+		@apply flex gap-4;
+	}
 }
 
 @layer base {
@@ -119,10 +123,10 @@
 	.UIButton {
 		@apply inline-flex items-center justify-center whitespace-nowrap;
 		@apply font-bold;
-		@apply px-6 h-12 rounded-xl disabled:opacity-25;
+		@apply px-8 h-14 rounded-xl disabled:opacity-25;
 		@apply bg-accent-700 text-white;
 		@apply transition-colors;
-		@apply hover:bg-accent-800;
+		@apply hover:bg-accent-700/90;
 	}
 
 	.UIButton-secondary {
