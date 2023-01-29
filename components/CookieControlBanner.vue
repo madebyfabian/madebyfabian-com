@@ -12,17 +12,25 @@
 			font: inherit;
 		}
 
+		p,
+		span,
+		button {
+			/* Needs to be specified due to overriding issues. */
+			font-size: inherit !important;
+			line-height: inherit !important;
+		}
+
 		button {
 			@apply UIButton;
 		}
 
 		.cookieControl__ControlButton {
-			@apply UIButton-secondary;
+			@apply UIButton-secondary right-4 bottom-4 md:right-8 md:bottom-8;
 		}
 
 		.cookieControl__ControlButton,
 		.cookieControl__Bar {
-			@apply border-2 bg-white shadow-lg;
+			@apply border-t-2 md:border-2 bg-white shadow-lg;
 
 			svg {
 				@apply text-inherit;
@@ -30,7 +38,7 @@
 		}
 
 		.cookieControl__Bar {
-			@apply rounded-xl shadow-xl;
+			@apply md:rounded-xl shadow-xl;
 			@apply md:right-6 md:bottom-6 w-full md:max-w-md;
 
 			.cookieControl__BarContainer {
@@ -41,7 +49,7 @@
 				}
 
 				p {
-					@apply m-0 leading-relaxed w-full max-w-none;
+					@apply m-0 w-full max-w-none;
 				}
 
 				div:first-of-type {
@@ -78,7 +86,7 @@
 		}
 
 		.cookieControl__ModalContent {
-			@apply rounded-2xl px-0 pb-0;
+			@apply md:rounded-2xl px-0 pb-0;
 
 			.cookieControl__ModalClose {
 				@apply UIButton-secondary;
@@ -104,6 +112,9 @@
 				.cookieControl__ModalInputWrapper {
 					label {
 						@apply mr-3 mt-0.5 bg-gray-300 shadow-inner cursor-pointer;
+
+						/* Fixes issue where hidden label is displayed. */
+						font-size: 0 !important;
 					}
 
 					input:checked + label {
