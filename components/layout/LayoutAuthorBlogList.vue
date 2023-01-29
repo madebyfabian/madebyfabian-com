@@ -38,4 +38,8 @@
 	if (error.value) {
 		throw createError({ statusCode: 500, message: 'Error fetching author details', fatal: true })
 	}
+
+	useSeoMeta({
+		title: `Posts by ${data.value?.user?.name}`,
+	})
 </script>
