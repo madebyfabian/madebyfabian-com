@@ -28,7 +28,7 @@
 				<div class="mt-8">
 					<Turnstile
 						v-if="turnstileIsPermitted"
-						:ref="turnstileRef"
+						ref="turnstileRef"
 						v-model="turnstileToken"
 						:options="{
 							theme: 'light',
