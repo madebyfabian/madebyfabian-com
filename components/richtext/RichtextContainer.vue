@@ -126,7 +126,7 @@
 		}
 
 		:deep(pre) {
-			@apply bg-frost-2 shadow-inner outline-border p-4 rounded-xl my-6 first:mt-0 last:mb-0 text-sm leading-relaxed overflow-x-auto;
+			@apply PreLike my-6 first:mt-0 last:mb-0;
 		}
 	}
 </style>

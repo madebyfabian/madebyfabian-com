@@ -1,6 +1,6 @@
 <template>
 	<section
-		class="RichtextCustomTeaser p-6 my-6 first:mt-0 last:mb-0 rounded-xl flex flex-col md:flex-row gap-4 bg-frost outline-border"
+		class="RichtextCustomTeaser p-6 my-6 first:mt-0 last:mb-0 rounded-box flex flex-col md:flex-row gap-4 bg-frost outline-border"
 		:id="id">
 		<div v-if="props.attributes?.icon" class="text-xl mt-0.5">
 			<span v-if="props.attributes?.icon === 'info'">&#8505;&#65039;</span>

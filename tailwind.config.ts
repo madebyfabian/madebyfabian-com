@@ -27,6 +27,9 @@ export default <Partial<Config>>{
 					700: '#2A5ACB',
 				},
 			},
+			borderRadius: {
+				'box': '1rem',
+			},
 		},
 	},
 }

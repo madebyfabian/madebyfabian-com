@@ -41,6 +41,11 @@
 	.PLike {
 		@apply text-lg font-normal leading-relaxed;
 	}
+
+	.PreLike {
+		@apply bg-frost-2 shadow-inner outline-border p-4 rounded-box text-sm overflow-x-auto;
+	}
+
 	.outline-border {
 		@apply outline outline-1 outline-gray-800/10;
 	}
@@ -55,10 +60,6 @@
 
 	.bg-frost-2 {
 		@apply bg-white/75;
-	}
-
-	.UIButtonGroup {
-		@apply flex gap-4;
 	}
 }
 
@@ -93,7 +94,7 @@
 	}
 
 	pre {
-		@apply bg-gray-100 p-4 rounded-xl text-xs overflow-x-auto;
+		@apply PreLike;
 	}
 
 	h1 {
@@ -125,6 +126,10 @@
 	.UILink {
 		@apply underline font-semibold underline-offset-2;
 		@apply text-accent-700 decoration-accent-700/30;
+	}
+
+	.UIButtonGroup {
+		@apply flex gap-4;
 	}
 
 	.UIButton {

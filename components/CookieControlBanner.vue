@@ -39,7 +39,7 @@
 
 		.cookieControl__Bar {
 			@apply border-t-2 md:border-0 md:outline-border-2;
-			@apply md:rounded-xl shadow-xl;
+			@apply md:rounded-box shadow-xl;
 			@apply md:right-6 md:bottom-6 w-full md:w-min;
 
 			.cookieControl__BarContainer {
