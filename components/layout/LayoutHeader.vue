@@ -12,8 +12,16 @@
 
 			<NuxtLink
 				:to="{ name: 'index' }"
-				class="mb-1 md:m-0 text-2xl md:order-2 font-bold tracking-[-0.085rem] block">
-				madebyfabian<span class="text-accent-700 tracking-[-0.085rem]">.com</span>
+				title="Home Page"
+				class="mb-1 md:m-0 text-2xl md:order-2 font-bold tracking-[-0.085rem] block relative transition-opacity hover:opacity-75">
+				<NuxtImg
+					src="/images/logo.svg"
+					alt="Logo"
+					:height="40"
+					:width="40"
+					:style="{ top: '-2px', left: '-16px' }"
+					class="absolute" />
+				<span class="relative">madebyfabian<span class="text-accent-700 tracking-[-0.085rem]">.com</span></span>
 			</NuxtLink>
 
 			<div class="hidden md:flex md:order-3 flex-1 w-full md:w-fit">
