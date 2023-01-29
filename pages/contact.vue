@@ -25,21 +25,25 @@
 						class="block w-full py-3 px-4 bg-frost-2 outline-border rounded-xl overflow-hidden" />
 				</div>
 
-				<div class="flex justify-between flex-wrap gap-8 mt-8">
-					<div>
-						<Turnstile
-							v-if="turnstileIsPermitted"
-							ref="turnstileRef"
-							v-model="turnstileToken"
-							:options="{
-								theme: 'light',
-							}" />
-
-						<CookieControlDenied v-else />
-					</div>
+				<div class="flex justify-between flex-wrap gap-8 my-8">
+					<p class="PLike">
+						By submitting this form,<br />you agree to the
+						<NuxtLink :to="{ name: 'datenschutz' }" target="_blank" class="UILink">Privacy Policy</NuxtLink
+						>.
+					</p>
 
 					<button :disabled="!turnstileIsDone" class="w-full md:w-[33%] UIButton">Send!</button>
 				</div>
+
+				<Turnstile
+					v-if="turnstileIsPermitted"
+					ref="turnstileRef"
+					v-model="turnstileToken"
+					:options="{
+						theme: 'light',
+					}" />
+
+				<CookieControlDenied v-else />
 			</form>
 
 			<div v-if="state.status === 'success'" class="mt-8 text-green-700 font-bold">

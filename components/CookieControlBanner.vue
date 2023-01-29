@@ -1,5 +1,14 @@
 <template>
-	<CookieControl :locale="locale" />
+	<CookieControl :locale="locale">
+		<template #bar>
+			<p class="PLike">
+				This website uses cookies to analyze site performance and to deliver an interactive experience. By
+				clicking ""<strong class="!font-bold">Accept all</strong>"", you consent to our
+				<NuxtLink :to="{ name: 'datenschutz' }" class="UILink">Cookie Policy</NuxtLink>. You may change your
+				settings at any time.
+			</p>
+		</template>
+	</CookieControl>
 </template>
 
 <script lang="ts" setup>
