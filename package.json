@@ -10,6 +10,7 @@
 		"postinstall": "nuxt prepare"
 	},
 	"devDependencies": {
+		"@dargmuesli/nuxt-cookie-control": "^3.0.0",
 		"@graphql-codegen/cli": "^2.16.1",
 		"@graphql-codegen/client-preset": "^1.2.3",
 		"@nuxt/image-edge": "^1.0.0-27907872.f4dd19d",

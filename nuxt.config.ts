@@ -1,4 +1,5 @@
 import { generateSitemap } from './generateSitemap'
+import { cookieConfig } from './cookieConfig'
 
 const globalConfig = {
 	language: 'en-US',
@@ -8,7 +9,13 @@ const globalConfig = {
 export default defineNuxtConfig({
 	extends: ['nuxt-seo-kit'],
 
-	modules: ['@nuxtjs/tailwindcss', '@nuxt/image-edge', '@nuxtjs/turnstile', 'nuxt-typed-router'],
+	modules: [
+		'@nuxtjs/tailwindcss',
+		'@nuxt/image-edge',
+		'@nuxtjs/turnstile',
+		'nuxt-typed-router',
+		'@dargmuesli/nuxt-cookie-control',
+	],
 
 	runtimeConfig: {
 		turnstile: {
@@ -56,6 +63,9 @@ export default defineNuxtConfig({
 	turnstile: {
 		siteKey: process.env.NUXT_PUBLIC_TURNSTILE_SITE_KEY || '',
 	},
+
+	// @dargmuesli/nuxt-cookie-control
+	cookieControl: cookieConfig,
 
 	typescript: {
 		shim: false,

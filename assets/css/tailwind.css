@@ -17,6 +17,24 @@
 	font-style: italic;
 }
 
+@layer utilities {
+	.H1Like {
+		@apply text-5xl font-extrabold tracking-tight mb-8;
+	}
+
+	.H2Like {
+		@apply text-4xl font-bold tracking-tight;
+	}
+
+	.H3Like {
+		@apply text-2xl font-bold tracking-tight;
+	}
+
+	.H4Like {
+		@apply text-xl font-bold tracking-tight;
+	}
+}
+
 @layer base {
 	html {
 		@apply font-display scroll-smooth text-gray-700 accent-accent-700 underline-offset-2;
@@ -24,7 +42,8 @@
 	}
 
 	*:focus-visible {
-		@apply outline-accent-700 outline-offset-2 outline-dashed outline-2;
+		/* important because it will be overridden by @dargmuesli/nuxt-cookie-control */
+		@apply !outline-accent-700 !outline-offset-2 !outline-dashed !outline-2;
 	}
 
 	@screen md {
@@ -51,11 +70,19 @@
 	}
 
 	h1 {
-		@apply text-5xl font-extrabold mb-8 tracking-tight;
+		@apply H1Like;
 	}
 
 	h2 {
-		@apply text-4xl font-bold tracking-tighter;
+		@apply H2Like;
+	}
+
+	h3 {
+		@apply H3Like;
+	}
+
+	h4 {
+		@apply H4Like;
 	}
 
 	details > summary {
@@ -69,6 +96,22 @@
 
 @layer components {
 	.UILink {
-		@apply text-accent-700 underline font-bold decoration-accent-700/30 underline-offset-2;
+		@apply underline font-bold underline-offset-2;
+		@apply text-accent-700 decoration-accent-700/30;
+	}
+
+	.UIButton {
+		@apply inline-flex items-center justify-center;
+		@apply font-bold;
+		@apply px-6 h-12 rounded-xl disabled:opacity-25;
+		@apply bg-accent-700 text-white;
+		@apply transition-colors;
+		@apply hover:bg-accent-800;
+	}
+
+	.UIButton-secondary {
+		@apply bg-white text-accent-700;
+		@apply border-solid border-2 border-gray-200;
+		@apply hover:bg-gray-50;
 	}
 }

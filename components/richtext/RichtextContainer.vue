@@ -45,16 +45,20 @@
 			}
 		}
 
+		:deep(h1) {
+			@apply H1Like mb-8 last:mb-0;
+		}
+
 		:deep(h2) {
-			@apply text-4xl font-bold mt-14 mb-7 first:mt-0 last:mb-0 tracking-tighter;
+			@apply H2Like mt-14 mb-7 first:mt-0 last:mb-0;
 		}
 
 		:deep(h3) {
-			@apply text-2xl font-bold mt-10 mb-6 first:mt-0 last:mb-0;
+			@apply H3Like mt-10 mb-6 first:mt-0 last:mb-0;
 		}
 
 		:deep(h4) {
-			@apply text-xl font-bold mt-6 mb-6 first:mt-0 last:mb-0;
+			@apply H4Like mt-6 mb-6 first:mt-0 last:mb-0;
 		}
 
 		:deep(ul),

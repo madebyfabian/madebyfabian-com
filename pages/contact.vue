@@ -25,19 +25,19 @@
 						class="block w-full py-3 px-4 bg-gray-100 border rounded-xl overflow-hidden" />
 				</div>
 
-				<Turnstile
-					class="mt-8"
-					ref="turnstile"
-					v-model="turnstileToken"
-					:options="{
-						theme: 'light',
-					}" />
+				<div class="mt-8">
+					<Turnstile
+						v-if="turnstileIsPermitted"
+						:ref="turnstileRef"
+						v-model="turnstileToken"
+						:options="{
+							theme: 'light',
+						}" />
 
-				<button
-					:disabled="!isTurnstileDone"
-					class="mt-8 px-6 h-12 inline-flex items-center justify-center bg-accent-700 text-white rounded-xl font-bold disabled:opacity-25">
-					Send!
-				</button>
+					<CookieControlDenied v-else />
+				</div>
+
+				<button :disabled="!turnstileIsDone" class="mt-8 UIButton">Send!</button>
 			</form>
 
 			<div v-if="state.status === 'success'" class="mt-8 text-green-700 font-bold">
@@ -54,10 +54,13 @@
 	const route = useRoute('contact')
 	const uri = computed(() => route.fullPath)
 
-	const turnstile = ref()
+	const turnstileIsPermitted = computed(() => useIsCookiePermitted('cloudflareTurnstile'))
+	const turnstileRef = ref()
 	const turnstileToken = ref()
-
-	const isTurnstileDone = computed(() => !!turnstileToken.value?.length)
+	const turnstileIsDone = computed(() => {
+		if (!turnstileIsPermitted.value) return false
+		return !!turnstileToken.value?.length
+	})
 
 	const state = reactive({
 		form: {
@@ -85,7 +88,7 @@
 				state.status = 'success'
 			}
 
-			turnstile.value?.reset()
+			turnstileRef.value?.reset()
 		} catch (error) {
 			state.status = 'error'
 		}

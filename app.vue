@@ -1,6 +1,7 @@
 <template>
 	<Page>
 		<NuxtLoadingIndicator :color="colors.sky[300]" :height="4" />
+		<CookieControlBanner />
 		<NuxtPage />
 	</Page>
 </template>
