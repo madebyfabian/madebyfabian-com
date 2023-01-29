@@ -19,7 +19,7 @@
 
 @layer utilities {
 	.H1Like {
-		@apply text-5xl font-extrabold tracking-tight mb-8;
+		@apply text-5xl font-bold tracking-tight mb-8;
 	}
 
 	.H2Like {
