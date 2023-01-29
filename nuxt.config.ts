@@ -31,7 +31,7 @@ export default defineNuxtConfig({
 
 			// nuxt-seo-kit
 			siteUrl: '',
-			siteName: 'madebyfabian' /** @see https://github.com/harlan-zw/nuxt-seo-kit/issues/20 */,
+			siteName: 'Fabian Beer' /** @see https://github.com/harlan-zw/nuxt-seo-kit/issues/20 */,
 			titleSeparator: globalConfig.titleSeperator,
 			language: globalConfig.language,
 		},
