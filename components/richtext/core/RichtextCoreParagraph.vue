@@ -1,5 +1,5 @@
 <template>
-	<Balancer as="div" class="RichtextCoreParagraph !block" :class="classes">
+	<Balancer :ratio="balancerRatio" as="div" class="RichtextCoreParagraph !block" :class="classes">
 		<p v-html="props.attributes?.content" :id="id" />
 	</Balancer>
 </template>
@@ -14,6 +14,16 @@
 		innerBlocks?: InnerBlocksExtended
 	}>()
 
+	const balancerRatio = computed(() => {
+		// For centered or large text, we want to have a high ratio to optimize.
+		if (props.attributes?.align === 'center' || props.attributes?.fontSize === 'large') {
+			return 1
+		}
+
+		// For regular text, we want to have a low ratio to optimize.
+		return 0.5
+	})
+
 	const classes = computed(() => {
 		const classList = ['']
 
@@ -23,10 +33,10 @@
 					classList.push('text-left')
 					break
 				case 'center':
-					classList.push('text-center mx-auto')
+					classList.push('text-center', 'mx-auto')
 					break
 				case 'right':
-					classList.push('text-right ml-auto')
+					classList.push('text-right', 'ml-auto')
 					break
 			}
 		}
