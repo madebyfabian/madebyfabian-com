@@ -1,7 +1,5 @@
 <template>
-	<div
-		class="UIAvatar shrink-0 flex items-center justify-center shadow-inner outline-border overflow-hidden"
-		:class="{ 'bg-gray-100': notFound }">
+	<div class="UIAvatar shrink-0 flex items-center justify-center shadow-inner outline-border overflow-hidden">
 		<NuxtImg
 			v-if="!notFound && url"
 			:src="url || undefined"
