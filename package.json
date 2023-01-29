@@ -30,10 +30,10 @@
 		"graphql": "^16.6.0",
 		"graphql-request": "^5.1.0",
 		"nuxt-typed-router": "^2.2.1",
-		"sanitize-html": "^2.8.1",
 		"superjson": "^1.12.2",
 		"trpc-nuxt": "^0.5.0",
 		"vue-matomo": "^4.2.0",
+		"xss": "^1.0.14",
 		"zod": "^3.20.2"
 	}
 }

@@ -1,7 +1,7 @@
 import { createSSRApp, reactive } from 'vue'
 import { renderToString } from 'vue/server-renderer'
 import { z } from 'zod'
-import sanitizeHtml from 'sanitize-html'
+import xss from 'xss'
 import { publicProcedure, router } from '../trpc'
 import { TRPCError } from '@trpc/server'
 
@@ -57,7 +57,7 @@ export const contactFormRouter = router({
 					const getMessage = () => {
 						let message = _input.message
 						message = message.replace(/\n/g, '<br />')
-						message = sanitizeHtml(message)
+						message = xss(message)
 						return message
 					}
 
