@@ -6,9 +6,9 @@
 			:style="{ height: `calc(100% - ${offset * 2}px)`, top: `${offset}px` }"
 			:class="{ 'bg-frost-2 backdrop-blur-md outline-border': isSticky }"></div>
 		<div
-			class="relative container flex flex-col md:flex-row justify-between md:items-center h-full gap-x-12 gap-y-2">
+			class="relative container flex flex-col md:flex-row justify-between md:items-center h-full gap-x-6 gap-y-2">
 			<div class="hidden md:flex md:order-1 flex-1 w-full md:w-fit">
-				<LayoutMenu menuId="dGVybTo5" class="flex gap-x-4 md:gap-x-7 gap-y-2 w-full flex-wrap" />
+				<LayoutMenu menuId="dGVybTo5" class="flex gap-x-4 lg:gap-x-7 gap-y-2 w-full flex-wrap" />
 			</div>
 
 			<NuxtLink
@@ -20,7 +20,7 @@
 			<div class="hidden md:flex md:order-3 flex-1 w-full md:w-fit">
 				<LayoutMenu
 					menuId="dGVybToxMQ=="
-					class="flex gap-x-4 md:gap-x-7 gap-y-2 justify-end w-full flex-wrap" />
+					class="flex gap-x-4 lg:gap-x-7 gap-y-2 justify-end w-full flex-wrap" />
 			</div>
 
 			<!-- Mobile only -->
