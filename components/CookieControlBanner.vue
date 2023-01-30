@@ -3,7 +3,7 @@
 		<template #bar>
 			<p class="PLike">
 				This website uses cookies to analyze site performance and to deliver an interactive experience. By
-				clicking ""<strong class="!font-bold">Accept all</strong>"", you consent to our
+				clicking "<strong class="!font-bold">Accept all</strong>", you consent to our
 				<NuxtLink :to="{ name: 'datenschutz' }" class="UILink">Cookie Policy</NuxtLink>. You may change your
 				settings at any time.
 			</p>
@@ -52,7 +52,7 @@
 			@apply md:right-6 md:bottom-6 w-full md:w-min;
 
 			.cookieControl__BarContainer {
-				@apply p-6;
+				@apply p-6 md:w-[24rem];
 
 				h3 {
 					@apply H3Like mb-2;
@@ -70,13 +70,18 @@
 			}
 
 			.cookieControl__BarButtons {
-				@apply UIButtonGroup mt-6;
+				@apply flex md:grid md:grid-cols-2 mt-6 gap-4 w-full;
 
 				button {
 					@apply m-0 flex-1;
 
-					&:nth-child(2) {
+					&:nth-child(2),
+					&:nth-child(3) {
 						@apply UIButton-secondary;
+					}
+
+					&:nth-child(3) {
+						@apply md:col-span-2;
 					}
 				}
 			}
@@ -97,14 +102,14 @@
 			& > div {
 				@apply h-full flex flex-col overflow-y-scroll;
 
-				/* This is the `required` section. Since we don't have cookies required, it would be emopty. */
-				& > div:nth-child(2) {
-					@apply hidden;
-				}
-
-				/* This is the `optional` section. */
+				& > div:nth-child(2),
 				& > div:nth-child(3) {
 					@apply px-6 md:px-10 flex-1;
+				}
+
+				/* This is the `required` section. */
+				& > div:nth-child(2) {
+					@apply mb-12;
 				}
 
 				.cookieControl__ModalInputWrapper {
