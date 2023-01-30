@@ -67,7 +67,7 @@
 
 @layer base {
 	html {
-		@apply font-display  scroll-smooth text-gray-700 accent-accent-700 underline-offset-2;
+		@apply font-display scroll-smooth text-gray-body accent-accent-700 underline-offset-2;
 		font-size: 0.875rem;
 	}
 

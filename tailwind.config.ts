@@ -1,5 +1,6 @@
 import type { Config } from 'tailwindcss'
 import defaultTheme from 'tailwindcss/defaultTheme'
+import colors from 'tailwindcss/colors'
 
 export default <Partial<Config>>{
 	future: {
@@ -25,6 +26,9 @@ export default <Partial<Config>>{
 			colors: {
 				accent: {
 					700: '#2A5ACB',
+				},
+				gray: {
+					body: colors.gray[700],
 				},
 			},
 			borderColor: {

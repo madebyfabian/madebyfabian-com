@@ -18,7 +18,9 @@
 <style lang="postcss">
 	.cookieControl {
 		* {
-			font: inherit;
+			font-family: inherit;
+			line-height: inherit;
+			font-size: inherit;
 		}
 
 		p,
@@ -31,6 +33,10 @@
 
 		button {
 			@apply UIButton;
+
+			&:hover {
+				@apply text-white;
+			}
 		}
 
 		.cookieControl__ControlButton {
@@ -61,12 +67,6 @@
 				p {
 					@apply m-0 w-full max-w-none;
 				}
-
-				div:first-of-type {
-					* {
-						@apply !text-inherit;
-					}
-				}
 			}
 
 			.cookieControl__BarButtons {
@@ -87,8 +87,19 @@
 			}
 		}
 
+		.cookieControl__Modal {
+			&:after {
+				@apply bg-gray-800/75;
+			}
+		}
+
+		.cookieControl__ModalCookieName {
+			@apply normal-case;
+		}
+
 		.cookieControl__ModalContent {
 			@apply md:rounded-2xl px-0 pb-0 overflow-hidden;
+			@apply bg-white text-gray-body;
 
 			.cookieControl__ModalClose {
 				@apply UIButton-secondary;
@@ -118,6 +129,10 @@
 
 						/* Fixes issue where hidden label is displayed. */
 						font-size: 0 !important;
+
+						&:before {
+							@apply bg-white;
+						}
 					}
 
 					input:checked + label {

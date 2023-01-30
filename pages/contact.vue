@@ -53,7 +53,7 @@
 				Your message has been sent!
 			</div>
 			<div v-if="state.status === 'error'" class="mt-8 text-red-700 font-bold">An error occurred!</div>
-			<div v-if="state.status === 'pending'" class="mt-8 text-gray-700 font-bold">Please wait...</div>
+			<div v-if="state.status === 'pending'" class="mt-8 text-gray-body font-bold">Please wait...</div>
 		</ClientOnly>
 	</LayoutPage>
 </template>

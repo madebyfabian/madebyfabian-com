@@ -15,6 +15,7 @@ export const cookieConfig: Partial<ModuleOptions> & {
 		optional: CookieEntry[]
 	}
 } = {
+	colors: false,
 	barPosition: 'bottom-right',
 	locales: [locale],
 	isCssPolyfillEnabled: false,
