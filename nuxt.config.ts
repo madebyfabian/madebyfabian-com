@@ -16,6 +16,7 @@ export default defineNuxtConfig({
 		'@nuxtjs/turnstile',
 		'nuxt-typed-router',
 		'@dargmuesli/nuxt-cookie-control',
+		'nuxt-calendly',
 	],
 
 	runtimeConfig: {

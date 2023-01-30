@@ -1,8 +1,11 @@
 <template>
 	<LayoutPage hasH1 :uri="uri">
 		<ClientOnly>
+			<Calendly />
+
 			<form @submit.prevent="send">
-				<div class="flex gap-6 flex-col mt-12">
+				<h2 class="H3Like">Or send me some words</h2>
+				<div class="flex gap-6 flex-col mt-8">
 					<div class="flex flex-col md:flex-row gap-6">
 						<input
 							type="text"
@@ -60,7 +63,7 @@
 	const route = useRoute('contact')
 	const uri = computed(() => route.fullPath)
 
-	const turnstileIsPermitted = computed(() => useIsCookiePermitted('cloudflareTurnstile'))
+	const turnstileIsPermitted = computed(() => useIsCookiePermitted('cloudflare'))
 	const turnstileRef = ref()
 	const turnstileToken = ref()
 	const turnstileIsDone = computed(() => {
