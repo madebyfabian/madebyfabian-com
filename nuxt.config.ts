@@ -28,6 +28,7 @@ export default defineNuxtConfig({
 			wpHost: '',
 			isProduction: process.env.NODE_ENV === 'production',
 			isVercelProduction: process.env.VERCEL_ENV === 'production',
+			calendlyUrl: '',
 
 			// nuxt-seo-kit
 			siteUrl: '',
