@@ -33,10 +33,6 @@
 
 		button {
 			@apply UIButton;
-
-			&:hover {
-				@apply text-white;
-			}
 		}
 
 		.cookieControl__ControlButton {
@@ -49,6 +45,15 @@
 
 			svg {
 				@apply text-inherit;
+			}
+		}
+
+		.cookieControl__Bar,
+		.cookieControl__Modal {
+			button:not(.cookieControl__ModalClose) {
+				&:hover {
+					@apply text-white;
+				}
 			}
 		}
 
