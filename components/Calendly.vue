@@ -16,13 +16,12 @@
 </template>
 
 <script setup lang="ts">
+	const calendly = useCalendly()
+
 	const calendlyIsPermitted = computed(() => useIsCookiePermitted('calendly'))
 
 	const handleOpen = () => {
 		if (!process.client) return
-
-		const calendly = (window as any).Calendly
-		if (!calendly) return
 
 		calendly.initPopupWidget({
 			url: 'https://calendly.com/madebyfabian/30min',
