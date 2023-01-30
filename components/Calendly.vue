@@ -16,6 +16,7 @@
 </template>
 
 <script setup lang="ts">
+	const runtimeConfig = useRuntimeConfig()
 	const calendly = useCalendly()
 
 	const calendlyIsPermitted = computed(() => useIsCookiePermitted('calendly'))
@@ -24,7 +25,7 @@
 		if (!process.client) return
 
 		calendly.initPopupWidget({
-			url: 'https://calendly.com/madebyfabian/30min',
+			url: runtimeConfig.public.calendlyUrl,
 		})
 	}
 </script>
