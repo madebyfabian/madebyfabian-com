@@ -10,3 +10,5 @@ dist
 
 # Generated types
 types/gen
+public/nuxt-calendly
+public/_nuxt/nuxt-calendly

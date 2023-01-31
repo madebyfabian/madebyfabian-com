@@ -5,7 +5,7 @@
 		"start:nuxt": "nuxt dev",
 		"start:gql": "graphql-codegen --watch",
 		"build": "graphql-codegen && nuxt build",
-		"preview:prod": "nuxt preview",
+		"preview": "nuxt preview",
 		"typecheck": "nuxt typecheck",
 		"postinstall": "nuxt prepare"
 	},
@@ -18,7 +18,7 @@
 		"@nuxtjs/turnstile": "^0.1.3",
 		"npm-run-all": "^4.1.5",
 		"nuxt": "^3.1.1",
-		"nuxt-calendly": "^0.1.5",
+		"nuxt-calendly": "^0.1.7",
 		"nuxt-seo-kit": "^1.1.4",
 		"typescript": "^4.9.4",
 		"ufo": "^1.0.1",
