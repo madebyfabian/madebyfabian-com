@@ -4,7 +4,7 @@
 			v-for="item of data"
 			:key="item.id"
 			:to="(item.uri as string)"
-			class="my-6 outline-border rounded-box flex flex-col md:flex-row overflow-hidden bg-frost-2">
+			class="UICard my-6 flex flex-col md:flex-row">
 			<div
 				class="w-full h-[144px] md:h-auto md:w-[224px] shrink-0 bg-gradient-to-b from-gray-50 to-gray-100 flex items-center justify-center">
 				<NuxtImg

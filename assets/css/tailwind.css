@@ -43,17 +43,7 @@
 	}
 
 	.PreLike {
-		@apply bg-frost-2 shadow-inner outline-border p-4 rounded-box text-sm overflow-x-auto;
-	}
-
-	.outline-border {
-		@apply outline outline-1;
-		outline-color: theme('borderColor.DEFAULT');
-	}
-
-	.outline-border-2 {
-		@apply outline outline-2;
-		outline-color: theme('borderColor.DEFAULT');
+		@apply bg-frost-2 shadow-border-and-inner p-4 rounded-box text-sm overflow-x-auto;
 	}
 
 	.bg-frost {
@@ -145,7 +135,23 @@
 
 	.UIButton-secondary {
 		@apply bg-frost text-accent-700 shadow-sm;
-		@apply outline-border;
+		@apply shadow-border;
 		@apply hover:bg-gray-50;
+	}
+
+	.UIInput {
+		@apply block w-full px-4 bg-frost-2 shadow-border rounded-xl;
+	}
+
+	.UIInput[type='text'] {
+		@apply h-12;
+	}
+
+	textarea.UIInput {
+		@apply py-3;
+	}
+
+	.UICard {
+		@apply bg-frost-2 shadow-border rounded-xl overflow-hidden;
 	}
 }

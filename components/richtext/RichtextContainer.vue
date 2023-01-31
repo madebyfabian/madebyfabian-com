@@ -55,7 +55,7 @@
 			}
 
 			code {
-				@apply bg-frost-2 outline-border px-1 mx-0.5 rounded text-sm align-baseline font-bold inline-block;
+				@apply bg-frost-2 shadow-border px-1 mx-0.5 rounded text-sm align-baseline font-bold inline-block;
 			}
 		}
 

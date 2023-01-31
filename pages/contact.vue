@@ -7,25 +7,10 @@
 				<h2 class="H3Like">Or send me some words</h2>
 				<div class="flex gap-6 flex-col mt-8">
 					<div class="flex flex-col md:flex-row gap-6">
-						<input
-							type="text"
-							placeholder="Name"
-							v-model="state.form.name"
-							required
-							class="block w-full h-12 px-4 bg-frost-2 outline-border rounded-xl" />
-						<input
-							type="email"
-							placeholder="Email"
-							v-model="state.form.email"
-							required
-							class="block w-full h-12 px-4 bg-frost-2 outline-border rounded-xl" />
+						<input type="text" placeholder="Name" v-model="state.form.name" required class="UIInput" />
+						<input type="email" placeholder="Email" v-model="state.form.email" required class="UIInput" />
 					</div>
-					<textarea
-						placeholder="Message"
-						v-model="state.form.message"
-						required
-						rows="5"
-						class="block w-full py-3 px-4 bg-frost-2 outline-border rounded-xl overflow-hidden" />
+					<textarea placeholder="Message" v-model="state.form.message" required rows="5" class="UIInput" />
 				</div>
 
 				<div class="flex justify-between flex-wrap gap-8 my-8">

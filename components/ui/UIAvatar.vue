@@ -1,5 +1,5 @@
 <template>
-	<div class="UIAvatar shrink-0 flex items-center justify-center shadow-inner outline-border overflow-hidden">
+	<div class="UIAvatar shrink-0 flex items-center justify-center shadow-border-and-inner overflow-hidden">
 		<NuxtImg
 			v-if="!notFound && url"
 			:src="url || undefined"

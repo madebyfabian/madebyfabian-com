@@ -3,7 +3,7 @@
 		<div
 			aria-hidden="true"
 			class="LayoutHeader-underlay hidden md:block absolute left-0 top-0 right-0 w-full transition"
-			:class="{ 'bg-frost-2 backdrop-blur-md outline-border': isSticky }"></div>
+			:class="{ 'bg-frost-2 backdrop-blur-md shadow-border': isSticky }"></div>
 		<div
 			class="relative container flex flex-col md:flex-row justify-between md:items-center h-full gap-x-6 gap-y-2">
 			<div class="hidden md:flex md:order-1 flex-1 w-full md:w-fit">

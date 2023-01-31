@@ -36,12 +36,12 @@
 		}
 
 		.cookieControl__ControlButton {
-			@apply UIButton-secondary right-4 bottom-4 md:right-8 md:bottom-8;
+			@apply UIButton-secondary !shadow-border-2-and-shadow-lg right-4 bottom-4 md:right-8 md:bottom-8;
 		}
 
 		.cookieControl__ControlButton,
 		.cookieControl__Bar {
-			@apply bg-white shadow-lg;
+			@apply bg-white;
 
 			svg {
 				@apply text-inherit;
@@ -58,8 +58,8 @@
 		}
 
 		.cookieControl__Bar {
-			@apply border-t-2 md:border-0 md:outline-border-2;
-			@apply md:rounded-box shadow-xl;
+			@apply border-t-2 md:border-0 md:shadow-border-2;
+			@apply md:rounded-box shadow-border-2-and-shadow-xl;
 			@apply md:right-6 md:bottom-6 w-full md:w-min;
 
 			.cookieControl__BarContainer {

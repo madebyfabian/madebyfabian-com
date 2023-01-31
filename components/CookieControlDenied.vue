@@ -8,7 +8,7 @@
 
 <style lang="postcss">
 	.cookieControl__BlockedIframe {
-		@apply outline-border border-0 rounded-box p-6;
+		@apply shadow-border border-0 rounded-box p-6;
 
 		* {
 			font: inherit !important;
