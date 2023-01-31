@@ -7,7 +7,8 @@
 		"build": "graphql-codegen && nuxt build",
 		"preview": "nuxt preview",
 		"typecheck": "nuxt typecheck",
-		"postinstall": "nuxt prepare"
+		"postinstall": "nuxt prepare",
+		"analyze": "nuxt analyze"
 	},
 	"devDependencies": {
 		"@dargmuesli/nuxt-cookie-control": "^4.0.3",
