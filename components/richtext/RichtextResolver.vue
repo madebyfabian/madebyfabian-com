@@ -30,50 +30,27 @@
 <script lang="ts" setup>
 	import type { InnerBlocksDefault, BlockDefault, ItemBase } from '@/types'
 
-	import {
-		RichtextCoreButton,
-		RichtextCoreButtons,
-		RichtextCoreCode,
-		RichtextCoreColumn,
-		RichtextCoreColumns,
-		RichtextCoreHeading,
-		LazyRichtextCoreImage,
-		RichtextCoreList,
-		RichtextCoreListItem,
-		RichtextCoreParagraph,
-		RichtextCoreSeperator,
-		RichtextCoreSpacer,
-
-		// lazyblock
-		RichtextLazyblockTeaser,
-		RichtextLazyblockFaqGroup,
-		RichtextLazyblockFaqItem,
-
-		// matomo
-		RichtextMatamoOptOut,
-	} from '#components'
-
 	const components = {
-		'core/button': RichtextCoreButton,
-		'core/buttons': RichtextCoreButtons,
-		'core/code': RichtextCoreCode,
-		'core/column': RichtextCoreColumn,
-		'core/columns': RichtextCoreColumns,
-		'core/heading': RichtextCoreHeading,
-		'core/image': LazyRichtextCoreImage,
-		'core/list': RichtextCoreList,
-		'core/list-item': RichtextCoreListItem,
-		'core/paragraph': RichtextCoreParagraph,
-		'core/separator': RichtextCoreSeperator,
-		'core/spacer': RichtextCoreSpacer,
+		'core/button': resolveComponent('RichtextCoreButton'),
+		'core/buttons': resolveComponent('RichtextCoreButtons'),
+		'core/code': resolveComponent('RichtextCoreCode'),
+		'core/column': resolveComponent('RichtextCoreColumn'),
+		'core/columns': resolveComponent('RichtextCoreColumns'),
+		'core/heading': resolveComponent('RichtextCoreHeading'),
+		'core/image': resolveComponent('LazyRichtextCoreImage'),
+		'core/list': resolveComponent('RichtextCoreList'),
+		'core/list-item': resolveComponent('RichtextCoreListItem'),
+		'core/paragraph': resolveComponent('RichtextCoreParagraph'),
+		'core/separator': resolveComponent('RichtextCoreSeperator'),
+		'core/spacer': resolveComponent('RichtextCoreSpacer'),
 
 		// lazyblock
-		'lazyblock/richtext-teaser': RichtextLazyblockTeaser,
-		'lazyblock/faq-group': RichtextLazyblockFaqGroup,
-		'lazyblock/faq-item': RichtextLazyblockFaqItem,
+		'lazyblock/richtext-teaser': resolveComponent('RichtextLazyblockTeaser'),
+		'lazyblock/faq-group': resolveComponent('RichtextLazyblockFaqGroup'),
+		'lazyblock/faq-item': resolveComponent('RichtextLazyblockFaqItem'),
 
 		// matomo
-		'matomo/matomo-opt-out': RichtextMatamoOptOut,
+		'matomo/matomo-opt-out': resolveComponent('RichtextMatamoOptOut'),
 	}
 
 	const props = defineProps<{
