@@ -14,13 +14,12 @@
 				:to="{ name: 'index' }"
 				title="Home Page"
 				class="mb-1 md:m-0 text-2xl md:order-2 font-bold tracking-[-0.085rem] block relative transition-opacity hover:opacity-75">
-				<NuxtImg
-					src="/images/logo.svg"
+				<UIImage
+					src="/wp-content/uploads/2023/02/logo.svg"
 					alt="Logo"
-					:height="40"
-					:width="40"
-					:style="{ top: '-2px', left: '-16px' }"
-					class="absolute" />
+					class="absolute h-10 w-10 -top-0.5 -left-4"
+					:path="'wordpress-madebyfabian'"
+					eager />
 				<span class="relative">madebyfabian<span class="text-accent-700 tracking-[-0.085rem]">.com</span></span>
 			</NuxtLink>
 

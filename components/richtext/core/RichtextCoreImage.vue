@@ -1,13 +1,14 @@
 <template>
 	<figure class="RichtextCoreImage" :id="id">
 		<component :is="props.attributes?.href ? 'a' : 'div'" v-bind="containerProps">
-			<NuxtImg
-				class="rounded-box shadow-inner h-auto w-full select-none"
-				:height="mediaData.mediaDetails.height"
-				:width="mediaData.mediaDetails.width"
-				:alt="props.attributes?.alt || ''"
-				:src="props.attributes?.url || undefined"
-				sizes="lg:720px" />
+			<UIImage
+				v-if="props.attributes?.url"
+				:src="props.attributes.url"
+				:alt="alt"
+				:intrinsic="size"
+				:ratio="size"
+				:path="'wordpress-madebyfabian'"
+				class="rounded-box shadow-inner select-none" />
 		</component>
 
 		<figcaption v-if="caption" class="text-center mt-2" v-html="caption" />
@@ -46,13 +47,22 @@
 		return mediaData.value.caption || mediaData.value.description || undefined
 	})
 
+	const size = computed(() => {
+		return mediaData.value?.mediaDetails
+			? { width: mediaData.value.mediaDetails.width, height: mediaData.value.mediaDetails.height }
+			: undefined
+	})
+
 	const id = computed(() => props.attributes?.anchor || undefined)
 
 	const isLink = computed(() => !!props.attributes?.href)
+	const alt = computed(() => {
+		return props.attributes?.alt || props.attributes?.title || ''
+	})
 	const containerProps = computed(() => ({
 		href: props.attributes?.href || undefined,
 		target: props.attributes?.linkTarget || undefined,
-		title: props.attributes?.title || 'Decorative Image',
+		title: alt.value,
 		rel: props.attributes?.rel || undefined,
 		class: isLink.value ? 'block' : undefined,
 	}))

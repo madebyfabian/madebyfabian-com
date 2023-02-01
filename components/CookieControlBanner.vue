@@ -12,7 +12,7 @@
 </template>
 
 <script lang="ts" setup>
-	import { locale } from '@/cookieConfig'
+	import { locale } from '@/config'
 </script>
 
 <style lang="postcss">

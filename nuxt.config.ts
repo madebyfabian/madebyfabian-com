@@ -1,5 +1,6 @@
 import { generateSitemap } from './generateSitemap'
-import { cookieConfig } from './cookieConfig'
+import { cookieConfig, generateTwicpicsConfig } from './config'
+import { withHttps } from 'ufo'
 
 const globalConfig = {
 	language: 'en-US',
@@ -12,11 +13,11 @@ export default defineNuxtConfig({
 	modules: [
 		'@vueuse/nuxt',
 		'@nuxtjs/tailwindcss',
-		'@nuxt/image-edge',
 		'@nuxtjs/turnstile',
 		'nuxt-typed-router',
 		'@dargmuesli/nuxt-cookie-control',
 		'nuxt-calendly',
+		'@twicpics/components/nuxt3',
 	],
 
 	runtimeConfig: {
@@ -32,6 +33,13 @@ export default defineNuxtConfig({
 			isProduction: process.env.NODE_ENV === 'production',
 			isVercelProduction: process.env.VERCEL_ENV === 'production',
 			calendlyUrl: '',
+			twicpicsDomain: '',
+			twicpicsConfig: generateTwicpicsConfig([
+				{
+					path: '/wordpress-madebyfabian/',
+					source: withHttps(process.env.NUXT_PUBLIC_WP_HOST as string),
+				},
+			]),
 
 			// nuxt-seo-kit
 			siteUrl: '',
@@ -55,14 +63,9 @@ export default defineNuxtConfig({
 		urls: generateSitemap,
 	},
 
-	// @nuxt/image-edge
-	image: {
-		provider: process.env.VERCEL_ENV ? 'vercel' : 'ipx',
-		domains: [process.env.NUXT_PUBLIC_WP_HOST as string, 'secure.gravatar.com'],
-		screens: {
-			'md': 768,
-			'lg': 1024,
-		},
+	// @twicpics/components/nuxt3
+	twicpics: {
+		domain: process.env.NUXT_PUBLIC_TWICPICS_DOMAIN,
 	},
 
 	// @nuxtjs/turnstile

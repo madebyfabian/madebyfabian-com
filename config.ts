@@ -1,5 +1,28 @@
 import type { Cookie, ModuleOptions, Locale } from '@dargmuesli/nuxt-cookie-control/dist/runtime/types'
 
+// --- TwicPics ---
+
+export type TwicpicsConfig = {
+	paths: {
+		path: string
+		source: string
+	}[]
+}
+
+export const generateTwicpicsConfig = (paths: TwicpicsConfig['paths']): TwicpicsConfig => {
+	return {
+		paths: [
+			...paths,
+			{
+				path: '/gravatar/',
+				source: 'https://secure.gravatar.com/',
+			},
+		],
+	}
+}
+
+// --- Cookie ---
+
 export const cookieIds = ['cookieControl', 'cloudflare', 'calendly'] as const
 export const locale: Locale = 'en'
 

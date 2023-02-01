@@ -23,7 +23,7 @@ NUXT_PUBLIC_SITE_URL_PREVIEW="https://example-preview.vercel.app"
 NUXT_PUBLIC_TURNSTILE_SITE_KEY="xxx"
 NUXT_PUBLIC_WP_HOST="example.com" # WordPress Installation host, e.g. mywordpressbackend.com
 NUXT_PUBLIC_CALENDLY_URL="https://calendly.com/xxx/30min"
-NUXT_TWICPICS_DOMAIN="https://example.twic.pics"
+NUXT_PUBLIC_TWICPICS_DOMAIN="https://example.twic.pics/"
 ```
 
 3. Create a `vercel.json` file in the root of your project, with the following content:

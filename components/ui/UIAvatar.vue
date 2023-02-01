@@ -1,16 +1,16 @@
 <template>
-	<div class="UIAvatar shrink-0 flex items-center justify-center shadow-border-and-inner overflow-hidden">
-		<NuxtImg
-			v-if="!notFound && url"
+	<div class="UIAvatar shrink-0 shadow-border-and-inner overflow-hidden">
+		<UIImage
 			:src="url || undefined"
-			fit="cover"
-			class="object-cover object-center"
+			:style="{ width: `${props.size}px`, height: `${props.size}px` }"
 			:alt="name || ''"
-			:height="size"
-			:width="size"
-			:sizes="`lg:${size * 2}`" />
-
-		<span v-else class="text-2xl">🙋</span>
+			:path="'gravatar'">
+			<template #fallback>
+				<div class="flex items-center justify-center bg-gradient-to-b from-gray-50 to-gray-100">
+					<span class="text-2xl">🙋</span>
+				</div>
+			</template>
+		</UIImage>
 	</div>
 </template>
 

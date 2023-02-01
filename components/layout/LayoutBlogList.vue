@@ -5,19 +5,18 @@
 			:key="item.id"
 			:to="(item.uri as string)"
 			class="UICard my-6 flex flex-col md:flex-row">
-			<div
-				class="w-full h-[144px] md:h-auto md:w-[224px] shrink-0 bg-gradient-to-b from-gray-50 to-gray-100 flex items-center justify-center">
-				<NuxtImg
-					v-if="item?.featuredImage?.node"
-					fit="cover"
-					class="w-full h-full object-cover object-center"
-					:height="144"
-					:width="224"
-					:alt="item.featuredImage?.node.altText || ''"
-					:src="item.featuredImage?.node.sourceUrl || undefined"
-					:sizes="`lg:${224 * 1.5}`" />
-
-				<span v-else class="text-3xl">🏡</span>
+			<div class="shrink-0">
+				<UIImage
+					:src="item.featuredImage?.node?.sourceUrl || undefined"
+					:alt="item.featuredImage?.node?.altText || ''"
+					:path="'wordpress-madebyfabian'"
+					class="w-full md:w-[296px] h-56 md:h-full">
+					<template #fallback>
+						<div class="flex items-center justify-center bg-gradient-to-b from-gray-50 to-gray-100">
+							<span class="text-3xl">🏡</span>
+						</div>
+					</template>
+				</UIImage>
 			</div>
 
 			<div class="p-6">
