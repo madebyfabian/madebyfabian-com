@@ -23,6 +23,8 @@ export default defineNuxtConfig({
 		turnstile: {
 			secretKey: process.env.NUXT_TURNSTILE_SECRET_KEY || '',
 		},
+		gqlHost: process.env.NUXT_GQL_HOST || '',
+		gqlToken: process.env.NUXT_GQL_TOKEN || '',
 		public: {
 			siteUrlPreview: '',
 			siteUrlProd: '',

@@ -9,11 +9,11 @@ const sitemapDefaults: Pick<SitemapItemLoose, 'changefreq' | 'priority'> = {
 
 export const generateSitemap = async () => {
 	try {
-		const graphqlBase = process.env.GQL_HOST
-		const graphqlToken = process.env.GQL_TOKEN
+		const graphqlBase = process.env.NUXT_GQL_HOST
+		const graphqlToken = process.env.NUXT_GQL_TOKEN
 		const siteUrl = process.env.NUXT_PUBLIC_SITE_URL
 		if (!graphqlBase || !graphqlToken || !siteUrl)
-			throw new Error('GQL_HOST or GQL_TOKEN or NUXT_PUBLIC_SITE_URL is not defined')
+			throw new Error('GNUXT_QL_HOST or NUXT_GQL_TOKEN or NUXT_PUBLIC_SITE_URL is not defined')
 
 		const req = await fetch(graphqlBase, {
 			method: 'POST',

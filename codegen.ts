@@ -4,9 +4,9 @@ dotenv.config()
 
 const config: CodegenConfig = {
 	schema: {
-		[process.env.GQL_HOST as string]: {
+		[process.env.NUXT_GQL_HOST as string]: {
 			headers: {
-				'Authorization': process.env.GQL_TOKEN,
+				'Authorization': process.env.NUXT_GQL_TOKEN,
 			},
 		},
 	} as any,
