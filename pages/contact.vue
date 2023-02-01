@@ -13,25 +13,25 @@
 					<textarea placeholder="Message" v-model="state.form.message" required rows="5" class="UIInput" />
 				</div>
 
-				<div class="flex justify-between flex-wrap gap-8 my-8">
-					<p class="PLike">
-						By submitting this form,<br />you agree to the
-						<NuxtLink :to="{ name: 'datenschutz' }" target="_blank" class="UILink">Privacy Policy</NuxtLink
-						>.
-					</p>
+				<div class="flex justify-between flex-wrap gap-8 mt-8 mb-4">
+					<div class="order-2 md:order-1">
+						<Turnstile
+							v-if="turnstileIsPermitted"
+							ref="turnstileRef"
+							v-model="turnstileToken"
+							:options="{
+								theme: 'light',
+							}" />
 
-					<button :disabled="!turnstileIsDone" class="w-full md:w-[33%] UIButton">Send!</button>
+						<CookieControlDenied v-else />
+
+						<PrivacyNotice actionLabel="submitting this form" />
+					</div>
+
+					<button :disabled="!turnstileIsDone" class="order-1 md:order-2 w-full md:w-[33%] UIButton">
+						Send!
+					</button>
 				</div>
-
-				<Turnstile
-					v-if="turnstileIsPermitted"
-					ref="turnstileRef"
-					v-model="turnstileToken"
-					:options="{
-						theme: 'light',
-					}" />
-
-				<CookieControlDenied v-else />
 			</form>
 
 			<div v-if="state.status === 'success'" class="mt-8 text-green-700 font-bold">

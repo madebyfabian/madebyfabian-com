@@ -42,6 +42,10 @@
 		@apply text-lg font-normal leading-relaxed;
 	}
 
+	.PSmallLike {
+		@apply text-sm font-normal;
+	}
+
 	.PreLike {
 		@apply bg-frost-2 shadow-border-and-inner p-4 rounded-box text-sm overflow-x-auto;
 	}
@@ -143,12 +147,12 @@
 		@apply block w-full px-4 bg-frost-2 shadow-border rounded-xl;
 	}
 
-	.UIInput[type='text'] {
+	.UIInput {
 		@apply h-12;
 	}
 
 	textarea.UIInput {
-		@apply py-3;
+		@apply h-auto py-3;
 	}
 
 	.UICard {
