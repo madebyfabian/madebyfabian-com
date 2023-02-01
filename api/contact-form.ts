@@ -1,7 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
-import { GraphQLClient } from 'graphql-request'
+import { GraphQLClient, gql as gqlUntyped } from 'graphql-request'
 import { z } from 'zod'
-export { graphql as gql } from '@/types/gen/graphql'
 
 const graphQLClient = new GraphQLClient(process.env.NUXT_GQL_HOST || '', {
 	headers: {
@@ -10,13 +9,13 @@ const graphQLClient = new GraphQLClient(process.env.NUXT_GQL_HOST || '', {
 })
 
 const getContactFormEmail = async () => {
-	const query = gql(/* GraphQL */ `
+	const query = gqlUntyped/* GraphQL */ `
 		query AdminEmail {
 			allSettings {
 				generalSettingsEmail
 			}
 		}
-	`)
+	`
 	return graphQLClient.request(query)
 }
 
