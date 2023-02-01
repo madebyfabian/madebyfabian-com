@@ -1,5 +1,6 @@
 import { defineNuxtPlugin } from '#app'
 import VueMatomo from 'vue-matomo'
+import { withHttps } from 'ufo'
 
 export default defineNuxtPlugin(nuxtApp => {
 	const runtimeConfig = useRuntimeConfig()
@@ -9,7 +10,7 @@ export default defineNuxtPlugin(nuxtApp => {
 	if (!runtimeConfig.public.isVercelProduction) return
 
 	nuxtApp.vueApp.use(VueMatomo, {
-		host: `https://${wpHost}`,
+		host: withHttps(wpHost),
 		siteId: 1,
 		router: nuxtApp.$router,
 		enableLinkTracking: true,
