@@ -1,4 +1,5 @@
 {
+	"devCommand": "npm start",
 	"rewrites": [
 		{
 			"source": "/_mtmo/t",

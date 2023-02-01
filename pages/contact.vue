@@ -71,11 +71,14 @@
 
 			if (!turnstileToken.value) throw new Error('No turnstile token')
 
-			const res = await $client.contactForm.send.mutate({
-				name: state.form.name,
-				email: state.form.email,
-				message: state.form.message,
-				turnstileToken: turnstileToken.value,
+			const res = await $fetch('/api/contact-form', {
+				method: 'POST',
+				body: {
+					name: state.form.name,
+					email: state.form.email,
+					message: state.form.message,
+					turnstileToken: turnstileToken.value,
+				},
 			})
 
 			if (res.sendEmail?.sent) {
