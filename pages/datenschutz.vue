@@ -1,5 +1,5 @@
 <template>
-	<LayoutPage hasH1 :uri="uri"> X </LayoutPage>
+	<LayoutPage hasH1 :uri="uri" />
 </template>
 
 <script lang="ts" setup>

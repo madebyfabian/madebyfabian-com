@@ -41,6 +41,7 @@
 		'core/list': resolveComponent('RichtextCoreList'),
 		'core/list-item': resolveComponent('RichtextCoreListItem'),
 		'core/paragraph': resolveComponent('RichtextCoreParagraph'),
+		'core/quote': resolveComponent('RichtextCoreQuote'),
 		'core/separator': resolveComponent('RichtextCoreSeperator'),
 		'core/spacer': resolveComponent('RichtextCoreSpacer'),
 

@@ -1,6 +1,7 @@
 import type { Config } from 'tailwindcss'
 import defaultTheme from 'tailwindcss/defaultTheme'
 import colors from 'tailwindcss/colors'
+import plugin from 'tailwindcss/plugin'
 
 const borderColorDefault = 'rgb(31 41 55 / 0.1)' // border-gray-800/10
 
@@ -8,6 +9,14 @@ export default <Partial<Config>>{
 	future: {
 		hoverOnlyWhenSupported: true,
 	},
+
+	// vue-wrap-balancer adds a `<script>` after elements, that's
+	// why we need to override the default :last-child selector
+	plugins: [
+		plugin(({ addVariant }) => {
+			addVariant('last', ['&:last-child', '&:has(+ script:last-child)'])
+		}),
+	],
 
 	theme: {
 		container: {
