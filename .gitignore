@@ -10,3 +10,4 @@ dist
 
 # Generated types
 types/gen
+.vercel
