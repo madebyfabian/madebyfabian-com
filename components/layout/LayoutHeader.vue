@@ -1,37 +1,44 @@
 <template>
-	<header class="LayoutHeader z-10 py-6 md:py-14 mb-12 md:sticky">
+	<header class="LayoutHeader z-10 py-6 lg:py-14 mb-8 lg:mb-12 sticky">
 		<div
 			aria-hidden="true"
-			class="LayoutHeader-underlay hidden md:block absolute left-0 top-0 right-0 w-full transition"
-			:class="{ 'bg-frost-2 backdrop-blur-md shadow-border': isSticky }"></div>
-		<div
-			class="relative container flex flex-col md:flex-row justify-between md:items-center h-full gap-x-6 gap-y-2">
-			<div class="hidden md:flex md:order-1 flex-1 w-full md:w-fit">
-				<LayoutMenu menuId="dGVybTo5" class="flex gap-x-4 lg:gap-x-7 gap-y-2 w-full flex-wrap" />
+			class="LayoutHeader-underlay absolute left-0 top-0 right-0 w-full transition"
+			:class="{ 'bg-frost-2 backdrop-blur-md shadow-border': isSticky }" />
+
+		<div class="relative container grid grid-cols-1 lg:grid-cols-[1fr_0_1fr] h-full gap-x-6">
+			<!-- Desktop only, left side -->
+
+			<LayoutMenu menuId="dGVybTo5" class="hidden lg:flex lg:w-fit flex-wrap" />
+
+			<!-- Logo, Desktop centered, mobile left -->
+			<div class="flex lg:justify-center">
+				<NuxtLink
+					:to="{ name: 'index' }"
+					title="Home Page"
+					:class="[
+						'relative flex mb-4 lg:m-0',
+						'scale-110 lg:scale-125 origin-left lg:origin-center',
+						'text-2xl font-bold tracking-[-0.085rem]',
+						'transition-opacity hover:opacity-75',
+					]">
+					<UIImage
+						src="/wp-content/uploads/2023/02/logo.svg"
+						alt="Logo"
+						class="absolute h-10 w-10 -top-0.5 -left-4"
+						:path="'wordpress-madebyfabian'"
+						eager />
+					<span class="relative"
+						>madebyfabian<span class="text-accent-700 tracking-[-0.085rem]">.com</span></span
+					>
+				</NuxtLink>
 			</div>
 
-			<NuxtLink
-				:to="{ name: 'index' }"
-				title="Home Page"
-				class="mb-1 md:m-0 text-2xl md:order-2 font-bold tracking-[-0.085rem] block relative transition-opacity hover:opacity-75">
-				<UIImage
-					src="/wp-content/uploads/2023/02/logo.svg"
-					alt="Logo"
-					class="absolute h-10 w-10 -top-0.5 -left-4"
-					:path="'wordpress-madebyfabian'"
-					eager />
-				<span class="relative">madebyfabian<span class="text-accent-700 tracking-[-0.085rem]">.com</span></span>
-			</NuxtLink>
-
-			<div class="hidden md:flex md:order-3 flex-1 w-full md:w-fit">
-				<LayoutMenu
-					menuId="dGVybToxMQ=="
-					class="flex gap-x-4 lg:gap-x-7 gap-y-2 justify-end w-full flex-wrap" />
-			</div>
+			<!-- Desktop only, right side -->
+			<LayoutMenu menuId="dGVybToxMQ==" class="hidden lg:flex w-full justify-end flex-wrap" />
 
 			<!-- Mobile only -->
-			<div class="LayoutHeader-mobile md:invisible md:sr-only overflow-x-scroll md:overflow-hidden -mx-5">
-				<LayoutMenu menuId="dGVybTo3" class="flex gap-x-5 w-full px-5 pr-5" />
+			<div class="LayoutHeader-mobile lg:invisible lg:sr-only overflow-x-scroll lg:overflow-hidden -mx-5 -mb-5">
+				<LayoutMenu menuId="dGVybTo3" class="flex w-full px-5 pr-5" />
 			</div>
 		</div>
 	</header>
@@ -39,10 +46,14 @@
 
 <script lang="ts" setup>
 	const { y } = useScroll(process.client ? window : undefined)
-	const offset = 28
-	const offsetPx = `${offset}px`
-	const offset2xPx = `${offset * 2}px`
-	const isSticky = computed(() => y.value >= offset)
+	const breakpoints = useTailwindBreakpoints()
+
+	const isLg = computed(() => breakpoints.lg.value)
+
+	const offset = computed(() => (isLg.value ? 28 : 0.1))
+	const offsetPx = `${offset.value}px`
+	const offset2xPx = `${offset.value * 2}px`
+	const isSticky = computed(() => y.value >= offset.value)
 </script>
 
 <style lang="postcss" scoped>

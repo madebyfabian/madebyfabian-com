@@ -5,6 +5,12 @@ import plugin from 'tailwindcss/plugin'
 
 const borderColorDefault = 'rgb(31 41 55 / 0.1)' // border-gray-800/10
 
+export const breakpoints = {
+	'sm': 640,
+	'md': 768,
+	'lg': 1024,
+}
+
 export default <Partial<Config>>{
 	future: {
 		hoverOnlyWhenSupported: true,
@@ -25,9 +31,9 @@ export default <Partial<Config>>{
 		},
 
 		screens: {
-			'sm': '640px',
-			'md': '768px',
-			'lg': '1024px',
+			'sm': `${breakpoints.sm}px`,
+			'md': `${breakpoints.md}px`,
+			'lg': `${breakpoints.lg}px`,
 		},
 
 		extend: {
