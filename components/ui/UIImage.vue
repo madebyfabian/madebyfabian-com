@@ -12,6 +12,7 @@
 			:class="props.class"
 			:alt="props.alt"
 			:eager="props.eager"
+			:mode="props.mode"
 			:intrinsic="props.intrinsic ? `${props.intrinsic.width}x${props.intrinsic.height}` : undefined"
 			v-bind="$attrs" />
 
@@ -37,6 +38,7 @@
 		class?: any
 		alt: string
 		eager?: boolean
+		mode?: 'contain' | 'cover'
 
 		/** the path behind https://example.twic.pics/THIS/ */
 		path: 'wordpress-madebyfabian' | 'gravatar'

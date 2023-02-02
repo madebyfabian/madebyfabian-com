@@ -1,6 +1,7 @@
 <template>
 	<WrapBalancerProvider>
-		<BgBlur />
+		<BgBlur position="topLeft" />
+		<BgBlur position="bottomRight" />
 		<SeoKit />
 		<div class="flex-1 flex flex-col relative">
 			<LayoutHeader />
