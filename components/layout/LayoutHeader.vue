@@ -45,10 +45,19 @@
 </template>
 
 <script lang="ts" setup>
+	import { useWindowSize } from '@vueuse/core'
 	const { y } = useScroll(process.client ? window : undefined)
 	const breakpoints = useTailwindBreakpoints()
+	const { width } = useWindowSize()
 
-	const isLg = computed(() => breakpoints.lg.value)
+	// Must be a function, otherwise it will be not called on windows width change.
+	const getIsLg = ({ windowWidth }: { windowWidth: number }) => {
+		return windowWidth ? breakpoints.lg.value : false
+	}
+
+	const isLg = computed(() => {
+		return getIsLg({ windowWidth: width.value })
+	})
 
 	const offset = computed(() => (isLg.value ? 28 : 0.1))
 	const offsetPx = `${offset.value}px`
