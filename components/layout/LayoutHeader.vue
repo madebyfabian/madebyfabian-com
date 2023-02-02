@@ -2,8 +2,13 @@
 	<header class="LayoutHeader z-10 py-6 lg:py-14 mb-8 lg:mb-12 sticky">
 		<div
 			aria-hidden="true"
-			class="LayoutHeader-underlay absolute left-0 top-0 right-0 w-full transition"
-			:class="{ 'bg-frost-2 backdrop-blur-md shadow-border': isSticky }" />
+			class="LayoutHeader-underlay"
+			:class="[
+				'transition bg-gradient-to-b from-white to-white/80 lg:to-white/60',
+				'backdrop-blur-lg shadow-border',
+				'absolute left-0 top-0 right-0 w-full',
+				isSticky ? 'opacity-100' : 'opacity-0',
+			]" />
 
 		<div class="relative container grid grid-cols-1 lg:grid-cols-[1fr_0_1fr] h-full gap-x-6">
 			<!-- Desktop only, left side -->
@@ -45,23 +50,16 @@
 </template>
 
 <script lang="ts" setup>
-	import { useWindowSize } from '@vueuse/core'
 	const { y } = useScroll(process.client ? window : undefined)
 	const breakpoints = useTailwindBreakpoints()
-	const { width } = useWindowSize()
-
-	// Must be a function, otherwise it will be not called on windows width change.
-	const getIsLg = ({ windowWidth }: { windowWidth: number }) => {
-		return windowWidth ? breakpoints.lg.value : false
-	}
 
 	const isLg = computed(() => {
-		return getIsLg({ windowWidth: width.value })
+		return breakpoints.lg.value
 	})
 
 	const offset = computed(() => (isLg.value ? 28 : 0.1))
-	const offsetPx = `${offset.value}px`
-	const offset2xPx = `${offset.value * 2}px`
+	const offsetPx = computed(() => `${offset.value}px`)
+	const offset2xPx = computed(() => `${offset.value * 2}px`)
 	const isSticky = computed(() => y.value >= offset.value)
 </script>
 
