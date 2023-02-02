@@ -57,6 +57,10 @@
 	.bg-frost-2 {
 		@apply bg-white/75;
 	}
+
+	.safari-overflow-fix {
+		transform: translateZ(0);
+	}
 }
 
 @layer base {
@@ -144,11 +148,7 @@
 	}
 
 	.UIInput {
-		@apply block w-full px-4 bg-frost-2 shadow-border rounded-xl;
-	}
-
-	.UIInput {
-		@apply h-12;
+		@apply h-12 appearance-none block w-full px-4 bg-frost-2 shadow-border rounded-xl;
 	}
 
 	textarea.UIInput {
@@ -156,6 +156,6 @@
 	}
 
 	.UICard {
-		@apply bg-frost-2 shadow-border rounded-xl overflow-hidden;
+		@apply bg-frost-2 shadow-border rounded-xl overflow-hidden safari-overflow-fix;
 	}
 }

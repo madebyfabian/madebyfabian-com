@@ -1,5 +1,5 @@
 <template>
-	<div class="UIAvatar shrink-0 shadow-border-and-inner overflow-hidden">
+	<div class="UIAvatar shrink-0 shadow-border-and-inner overflow-hidden relative safari-overflow-fix">
 		<UIImage
 			:src="url || undefined"
 			:style="{ width: `${props.size}px`, height: `${props.size}px` }"

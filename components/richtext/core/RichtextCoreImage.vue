@@ -8,7 +8,7 @@
 				:intrinsic="size"
 				:ratio="size"
 				:path="'wordpress-madebyfabian'"
-				class="rounded-box shadow-inner select-none" />
+				class="rounded-box safari-overflow-fix shadow-inner select-none" />
 		</component>
 
 		<figcaption v-if="caption" class="text-center mt-2" v-html="caption" />
