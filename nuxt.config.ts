@@ -22,18 +22,18 @@ export default defineNuxtConfig({
 
 	runtimeConfig: {
 		turnstile: {
-			secretKey: process.env.NUXT_TURNSTILE_SECRET_KEY || '',
+			secretKey: process.env.NUXT_TURNSTILE_SECRET_KEY,
 		},
-		gqlHost: process.env.NUXT_GQL_HOST || '',
-		gqlToken: process.env.NUXT_GQL_TOKEN || '',
+		gqlHost: process.env.NUXT_GQL_HOST,
+		gqlToken: process.env.NUXT_GQL_TOKEN,
 		public: {
-			siteUrlPreview: '',
-			siteUrlProd: '',
-			wpHost: '',
+			siteUrlPreview: process.env.NUXT_PUBLIC_SITE_URL_PREVIEW,
+			siteUrlProd: process.env.NUXT_PUBLIC_SITE_URL_PROD,
+			wpHost: process.env.NUXT_PUBLIC_WP_HOST,
 			isProduction: process.env.NODE_ENV === 'production',
 			isVercelProduction: process.env.VERCEL_ENV === 'production',
-			calendlyUrl: '',
-			twicpicsDomain: '',
+			calendlyUrl: process.env.NUXT_PUBLIC_CALENDLY_URL,
+			twicpicsDomain: process.env.NUXT_PUBLIC_TWICPICS_DOMAIN,
 			twicpicsConfig: generateTwicpicsConfig([
 				{
 					path: '/wordpress-madebyfabian/',
@@ -42,7 +42,7 @@ export default defineNuxtConfig({
 			]),
 
 			// nuxt-seo-kit
-			siteUrl: '',
+			siteUrl: process.env.NUXT_PUBLIC_SITE_URL,
 			siteName: 'Fabian Beer' /** @see https://github.com/harlan-zw/nuxt-seo-kit/issues/20 */,
 			titleSeparator: globalConfig.titleSeperator,
 			language: globalConfig.language,
