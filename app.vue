@@ -1,5 +1,6 @@
 <template>
 	<Page>
+		<SeoKit :siteName="siteName" />
 		<NuxtLoadingIndicator :color="color" :height="4" />
 		<CookieControlBanner />
 		<NuxtPage />
@@ -17,13 +18,12 @@
 		throw createError({ statusCode: 500, message: 'Error fetching settings' })
 	}
 
-	// const prefix = process.env.NODE_ENV === 'development' ? '⚙️ ' : ''
-	const siteTitle = data.value.allSettings.generalSettingsTitle || ''
+	const prefix = process.env.NODE_ENV === 'development' ? '⚙️ ' : ''
+	const siteName = data.value.allSettings.generalSettingsTitle || ''
 	const siteDescription = data.value.allSettings.generalSettingsDescription || undefined
 
 	useSeoMeta({
-		/** @see https://github.com/harlan-zw/nuxt-seo-kit/issues/20 */
-		// titleTemplate: `${prefix}%s — ${siteTitle}`,
+		titleTemplate: `${prefix}%s %titleSeperator %siteName`,
 		title: 'Home',
 		description: siteDescription,
 	})
@@ -35,7 +35,7 @@
 			sameAs: () => data.value?.viewer?.url || undefined,
 		}),
 		defineWebSite({
-			name: siteTitle,
+			name: siteName,
 		}),
 		defineWebPage(),
 	])

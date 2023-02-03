@@ -1,11 +1,6 @@
 import { generateSitemap } from './generateSitemap'
 import { cookieConfig, generateTwicpicsConfig } from './config'
 
-const globalConfig = {
-	language: 'en-US',
-	titleSeperator: '·',
-}
-
 export default defineNuxtConfig({
 	extends: ['nuxt-seo-kit'],
 
@@ -39,9 +34,8 @@ export default defineNuxtConfig({
 
 			// nuxt-seo-kit
 			siteUrl: process.env.NUXT_PUBLIC_SITE_URL,
-			siteName: 'Fabian Beer' /** @see https://github.com/harlan-zw/nuxt-seo-kit/issues/20 */,
-			titleSeparator: globalConfig.titleSeperator,
-			language: globalConfig.language,
+			titleSeperator: '·',
+			language: 'en-US',
 		},
 	},
 

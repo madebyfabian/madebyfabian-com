@@ -3,7 +3,6 @@
 		<BgBlur position="topLeft" />
 		<BgBlur position="bottomRight" />
 		<BgNoise />
-		<SeoKit />
 		<div class="flex-1 flex flex-col relative">
 			<LayoutHeader />
 			<div class="flex-1">
