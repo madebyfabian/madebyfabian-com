@@ -1,5 +1,5 @@
 <template>
-	<details v-if="props.attributes?.content" class="RichtextCustomFaqItem appearance-none group/details" :id="id">
+	<details v-if="props.attributes?.content" class="RichtextLazyblockFaqItem appearance-none group/details" :id="id">
 		<summary class="font-bold cursor-pointer p-6 PLike flex items-center justify-between">
 			<span>{{ props.attributes?.title }}</span>
 			<span class="group-open/details:rotate-180 select-none">⬇️</span>
