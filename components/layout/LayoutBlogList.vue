@@ -9,7 +9,7 @@
 				<UIImage
 					:src="item.featuredImage?.node?.sourceUrl || undefined"
 					:alt="item.featuredImage?.node?.altText || ''"
-					:path="'wordpress-madebyfabian'"
+					:path="'/wordpress-madebyfabian/'"
 					class="w-full md:w-[296px] h-56 md:h-full">
 					<template #fallback>
 						<div class="flex items-center justify-center bg-gradient-to-b from-gray-50 to-gray-100">

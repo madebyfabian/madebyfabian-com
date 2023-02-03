@@ -5,13 +5,13 @@
 </template>
 
 <script setup lang="ts">
-	import { joinURL, withHttps } from 'ufo'
+	const { buildCdnUrl } = useMedia()
 
-	const staticPath = '/wp-content/uploads/2023/02/noise.png'
-
-	const runtimeConfig = useRuntimeConfig()
 	const bgSrc = computed(() => {
-		const src = withHttps(joinURL(runtimeConfig.public.wpHost, staticPath))
+		const src = buildCdnUrl({
+			builderPath: '/wordpress-madebyfabian/',
+			relativeUrl: '/wp-content/uploads/2023/02/noise.png',
+		})
 		return `url("${src}")`
 	})
 </script>

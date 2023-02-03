@@ -4,7 +4,7 @@
 			:src="url || undefined"
 			:style="{ width: `${props.size}px`, height: `${props.size}px` }"
 			:alt="name || ''"
-			:path="'gravatar'">
+			:path="'/gravatar/'">
 			<template #fallback>
 				<div class="flex items-center justify-center bg-gradient-to-b from-gray-50 to-gray-100">
 					<span class="text-2xl">🙋</span>

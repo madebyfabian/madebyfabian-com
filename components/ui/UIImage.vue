@@ -22,7 +22,7 @@
 
 <script setup lang="ts">
 	import { joinURL, withLeadingSlash, withoutLeadingSlash, withoutTrailingSlash } from 'ufo'
-	import type { TwicpicsConfig } from '@/config'
+	import type { TwicpicsConfig, TwicpicsPaths } from '@/config'
 	const runtimeConfig = useRuntimeConfig()
 
 	interface Props {
@@ -39,9 +39,7 @@
 		alt: string
 		eager?: boolean
 		mode?: 'contain' | 'cover'
-
-		/** the path behind https://example.twic.pics/THIS/ */
-		path: 'wordpress-madebyfabian' | 'gravatar'
+		path: TwicpicsPaths
 	}
 
 	const props = defineProps<Props>()

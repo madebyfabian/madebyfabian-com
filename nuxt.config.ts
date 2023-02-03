@@ -1,6 +1,5 @@
 import { generateSitemap } from './generateSitemap'
 import { cookieConfig, generateTwicpicsConfig } from './config'
-import { withHttps } from 'ufo'
 
 const globalConfig = {
 	language: 'en-US',
@@ -34,12 +33,9 @@ export default defineNuxtConfig({
 			isVercelProduction: process.env.VERCEL_ENV === 'production',
 			calendlyUrl: process.env.NUXT_PUBLIC_CALENDLY_URL,
 			twicpicsDomain: process.env.NUXT_PUBLIC_TWICPICS_DOMAIN,
-			twicpicsConfig: generateTwicpicsConfig([
-				{
-					path: '/wordpress-madebyfabian/',
-					source: withHttps(process.env.NUXT_PUBLIC_WP_HOST as string),
-				},
-			]),
+			twicpicsConfig: generateTwicpicsConfig({
+				wpHost: process.env.NUXT_PUBLIC_WP_HOST,
+			}),
 
 			// nuxt-seo-kit
 			siteUrl: process.env.NUXT_PUBLIC_SITE_URL,

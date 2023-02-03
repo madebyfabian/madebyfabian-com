@@ -7,7 +7,7 @@
 				:alt="alt"
 				:intrinsic="size"
 				:ratio="size"
-				:path="'wordpress-madebyfabian'"
+				:path="'/wordpress-madebyfabian/'"
 				class="rounded-box safari-overflow-fix shadow-inner select-none" />
 		</component>
 

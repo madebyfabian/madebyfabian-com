@@ -10,7 +10,7 @@
 				src="/wp-content/uploads/2023/02/blur.png"
 				alt=""
 				class="h-[75vh] w-full"
-				:path="'wordpress-madebyfabian'"
+				:path="'/wordpress-madebyfabian/'"
 				mode="contain"
 				eager />
 		</div>

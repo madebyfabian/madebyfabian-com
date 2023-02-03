@@ -24,9 +24,7 @@
 </script>
 
 <script setup lang="ts">
-	import { withHttps } from 'ufo'
-
-	const runtimeConfig = useRuntimeConfig()
+	const { withoutWPHost } = useMedia()
 
 	const props = defineProps<{
 		attributes: RichtextLazyblockProjectItemProps['attributes']
@@ -34,17 +32,8 @@
 		mediaItemsStorageKey: RichtextLazyblockProjectItemProps['mediaItemsStorageKey']
 	}>()
 
-	const mediaData = useMediaItemData({
-		key: props.mediaItemsStorageKey,
-		id: Number((props.attributes?.image as any)?.id),
-	})
-
 	const mediaSrc = computed(() => {
-		/** @TODO maybe make this composable */
-		const fullUrl = (props.attributes?.image as any).url
-		const wpHostWithProtocol = withHttps(runtimeConfig.public.wpHost)
-		const replaced = fullUrl.replace(wpHostWithProtocol, '')
-		return replaced
+		return withoutWPHost((props.attributes?.image as any).url)
 	})
 
 	const id = computed(() => props.attributes?.anchor || undefined)
