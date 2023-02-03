@@ -1,7 +1,7 @@
 <template>
-	<Balancer :ratio="balancerRatio" as="div" class="RichtextCoreParagraph !block" :class="classes">
+	<WrapBalancer :ratio="balancerRatio" as="div" class="RichtextCoreParagraph !block" :class="classes">
 		<p v-html="props.attributes?.content" :id="id" />
-	</Balancer>
+	</WrapBalancer>
 </template>
 
 <script setup lang="ts">
