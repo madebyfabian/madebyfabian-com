@@ -1,17 +1,26 @@
 <template>
 	<div class="RichtextCoreButtons UIButtonGroup flex-wrap my-6 first:mt-0 last:mb-0" :style="styles" :id="id">
-		<RichtextResolver v-for="item of props.innerBlocks" :key="item.id" :item="item" />
+		<RichtextResolver
+			v-for="item of props.innerBlocks"
+			:key="item.id"
+			v-bind="{ item, mediaItemsStorageKey: props.mediaItemsStorageKey }" />
 	</div>
 </template>
 
+<script lang="ts">
+	import type { RichtextPropsBase, CoreButtonsBlock } from '@/types'
+	export type RichtextCoreButtonsProps = RichtextPropsBase<CoreButtonsBlock>
+
+	//
+</script>
+
 <script setup lang="ts">
 	import type { StyleValue } from 'vue'
-	import type { CoreButtonsBlock } from '@/types/gen/graphql/graphql'
-	import type { RichtextCoreButtonProps } from '@/components/richtext/core/RichtextCoreButton.vue'
 
 	const props = defineProps<{
-		attributes: CoreButtonsBlock['attributes']
-		innerBlocks: RichtextCoreButtonProps['innerBlocks']
+		attributes: RichtextCoreButtonsProps['attributes']
+		innerBlocks?: RichtextCoreButtonsProps['innerBlocks']
+		mediaItemsStorageKey: RichtextCoreButtonsProps['mediaItemsStorageKey']
 	}>()
 
 	const styles = computed(() => {

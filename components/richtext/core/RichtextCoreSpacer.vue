@@ -2,13 +2,18 @@
 	<div class="RichtextCoreSpacer -mt-6 first:-mt-0" :id="id" />
 </template>
 
-<script setup lang="ts">
-	import type { CoreSpacerBlock } from '@/types/gen/graphql/graphql'
-	import type { InnerBlocksExtended } from '@/types'
+<script lang="ts">
+	import type { RichtextPropsBase, CoreSpacerBlock } from '@/types'
+	export type RichtextCoreSpacerProps = RichtextPropsBase<CoreSpacerBlock>
 
+	//
+</script>
+
+<script setup lang="ts">
 	const props = defineProps<{
-		attributes: CoreSpacerBlock['attributes']
-		innerBlocks?: InnerBlocksExtended
+		attributes: RichtextCoreSpacerProps['attributes']
+		innerBlocks?: RichtextCoreSpacerProps['innerBlocks']
+		mediaItemsStorageKey: RichtextCoreSpacerProps['mediaItemsStorageKey']
 	}>()
 
 	const heightRem = computed(() => {

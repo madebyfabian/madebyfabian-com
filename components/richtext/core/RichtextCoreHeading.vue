@@ -7,13 +7,18 @@
 	</WrapBalancer>
 </template>
 
-<script setup lang="ts">
-	import type { CoreHeadingBlock } from '@/types/gen/graphql/graphql'
-	import type { InnerBlocksExtended } from '@/types'
+<script lang="ts">
+	import type { RichtextPropsBase, CoreHeadingBlock } from '@/types'
+	export type RichtextCoreColumnsProps = RichtextPropsBase<CoreHeadingBlock>
 
+	//
+</script>
+
+<script setup lang="ts">
 	const props = defineProps<{
-		attributes: CoreHeadingBlock['attributes']
-		innerBlocks: InnerBlocksExtended
+		attributes: RichtextCoreColumnsProps['attributes']
+		innerBlocks?: RichtextCoreColumnsProps['innerBlocks']
+		mediaItemsStorageKey: RichtextCoreColumnsProps['mediaItemsStorageKey']
 	}>()
 
 	const classes = computed(() => {

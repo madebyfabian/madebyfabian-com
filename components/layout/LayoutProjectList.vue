@@ -1,0 +1,7 @@
+<template>
+	<section id="projects" class="LayoutProjectList my-20">
+		<div class="flex flex-col md:flex-row gap-8">
+			<slot />
+		</div>
+	</section>
+</template>

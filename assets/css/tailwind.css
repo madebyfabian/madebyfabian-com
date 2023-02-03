@@ -17,61 +17,23 @@
 	font-style: italic;
 }
 
-@layer utilities {
-	.H1Like {
-		@apply text-5xl font-bold tracking-tight mb-8;
-	}
-
-	.H2Like {
-		@apply text-4xl font-bold tracking-tight;
-	}
-
-	.H3Like {
-		@apply text-2xl font-bold tracking-tight;
-	}
-
-	.H4Like {
-		@apply text-xl font-bold tracking-tight;
-	}
-
-	.PLargeLike {
-		@apply text-xl font-normal tracking-tight;
-	}
-
-	.PLike {
-		@apply text-lg font-normal leading-relaxed;
-	}
-
-	.PSmallLike {
-		@apply text-sm font-normal;
-	}
-
-	.PreLike {
-		@apply bg-frost-2 shadow-border-and-inner p-4 rounded-box text-sm overflow-x-auto;
-	}
-
-	.bg-frost {
-		@apply bg-white/25;
-	}
-
-	.bg-frost-2 {
-		@apply bg-white/75;
-	}
-
-	.safari-overflow-fix {
-		transform: translateZ(0);
-	}
-}
-
 @layer base {
 	html {
-		@apply font-display scroll-smooth text-gray-body accent-accent-700 underline-offset-2;
+		@apply font-display scroll-smooth text-gray-body accent-accent-700;
 		font-size: 0.875rem;
+	}
+
+	*,
+	*::before,
+	*::after {
+		text-underline-offset: 0.15em !important;
+		text-decoration-thickness: 0.15em !important;
+		text-decoration-style: dotted !important;
 	}
 
 	*:focus-visible {
 		/* important because it will be overridden by @dargmuesli/nuxt-cookie-control */
-		@apply !outline-accent-700 !outline-offset-2 !outline-dashed !outline-2;
+		@apply !outline-accent-700 !outline-offset-4 !outline-dashed !outline-2;
 	}
 
 	@screen md {
@@ -122,10 +84,53 @@
 	}
 }
 
+@layer utilities {
+	.H1Like {
+		@apply text-5xl font-bold tracking-tight mb-8;
+	}
+
+	.H1Like span {
+		@apply !decoration-gray-300;
+	}
+
+	.H2Like {
+		@apply text-4xl font-bold tracking-tight;
+	}
+
+	.H3Like {
+		@apply text-2xl font-bold tracking-tight;
+	}
+
+	.H4Like {
+		@apply text-xl font-bold tracking-tight;
+	}
+
+	.PLargeLike {
+		@apply text-xl font-normal tracking-tight;
+	}
+
+	.PLike {
+		@apply text-lg font-normal leading-relaxed;
+	}
+
+	.PSmallLike {
+		@apply text-sm font-normal;
+	}
+
+	.PreLike {
+		@apply bg-frost-200 shadow-border-and-inner p-4 rounded-box text-sm overflow-x-auto;
+	}
+
+	.safari-overflow-fix {
+		transform: translateZ(0);
+	}
+}
+
 @layer components {
 	.UILink {
-		@apply underline font-semibold underline-offset-2;
-		@apply text-accent-700 decoration-accent-700/30;
+		@apply underline font-semibold;
+		@apply text-accent-700 decoration-accent-700/30 underline;
+		@apply transition hover:text-accent-700/80;
 	}
 
 	.UIButtonGroup {
@@ -133,22 +138,21 @@
 	}
 
 	.UIButton {
-		@apply inline-flex items-center justify-center whitespace-nowrap;
+		@apply inline-flex items-center justify-center whitespace-pre;
 		@apply font-semibold;
-		@apply px-8 h-14 rounded-xl disabled:opacity-25;
+		@apply px-9 h-14 rounded-full disabled:opacity-25;
 		@apply bg-accent-700 text-white;
-		@apply transition-colors;
-		@apply hover:bg-accent-700/90;
+		@apply transition hover:bg-accent-700/90;
 	}
 
 	.UIButton-secondary {
-		@apply bg-frost text-accent-700 shadow-sm;
+		@apply bg-frost-200 text-accent-700 shadow-sm;
 		@apply shadow-border;
-		@apply hover:bg-gray-50;
+		@apply hover:text-accent-700/80 hover:bg-frost-200;
 	}
 
 	.UIInput {
-		@apply h-12 appearance-none block w-full px-4 bg-frost-2 shadow-border rounded-xl;
+		@apply h-12 appearance-none block w-full px-4 bg-frost-200 shadow-border rounded-xl;
 	}
 
 	textarea.UIInput {
@@ -156,6 +160,6 @@
 	}
 
 	.UICard {
-		@apply bg-frost-2 shadow-border rounded-xl overflow-hidden safari-overflow-fix;
+		@apply bg-frost-200 shadow-border rounded-xl overflow-hidden safari-overflow-fix;
 	}
 }

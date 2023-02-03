@@ -47,6 +47,10 @@ export default <Partial<Config>>{
 				gray: {
 					body: colors.gray[700],
 				},
+				frost: {
+					DEFAULT: `rgb(255 255 255 / 0.25)`, // white/25
+					200: `rgb(255 255 255 / 0.75)`, // white/75
+				},
 			},
 			borderColor: {
 				DEFAULT: borderColorDefault,
@@ -56,8 +60,9 @@ export default <Partial<Config>>{
 			},
 			boxShadow: {
 				'border': `0 0 0 1px ${borderColorDefault}`,
-				'border-2': `0 0 0 2px ${borderColorDefault}`,
+				'border-and-shadow-lg': `0 0 0 1px ${borderColorDefault}, ${defaultTheme.boxShadow['lg']}`,
 				'border-and-inner': `0 0 0 1px ${borderColorDefault}, ${defaultTheme.boxShadow.inner}`,
+				'border-2': `0 0 0 2px ${borderColorDefault}`,
 				'border-2-and-shadow-lg': `0 0 0 2px ${borderColorDefault}, ${defaultTheme.boxShadow['lg']}`,
 				'border-2-and-shadow-xl': `0 0 0 2px ${borderColorDefault}, ${defaultTheme.boxShadow['xl']}`,
 			},

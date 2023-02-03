@@ -1,7 +1,7 @@
 <template>
 	<ClientOnly>
 		<div class="mt-8 mb-16 border-b pb-16">
-			<div v-if="calendlyIsPermitted" class="p-6 shadow-border first:mt-0 last:mb-0 rounded-box bg-frost">
+			<section v-if="calendlyIsPermitted" class="bg-frost-200 p-6 shadow-border first:mt-0 last:mb-0 rounded-box">
 				<div class="flex flex-col md:flex-row gap-6 md:items-center">
 					<div class="flex-1">
 						<h2 class="H3Like mb-2">Book a free call</h2>
@@ -10,7 +10,8 @@
 					<button class="UIButton w-full md:w-auto" @click="handleOpen">Book now</button>
 				</div>
 				<PrivacyNotice actionLabel="clicking the button" />
-			</div>
+			</section>
+
 			<CookieControlDenied v-else />
 		</div>
 	</ClientOnly>

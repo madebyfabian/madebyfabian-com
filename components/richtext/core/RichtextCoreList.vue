@@ -1,19 +1,30 @@
 <template>
 	<ol class="RichtextCoreList" v-if="props.attributes?.ordered" :id="id">
-		<RichtextResolver v-for="item of props.innerBlocks" :key="item.id" :item="item" />
+		<RichtextResolver
+			v-for="item of props.innerBlocks"
+			:key="item.id"
+			v-bind="{ item, mediaItemsStorageKey: props.mediaItemsStorageKey }" />
 	</ol>
 	<ul class="RichtextCoreList" v-else-if="!props.attributes?.ordered" :id="id">
-		<RichtextResolver v-for="item of props.innerBlocks" :key="item.id" :item="item" />
+		<RichtextResolver
+			v-for="item of props.innerBlocks"
+			:key="item.id"
+			v-bind="{ item, mediaItemsStorageKey: props.mediaItemsStorageKey }" />
 	</ul>
 </template>
 
-<script setup lang="ts">
-	import type { CoreListBlock } from '@/types/gen/graphql/graphql'
-	import type { RichtextCoreListItemProps } from '@/components/richtext/core/RichtextCoreListItem.vue'
+<script lang="ts">
+	import type { RichtextPropsBase, CoreListBlock } from '@/types'
+	export type RichtextCoreListProps = RichtextPropsBase<CoreListBlock>
 
+	//
+</script>
+
+<script setup lang="ts">
 	const props = defineProps<{
-		attributes: CoreListBlock['attributes']
-		innerBlocks: RichtextCoreListItemProps['innerBlocks']
+		attributes: RichtextCoreListProps['attributes']
+		innerBlocks?: RichtextCoreListProps['innerBlocks']
+		mediaItemsStorageKey: RichtextCoreListProps['mediaItemsStorageKey']
 	}>()
 
 	const id = computed(() => props.attributes?.anchor || undefined)

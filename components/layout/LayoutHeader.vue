@@ -1,5 +1,5 @@
 <template>
-	<header class="LayoutHeader z-10 py-6 lg:py-14 mb-8 lg:mb-12 sticky">
+	<header class="LayoutHeader z-10 py-6 lg:py-14 mb-12 sticky">
 		<div
 			aria-hidden="true"
 			class="LayoutHeader-underlay"

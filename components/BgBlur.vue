@@ -1,5 +1,5 @@
 <template>
-	<div aria-hidden="true" class="BgBlur overflow-hidden">
+	<div class="BgBlur overflow-hidden" aria-hidden="true">
 		<div
 			:class="{
 				'-top-[10vh] -left-[33vh]': props.position === 'topLeft',

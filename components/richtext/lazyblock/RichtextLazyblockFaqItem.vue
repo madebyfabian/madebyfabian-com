@@ -5,17 +5,25 @@
 			<span class="group-open/details:rotate-180 select-none">⬇️</span>
 		</summary>
 		<div class="-mt-2 px-6 pb-6">
-			<RichtextCoreParagraph :attributes="{ content: props.attributes?.content, dropCap: false }" />
+			<RichtextCoreParagraph
+				:attributes="{ content: props.attributes?.content, dropCap: false }"
+				v-bind="{ mediaItemsStorageKey }" />
 		</div>
 	</details>
 </template>
 
-<script setup lang="ts">
-	import type { LazyblockFaqItemBlock } from '@/types/gen/graphql/graphql'
+<script lang="ts">
+	import type { RichtextPropsBase, LazyblockFaqItemBlock } from '@/types'
+	export type RichtextLazyblockFaqItemProps = RichtextPropsBase<LazyblockFaqItemBlock>
 
+	//
+</script>
+
+<script setup lang="ts">
 	const props = defineProps<{
-		attributes: LazyblockFaqItemBlock['attributes']
-		innerBlocks: LazyblockFaqItemBlock['innerBlocks']
+		attributes: RichtextLazyblockFaqItemProps['attributes']
+		innerBlocks?: RichtextLazyblockFaqItemProps['innerBlocks']
+		mediaItemsStorageKey: RichtextLazyblockFaqItemProps['mediaItemsStorageKey']
 	}>()
 
 	const id = computed(() => props.attributes?.anchor || undefined)

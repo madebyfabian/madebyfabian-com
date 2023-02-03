@@ -1,6 +1,9 @@
 <template>
 	<article v-if="props.blocks.length" class="RichtextContainer">
-		<RichtextResolver v-for="item of props.blocks" :key="item.id" :item="item" :mediaItemsStorageKey="storageKey" />
+		<RichtextResolver
+			v-for="item of props.blocks"
+			:key="item.id"
+			v-bind="{ item, mediaItemsStorageKey: storageKey }" />
 	</article>
 </template>
 
@@ -25,7 +28,7 @@
 	.RichtextContainer {
 		@apply flow-root;
 
-		:deep(.RichtextCoreParagraph) {
+		:deep(.RichtextCoreParagraph):not(.reset) {
 			p {
 				@apply PLike;
 			}
@@ -37,8 +40,8 @@
 			}
 		}
 
-		:deep(.RichtextCoreParagraph),
-		:deep(p) {
+		:deep(.RichtextCoreParagraph):not(.reset),
+		:deep(p):not(.reset) {
 			@apply PLike my-6 first:mt-0 last:mb-0;
 
 			a {
@@ -55,11 +58,11 @@
 			}
 
 			code {
-				@apply bg-frost-2 shadow-border px-1 mx-0.5 rounded text-sm align-baseline font-bold inline-block;
+				@apply bg-frost-200 shadow-border px-1 mx-0.5 rounded text-sm align-baseline font-bold inline-block;
 			}
 		}
 
-		:deep(figure) {
+		:deep(figure):not(.reset) {
 			@apply my-6 first:mt-0 last:mb-0;
 
 			.RichtextCoreParagraph {
@@ -67,7 +70,7 @@
 			}
 		}
 
-		:deep(.RichtextCoreHeading) {
+		:deep(.RichtextCoreHeading):not(.reset) {
 			&:has(h1) {
 				@apply mb-6 last:mb-0;
 
@@ -101,8 +104,8 @@
 			}
 		}
 
-		:deep(ul),
-		:deep(ol) {
+		:deep(ul):not(.reset),
+		:deep(ol):not(.reset) {
 			@apply my-6 first:mt-0 last:mb-0 ml-6;
 
 			li {
@@ -121,11 +124,11 @@
 			}
 		}
 
-		:deep(ul) {
+		:deep(ul):not(.reset) {
 			@apply list-[circle];
 		}
 
-		:deep(ol) {
+		:deep(ol):not(.reset) {
 			@apply list-decimal;
 
 			li {
@@ -135,7 +138,7 @@
 			}
 		}
 
-		:deep(pre) {
+		:deep(pre):not(.reset) {
 			@apply PreLike my-6 first:mt-0 last:mb-0;
 		}
 	}

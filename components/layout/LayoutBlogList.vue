@@ -1,5 +1,5 @@
 <template>
-	<div v-if="data" class="LayoutBlogList mt-8">
+	<section v-if="data" class="LayoutBlogList mt-8">
 		<NuxtLink
 			v-for="item of data"
 			:key="item.id"
@@ -34,11 +34,11 @@
 					}" />
 			</div>
 		</NuxtLink>
-	</div>
+	</section>
 </template>
 
 <script lang="ts" setup>
-	import type { Post } from '@/types/gen/graphql/graphql'
+	import type { Post } from '@/types'
 
 	const { $client } = useNuxtApp()
 

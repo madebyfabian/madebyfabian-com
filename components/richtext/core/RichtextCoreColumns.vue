@@ -4,19 +4,24 @@
 			class="flex -my-6 md:-my-0 -mx-0 md:-mx-6 divide-y md:divide-y-0 md:divide-x"
 			:class="{ 'flex-col md:flex-row': props.attributes?.isStackedOnMobile }">
 			<div v-for="item of props.innerBlocks" :key="item.id" class="flex-1 px-0 md:px-6 py-6 md:py-0">
-				<RichtextResolver :item="item" />
+				<RichtextResolver v-bind="{ item, mediaItemsStorageKey: props.mediaItemsStorageKey }" />
 			</div>
 		</div>
 	</section>
 </template>
 
-<script setup lang="ts">
-	import type { CoreColumnsBlock } from '@/types/gen/graphql/graphql'
-	import type { RichtextCoreColumnProps } from '@/components/richtext/core/RichtextCoreColumn.vue'
+<script lang="ts">
+	import type { RichtextPropsBase, CoreColumnsBlock } from '@/types'
+	export type RichtextCoreColumnsProps = RichtextPropsBase<CoreColumnsBlock>
 
+	//
+</script>
+
+<script setup lang="ts">
 	const props = defineProps<{
-		attributes: CoreColumnsBlock['attributes']
-		innerBlocks: RichtextCoreColumnProps['innerBlocks']
+		attributes: RichtextCoreColumnsProps['attributes']
+		innerBlocks?: RichtextCoreColumnsProps['innerBlocks']
+		mediaItemsStorageKey: RichtextCoreColumnsProps['mediaItemsStorageKey']
 	}>()
 
 	const id = computed(() => props.attributes?.anchor || undefined)

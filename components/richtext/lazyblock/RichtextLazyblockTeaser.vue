@@ -9,18 +9,27 @@
 		<div class="flex-1">
 			<h3 v-if="props.attributes?.title">{{ props.attributes?.title }}</h3>
 			<template v-if="props.innerBlocks?.length">
-				<RichtextResolver v-for="(item, key) of props.innerBlocks" :key="key" :item="item" />
+				<RichtextResolver
+					v-for="(item, key) of props.innerBlocks"
+					:key="key"
+					v-bind="{ item, mediaItemsStorageKey: props.mediaItemsStorageKey }" />
 			</template>
 		</div>
 	</section>
 </template>
 
-<script setup lang="ts">
-	import type { LazyblockRichtextTeaserBlock } from '@/types/gen/graphql/graphql'
+<script lang="ts">
+	import type { RichtextPropsBase, LazyblockRichtextTeaserBlock } from '@/types'
+	export type RichtextLazyblockTeaserProps = RichtextPropsBase<LazyblockRichtextTeaserBlock>
 
+	//
+</script>
+
+<script setup lang="ts">
 	const props = defineProps<{
-		attributes: LazyblockRichtextTeaserBlock['attributes']
-		innerBlocks?: LazyblockRichtextTeaserBlock['innerBlocks']
+		attributes: RichtextLazyblockTeaserProps['attributes']
+		innerBlocks?: RichtextLazyblockTeaserProps['innerBlocks']
+		mediaItemsStorageKey: RichtextLazyblockTeaserProps['mediaItemsStorageKey']
 	}>()
 
 	const id = computed(() => props.attributes?.anchor || undefined)

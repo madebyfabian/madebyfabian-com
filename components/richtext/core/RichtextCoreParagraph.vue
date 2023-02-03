@@ -4,14 +4,18 @@
 	</WrapBalancer>
 </template>
 
-<script setup lang="ts">
-	import Balancer from 'vue-wrap-balancer'
-	import type { CoreParagraphBlock } from '@/types/gen/graphql/graphql'
-	import type { InnerBlocksExtended } from '@/types'
+<script lang="ts">
+	import type { RichtextPropsBase, CoreParagraphBlock } from '@/types'
+	export type RichtextCoreParagraphProps = RichtextPropsBase<CoreParagraphBlock>
 
+	//
+</script>
+
+<script setup lang="ts">
 	const props = defineProps<{
-		attributes: CoreParagraphBlock['attributes']
-		innerBlocks?: InnerBlocksExtended
+		attributes: RichtextCoreParagraphProps['attributes']
+		innerBlocks?: RichtextCoreParagraphProps['innerBlocks']
+		mediaItemsStorageKey: RichtextCoreParagraphProps['mediaItemsStorageKey']
 	}>()
 
 	const balancerRatio = computed(() => {

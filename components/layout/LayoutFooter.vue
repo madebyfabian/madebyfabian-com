@@ -8,7 +8,7 @@
 				</NuxtLink>
 			</div>
 
-			<LayoutMenu menuId="dGVybTo4" class="flex gap-x-6 gap-y-3 flex-wrap" />
+			<LayoutMenu menuId="dGVybTo4" class="flex flex-wrap" />
 		</div>
 	</footer>
 </template>

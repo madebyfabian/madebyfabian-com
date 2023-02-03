@@ -1,16 +1,23 @@
 <template>
 	<ClientOnly>
-		<iframe frameborder="no" :width="500" :height="250" :src="iframeUrl"> </iframe>
+		<iframe frameborder="no" :width="500" :height="250" :src="iframeUrl" />
 	</ClientOnly>
 </template>
 
+<script lang="ts">
+	import type { RichtextPropsBase, MatomoMatomoOptOutBlock } from '@/types'
+	export type RichtextMatomoOptOutProps = RichtextPropsBase<MatomoMatomoOptOutBlock>
+
+	//
+</script>
+
 <script setup lang="ts">
-	import type { MatomoMatomoOptOutBlock } from '@/types/gen/graphql/graphql'
 	const runtimeConfig = useRuntimeConfig()
 
 	const props = defineProps<{
-		attributes: MatomoMatomoOptOutBlock['attributes']
-		innerBlocks: MatomoMatomoOptOutBlock['innerBlocks']
+		attributes: RichtextMatomoOptOutProps['attributes']
+		innerBlocks?: RichtextMatomoOptOutProps['innerBlocks']
+		mediaItemsStorageKey: RichtextMatomoOptOutProps['mediaItemsStorageKey']
 	}>()
 
 	const iframeUrl = computed(() => {

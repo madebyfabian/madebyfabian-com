@@ -17,10 +17,7 @@
 		<p v-if="item.dateGmt" class="text-gray-500">{{ dateFormatted }}</p>
 
 		<ul v-if="item.tags?.edges.length">
-			<li
-				v-for="tag of item.tags.edges"
-				:key="tag.node.id"
-				class="text-gray-500 underline underline-offset-2 decoration-gray-300">
+			<li v-for="tag of item.tags.edges" :key="tag.node.id" class="text-gray-500 underline">
 				# {{ tag.node.name }}
 			</li>
 		</ul>
@@ -28,7 +25,7 @@
 </template>
 
 <script setup lang="ts">
-	import type { NodeWithAuthorToUserConnectionEdge, PostToTagConnection, Post } from '@/types/gen/graphql/graphql'
+	import type { NodeWithAuthorToUserConnectionEdge, PostToTagConnection, Post } from '@/types'
 	const NuxtLink = resolveComponent('NuxtLink')
 	const router = useRouter()
 

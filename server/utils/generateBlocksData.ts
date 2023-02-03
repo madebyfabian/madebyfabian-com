@@ -1,4 +1,4 @@
-import type { ItemBase, InnerBlocksDefault, BlockDefault } from '@/types'
+import type { ItemBase, InnerBlocksDefault, BlockDefault, CoreImageBlock } from '@/types'
 import { generalRouter } from '@/server/trpc/routers/general'
 
 type Item = ItemBase & {
@@ -16,6 +16,16 @@ type ParseItemJsonProps = {
 	item: BlockRawItem
 }
 
+const decodeAndParseLazyblockImageField = (imageField: string) => {
+	try {
+		const decoded = decodeURI(imageField)
+		const json = JSON.parse(decoded || '{}')
+		return json as CoreImageBlock['attributes'] | undefined
+	} catch (_) {
+		return undefined
+	}
+}
+
 const parseItemJson = ({ item }: ParseItemJsonProps) => {
 	let itemImageId: ImageId | undefined
 
@@ -26,8 +36,37 @@ const parseItemJson = ({ item }: ParseItemJsonProps) => {
 		innerBlocks: undefined,
 	}
 
-	if (newItem.name === 'core/image' && 'id' in newItem.block && typeof newItem.block.id === 'number') {
-		itemImageId = String(newItem.block.id)
+	// Lazyblock fields can contain images, which we have to decode and parse
+	// Since we get a url-ified + stringified JSON.
+	if (item.name.startsWith('lazyblock/') && 'image' in newItem.block && typeof newItem.block.image === 'string') {
+		const imageEntryRaw = newItem.block.image
+		newItem.block = {
+			...newItem.block,
+
+			// @ts-expect-error This is allowed.
+			image: decodeAndParseLazyblockImageField(imageEntryRaw),
+		}
+	}
+
+	// These blocks contain some raw image data, where we want to fetch the media items details.
+	const blocksWithImageData = ['core/image', 'lazyblock/project-item']
+	if (blocksWithImageData.includes(item.name) && 'id' in newItem.block && typeof newItem.block.id === 'number') {
+		if (item.name === 'core/image') {
+			itemImageId = String(newItem.block.id)
+		}
+
+		switch (item.name) {
+			case 'core/image': {
+				itemImageId = String(newItem.block.id)
+				break
+			}
+
+			case 'lazyblock/project-item': {
+				// @ts-expect-error This is allowed.
+				itemImageId = String(newItem.block.image.id)
+				break
+			}
+		}
 	}
 
 	if (!('innerBlocks' in item)) return { newItem, itemImageId }

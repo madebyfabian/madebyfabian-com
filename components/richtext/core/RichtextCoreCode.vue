@@ -2,13 +2,18 @@
 	<pre class="RichtextCoreCode" v-html="props.attributes?.content" :id="id" />
 </template>
 
-<script setup lang="ts">
-	import type { CoreCodeBlock } from '@/types/gen/graphql/graphql'
-	import type { InnerBlocksExtended } from '@/types'
+<script lang="ts">
+	import type { RichtextPropsBase, CoreCodeBlock } from '@/types'
+	export type RichtextCoreCodeProps = RichtextPropsBase<CoreCodeBlock>
 
+	//
+</script>
+
+<script setup lang="ts">
 	const props = defineProps<{
-		attributes: CoreCodeBlock['attributes']
-		innerBlocks?: InnerBlocksExtended
+		attributes: RichtextCoreCodeProps['attributes']
+		innerBlocks?: RichtextCoreCodeProps['innerBlocks']
+		mediaItemsStorageKey: RichtextCoreCodeProps['mediaItemsStorageKey']
 	}>()
 
 	const id = computed(() => props.attributes?.anchor || undefined)

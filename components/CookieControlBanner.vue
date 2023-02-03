@@ -36,7 +36,7 @@
 		}
 
 		.cookieControl__ControlButton {
-			@apply UIButton-secondary !shadow-border-2-and-shadow-lg right-4 bottom-4 md:right-8 md:bottom-8;
+			@apply UIButton-secondary !shadow-border-and-shadow-lg right-4 bottom-4 md:right-8 md:bottom-8;
 		}
 
 		.cookieControl__ControlButton,

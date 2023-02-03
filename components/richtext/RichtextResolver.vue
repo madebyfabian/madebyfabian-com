@@ -1,12 +1,8 @@
 <template>
-	<RichtextCoreImage
-		v-if="dynamicComponent && isImage"
-		v-bind="({ attributes, innerBlocks } as any)"
-		:mediaItemsStorageKey="props.mediaItemsStorageKey">
-		<slot />
-	</RichtextCoreImage>
-
-	<component v-else-if="dynamicComponent" :is="dynamicComponent" v-bind="{ attributes, innerBlocks }">
+	<component
+		v-if="dynamicComponent"
+		:is="dynamicComponent"
+		v-bind="{ attributes, innerBlocks, mediaItemsStorageKey }">
 		<slot />
 	</component>
 
@@ -28,7 +24,7 @@
 </script>
 
 <script lang="ts" setup>
-	import type { InnerBlocksDefault, BlockDefault, ItemBase } from '@/types'
+	import type { InnerBlocksDefault, BlockDefault, ItemBase, RichtextPropsMinimum } from '@/types'
 
 	const components = {
 		'core/button': resolveComponent('RichtextCoreButton'),
@@ -46,21 +42,23 @@
 		'core/spacer': resolveComponent('RichtextCoreSpacer'),
 
 		// lazyblock
-		'lazyblock/richtext-teaser': resolveComponent('RichtextLazyblockTeaser'),
 		'lazyblock/faq-group': resolveComponent('RichtextLazyblockFaqGroup'),
 		'lazyblock/faq-item': resolveComponent('RichtextLazyblockFaqItem'),
+		'lazyblock/project-item': resolveComponent('RichtextLazyblockProjectItem'),
+		'lazyblock/project-list': resolveComponent('RichtextLazyblockProjectList'),
+		'lazyblock/richtext-teaser': resolveComponent('RichtextLazyblockTeaser'),
 
 		// matomo
 		'matomo/matomo-opt-out': resolveComponent('RichtextMatamoOptOut'),
 	}
 
 	const props = defineProps<{
+		name?: string
 		item: RichtextItem
-		mediaItemsStorageKey?: string
+		mediaItemsStorageKey: RichtextPropsMinimum['mediaItemsStorageKey']
 	}>()
 
 	const dynamicComponent = components?.[props.item.name as keyof typeof components]
-	const isImage = computed(() => props.item.name === ('core/image' as keyof typeof components))
 	const attributes = computed(() => props.item?.block)
 	const innerBlocks = computed(() => props.item?.innerBlocks)
 

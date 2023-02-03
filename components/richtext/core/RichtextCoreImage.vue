@@ -15,36 +15,25 @@
 	</figure>
 </template>
 
-<script setup lang="ts">
-	import type { GenerateBlocksDataReturnType } from '@/server/utils/generateBlocksData'
-	import type { CoreImageBlock } from '@/types/gen/graphql/graphql'
-	import type { InnerBlocksExtended } from '@/types'
+<script lang="ts">
+	import type { RichtextPropsBase, CoreImageBlock } from '@/types'
+	export type RichtextCoreImageProps = RichtextPropsBase<CoreImageBlock>
 
+	//
+</script>
+
+<script setup lang="ts">
 	const props = defineProps<{
-		attributes: CoreImageBlock['attributes']
-		innerBlocks: InnerBlocksExtended
-		mediaItemsStorageKey?: string
+		attributes: RichtextCoreImageProps['attributes']
+		innerBlocks?: RichtextCoreImageProps['innerBlocks']
+		mediaItemsStorageKey: RichtextCoreImageProps['mediaItemsStorageKey']
 	}>()
 
-	const mediaItems = useState<GenerateBlocksDataReturnType['mediaItems']>(props.mediaItemsStorageKey)
-	const mediaData = computed(() => {
-		const item = mediaItems.value?.edges.find(edge => {
-			return edge.node.databaseId == props.attributes?.id
-		})?.node
-
-		return {
-			...item,
-			mediaDetails: {
-				...item?.mediaDetails,
-				width: Number(item?.mediaDetails?.width || 0),
-				height: Number(item?.mediaDetails?.height || 0),
-			},
-		}
-	})
+	const mediaData = useMediaItemData({ key: props.mediaItemsStorageKey, id: props.attributes?.id })
 
 	const caption = computed(() => {
 		if (props.attributes?.caption) return `<p>${props.attributes?.caption}</p>`
-		return mediaData.value.caption || mediaData.value.description || undefined
+		return mediaData.value?.caption || mediaData.value?.description || undefined
 	})
 
 	const size = computed(() => {
