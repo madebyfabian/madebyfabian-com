@@ -18,7 +18,7 @@
 
 <style lang="postcss" scoped>
 	.BgNoise {
-		mask-image: linear-gradient(360deg, transparent 0%, theme('colors.white') 10%);
+		mask-image: linear-gradient(to bottom, transparent 0%, theme('colors.white') 5%);
 
 		@screen md {
 			mask-image: unset;
