@@ -7,7 +7,4 @@ node_modules
 .env
 dist
 .DS_Store
-
-# Generated types
-types/gen
 .vercel

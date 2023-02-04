@@ -1,5 +1,5 @@
 import { GraphQLClient, gql as gqlUntyped } from 'graphql-request'
-export { graphql as gql } from '@/types/gen/graphql'
+export { graphql as gql } from '@/graphql'
 const runtimeConfig = useRuntimeConfig()
 
 // We need this sometimes because some queries have an infinite number of innerBlocks,

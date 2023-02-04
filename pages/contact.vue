@@ -44,7 +44,6 @@
 </template>
 
 <script lang="ts" setup>
-	const { $client } = useNuxtApp()
 	const route = useRoute('contact')
 	const uri = computed(() => route.fullPath)
 
@@ -68,10 +67,9 @@
 	const send = async () => {
 		try {
 			state.status = 'pending'
-
 			if (!turnstileToken.value) throw new Error('No turnstile token')
 
-			const res = await $fetch('/api/contact-form', {
+			await $fetch('/api/contact-form', {
 				method: 'POST',
 				body: {
 					name: state.form.name,
@@ -81,10 +79,7 @@
 				},
 			})
 
-			if (res.sendEmail?.sent) {
-				state.status = 'success'
-			}
-
+			state.status = 'success'
 			turnstileRef.value?.reset()
 		} catch (error) {
 			state.status = 'error'

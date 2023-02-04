@@ -13,7 +13,8 @@ const config: CodegenConfig = {
 
 	documents: [
 		'./server/trpc/**/*.ts',
-		'!./types/gen/**/*',
+		'./api/**/*.ts',
+		'!./graphql/**/*',
 
 		// Exclude due to infinite loop
 		'!./server/trpc/routers/singlePage.ts',
@@ -21,7 +22,7 @@ const config: CodegenConfig = {
 	],
 
 	generates: {
-		'./types/gen/graphql/': {
+		'./graphql/': {
 			preset: 'client',
 			plugins: [],
 		},

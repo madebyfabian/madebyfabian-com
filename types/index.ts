@@ -1,7 +1,7 @@
 import type { Maybe } from '@graphql-tools/utils'
 import type { Block } from '@/types'
 
-export * from '@/types/gen/graphql/graphql'
+export * from '@/graphql/graphql'
 
 export type ItemBase = {
 	id: string

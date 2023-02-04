@@ -3,7 +3,7 @@
 	"scripts": {
 		"start": "run-p start:*",
 		"start:nuxt": "nuxt dev",
-		"start:gql": "graphql-codegen --watch",
+		"start:graphql": "graphql-codegen --watch",
 		"build": "graphql-codegen && nuxt generate",
 		"preview": "nuxt preview",
 		"typecheck": "nuxt typecheck",

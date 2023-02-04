@@ -1,10 +1,20 @@
 import { createSSRApp, reactive } from 'vue'
 import { renderToString } from 'vue/server-renderer'
-import type { VercelRequest, VercelResponse } from '@vercel/node'
-import { GraphQLClient, gql as gqlUntyped } from 'graphql-request'
 import { z } from 'zod'
 import xss from 'xss'
 import { fetch } from 'ofetch'
+import type { VercelRequest, VercelResponse } from '@vercel/node'
+
+// copy from graphQlClient.ts
+import { GraphQLClient } from 'graphql-request'
+import { graphql as gql } from '../graphql'
+const gqlHost = process.env.NUXT_GQL_HOST || ''
+const gqlToken = process.env.NUXT_GQL_TOKEN || ''
+const graphQLClient = new GraphQLClient(gqlHost, {
+	headers: {
+		authorization: gqlToken,
+	},
+})
 
 const renderBody = async ({ name, email, message }: { name: string; email: string; message: string }) => {
 	const ssrInput = createSSRApp({
@@ -52,34 +62,63 @@ const verifyTurnstileToken = async (token: string) => {
 	return json
 }
 
-// New
-const graphQLClient = new GraphQLClient(process.env.NUXT_GQL_HOST || '', {
-	headers: {
-		authorization: process.env.NUXT_GQL_TOKEN || '',
-	},
-})
-
 const getContactFormEmail = async () => {
-	const query = gqlUntyped/* GraphQL */ `
+	const query = gql(/* GraphQL */ `
 		query AdminEmail {
 			allSettings {
 				generalSettingsEmail
 			}
 		}
-	`
+	`)
 	return graphQLClient.request(query)
 }
+
+const sendEmail = async ({
+	contactFormEmail,
+	input,
+	body,
+}: {
+	contactFormEmail: string
+	input: ValidRequestInput
+	body: string
+}) => {
+	const admin = `Admin <${contactFormEmail}>`
+	const mutation = gql(/* GraphQL */ `
+		mutation SendEmail($input: SendEmailInput!) {
+			sendEmail(input: $input) {
+				sent
+				message
+			}
+		}
+	`)
+
+	return graphQLClient.request(mutation, {
+		input: {
+			to: admin,
+			from: admin,
+			replyTo: `${input.name} <${input.email}>`,
+			subject: 'New contact form request!',
+			body: body,
+		},
+	})
+}
+
+const parseInput = ({ input }: { input: any }) => {
+	const schema = z.object({
+		name: z.string(),
+		email: z.string(),
+		message: z.string(),
+		turnstileToken: z.string(),
+	})
+	return schema.parse(input)
+}
+
+type ValidRequestInput = ReturnType<typeof parseInput>
 
 export default async function handler(request: VercelRequest, response: VercelResponse) {
 	try {
 		// First validate input
-		const schema = z.object({
-			name: z.string(),
-			email: z.string(),
-			message: z.string(),
-			turnstileToken: z.string(),
-		})
-		const input = schema.parse(request.body)
+		const input = parseInput({ input: request.body })
 
 		const validationResponse = await verifyTurnstileToken(input.turnstileToken)
 		if (!validationResponse.success)
@@ -104,31 +143,17 @@ export default async function handler(request: VercelRequest, response: VercelRe
 				error: 'Failed to render the email body.',
 			})
 
-		const admin = `Admin <${contactFormEmail}>`
-		const mutation = gqlUntyped/* GraphQL */ `
-			mutation SendEmail($input: SendEmailInput!) {
-				sendEmail(input: $input) {
-					sent
-					message
-				}
-			}
-		`
-
-		const sendEmailRes = await graphQLClient.request(mutation, {
-			input: {
-				to: admin,
-				from: admin,
-				replyTo: `${input.name} <${input.email}>`,
-				subject: 'New contact form request!',
-				body: renderedBody,
-			},
+		const sendEmailRes = await sendEmail({
+			contactFormEmail,
+			input,
+			body: renderedBody,
 		})
 		if (!sendEmailRes?.sendEmail?.sent)
 			return response.status(500).json({
 				error: 'Failed to send the email.',
 			})
 
-		return response.status(200).json(sendEmailRes)
+		return response.status(200).json({})
 	} catch (error) {
 		return response.status(500).json({
 			error: 'Something went wrong.',
