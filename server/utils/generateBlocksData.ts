@@ -1,4 +1,4 @@
-import type { ItemBase, InnerBlocksDefault, BlockDefault, CoreImageBlock } from '@/types'
+import type { ItemBase, InnerBlocksDefault, BlockDefault, CoreImageBlock, UbTableOfContentsHeaderEntry } from '@/types'
 import { generalRouter } from '@/server/trpc/routers/general'
 
 type Item = ItemBase & {
@@ -26,6 +26,18 @@ const decodeAndParseLazyblockImageField = (imageField: string) => {
 	}
 }
 
+const parseUbTableOfContentsHeaderEntriesField = (headerEntries: string) => {
+	try {
+		const json = JSON.parse(headerEntries || '{}')
+		const data = json as UbTableOfContentsHeaderEntry[] | undefined
+
+		const filteredOnlyTopLevelTags = data?.filter(entry => typeof entry.tag === 'number' && entry.level === 0)
+		return filteredOnlyTopLevelTags
+	} catch (_) {
+		return undefined
+	}
+}
+
 const parseItemJson = ({ item }: ParseItemJsonProps) => {
 	let itemImageId: ImageId | undefined
 
@@ -45,6 +57,20 @@ const parseItemJson = ({ item }: ParseItemJsonProps) => {
 
 			// @ts-expect-error This is allowed.
 			image: decodeAndParseLazyblockImageField(imageEntryRaw),
+		}
+	}
+
+	// Heroic Table of Contents block has a headerEntries field, which we have to parse
+	// Since we get a stringified JSON.
+	if (
+		item.name === 'ht/block-toc' &&
+		'headerEntries' in newItem.block &&
+		typeof newItem.block.headerEntries === 'string'
+	) {
+		newItem.block = {
+			...newItem.block,
+			// @ts-expect-error This is allowed.
+			headerEntries: parseUbTableOfContentsHeaderEntriesField(newItem.block.headerEntries),
 		}
 	}
 

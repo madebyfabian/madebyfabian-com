@@ -29,3 +29,13 @@ export type RichtextPropsBase<
 			innerBlocks?: SpecificInnerBlocksGeneric
 			attributes: AttributesGeneric['attributes']
 	  }
+
+export type UbTableOfContentsHeaderEntry = {
+	tag?: number
+	text: string
+	link: string
+	labelTOC: string
+	visibleTOC: number
+	level: number
+	children: UbTableOfContentsHeaderEntry[]
+}

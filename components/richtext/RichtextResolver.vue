@@ -50,6 +50,9 @@
 
 		// matomo
 		'matomo/matomo-opt-out': resolveComponent('RichtextMatamoOptOut'),
+
+		// Heroic Table of Contents
+		'ht/block-toc': resolveComponent('RichtextHtTableOfContents'),
 	}
 
 	const props = defineProps<{
