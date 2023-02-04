@@ -1,3 +1,4 @@
+import { withoutTrailingSlash } from 'ufo'
 import { z } from 'zod'
 import { publicProcedure, router } from '../trpc'
 
@@ -36,8 +37,8 @@ export const singlePageRouter = router({
 
 		const getData = async () => {
 			const getPreviewInput = () => {
-				const withoutTrailingSlash = removeTrailingSlash(input.uri)
-				return withoutTrailingSlash === '/' ? '/home-2/' : `${withoutTrailingSlash}-2/`
+				const url = withoutTrailingSlash(input.uri)
+				return url === '/' ? '/home-2/' : `${url}-2/`
 			}
 
 			const content = await requestContent({
