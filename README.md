@@ -5,7 +5,7 @@
 1. Make sure to install the dependencies
 
 ```bash
-npm i
+pnpm i
 ```
 
 2. Create a `.env` file in the root of your project, add the following variables:
