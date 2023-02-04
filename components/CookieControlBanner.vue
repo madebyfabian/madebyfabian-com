@@ -37,6 +37,8 @@
 
 		.cookieControl__ControlButton {
 			@apply UIButton-secondary !shadow-border-and-shadow-lg right-4 bottom-4 md:right-8 md:bottom-8;
+			/* override hover transition duration */
+			@apply !transition;
 		}
 
 		.cookieControl__ControlButton,
@@ -44,6 +46,8 @@
 			@apply bg-white;
 
 			svg {
+				/* override hover transition duration */
+				@apply !transition-none;
 				@apply text-inherit;
 			}
 		}

@@ -141,15 +141,19 @@
 	.UIButton {
 		@apply inline-flex items-center justify-center whitespace-pre;
 		@apply font-semibold;
-		@apply px-9 h-14 rounded-full disabled:opacity-25;
-		@apply bg-accent-700 text-white;
-		@apply transition hover:bg-accent-700/90;
+		@apply px-8 h-14 rounded-full disabled:opacity-25;
+		@apply transition;
+
+		/** only primary */
+		@apply bg-gradient-to-b from-accent-700/80 to-accent-700 text-white;
+		@apply shadow-border-accent-700;
+		@apply hover:bg-accent-700/90;
 	}
 
 	.UIButton-secondary {
-		@apply bg-frost-200 text-accent-700 shadow-sm;
-		@apply shadow-border;
-		@apply hover:text-accent-700/80 hover:bg-frost-200;
+		@apply bg-gradient-to-b from-frost to-frost-200 text-accent-700;
+		@apply shadow-border-and-shadow-sm;
+		@apply hover:text-accent-700/70 hover:bg-frost-200;
 	}
 
 	.UIInput {

@@ -4,6 +4,7 @@ import colors from 'tailwindcss/colors'
 import plugin from 'tailwindcss/plugin'
 
 const borderColorDefault = 'rgb(31 41 55 / 0.1)' // border-gray-800/10
+const accentColor700 = 'rgb(42, 90, 203)' // custom accent color
 
 export const breakpoints = {
 	'sm': 640,
@@ -42,7 +43,7 @@ export default <Partial<Config>>{
 			},
 			colors: {
 				accent: {
-					700: '#2A5ACB',
+					700: accentColor700,
 				},
 				gray: {
 					body: colors.gray[700],
@@ -60,6 +61,8 @@ export default <Partial<Config>>{
 			},
 			boxShadow: {
 				'border': `0 0 0 1px ${borderColorDefault}`,
+				'border-accent-700': `0 0 0 1px ${accentColor700}`,
+				'border-and-shadow-sm': `0 0 0 1px ${borderColorDefault}, ${defaultTheme.boxShadow['sm']}`,
 				'border-and-shadow-lg': `0 0 0 1px ${borderColorDefault}, ${defaultTheme.boxShadow['lg']}`,
 				'border-and-inner': `0 0 0 1px ${borderColorDefault}, ${defaultTheme.boxShadow.inner}`,
 				'border-2': `0 0 0 2px ${borderColorDefault}`,
