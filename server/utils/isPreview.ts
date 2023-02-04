@@ -1,4 +1,5 @@
 import type { RequestHeaders } from 'h3'
+import { withHttps } from 'ufo'
 
 /**
  * Determines if we are currently in the preview environment.
@@ -13,7 +14,7 @@ export const isPreview = ({
 		const runtimeConfig = useRuntimeConfig()
 
 		const host = headers?.host
-		const url = host ? `https://${host}` : undefined
+		const url = host ? withHttps(host) : undefined
 
 		return url === runtimeConfig.public.siteUrlPreview
 	} catch (error) {
