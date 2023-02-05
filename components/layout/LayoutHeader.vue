@@ -4,7 +4,7 @@
 			aria-hidden="true"
 			class="LayoutHeader-underlay"
 			:class="[
-				'transition bg-gradient-to-b from-white to-white/80 lg:to-white/60',
+				'transition bg-gradient-to-b from-white to-white/80',
 				'backdrop-blur-lg shadow-border',
 				'absolute left-0 top-0 right-0 w-full',
 				isSticky ? 'opacity-100' : 'opacity-0',
@@ -69,8 +69,8 @@
 	}
 
 	.LayoutHeader-underlay {
-		height: calc(100% - v-bind(offset2xPx));
-		top: v-bind(offsetPx);
+		height: 100%;
+		top: calc(v-bind(offsetPx) * -1);
 	}
 
 	.LayoutHeader-mobile {
