@@ -14,7 +14,7 @@
 		</div>
 
 		<div class="h-0 select-none pointer-events-none">
-			<UIImage
+			<WPImage
 				:src="props.imageSrc"
 				:alt="props.imageAlt"
 				:style="props.imageStyle"

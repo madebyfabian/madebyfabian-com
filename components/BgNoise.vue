@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-	const { buildCdnUrl } = useMedia()
+	const { buildCdnUrl } = useWPImage()
 
 	const bgSrc = computed(() => {
 		const src = buildCdnUrl({

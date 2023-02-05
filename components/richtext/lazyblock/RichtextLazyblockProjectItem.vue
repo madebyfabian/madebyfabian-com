@@ -24,7 +24,7 @@
 </script>
 
 <script setup lang="ts">
-	const { withoutWPHost } = useMedia()
+	const { withoutWPHost } = useWPImage()
 
 	const props = defineProps<{
 		attributes: RichtextLazyblockProjectItemProps['attributes']

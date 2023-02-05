@@ -1,8 +1,9 @@
 import { generateSitemap } from './generateSitemap'
 import { cookieConfig, generateTwicpicsConfig } from './config'
+import { withHttps } from 'ufo'
 
 export default defineNuxtConfig({
-	extends: ['nuxt-seo-kit'],
+	extends: ['nuxt-wordpress', 'nuxt-seo-kit'],
 
 	modules: [
 		'@vueuse/nuxt',
@@ -11,7 +12,6 @@ export default defineNuxtConfig({
 		'nuxt-typed-router',
 		'@dargmuesli/nuxt-cookie-control',
 		'nuxt-calendly',
-		'@twicpics/components/nuxt3',
 	],
 
 	runtimeConfig: {
@@ -27,16 +27,33 @@ export default defineNuxtConfig({
 			isProduction: process.env.NODE_ENV === 'production',
 			isVercelProduction: process.env.VERCEL_ENV === 'production',
 			calendlyUrl: process.env.NUXT_PUBLIC_CALENDLY_URL,
-			twicpicsDomain: process.env.NUXT_PUBLIC_TWICPICS_DOMAIN,
-			twicpicsConfig: generateTwicpicsConfig({
-				wpHost: process.env.NUXT_PUBLIC_WP_HOST,
-			}),
 
 			// nuxt-seo-kit
 			siteUrl: process.env.NUXT_PUBLIC_SITE_URL,
 			titleSeperator: '·',
 			language: 'en-US',
+
+			// nuxt-wordpress
+			wordpress: {
+				baseUrl: withHttps(process.env.NUXT_PUBLIC_WP_HOST || ''),
+				twicpicsDomain: process.env.NUXT_PUBLIC_TWICPICS_DOMAIN,
+				twicpicsPaths: [
+					{
+						path: '/wordpress-madebyfabian/',
+						source: withHttps(process.env.NUXT_PUBLIC_WP_HOST || ''),
+					},
+					{
+						path: '/gravatar/',
+						source: 'https://secure.gravatar.com/',
+					},
+				],
+			},
 		},
+	},
+
+	// nuxt-wordpress->@twicpics/components/nuxt3
+	twicpics: {
+		domain: process.env.NUXT_PUBLIC_TWICPICS_DOMAIN,
 	},
 
 	// nuxt-link-checker
@@ -51,11 +68,6 @@ export default defineNuxtConfig({
 			lastmod: new Date().toString(),
 		},
 		urls: generateSitemap,
-	},
-
-	// @twicpics/components/nuxt3
-	twicpics: {
-		domain: process.env.NUXT_PUBLIC_TWICPICS_DOMAIN,
 	},
 
 	// @nuxtjs/turnstile

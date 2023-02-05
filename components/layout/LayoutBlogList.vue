@@ -6,7 +6,7 @@
 			:to="(item.uri as string)"
 			class="UICard my-6 flex flex-col md:flex-row">
 			<div class="shrink-0">
-				<UIImage
+				<WPImage
 					:src="item.featuredImage?.node?.sourceUrl || undefined"
 					:alt="item.featuredImage?.node?.altText || ''"
 					:path="'/wordpress-madebyfabian/'"
@@ -16,7 +16,7 @@
 							<span class="text-3xl">🏡</span>
 						</div>
 					</template>
-				</UIImage>
+				</WPImage>
 			</div>
 
 			<div class="p-6">

@@ -28,12 +28,12 @@
 	"dependencies": {
 		"@trpc/client": "^10.9.1",
 		"@trpc/server": "^10.9.1",
-		"@twicpics/components": "^0.15.1",
 		"@vueuse/nuxt": "^9.12.0",
 		"dotenv": "^16.0.3",
 		"graphql": "^16.6.0",
 		"graphql-request": "^5.1.0",
 		"nuxt-typed-router": "^2.3.2",
+		"nuxt-wordpress": "1.0.0-beta.1",
 		"superjson": "^1.12.2",
 		"trpc-nuxt": "^0.5.0",
 		"vue-matomo": "^4.2.0",

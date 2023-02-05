@@ -6,7 +6,7 @@
 				'-bottom-[10vh] -right-[33vh] rotate-90	': props.position === 'bottomRight',
 			}"
 			class="container fixed z-0 select-none pointer-events-none">
-			<UIImage
+			<WPImage
 				src="/wp-content/uploads/2023/02/blur.png"
 				alt=""
 				class="h-[75vh] w-full"

@@ -1,7 +1,7 @@
 <template>
 	<figure class="RichtextCoreImage" :id="id">
 		<component :is="props.attributes?.href ? 'a' : 'div'" v-bind="containerProps">
-			<UIImage
+			<WPImage
 				v-if="props.attributes?.url"
 				:src="props.attributes.url"
 				:alt="alt"

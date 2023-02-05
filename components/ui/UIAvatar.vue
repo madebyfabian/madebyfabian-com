@@ -1,6 +1,6 @@
 <template>
 	<div class="UIAvatar shrink-0 shadow-border-and-inner overflow-hidden relative safari-overflow-fix">
-		<UIImage
+		<WPImage
 			:src="url || undefined"
 			:style="{ width: `${props.size}px`, height: `${props.size}px` }"
 			:alt="name || ''"
@@ -10,7 +10,7 @@
 					<span class="text-2xl">🙋</span>
 				</div>
 			</template>
-		</UIImage>
+		</WPImage>
 	</div>
 </template>
 
