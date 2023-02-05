@@ -1,5 +1,5 @@
 <template>
-	<LayoutPage hasH1 :uri="uri">
+	<LayoutPage :uri="uri">
 		<ClientOnly>
 			<Calendly />
 

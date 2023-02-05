@@ -3,7 +3,7 @@
 		<RichtextResolver
 			v-for="item of props.blocks"
 			:key="item.id"
-			v-bind="{ item, mediaItemsStorageKey: storageKey }" />
+			v-bind="{ item, mediaItemsStorageKey: mediaItemsStorageKey }" />
 	</article>
 </template>
 
@@ -11,15 +11,15 @@
 	import type { RichtextItem } from '@/components/richtext/RichtextResolver.vue'
 
 	const props = defineProps<{
-		mediaItems?: any
+		mediaItems: any
 		blocks: RichtextItem[]
 		uniqueKey: string
 	}>()
 
-	const storageKey = `RichtextContainer:${props.uniqueKey}:mediaItems`
+	const mediaItemsStorageKey = `RichtextContainer:${props.uniqueKey}:mediaItems`
 
 	// Inject the media items data into the global storage
-	useState(storageKey, () => {
+	useState(mediaItemsStorageKey, () => {
 		return props.mediaItems
 	})
 </script>

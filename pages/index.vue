@@ -1,5 +1,33 @@
 <template>
 	<LayoutPage :uri="uri" containerSize="large">
+		<template #beforeRichtext>
+			<div class="flex items-center lg:mx-8">
+				<div class="lg:mt-12 mt-4 mb-6">
+					<WrapBalancer as="h1"> Exceptional web experiences, crafted with passion. </WrapBalancer>
+					<WrapBalancer as="p" class="PLargeLike !leading-normal mb-10 -mt-1">
+						Hej! I am Fabian, a visual product designer and frontend developer, creating high-quality web
+						experiences for your unique needs.
+					</WrapBalancer>
+					<div class="UIButtonGroup">
+						<NuxtLink to="https://madebyfabian.com" external class="UIButton flex-1 md:flex-none">
+							👨🏼‍💻&nbsp;&nbsp;My Work
+						</NuxtLink>
+						<NuxtLink :to="{ name: 'contact' }" class="UIButton UIButton-secondary flex-1 md:flex-none">
+							💬&nbsp;&nbsp;Say hello!
+						</NuxtLink>
+					</div>
+				</div>
+
+				<div class="overflow-hidden shrink-0 w-0 lg:w-[240px] lg:-ml-[3vw]">
+					<WPImage
+						src="/wp-content/uploads/2023/02/avatar.svg"
+						alt=""
+						path="/wordpress-madebyfabian/"
+						class="w-[7rem] -mr-[3rem] lg:-mr-0 lg:w-full aspect-[0.66]" />
+				</div>
+			</div>
+		</template>
+
 		<div class="mx-auto max-w-3xl mt-6">
 			<h2 class="mb-12 H2-Like text-center">Recent Posts</h2>
 			<LayoutBlogList :uniqueKey="uri" />

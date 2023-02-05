@@ -87,7 +87,7 @@
 
 @layer utilities {
 	.H1Like {
-		@apply text-5xl font-bold tracking-tight mb-8;
+		@apply text-4xl lg:text-5xl font-bold tracking-tight mb-8;
 	}
 
 	.H1Like span {
@@ -141,7 +141,7 @@
 	.UIButton {
 		@apply inline-flex items-center justify-center whitespace-pre;
 		@apply font-semibold;
-		@apply px-8 h-14 rounded-full disabled:opacity-25;
+		@apply px-6 md:px-8 h-14 rounded-full disabled:opacity-25;
 		@apply transition;
 
 		/** only primary */
