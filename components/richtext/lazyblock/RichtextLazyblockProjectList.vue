@@ -26,8 +26,6 @@
 </script>
 
 <script setup lang="ts">
-	import type { GenerateBlocksDataReturnType } from '@/server/utils/generateBlocksData'
-
 	const props = defineProps<{
 		attributes: RichtextLazyblockProjectListProps['attributes']
 		innerBlocks?: RichtextLazyblockProjectListProps['innerBlocks']
