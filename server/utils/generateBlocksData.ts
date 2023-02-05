@@ -77,10 +77,6 @@ const parseItemJson = ({ item }: ParseItemJsonProps) => {
 	// These blocks contain some raw image data, where we want to fetch the media items details.
 	const blocksWithImageData = ['core/image', 'lazyblock/project-item']
 	if (blocksWithImageData.includes(item.name) && 'id' in newItem.block && typeof newItem.block.id === 'number') {
-		if (item.name === 'core/image') {
-			itemImageId = String(newItem.block.id)
-		}
-
 		switch (item.name) {
 			case 'core/image': {
 				itemImageId = String(newItem.block.id)
