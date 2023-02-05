@@ -1,10 +1,12 @@
 <template>
-	<Page>
-		<SeoKit :siteName="siteName" />
-		<NuxtLoadingIndicator :color="color" :height="4" />
-		<CookieControlBanner />
-		<NuxtPage />
-	</Page>
+	<div>
+		<Page>
+			<SeoKit :siteName="siteName" />
+			<NuxtLoadingIndicator :color="color" :height="4" />
+			<CookieControlBanner />
+			<NuxtPage />
+		</Page>
+	</div>
 </template>
 
 <script lang="ts" setup>

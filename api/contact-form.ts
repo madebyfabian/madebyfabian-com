@@ -37,7 +37,7 @@ const renderBody = async ({ name, email, message }: { name: string; email: strin
 				<ul>
 					<li v-for="(value, key) in input" :key="key">
 						<div>{{ key }}: </div>
-						<div style="{ font-weight: bold; }" v-html="value" />
+						<div style="{ font-weight: bold; }" v-html="value"></div>
 					</li>
 				</ul>
 			</div>`,
