@@ -20,12 +20,10 @@
 		throw createError({ statusCode: 500, message: 'Error fetching settings' })
 	}
 
-	const prefix = process.env.NODE_ENV === 'development' ? '⚙️ ' : ''
 	const siteName = data.value.allSettings.generalSettingsTitle || ''
 	const siteDescription = data.value.allSettings.generalSettingsDescription || undefined
 
 	useSeoMeta({
-		titleTemplate: `${prefix}%s %titleSeperator %siteName`,
 		title: 'Home',
 		description: siteDescription,
 	})

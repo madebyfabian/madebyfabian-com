@@ -30,6 +30,7 @@ export default defineNuxtConfig({
 
 			// nuxt-seo-kit
 			siteUrl: process.env.NUXT_PUBLIC_SITE_URL,
+			siteName: 'Fabian Beer',
 			titleSeperator: '·',
 			language: 'en-US',
 
@@ -49,6 +50,20 @@ export default defineNuxtConfig({
 				],
 			},
 		},
+	},
+
+	app: {
+		head: {
+			titleTemplate: `${process.env.NODE_ENV === 'development' ? '⚙️ ' : ''}%s %titleSeperator %siteName`,
+			link: [
+				{
+					rel: 'icon',
+					href: 'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>',
+				},
+			],
+		},
+
+		pageTransition: { name: 'page', mode: 'out-in' },
 	},
 
 	// nuxt-wordpress->@twicpics/components/nuxt3
@@ -90,18 +105,5 @@ export default defineNuxtConfig({
 		externals: {
 			traceInclude: ['./node_modules/vue/server-renderer'],
 		},
-	},
-
-	app: {
-		head: {
-			link: [
-				{
-					rel: 'icon',
-					href: 'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>',
-				},
-			],
-		},
-
-		pageTransition: { name: 'page', mode: 'out-in' },
 	},
 })
