@@ -23,7 +23,7 @@
 						'transition-opacity hover:opacity-75',
 					]">
 					<WPImage
-						src="/wp-content/uploads/2023/02/logo.svg"
+						src="/wp-content/uploads/2023/02/logo-iconmark.svg"
 						alt="Logo"
 						class="absolute h-10 w-10 -top-0.5 -left-4"
 						:path="'/wordpress-madebyfabian/'"
