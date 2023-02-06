@@ -18,19 +18,20 @@
 					:to="{ name: 'index' }"
 					title="Home Page"
 					:class="[
-						'relative flex mb-4 lg:m-0',
+						'relative flex mb-4 lg:m-0 group',
 						'scale-110 lg:scale-100 origin-left text-2xl font-bold tracking-[-0.085rem]',
 						'transition-opacity hover:opacity-75',
 					]">
 					<WPImage
 						src="/wp-content/uploads/2023/02/logo-iconmark.svg"
 						alt="Logo"
-						class="absolute h-10 w-10 -top-0.5 -left-4"
+						class="absolute h-10 w-10 -top-0.5 -left-4 transition-transform group-hover:-translate-x-1"
 						:path="'/wordpress-madebyfabian/'"
 						eager />
-					<span class="relative"
-						><span>madebyfabian</span><span class="text-accent-700 tracking-[-0.085rem]">.com</span></span
-					>
+					<span class="relative">
+						<span>madebyfabian</span>
+						<span class="text-accent-700 tracking-[-0.085rem]">.com</span>
+					</span>
 				</NuxtLink>
 			</div>
 
