@@ -18,7 +18,7 @@
 		"@nuxtjs/turnstile": "^0.1.3",
 		"@vercel/node": "^2.9.0",
 		"npm-run-all": "^4.1.5",
-		"nuxt": "^3.1.2",
+		"nuxt": "^3.2.0",
 		"nuxt-calendly": "^0.1.11",
 		"nuxt-seo-kit": "^1.2.2",
 		"typescript": "^4.9.5",

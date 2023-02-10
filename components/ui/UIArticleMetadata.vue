@@ -16,11 +16,7 @@
 
 		<p v-if="item.dateGmt" class="text-gray-500">{{ dateFormatted }}</p>
 
-		<ul v-if="item.tags?.edges.length">
-			<li v-for="tag of item.tags.edges" :key="tag.node.id" class="text-gray-500 underline">
-				# {{ tag.node.name }}
-			</li>
-		</ul>
+		<UITagList :tags="item?.tags?.edges" />
 	</div>
 </template>
 

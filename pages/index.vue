@@ -1,15 +1,19 @@
 <template>
 	<LayoutPage :uri="uri" containerSize="large">
 		<template #beforeRichtext>
-			<div class="flex items-center lg:mx-8">
-				<div class="lg:mt-12 mt-4 mb-6">
+			<div class="flex items-center lg:px-8">
+				<div class="mt-10 lg:mt-12 mb-6">
 					<WrapBalancer as="h1"> Exceptional web experiences, crafted with passion. </WrapBalancer>
 					<WrapBalancer as="p" class="PLargeLike !leading-normal mb-10 -mt-1">
 						Hej! I am Fabian, a visual product designer and frontend developer, creating high-quality web
 						experiences for your unique needs.
 					</WrapBalancer>
 					<div class="UIButtonGroup">
-						<NuxtLink to="https://madebyfabian.com" external class="UIButton flex-1 md:flex-none">
+						<NuxtLink
+							to="/#projects"
+							@click="e => scrollIntoView({ e, selectors: `#projects` })"
+							external
+							class="UIButton flex-1 md:flex-none">
 							👨🏼‍💻&nbsp;&nbsp;My Work
 						</NuxtLink>
 						<NuxtLink :to="{ name: 'contact' }" class="UIButton UIButton-secondary flex-1 md:flex-none">
@@ -28,8 +32,21 @@
 			</div>
 		</template>
 
-		<div class="mx-auto max-w-3xl mt-6">
-			<h2 class="mb-12 H2-Like text-center">Recent Posts</h2>
+		<div id="projects" class="lg:px-8">
+			<h2 class="H2-Like">Selected Projects <span class="font-normal"> — what yours could look like.</span></h2>
+			<LayoutProjectsList />
+			<div class="flex justify-center">
+				<NuxtLink class="UIButton UIButton-secondary" :to="{ name: 'contact' }"
+					>💬 Looks good? Get in touch!</NuxtLink
+				>
+			</div>
+		</div>
+
+		<div class="mt-16 md:mt-28 mx-auto max-w-3xl">
+			<h2 class="mb-6 H2-Like lg:text-center">Recent Posts</h2>
+			<p class="mb-8 lg:mb-16 PLike PLargeLike lg:text-center">
+				Everything I think about, want to discuss — or just want to share.
+			</p>
 			<LayoutBlogList :uniqueKey="uri" />
 			<div class="flex justify-center">
 				<NuxtLink class="UIButton UIButton-secondary mt-6" :to="{ name: 'blog' }"> See all posts </NuxtLink>

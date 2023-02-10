@@ -1,10 +1,18 @@
 <template>
-	<article class="LayoutProjectsItem flex flex-col lg:flex-row gap-x-8 gap-y-4">
-		<div>
+	<article class="LayoutProjectsItem flex flex-col lg:flex-row lg:items-center gap-x-10 gap-y-8 py-12 lg:py-16">
+		<div class="flex-1" :class="{ 'lg:order-2': isOdd }">
+			<WPImage
+				:src="project.featuredImage?.node?.sourceUrl || undefined"
+				:alt="project.featuredImage?.node?.altText || ''"
+				:path="'/wordpress-madebyfabian/'"
+				class="w-full aspect-[4/3] rounded-box safari-overflow-fix shadow-border select-none">
+			</WPImage>
+		</div>
+
+		<div class="flex-1" :class="{ 'lg:order-1': isOdd }">
 			<!-- Logo -->
-			<div class="LayoutProjectsItem-logo h-8 mb-5">
+			<div v-if="project.project?.logo?.sourceUrl" class="LayoutProjectsItem-logo h-8 mb-4">
 				<WPImage
-					v-if="project.project?.logo?.sourceUrl"
 					:src="project.project?.logo?.sourceUrl || undefined"
 					:alt="project.project?.logo?.altText || ''"
 					:ratio="{
@@ -17,7 +25,7 @@
 
 			<!-- Title -->
 
-			<WrapBalancer as="h2" class="H3Like reset" :ratio="0.15">
+			<WrapBalancer as="h2" class="H3Like mb-2 reset" :ratio="0.15">
 				{{ props.project.title }}
 			</WrapBalancer>
 
@@ -25,16 +33,7 @@
 				{{ props.project.excerpt }}
 			</WrapBalancer>
 
-			<pre>{{ props.project }}</pre>
-		</div>
-
-		<div class="shrink-0">
-			<WPImage
-				:src="project.featuredImage?.node?.sourceUrl || undefined"
-				:alt="project.featuredImage?.node?.altText || ''"
-				:path="'/wordpress-madebyfabian/'"
-				class="w-full md:w-[296px] aspect-[4/3] rounded-box safari-overflow-fix shadow-inner select-none">
-			</WPImage>
+			<UITagList class="mt-4" :tags="(project?.tags?.edges as any)" />
 		</div>
 	</article>
 </template>
@@ -44,10 +43,15 @@
 
 	const props = defineProps<{
 		project: DeepPartial<Project>
+		index: number
 	}>()
 
 	const aspectRatio = computed(() => {
 		return `${props.project.project?.logo?.mediaDetails?.width}/${props.project.project?.logo?.mediaDetails?.height}`
+	})
+
+	const isOdd = computed(() => {
+		return props.index % 2 === 0
 	})
 </script>
 
