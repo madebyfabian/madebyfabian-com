@@ -1,5 +1,5 @@
 <template>
-	<LayoutProjectItem
+	<LayoutTeaserItem
 		:imageSrc="mediaSrc"
 		imageAlt=""
 		:imageStyle="props.attributes?.imageAlign === 'top' ? { top: 0 } : { bottom: 0 }"
@@ -13,7 +13,7 @@
 			{{ props.attributes?.description2 }}
 		</WrapBalancer>
 		<template #linkLabel> {{ props.attributes?.linkLabel }} </template>
-	</LayoutProjectItem>
+	</LayoutTeaserItem>
 </template>
 
 <script lang="ts">

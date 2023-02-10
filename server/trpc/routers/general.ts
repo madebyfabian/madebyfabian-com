@@ -91,6 +91,50 @@ export const generalRouter = router({
 		return graphQLClient.request(query)
 	}),
 
+	listProjects: publicProcedure.query(async () => {
+		const query = gql(/* GraphQL */ `
+			query ListProjects {
+				projects(where: { status: PUBLISH }) {
+					nodes {
+						id
+						title
+						dateGmt
+						uri
+						excerpt(format: RAW)
+						project {
+							logo {
+								id
+								sourceUrl
+								altText
+								mediaDetails {
+									width
+									height
+								}
+							}
+						}
+						featuredImage {
+							node {
+								id
+								sourceUrl
+								altText
+							}
+						}
+						tags {
+							edges {
+								node {
+									id
+									name
+								}
+							}
+						}
+					}
+				}
+			}
+		`)
+
+		return graphQLClient.request(query)
+	}),
+
 	mediaItems: publicProcedure
 		.input(
 			z.object({

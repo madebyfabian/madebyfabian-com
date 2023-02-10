@@ -3,6 +3,12 @@ import type { Block } from '@/types'
 
 export * from '@/graphql/graphql'
 
+export type DeepPartial<T> = T extends object
+	? {
+			[P in keyof T]?: DeepPartial<T[P]>
+	  }
+	: T
+
 export type ItemBase = {
 	id: string
 	name: string

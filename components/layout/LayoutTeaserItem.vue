@@ -1,5 +1,5 @@
 <template>
-	<article class="LayoutProjectItem flex-1 flex flex-col relative rounded-2xl bg-frost-200 p-8 shadow-border">
+	<article class="LayoutTeaserItem flex-1 flex flex-col relative rounded-2xl bg-frost-200 p-8 shadow-border">
 		<div class="flex-1 max-w-[90%] md:max-w-full flex flex-col relative">
 			<div class="flex-1">
 				<h2 class="H3Like mb-1"><slot name="title" /></h2>
@@ -35,7 +35,7 @@
 </script>
 
 <style lang="postcss" scoped>
-	.LayoutProjectItem :deep(p) {
+	.LayoutTeaserItem :deep(p) {
 		@apply mt-3;
 	}
 </style>

@@ -16,9 +16,13 @@
 						class="w-0 shadow-border h-[8px] absolute -bottom-2.5"
 						aria-hidden="true" />
 				</span>
-				<a :href="`#${entry.link}`" :data-link="entry.link" @click.prevent="handleClick" class="UILink">
+				<NuxtLink
+					:to="`/#${entry.link}`"
+					@click="e => scrollIntoView({ e, selectors: `[id='${entry.link}']` })"
+					class="UILink"
+					external>
 					{{ entry.text }}
-				</a>
+				</NuxtLink>
 			</li>
 		</ol>
 	</section>
@@ -41,17 +45,6 @@
 	const headerEntries = computed(() => {
 		return (props.attributes?.headerEntries as any as UbTableOfContentsHeaderEntry[]) || []
 	})
-
-	const handleClick = (e: MouseEvent) => {
-		if (!e.target) return
-		const eventTarget = e.target as HTMLAnchorElement
-
-		// Find element
-		const element = document.querySelector(`[id='${eventTarget.dataset.link}']`)
-		element?.scrollIntoView({
-			behavior: 'smooth',
-		})
-	}
 </script>
 
 <style lang="postcss" scoped>

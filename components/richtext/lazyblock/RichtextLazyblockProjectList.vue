@@ -1,6 +1,6 @@
 <template>
 	<div v-if="props.innerBlocks?.length" class="RichtextLazyblockProjectList" :id="id">
-		<LayoutProjectList>
+		<LayoutTeaserList>
 			<RichtextResolver
 				v-for="(item, key) of props.innerBlocks"
 				:key="key"
@@ -8,7 +8,7 @@
 					name: item.block?.lazyblock.slug,
 					block: item.block,
 				} as any, name: item.block?.lazyblock.slug, mediaItemsStorageKey: props.mediaItemsStorageKey }" />
-		</LayoutProjectList>
+		</LayoutTeaserList>
 	</div>
 </template>
 

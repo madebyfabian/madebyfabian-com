@@ -16,6 +16,12 @@ export type Scalars = {
   BlockAttributesObject: any;
 };
 
+/** A Field Group registered by ACF */
+export type AcfFieldGroup = {
+  /** The name of the ACF Field Group */
+  fieldGroupName?: Maybe<Scalars['String']>;
+};
+
 /** Avatars are profile images for users. WordPress by default uses the Gravatar service to host and fetch avatars from. */
 export type Avatar = {
   __typename?: 'Avatar';
@@ -1359,6 +1365,8 @@ export enum ContentTypeEnum {
   /** The Type of Content object */
   Post = 'POST',
   /** The Type of Content object */
+  Project = 'PROJECT',
+  /** The Type of Content object */
   WggPreview = 'WGG_PREVIEW',
   /** The Type of Content object */
   WpBlock = 'WP_BLOCK'
@@ -1469,7 +1477,9 @@ export enum ContentTypesOfTagEnum {
   /** The Type of Content object */
   Page = 'PAGE',
   /** The Type of Content object */
-  Post = 'POST'
+  Post = 'POST',
+  /** The Type of Content object */
+  Project = 'PROJECT'
 }
 
 /** core/archives block */
@@ -7658,6 +7668,39 @@ export type CreatePostPayload = {
   post?: Maybe<Post>;
 };
 
+/** Input for the createProject mutation. */
+export type CreateProjectInput = {
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']>;
+  /** The content of the object */
+  content?: InputMaybe<Scalars['String']>;
+  /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
+  date?: InputMaybe<Scalars['String']>;
+  /** The excerpt of the object */
+  excerpt?: InputMaybe<Scalars['String']>;
+  /** A field used for ordering posts. This is typically used with nav menu items or for special ordering of hierarchical content types. */
+  menuOrder?: InputMaybe<Scalars['Int']>;
+  /** The password used to protect the content of the object */
+  password?: InputMaybe<Scalars['String']>;
+  /** The slug of the object */
+  slug?: InputMaybe<Scalars['String']>;
+  /** The status of the object */
+  status?: InputMaybe<PostStatusEnum>;
+  /** Set connections between the Project and tags */
+  tags?: InputMaybe<ProjectTagsInput>;
+  /** The title of the object */
+  title?: InputMaybe<Scalars['String']>;
+};
+
+/** The payload for the createProject mutation. */
+export type CreateProjectPayload = {
+  __typename?: 'CreateProjectPayload';
+  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: Maybe<Scalars['String']>;
+  /** The Post object mutation type. */
+  project?: Maybe<Project>;
+};
+
 /** Input for the createReusableBlock mutation. */
 export type CreateReusableBlockInput = {
   /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
@@ -7932,6 +7975,27 @@ export type DeletePostPayload = {
   deletedId?: Maybe<Scalars['ID']>;
   /** The object before it was deleted */
   post?: Maybe<Post>;
+};
+
+/** Input for the deleteProject mutation. */
+export type DeleteProjectInput = {
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']>;
+  /** Whether the object should be force deleted instead of being moved to the trash */
+  forceDelete?: InputMaybe<Scalars['Boolean']>;
+  /** The ID of the Project to delete */
+  id: Scalars['ID'];
+};
+
+/** The payload for the deleteProject mutation. */
+export type DeleteProjectPayload = {
+  __typename?: 'DeleteProjectPayload';
+  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: Maybe<Scalars['String']>;
+  /** The ID of the deleted object */
+  deletedId?: Maybe<Scalars['ID']>;
+  /** The object before it was deleted */
+  project?: Maybe<Project>;
 };
 
 /** Input for the deleteReusableBlock mutation. */
@@ -9299,7 +9363,7 @@ export enum MenuItemNodeIdTypeEnum {
 }
 
 /** Deprecated in favor of MenuItemLinkeable Interface */
-export type MenuItemObjectUnion = Category | Page | Post | Tag;
+export type MenuItemObjectUnion = Category | Page | Post | Project | Tag;
 
 /** Connection between the MenuItem type and the Menu type */
 export type MenuItemToMenuConnectionEdge = Edge & MenuConnectionEdge & OneToOneConnection & {
@@ -10983,6 +11047,8 @@ export type PostPostFormatsNodeInput = {
 
 /** The status of the object. */
 export enum PostStatusEnum {
+  /** Objects with the acf-disabled status */
+  AcfDisabled = 'ACF_DISABLED',
   /** Objects with the auto-draft status */
   AutoDraft = 'AUTO_DRAFT',
   /** Objects with the dp-rewrite-republish status */
@@ -11539,6 +11605,351 @@ export type Previewable = {
   previewRevisionId?: Maybe<Scalars['ID']>;
 };
 
+/** The Project type */
+export type Project = BlockEditorContentNode & ContentNode & DatabaseIdentifier & MenuItemLinkable & Node & NodeWithContentEditor & NodeWithExcerpt & NodeWithFeaturedImage & NodeWithTemplate & NodeWithTitle & Previewable & UniformResourceIdentifiable & {
+  __typename?: 'Project';
+  /** Gutenberg blocks */
+  blocks?: Maybe<Array<Block>>;
+  /** Gutenberg blocks as json string */
+  blocksJSON?: Maybe<Scalars['String']>;
+  /** The content of the post. */
+  content?: Maybe<Scalars['String']>;
+  /** Connection between the ContentNode type and the ContentType type */
+  contentType?: Maybe<ContentNodeToContentTypeConnectionEdge>;
+  /** The name of the Content Type the node belongs to */
+  contentTypeName: Scalars['String'];
+  /** The unique identifier stored in the database */
+  databaseId: Scalars['Int'];
+  /** Post publishing date. */
+  date?: Maybe<Scalars['String']>;
+  /** The publishing date set in GMT. */
+  dateGmt?: Maybe<Scalars['String']>;
+  /** The desired slug of the post */
+  desiredSlug?: Maybe<Scalars['String']>;
+  /** If a user has edited the node within the past 15 seconds, this will return the user that last edited. Null if the edit lock doesn&#039;t exist or is greater than 15 seconds */
+  editingLockedBy?: Maybe<ContentNodeToEditLockConnectionEdge>;
+  /** The RSS enclosure for the object */
+  enclosure?: Maybe<Scalars['String']>;
+  /** Connection between the ContentNode type and the EnqueuedScript type */
+  enqueuedScripts?: Maybe<ContentNodeToEnqueuedScriptConnection>;
+  /** Connection between the ContentNode type and the EnqueuedStylesheet type */
+  enqueuedStylesheets?: Maybe<ContentNodeToEnqueuedStylesheetConnection>;
+  /** The excerpt of the post. */
+  excerpt?: Maybe<Scalars['String']>;
+  /** Connection between the NodeWithFeaturedImage type and the MediaItem type */
+  featuredImage?: Maybe<NodeWithFeaturedImageToMediaItemConnectionEdge>;
+  /** The database identifier for the featured image node assigned to the content node */
+  featuredImageDatabaseId?: Maybe<Scalars['Int']>;
+  /** Globally unique ID of the featured image assigned to the node */
+  featuredImageId?: Maybe<Scalars['ID']>;
+  /** The global unique identifier for this post. This currently matches the value stored in WP_Post-&gt;guid and the guid column in the &quot;post_objects&quot; database table. */
+  guid?: Maybe<Scalars['String']>;
+  /** The globally unique identifier of the project object. */
+  id: Scalars['ID'];
+  /** Whether the node is a Content Node */
+  isContentNode: Scalars['Boolean'];
+  /** Whether the object is a node in the preview state */
+  isPreview?: Maybe<Scalars['Boolean']>;
+  /** Whether the object is restricted from the current viewer */
+  isRestricted?: Maybe<Scalars['Boolean']>;
+  /** Whether the node is a Term */
+  isTermNode: Scalars['Boolean'];
+  /** The user that most recently edited the node */
+  lastEditedBy?: Maybe<ContentNodeToEditLastConnectionEdge>;
+  /** The permalink of the post */
+  link?: Maybe<Scalars['String']>;
+  /** The local modified time for a post. If a post was recently updated the modified field will change to match the corresponding time. */
+  modified?: Maybe<Scalars['String']>;
+  /** The GMT modified time for a post. If a post was recently updated the modified field will change to match the corresponding time in GMT. */
+  modifiedGmt?: Maybe<Scalars['String']>;
+  /** Connection between the Project type and the Project type */
+  preview?: Maybe<ProjectToPreviewConnectionEdge>;
+  /** Previewed gutenberg blocks */
+  previewBlocks?: Maybe<Array<Block>>;
+  /** Previewed Gutenberg blocks as json string */
+  previewBlocksJSON?: Maybe<Scalars['String']>;
+  /** The database id of the preview node */
+  previewRevisionDatabaseId?: Maybe<Scalars['Int']>;
+  /** Whether the object is a node in the preview state */
+  previewRevisionId?: Maybe<Scalars['ID']>;
+  /** Added to the GraphQL Schema because the ACF Field Group &quot;Project&quot; was set to Show in GraphQL. */
+  project?: Maybe<Project_Project>;
+  /**
+   * The id field matches the WP_Post-&gt;ID field.
+   * @deprecated Deprecated in favor of the databaseId field
+   */
+  projectId: Scalars['Int'];
+  /** The uri slug for the post. This is equivalent to the WP_Post-&gt;post_name field and the post_name column in the database for the &quot;post_objects&quot; table. */
+  slug?: Maybe<Scalars['String']>;
+  /** The current status of the object */
+  status?: Maybe<Scalars['String']>;
+  /** Connection between the Project type and the tag type */
+  tags?: Maybe<ProjectToTagConnection>;
+  /** The template assigned to the node */
+  template?: Maybe<ContentTemplate>;
+  /** Connection between the Project type and the TermNode type */
+  terms?: Maybe<ProjectToTermNodeConnection>;
+  /** The title of the post. This is currently just the raw title. An amendment to support rendered title needs to be made. */
+  title?: Maybe<Scalars['String']>;
+  /** The unique resource identifier path */
+  uri?: Maybe<Scalars['String']>;
+};
+
+
+/** The Project type */
+export type ProjectContentArgs = {
+  format?: InputMaybe<PostObjectFieldFormatEnum>;
+};
+
+
+/** The Project type */
+export type ProjectEnqueuedScriptsArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+};
+
+
+/** The Project type */
+export type ProjectEnqueuedStylesheetsArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+};
+
+
+/** The Project type */
+export type ProjectExcerptArgs = {
+  format?: InputMaybe<PostObjectFieldFormatEnum>;
+};
+
+
+/** The Project type */
+export type ProjectTagsArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ProjectToTagConnectionWhereArgs>;
+};
+
+
+/** The Project type */
+export type ProjectTermsArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ProjectToTermNodeConnectionWhereArgs>;
+};
+
+
+/** The Project type */
+export type ProjectTitleArgs = {
+  format?: InputMaybe<PostObjectFieldFormatEnum>;
+};
+
+/** Connection to Project Nodes */
+export type ProjectConnection = {
+  /** A list of edges (relational context) between RootQuery and connected Project Nodes */
+  edges: Array<ProjectConnectionEdge>;
+  /** A list of connected Project Nodes */
+  nodes: Array<Project>;
+};
+
+/** Edge between a Node and a connected Project */
+export type ProjectConnectionEdge = {
+  /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
+  cursor?: Maybe<Scalars['String']>;
+  /** The connected Project Node */
+  node: Project;
+};
+
+/** The Type of Identifier used to fetch a single resource. Default is ID. */
+export enum ProjectIdType {
+  /** Identify a resource by the Database ID. */
+  DatabaseId = 'DATABASE_ID',
+  /** Identify a resource by the (hashed) Global ID. */
+  Id = 'ID',
+  /** Identify a resource by the slug. Available to non-hierarchcial Types where the slug is a unique identifier. */
+  Slug = 'SLUG',
+  /** Identify a resource by the URI. */
+  Uri = 'URI'
+}
+
+/** Set relationships between the Project to tags */
+export type ProjectTagsInput = {
+  /** If true, this will append the tag to existing related tags. If false, this will replace existing relationships. Default true. */
+  append?: InputMaybe<Scalars['Boolean']>;
+  /** The input list of items to set. */
+  nodes?: InputMaybe<Array<InputMaybe<ProjectTagsNodeInput>>>;
+};
+
+/** List of tags to connect the Project to. If an ID is set, it will be used to create the connection. If not, it will look for a slug. If neither are valid existing terms, and the site is configured to allow terms to be created during post mutations, a term will be created using the Name if it exists in the input, then fallback to the slug if it exists. */
+export type ProjectTagsNodeInput = {
+  /** The description of the tag. This field is used to set a description of the tag if a new one is created during the mutation. */
+  description?: InputMaybe<Scalars['String']>;
+  /** The ID of the tag. If present, this will be used to connect to the Project. If no existing tag exists with this ID, no connection will be made. */
+  id?: InputMaybe<Scalars['ID']>;
+  /** The name of the tag. This field is used to create a new term, if term creation is enabled in nested mutations, and if one does not already exist with the provided slug or ID or if a slug or ID is not provided. If no name is included and a term is created, the creation will fallback to the slug field. */
+  name?: InputMaybe<Scalars['String']>;
+  /** The slug of the tag. If no ID is present, this field will be used to make a connection. If no existing term exists with this slug, this field will be used as a fallback to the Name field when creating a new term to connect to, if term creation is enabled as a nested mutation. */
+  slug?: InputMaybe<Scalars['String']>;
+};
+
+/** Connection between the Project type and the Project type */
+export type ProjectToPreviewConnectionEdge = Edge & OneToOneConnection & ProjectConnectionEdge & {
+  __typename?: 'ProjectToPreviewConnectionEdge';
+  /** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
+  cursor?: Maybe<Scalars['String']>;
+  /** The node of the connection, without the edges */
+  node: Project;
+};
+
+/** Connection between the Project type and the tag type */
+export type ProjectToTagConnection = Connection & TagConnection & {
+  __typename?: 'ProjectToTagConnection';
+  /** Edges for the ProjectToTagConnection connection */
+  edges: Array<ProjectToTagConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<Tag>;
+  /** Information about pagination in a connection. */
+  pageInfo?: Maybe<WpPageInfo>;
+};
+
+/** An edge in a connection */
+export type ProjectToTagConnectionEdge = Edge & TagConnectionEdge & {
+  __typename?: 'ProjectToTagConnectionEdge';
+  /** A cursor for use in pagination */
+  cursor?: Maybe<Scalars['String']>;
+  /** The item at the end of the edge */
+  node: Tag;
+};
+
+/** Arguments for filtering the ProjectToTagConnection connection */
+export type ProjectToTagConnectionWhereArgs = {
+  /** Unique cache key to be produced when this query is stored in an object cache. Default is 'core'. */
+  cacheDomain?: InputMaybe<Scalars['String']>;
+  /** Term ID to retrieve child terms of. If multiple taxonomies are passed, $child_of is ignored. Default 0. */
+  childOf?: InputMaybe<Scalars['Int']>;
+  /** True to limit results to terms that have no children. This parameter has no effect on non-hierarchical taxonomies. Default false. */
+  childless?: InputMaybe<Scalars['Boolean']>;
+  /** Retrieve terms where the description is LIKE the input value. Default empty. */
+  descriptionLike?: InputMaybe<Scalars['String']>;
+  /** Array of term ids to exclude. If $include is non-empty, $exclude is ignored. Default empty array. */
+  exclude?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** Array of term ids to exclude along with all of their descendant terms. If $include is non-empty, $exclude_tree is ignored. Default empty array. */
+  excludeTree?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** Whether to hide terms not assigned to any posts. Accepts true or false. Default false */
+  hideEmpty?: InputMaybe<Scalars['Boolean']>;
+  /** Whether to include terms that have non-empty descendants (even if $hide_empty is set to true). Default true. */
+  hierarchical?: InputMaybe<Scalars['Boolean']>;
+  /** Array of term ids to include. Default empty array. */
+  include?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** Array of names to return term(s) for. Default empty. */
+  name?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Retrieve terms where the name is LIKE the input value. Default empty. */
+  nameLike?: InputMaybe<Scalars['String']>;
+  /** Array of object IDs. Results will be limited to terms associated with these objects. */
+  objectIds?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** Direction the connection should be ordered in */
+  order?: InputMaybe<OrderEnum>;
+  /** Field(s) to order terms by. Defaults to 'name'. */
+  orderby?: InputMaybe<TermObjectsConnectionOrderbyEnum>;
+  /** Whether to pad the quantity of a term's children in the quantity of each term's "count" object variable. Default false. */
+  padCounts?: InputMaybe<Scalars['Boolean']>;
+  /** Parent term ID to retrieve direct-child terms of. Default empty. */
+  parent?: InputMaybe<Scalars['Int']>;
+  /** Search criteria to match terms. Will be SQL-formatted with wildcards before and after. Default empty. */
+  search?: InputMaybe<Scalars['String']>;
+  /** Array of slugs to return term(s) for. Default empty. */
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomId?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomyId?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** Whether to prime meta caches for matched terms. Default true. */
+  updateTermMetaCache?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Connection between the Project type and the TermNode type */
+export type ProjectToTermNodeConnection = Connection & TermNodeConnection & {
+  __typename?: 'ProjectToTermNodeConnection';
+  /** Edges for the ProjectToTermNodeConnection connection */
+  edges: Array<ProjectToTermNodeConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<TermNode>;
+  /** Information about pagination in a connection. */
+  pageInfo?: Maybe<WpPageInfo>;
+};
+
+/** An edge in a connection */
+export type ProjectToTermNodeConnectionEdge = Edge & TermNodeConnectionEdge & {
+  __typename?: 'ProjectToTermNodeConnectionEdge';
+  /** A cursor for use in pagination */
+  cursor?: Maybe<Scalars['String']>;
+  /** The item at the end of the edge */
+  node: TermNode;
+};
+
+/** Arguments for filtering the ProjectToTermNodeConnection connection */
+export type ProjectToTermNodeConnectionWhereArgs = {
+  /** Unique cache key to be produced when this query is stored in an object cache. Default is 'core'. */
+  cacheDomain?: InputMaybe<Scalars['String']>;
+  /** Term ID to retrieve child terms of. If multiple taxonomies are passed, $child_of is ignored. Default 0. */
+  childOf?: InputMaybe<Scalars['Int']>;
+  /** True to limit results to terms that have no children. This parameter has no effect on non-hierarchical taxonomies. Default false. */
+  childless?: InputMaybe<Scalars['Boolean']>;
+  /** Retrieve terms where the description is LIKE the input value. Default empty. */
+  descriptionLike?: InputMaybe<Scalars['String']>;
+  /** Array of term ids to exclude. If $include is non-empty, $exclude is ignored. Default empty array. */
+  exclude?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** Array of term ids to exclude along with all of their descendant terms. If $include is non-empty, $exclude_tree is ignored. Default empty array. */
+  excludeTree?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** Whether to hide terms not assigned to any posts. Accepts true or false. Default false */
+  hideEmpty?: InputMaybe<Scalars['Boolean']>;
+  /** Whether to include terms that have non-empty descendants (even if $hide_empty is set to true). Default true. */
+  hierarchical?: InputMaybe<Scalars['Boolean']>;
+  /** Array of term ids to include. Default empty array. */
+  include?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** Array of names to return term(s) for. Default empty. */
+  name?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Retrieve terms where the name is LIKE the input value. Default empty. */
+  nameLike?: InputMaybe<Scalars['String']>;
+  /** Array of object IDs. Results will be limited to terms associated with these objects. */
+  objectIds?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** Direction the connection should be ordered in */
+  order?: InputMaybe<OrderEnum>;
+  /** Field(s) to order terms by. Defaults to 'name'. */
+  orderby?: InputMaybe<TermObjectsConnectionOrderbyEnum>;
+  /** Whether to pad the quantity of a term's children in the quantity of each term's "count" object variable. Default false. */
+  padCounts?: InputMaybe<Scalars['Boolean']>;
+  /** Parent term ID to retrieve direct-child terms of. Default empty. */
+  parent?: InputMaybe<Scalars['Int']>;
+  /** Search criteria to match terms. Will be SQL-formatted with wildcards before and after. Default empty. */
+  search?: InputMaybe<Scalars['String']>;
+  /** Array of slugs to return term(s) for. Default empty. */
+  slug?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** The Taxonomy to filter terms by */
+  taxonomies?: InputMaybe<Array<InputMaybe<TaxonomyEnum>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomId?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** Array of term taxonomy IDs, to match when querying terms. */
+  termTaxonomyId?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** Whether to prime meta caches for matched terms. Default true. */
+  updateTermMetaCache?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** Field Group */
+export type Project_Project = AcfFieldGroup & {
+  __typename?: 'Project_Project';
+  /** The name of the ACF Field Group */
+  fieldGroupName?: Maybe<Scalars['String']>;
+  logo?: Maybe<MediaItem>;
+};
+
 /** The reading setting type */
 export type ReadingSettings = {
   __typename?: 'ReadingSettings';
@@ -11901,6 +12312,8 @@ export type RootMutation = {
   createPost?: Maybe<CreatePostPayload>;
   /** The createPostFormat mutation */
   createPostFormat?: Maybe<CreatePostFormatPayload>;
+  /** The createProject mutation */
+  createProject?: Maybe<CreateProjectPayload>;
   /** The createReusableBlock mutation */
   createReusableBlock?: Maybe<CreateReusableBlockPayload>;
   /** The createTag mutation */
@@ -11919,6 +12332,8 @@ export type RootMutation = {
   deletePost?: Maybe<DeletePostPayload>;
   /** The deletePostFormat mutation */
   deletePostFormat?: Maybe<DeletePostFormatPayload>;
+  /** The deleteProject mutation */
+  deleteProject?: Maybe<DeleteProjectPayload>;
   /** The deleteReusableBlock mutation */
   deleteReusableBlock?: Maybe<DeleteReusableBlockPayload>;
   /** The deleteTag mutation */
@@ -11949,6 +12364,8 @@ export type RootMutation = {
   updatePost?: Maybe<UpdatePostPayload>;
   /** The updatePostFormat mutation */
   updatePostFormat?: Maybe<UpdatePostFormatPayload>;
+  /** The updateProject mutation */
+  updateProject?: Maybe<UpdateProjectPayload>;
   /** The updateReusableBlock mutation */
   updateReusableBlock?: Maybe<UpdateReusableBlockPayload>;
   /** The updateSettings mutation */
@@ -11993,6 +12410,12 @@ export type RootMutationCreatePostArgs = {
 /** The root mutation */
 export type RootMutationCreatePostFormatArgs = {
   input: CreatePostFormatInput;
+};
+
+
+/** The root mutation */
+export type RootMutationCreateProjectArgs = {
+  input: CreateProjectInput;
 };
 
 
@@ -12047,6 +12470,12 @@ export type RootMutationDeletePostArgs = {
 /** The root mutation */
 export type RootMutationDeletePostFormatArgs = {
   input: DeletePostFormatInput;
+};
+
+
+/** The root mutation */
+export type RootMutationDeleteProjectArgs = {
+  input: DeleteProjectInput;
 };
 
 
@@ -12137,6 +12566,12 @@ export type RootMutationUpdatePostArgs = {
 /** The root mutation */
 export type RootMutationUpdatePostFormatArgs = {
   input: UpdatePostFormatInput;
+};
+
+
+/** The root mutation */
+export type RootMutationUpdateProjectArgs = {
+  input: UpdateProjectInput;
 };
 
 
@@ -12246,6 +12681,15 @@ export type RootQuery = {
   postFormats?: Maybe<RootQueryToPostFormatConnection>;
   /** Connection between the RootQuery type and the post type */
   posts?: Maybe<RootQueryToPostConnection>;
+  /** An object of the Project Type.  */
+  project?: Maybe<Project>;
+  /**
+   * A Project object
+   * @deprecated Deprecated in favor of using the single entry point for this type with ID and IDType fields. For example, instead of postBy( id: &quot;&quot; ), use post(id: &quot;&quot; idType: &quot;&quot;)
+   */
+  projectBy?: Maybe<Project>;
+  /** Connection between the RootQuery type and the Project type */
+  projects?: Maybe<RootQueryToProjectConnection>;
   /** Fields of the &#039;ReadingSettings&#039; settings group */
   readingSettings?: Maybe<ReadingSettings>;
   /** Connection between the RootQuery type and the EnqueuedScript type */
@@ -12556,6 +13000,33 @@ export type RootQueryPostsArgs = {
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<RootQueryToPostConnectionWhereArgs>;
+};
+
+
+/** The root entry point into the Graph */
+export type RootQueryProjectArgs = {
+  asPreview?: InputMaybe<Scalars['Boolean']>;
+  id: Scalars['ID'];
+  idType?: InputMaybe<ProjectIdType>;
+};
+
+
+/** The root entry point into the Graph */
+export type RootQueryProjectByArgs = {
+  id?: InputMaybe<Scalars['ID']>;
+  projectId?: InputMaybe<Scalars['Int']>;
+  slug?: InputMaybe<Scalars['String']>;
+  uri?: InputMaybe<Scalars['String']>;
+};
+
+
+/** The root entry point into the Graph */
+export type RootQueryProjectsArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<RootQueryToProjectConnectionWhereArgs>;
 };
 
 
@@ -13435,6 +13906,76 @@ export type RootQueryToPostFormatConnectionWhereArgs = {
   updateTermMetaCache?: InputMaybe<Scalars['Boolean']>;
 };
 
+/** Connection between the RootQuery type and the Project type */
+export type RootQueryToProjectConnection = Connection & ProjectConnection & {
+  __typename?: 'RootQueryToProjectConnection';
+  /** Edges for the RootQueryToProjectConnection connection */
+  edges: Array<RootQueryToProjectConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<Project>;
+  /** Information about pagination in a connection. */
+  pageInfo?: Maybe<WpPageInfo>;
+};
+
+/** An edge in a connection */
+export type RootQueryToProjectConnectionEdge = Edge & ProjectConnectionEdge & {
+  __typename?: 'RootQueryToProjectConnectionEdge';
+  /** A cursor for use in pagination */
+  cursor?: Maybe<Scalars['String']>;
+  /** The item at the end of the edge */
+  node: Project;
+};
+
+/** Arguments for filtering the RootQueryToProjectConnection connection */
+export type RootQueryToProjectConnectionWhereArgs = {
+  /** Filter the connection based on dates */
+  dateQuery?: InputMaybe<DateQueryInput>;
+  /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
+  hasPassword?: InputMaybe<Scalars['Boolean']>;
+  /** Specific database ID of the object */
+  id?: InputMaybe<Scalars['Int']>;
+  /** Array of IDs for the objects to retrieve */
+  in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** Get objects with a specific mimeType property */
+  mimeType?: InputMaybe<MimeTypeEnum>;
+  /** Slug / post_name of the object */
+  name?: InputMaybe<Scalars['String']>;
+  /** Specify objects to retrieve. Use slugs */
+  nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
+  notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** What paramater to use to order the objects by. */
+  orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
+  /** Use ID to return only children. Use 0 to return only top-level items */
+  parent?: InputMaybe<Scalars['ID']>;
+  /** Specify objects whose parent is in an array */
+  parentIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** Specify posts whose parent is not in an array */
+  parentNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** Show posts with a specific password. */
+  password?: InputMaybe<Scalars['String']>;
+  /** Show Posts based on a keyword search */
+  search?: InputMaybe<Scalars['String']>;
+  /** Retrieve posts where post status is in an array. */
+  stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
+  /** Show posts with a specific status. */
+  status?: InputMaybe<PostStatusEnum>;
+  /** Tag Slug */
+  tag?: InputMaybe<Scalars['String']>;
+  /** Use Tag ID */
+  tagId?: InputMaybe<Scalars['String']>;
+  /** Array of tag IDs, used to display objects from one tag OR another */
+  tagIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** Array of tag IDs, used to display objects from one tag OR another */
+  tagNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** Array of tag slugs, used to display objects from one tag AND another */
+  tagSlugAnd?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Array of tag slugs, used to include objects in ANY specified tags */
+  tagSlugIn?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Title of the object */
+  title?: InputMaybe<Scalars['String']>;
+};
+
 /** Connection between the RootQuery type and the ReusableBlock type */
 export type RootQueryToReusableBlockConnection = Connection & ReusableBlockConnection & {
   __typename?: 'RootQueryToReusableBlockConnection';
@@ -13928,6 +14469,8 @@ export type Tag = DatabaseIdentifier & MenuItemLinkable & Node & TermNode & Unif
   pages?: Maybe<TagToPageConnection>;
   /** Connection between the Tag type and the post type */
   posts?: Maybe<TagToPostConnection>;
+  /** Connection between the Tag type and the Project type */
+  projects?: Maybe<TagToProjectConnection>;
   /** An alphanumeric identifier for the object unique to its type. */
   slug?: Maybe<Scalars['String']>;
   /**
@@ -13993,6 +14536,16 @@ export type TagPostsArgs = {
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<TagToPostConnectionWhereArgs>;
+};
+
+
+/** The tag type */
+export type TagProjectsArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<TagToProjectConnectionWhereArgs>;
 };
 
 /** Connection to tag Nodes */
@@ -14201,6 +14754,76 @@ export type TagToPostConnectionWhereArgs = {
   categoryName?: InputMaybe<Scalars['String']>;
   /** Array of category IDs, used to display objects from one category OR another */
   categoryNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** Filter the connection based on dates */
+  dateQuery?: InputMaybe<DateQueryInput>;
+  /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
+  hasPassword?: InputMaybe<Scalars['Boolean']>;
+  /** Specific database ID of the object */
+  id?: InputMaybe<Scalars['Int']>;
+  /** Array of IDs for the objects to retrieve */
+  in?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** Get objects with a specific mimeType property */
+  mimeType?: InputMaybe<MimeTypeEnum>;
+  /** Slug / post_name of the object */
+  name?: InputMaybe<Scalars['String']>;
+  /** Specify objects to retrieve. Use slugs */
+  nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
+  notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** What paramater to use to order the objects by. */
+  orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
+  /** Use ID to return only children. Use 0 to return only top-level items */
+  parent?: InputMaybe<Scalars['ID']>;
+  /** Specify objects whose parent is in an array */
+  parentIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** Specify posts whose parent is not in an array */
+  parentNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** Show posts with a specific password. */
+  password?: InputMaybe<Scalars['String']>;
+  /** Show Posts based on a keyword search */
+  search?: InputMaybe<Scalars['String']>;
+  /** Retrieve posts where post status is in an array. */
+  stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
+  /** Show posts with a specific status. */
+  status?: InputMaybe<PostStatusEnum>;
+  /** Tag Slug */
+  tag?: InputMaybe<Scalars['String']>;
+  /** Use Tag ID */
+  tagId?: InputMaybe<Scalars['String']>;
+  /** Array of tag IDs, used to display objects from one tag OR another */
+  tagIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** Array of tag IDs, used to display objects from one tag OR another */
+  tagNotIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
+  /** Array of tag slugs, used to display objects from one tag AND another */
+  tagSlugAnd?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Array of tag slugs, used to include objects in ANY specified tags */
+  tagSlugIn?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
+  /** Title of the object */
+  title?: InputMaybe<Scalars['String']>;
+};
+
+/** Connection between the Tag type and the Project type */
+export type TagToProjectConnection = Connection & ProjectConnection & {
+  __typename?: 'TagToProjectConnection';
+  /** Edges for the TagToProjectConnection connection */
+  edges: Array<TagToProjectConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<Project>;
+  /** Information about pagination in a connection. */
+  pageInfo?: Maybe<WpPageInfo>;
+};
+
+/** An edge in a connection */
+export type TagToProjectConnectionEdge = Edge & ProjectConnectionEdge & {
+  __typename?: 'TagToProjectConnectionEdge';
+  /** A cursor for use in pagination */
+  cursor?: Maybe<Scalars['String']>;
+  /** The item at the end of the edge */
+  node: Project;
+};
+
+/** Arguments for filtering the TagToProjectConnection connection */
+export type TagToProjectConnectionWhereArgs = {
   /** Filter the connection based on dates */
   dateQuery?: InputMaybe<DateQueryInput>;
   /** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
@@ -14787,6 +15410,41 @@ export type UpdatePostPayload = {
   clientMutationId?: Maybe<Scalars['String']>;
   /** The Post object mutation type. */
   post?: Maybe<Post>;
+};
+
+/** Input for the updateProject mutation. */
+export type UpdateProjectInput = {
+  /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: InputMaybe<Scalars['String']>;
+  /** The content of the object */
+  content?: InputMaybe<Scalars['String']>;
+  /** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
+  date?: InputMaybe<Scalars['String']>;
+  /** The excerpt of the object */
+  excerpt?: InputMaybe<Scalars['String']>;
+  /** The ID of the Project object */
+  id: Scalars['ID'];
+  /** A field used for ordering posts. This is typically used with nav menu items or for special ordering of hierarchical content types. */
+  menuOrder?: InputMaybe<Scalars['Int']>;
+  /** The password used to protect the content of the object */
+  password?: InputMaybe<Scalars['String']>;
+  /** The slug of the object */
+  slug?: InputMaybe<Scalars['String']>;
+  /** The status of the object */
+  status?: InputMaybe<PostStatusEnum>;
+  /** Set connections between the Project and tags */
+  tags?: InputMaybe<ProjectTagsInput>;
+  /** The title of the object */
+  title?: InputMaybe<Scalars['String']>;
+};
+
+/** The payload for the updateProject mutation. */
+export type UpdateProjectPayload = {
+  __typename?: 'UpdateProjectPayload';
+  /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+  clientMutationId?: Maybe<Scalars['String']>;
+  /** The Post object mutation type. */
+  project?: Maybe<Project>;
 };
 
 /** Input for the updateReusableBlock mutation. */
@@ -15800,6 +16458,11 @@ export type ListPostsQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type ListPostsQuery = { __typename?: 'RootQuery', posts?: { __typename?: 'RootQueryToPostConnection', nodes: Array<{ __typename?: 'Post', id: string, title?: string | null, dateGmt?: string | null, uri?: string | null, excerpt?: string | null, author?: { __typename?: 'NodeWithAuthorToUserConnectionEdge', node: { __typename?: 'User', name?: string | null, databaseId: number, avatar?: { __typename?: 'Avatar', url?: string | null, foundAvatar?: boolean | null } | null } } | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', id: string, sourceUrl?: string | null, altText?: string | null } } | null, tags?: { __typename?: 'PostToTagConnection', edges: Array<{ __typename?: 'PostToTagConnectionEdge', node: { __typename?: 'Tag', id: string, name?: string | null } }> } | null }> } | null };
 
+export type ListProjectsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type ListProjectsQuery = { __typename?: 'RootQuery', projects?: { __typename?: 'RootQueryToProjectConnection', nodes: Array<{ __typename?: 'Project', id: string, title?: string | null, dateGmt?: string | null, uri?: string | null, excerpt?: string | null, project?: { __typename?: 'Project_Project', logo?: { __typename?: 'MediaItem', id: string, sourceUrl?: string | null, altText?: string | null, mediaDetails?: { __typename?: 'MediaDetails', width?: number | null, height?: number | null } | null } | null } | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', id: string, sourceUrl?: string | null, altText?: string | null } } | null, tags?: { __typename?: 'ProjectToTagConnection', edges: Array<{ __typename?: 'ProjectToTagConnectionEdge', node: { __typename?: 'Tag', id: string, name?: string | null } }> } | null }> } | null };
+
 export type MediaItemsQueryVariables = Exact<{
   inIds: Array<InputMaybe<Scalars['ID']>> | InputMaybe<Scalars['ID']>;
 }>;
@@ -15820,5 +16483,6 @@ export const SendEmailDocument = {"kind":"Document","definitions":[{"kind":"Oper
 export const AllSettingsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"AllSettings"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"allSettings"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"generalSettingsTitle"}},{"kind":"Field","name":{"kind":"Name","value":"generalSettingsDescription"}}]}},{"kind":"Field","name":{"kind":"Name","value":"viewer"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"firstName"}},{"kind":"Field","name":{"kind":"Name","value":"lastName"}},{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"avatar"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"size"},"value":{"kind":"IntValue","value":"360"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"foundAvatar"}}]}}]}}]}}]} as unknown as DocumentNode<AllSettingsQuery, AllSettingsQueryVariables>;
 export const SingleMenuDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"SingleMenu"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"menu"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}},{"kind":"Argument","name":{"kind":"Name","value":"idType"},"value":{"kind":"EnumValue","value":"ID"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"menuItems"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"label"}},{"kind":"Field","name":{"kind":"Name","value":"order"}},{"kind":"Field","name":{"kind":"Name","value":"uri"}},{"kind":"Field","name":{"kind":"Name","value":"target"}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<SingleMenuQuery, SingleMenuQueryVariables>;
 export const ListPostsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"ListPosts"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"posts"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"status"},"value":{"kind":"EnumValue","value":"PUBLISH"}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"dateGmt"}},{"kind":"Field","name":{"kind":"Name","value":"uri"}},{"kind":"Field","name":{"kind":"Name","value":"excerpt"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"format"},"value":{"kind":"EnumValue","value":"RAW"}}]},{"kind":"Field","name":{"kind":"Name","value":"author"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"databaseId"}},{"kind":"Field","name":{"kind":"Name","value":"avatar"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"size"},"value":{"kind":"IntValue","value":"360"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"foundAvatar"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"featuredImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"sourceUrl"}},{"kind":"Field","name":{"kind":"Name","value":"altText"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"tags"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<ListPostsQuery, ListPostsQueryVariables>;
+export const ListProjectsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"ListProjects"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"projects"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"status"},"value":{"kind":"EnumValue","value":"PUBLISH"}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"dateGmt"}},{"kind":"Field","name":{"kind":"Name","value":"uri"}},{"kind":"Field","name":{"kind":"Name","value":"excerpt"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"format"},"value":{"kind":"EnumValue","value":"RAW"}}]},{"kind":"Field","name":{"kind":"Name","value":"project"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"logo"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"sourceUrl"}},{"kind":"Field","name":{"kind":"Name","value":"altText"}},{"kind":"Field","name":{"kind":"Name","value":"mediaDetails"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"width"}},{"kind":"Field","name":{"kind":"Name","value":"height"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"featuredImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"sourceUrl"}},{"kind":"Field","name":{"kind":"Name","value":"altText"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"tags"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<ListProjectsQuery, ListProjectsQueryVariables>;
 export const MediaItemsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"MediaItems"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"inIds"}},"type":{"kind":"NonNullType","type":{"kind":"ListType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"mediaItems"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"where"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"in"},"value":{"kind":"Variable","name":{"kind":"Name","value":"inIds"}}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"databaseId"}},{"kind":"Field","name":{"kind":"Name","value":"sourceUrl"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"caption"}},{"kind":"Field","name":{"kind":"Name","value":"mediaDetails"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"height"}},{"kind":"Field","name":{"kind":"Name","value":"width"}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<MediaItemsQuery, MediaItemsQueryVariables>;
 export const AuthorDetailsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"AuthorDetails"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"user"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}},{"kind":"Argument","name":{"kind":"Name","value":"idType"},"value":{"kind":"EnumValue","value":"DATABASE_ID"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"databaseId"}},{"kind":"Field","name":{"kind":"Name","value":"avatar"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"size"},"value":{"kind":"IntValue","value":"360"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"foundAvatar"}}]}},{"kind":"Field","name":{"kind":"Name","value":"roles"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"displayName"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"posts"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"dateGmt"}},{"kind":"Field","name":{"kind":"Name","value":"uri"}},{"kind":"Field","name":{"kind":"Name","value":"excerpt"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"format"},"value":{"kind":"EnumValue","value":"RAW"}}]},{"kind":"Field","name":{"kind":"Name","value":"author"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"databaseId"}},{"kind":"Field","name":{"kind":"Name","value":"avatar"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"size"},"value":{"kind":"IntValue","value":"360"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"foundAvatar"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"featuredImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"sourceUrl"}},{"kind":"Field","name":{"kind":"Name","value":"altText"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"tags"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<AuthorDetailsQuery, AuthorDetailsQueryVariables>;
