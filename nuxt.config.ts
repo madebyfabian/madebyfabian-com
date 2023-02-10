@@ -56,9 +56,24 @@ export default defineNuxtConfig({
 		head: {
 			titleTemplate: `${process.env.NODE_ENV === 'development' ? '⚙️ ' : ''}%s %titleSeperator %siteName`,
 			link: [
+				// Favicons
+				{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
 				{
 					rel: 'icon',
-					href: 'data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>',
+					type: 'image/png',
+					href: '/favicon-16x16.png',
+					sizes: '16x16.png',
+				},
+				{
+					rel: 'icon',
+					type: 'image/png',
+					href: '/favicon-32x32.png',
+					sizes: '32x32.png',
+				},
+				{
+					rel: 'apple-touch-icon',
+					href: '/apple-touch-icon.png',
+					sizes: '180x180',
 				},
 			],
 		},
