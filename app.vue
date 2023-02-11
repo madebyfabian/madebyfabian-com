@@ -11,6 +11,8 @@
 
 <script lang="ts" setup>
 	import tailwindConfig from '@/tailwind.config'
+	import { joinURL } from 'ufo'
+	const runtimeConfig = useRuntimeConfig()
 
 	const color = (tailwindConfig.theme?.extend?.colors as any)?.['accent']?.['700']
 
@@ -26,6 +28,7 @@
 	useSeoMeta({
 		title: 'Home',
 		description: siteDescription,
+		ogImage: () => joinURL(runtimeConfig.public.siteUrl, '/images/og-image.png'),
 	})
 
 	useSchemaOrg([
