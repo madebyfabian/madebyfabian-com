@@ -1,9 +1,10 @@
 <template>
-	<div class="LayoutPost">
-		<div v-if="data?.post" class="container mx-auto max-w-3xl">
+	<div v-if="data?.post" class="LayoutPost container">
+		<div>
 			<NuxtLink :to="{ name: 'index' }" class="UILink mb-12 inline-block cursor-pointer">
 				<span>&larr; Back</span>
 			</NuxtLink>
+
 			<h1>{{ data.post?.title }}</h1>
 			<UIArticleMetadata
 				class="mb-8"
@@ -13,7 +14,16 @@
 					author: data.post.author,
 					tags: data.post.tags,
 				}" />
-			<RichtextContainer :blocks="data.post?.blocks" :mediaItems="data.mediaItems" :uniqueKey="props.uri" />
+		</div>
+
+		<div class="flex flex-col lg:grid grid-cols-12 gap-12">
+			<div class="order-2 lg:order-1 lg:col-span-8">
+				<RichtextContainer :blocks="data.post?.blocks" :mediaItems="data.mediaItems" :uniqueKey="props.uri" />
+			</div>
+
+			<div class="order-1 lg:order-2 col-span-4">
+				<UITableOfContents v-if="tocList" :entries="tocList" class="lg:sticky lg:top-32" />
+			</div>
 		</div>
 	</div>
 </template>
@@ -31,6 +41,10 @@
 	if (!data.value?.post || error.value) {
 		throw createError({ statusCode: 404, message: 'Blog Post not found', fatal: true })
 	}
+
+	const tocList = computed(() => {
+		return data.value?.tocEntriesList?.[0]
+	})
 
 	useSeoMeta({
 		title: data.value.post?.title,

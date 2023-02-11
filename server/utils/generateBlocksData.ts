@@ -8,6 +8,8 @@ type Item = ItemBase & {
 
 type ImageId = string
 
+type TOCEntry = UbTableOfContentsHeaderEntry
+
 type BlockRawItem = Pick<BlockDefault, 'attributesJSON' | 'name' | 'innerBlocks'>
 
 const uid = () => Math.random().toString(36).slice(2, 9)
@@ -29,7 +31,7 @@ const decodeAndParseLazyblockImageField = (imageField: string) => {
 const parseUbTableOfContentsHeaderEntriesField = (headerEntries: string) => {
 	try {
 		const json = JSON.parse(headerEntries || '{}')
-		const data = json as UbTableOfContentsHeaderEntry[] | undefined
+		const data = json as TOCEntry[] | undefined
 
 		const filteredOnlyTopLevelTags = data?.filter(entry => typeof entry.tag === 'number' && entry.level === 0)
 		return filteredOnlyTopLevelTags
@@ -40,6 +42,7 @@ const parseUbTableOfContentsHeaderEntriesField = (headerEntries: string) => {
 
 const parseItemJson = ({ item }: ParseItemJsonProps) => {
 	let itemImageId: ImageId | undefined
+	let tocEntries: TOCEntry[] | undefined
 
 	const newItem: Item = {
 		id: uid(),
@@ -67,10 +70,12 @@ const parseItemJson = ({ item }: ParseItemJsonProps) => {
 		'headerEntries' in newItem.block &&
 		typeof newItem.block.headerEntries === 'string'
 	) {
+		const entries = parseUbTableOfContentsHeaderEntriesField(newItem.block.headerEntries)
+		tocEntries = entries
 		newItem.block = {
 			...newItem.block,
 			// @ts-expect-error This is allowed.
-			headerEntries: parseUbTableOfContentsHeaderEntriesField(newItem.block.headerEntries),
+			headerEntries: entries,
 		}
 	}
 
@@ -91,7 +96,7 @@ const parseItemJson = ({ item }: ParseItemJsonProps) => {
 		}
 	}
 
-	if (!('innerBlocks' in item)) return { newItem, itemImageId }
+	if (!('innerBlocks' in item)) return { newItem, itemImageId, tocEntries }
 
 	let innerBlocks: Item[] = []
 	let innerItemImageIds: ImageId[] = []
@@ -104,7 +109,7 @@ const parseItemJson = ({ item }: ParseItemJsonProps) => {
 	}
 
 	newItem.innerBlocks = innerBlocks
-	return { newItem, itemImageId }
+	return { newItem, itemImageId, tocEntries }
 }
 
 export type GenerateBlocksDataProps = {
@@ -115,9 +120,11 @@ const generateData = ({ blocksRaw }: GenerateBlocksDataProps) => {
 	let res: {
 		blocks: Item[]
 		imageIds: ImageId[]
+		tocEntriesList?: TOCEntry[][]
 	} = {
 		blocks: [],
 		imageIds: [],
+		tocEntriesList: [],
 	}
 	if (!Array.isArray(blocksRaw) || !blocksRaw.length) return res
 
@@ -125,6 +132,9 @@ const generateData = ({ blocksRaw }: GenerateBlocksDataProps) => {
 		const newItem = parseItemJson({ item })
 		if (newItem.itemImageId) {
 			res.imageIds.push(newItem.itemImageId)
+		}
+		if (newItem.tocEntries) {
+			res.tocEntriesList?.push(newItem.tocEntries)
 		}
 		res.blocks.push(newItem.newItem)
 	}
@@ -140,19 +150,19 @@ export const generateBlocksData = async ({
 	/** trpc context */
 	ctx: any
 }) => {
-	if (!blocksRaw) return { blocks: [], mediaItems: undefined }
+	if (!blocksRaw) return { blocks: [], mediaItems: undefined, tocEntriesList: undefined }
 
-	const { blocks, imageIds } = generateData({ blocksRaw })
+	const { blocks, imageIds, tocEntriesList } = generateData({ blocksRaw })
 	if (imageIds.length) {
 		// Map through all content to get all images Ids.
 		// This is necessary since the GraphQL API has a bug where it cannot
 		// display image info like height/width, or srcsets for example.
 		const generalCaller = generalRouter.createCaller(ctx)
 		const { mediaItems } = await generalCaller.mediaItems({ imageIds })
-		return { blocks, mediaItems }
+		return { blocks, mediaItems, tocEntriesList }
 	}
 
-	return { blocks, mediaItems: undefined }
+	return { blocks, mediaItems: undefined, tocEntriesList }
 }
 
 export type GenerateBlocksDataReturnType = Awaited<ReturnType<typeof generateBlocksData>>

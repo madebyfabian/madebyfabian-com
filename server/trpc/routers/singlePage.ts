@@ -63,6 +63,7 @@ export const singlePageRouter = router({
 				...data?.page,
 				blocks: blocksData.blocks,
 			},
+			tocEntriesList: blocksData.tocEntriesList,
 			mediaItems: blocksData.mediaItems,
 		}
 	}),

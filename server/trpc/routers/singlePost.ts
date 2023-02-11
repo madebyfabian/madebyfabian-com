@@ -91,6 +91,7 @@ export const singlePostRouter = router({
 				...data?.post,
 				blocks: blocksData.blocks,
 			},
+			tocEntriesList: blocksData.tocEntriesList,
 			mediaItems: blocksData.mediaItems,
 		}
 	}),
