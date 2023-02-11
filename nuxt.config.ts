@@ -1,5 +1,5 @@
 import { generateSitemap } from './generateSitemap'
-import { cookieConfig, generateTwicpicsConfig } from './config'
+import { cookieConfig } from './config'
 import { withHttps } from 'ufo'
 
 export default defineNuxtConfig({
@@ -7,7 +7,6 @@ export default defineNuxtConfig({
 
 	modules: [
 		'@vueuse/nuxt',
-		'@nuxtjs/web-vitals',
 		'@nuxtjs/tailwindcss',
 		'@nuxtjs/turnstile',
 		'nuxt-typed-router',
@@ -32,6 +31,8 @@ export default defineNuxtConfig({
 			// nuxt-seo-kit
 			siteUrl: process.env.NUXT_PUBLIC_SITE_URL,
 			siteName: 'Fabian Beer',
+			siteDescription:
+				'Hej! I am Fabian, a visual product designer and frontend developer, creating high-quality web experiences for your unique needs.',
 			titleSeperator: '·',
 			language: 'en-US',
 
@@ -40,10 +41,12 @@ export default defineNuxtConfig({
 				baseUrl: withHttps(process.env.NUXT_PUBLIC_WP_HOST || ''),
 				twicpicsDomain: process.env.NUXT_PUBLIC_TWICPICS_DOMAIN,
 				twicpicsPaths: [
+					// @ts-expect-error - This is a valid path
 					{
 						path: '/wordpress-madebyfabian/',
 						source: withHttps(process.env.NUXT_PUBLIC_WP_HOST || ''),
 					},
+					// @ts-expect-error - This is a valid path
 					{
 						path: '/gravatar/',
 						source: 'https://secure.gravatar.com/',
@@ -80,11 +83,6 @@ export default defineNuxtConfig({
 		},
 
 		pageTransition: { name: 'page', mode: 'out-in' },
-	},
-
-	// '@nuxtjs/web-vitals'
-	webVitals: {
-		provider: 'auto',
 	},
 
 	// nuxt-wordpress->@twicpics/components/nuxt3

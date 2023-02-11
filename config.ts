@@ -1,35 +1,4 @@
 import type { Cookie, ModuleOptions, Locale } from '@dargmuesli/nuxt-cookie-control/dist/runtime/types'
-import { withHttps } from 'ufo'
-
-// --- TwicPics ---
-
-export type TwicpicsPaths = '/wordpress-madebyfabian/' | '/gravatar/'
-export type TwicpicsConfig = {
-	paths: {
-		path: TwicpicsPaths
-		source: string
-	}[]
-}
-
-export const generateTwicpicsConfig = ({ wpHost }: { wpHost: string | undefined }): TwicpicsConfig | undefined => {
-	if (!wpHost) {
-		console.error('wpHost option is undefined.')
-		return undefined
-	}
-
-	return {
-		paths: [
-			{
-				path: '/wordpress-madebyfabian/',
-				source: withHttps(wpHost),
-			},
-			{
-				path: '/gravatar/',
-				source: 'https://secure.gravatar.com/',
-			},
-		],
-	}
-}
 
 // --- Cookie ---
 
