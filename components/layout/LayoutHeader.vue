@@ -45,7 +45,7 @@
 				<ul class="flex items-center justify-end gap-4 lg:gap-6 translate-y-1 lg:translate-y-0.5">
 					<li v-for="logo of brandNavLogos" :key="logo.src">
 						<NuxtLink
-							:to="logo.src"
+							:to="logo.url"
 							class="transition hover:opacity-80 h-9 w-9 p-1 -m-1 block"
 							external
 							:title="logo.title">
