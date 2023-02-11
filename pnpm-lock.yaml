@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@dargmuesli/nuxt-cookie-control': ^4.3.0
+  '@dargmuesli/nuxt-cookie-control': ^4.4.0
   '@graphql-codegen/cli': ^2.16.5
   '@graphql-codegen/client-preset': ^1.3.0
   '@nuxtjs/tailwindcss': ^6.3.1
