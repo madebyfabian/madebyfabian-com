@@ -16,11 +16,7 @@
 						class="w-0 shadow-border h-[8px] absolute -bottom-2.5"
 						aria-hidden="true" />
 				</span>
-				<NuxtLink
-					:to="`/#${entry.link}`"
-					@click="e => scrollIntoView({ e, selectors: `[id='${entry.link}']` })"
-					class="UILink"
-					external>
+				<NuxtLink :to="`#${entry.link}`" class="UILink" external>
 					{{ entry.text }}
 				</NuxtLink>
 			</li>

@@ -1,5 +1,5 @@
 <template>
-	<LayoutPage :uri="uri" containerSize="large">
+	<LayoutPage containerSize="large">
 		<template #beforeRichtext>
 			<div class="flex items-center lg:px-8">
 				<div class="mt-10 lg:mt-12 mb-6">
@@ -9,11 +9,7 @@
 						experiences for your unique needs.
 					</WrapBalancer>
 					<div class="UIButtonGroup">
-						<NuxtLink
-							to="/#projects"
-							@click="e => scrollIntoView({ e, selectors: `#projects` })"
-							external
-							class="UIButton flex-1 md:flex-none">
+						<NuxtLink to="/#projects" external class="UIButton flex-1 md:flex-none">
 							👨🏼‍💻&nbsp;&nbsp;My Work
 						</NuxtLink>
 						<NuxtLink :to="{ name: 'contact' }" class="UIButton UIButton-secondary flex-1 md:flex-none">

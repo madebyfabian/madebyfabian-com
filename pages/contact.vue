@@ -1,5 +1,5 @@
 <template>
-	<LayoutPage :uri="uri">
+	<LayoutPage>
 		<ClientOnly>
 			<Calendly />
 
@@ -44,9 +44,6 @@
 </template>
 
 <script lang="ts" setup>
-	const route = useRoute('contact')
-	const uri = computed(() => route.fullPath)
-
 	const turnstileIsPermitted = computed(() => useIsCookiePermitted('cloudflare'))
 	const turnstileRef = ref()
 	const turnstileToken = ref()

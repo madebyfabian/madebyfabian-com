@@ -4,5 +4,5 @@
 
 <script setup lang="ts">
 	const route = useRoute('blog-slug')
-	const uri = computed(() => route.fullPath)
+	const uri = computed(() => route.path)
 </script>

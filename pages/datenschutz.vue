@@ -1,8 +1,3 @@
 <template>
-	<LayoutPage hasH1 :uri="uri" />
+	<LayoutPage hasH1 />
 </template>
-
-<script lang="ts" setup>
-	const route = useRoute('datenschutz')
-	const uri = computed(() => route.fullPath)
-</script>
