@@ -7,6 +7,7 @@ export default defineNuxtConfig({
 
 	modules: [
 		'@vueuse/nuxt',
+		'@nuxtjs/web-vitals',
 		'@nuxtjs/tailwindcss',
 		'@nuxtjs/turnstile',
 		'nuxt-typed-router',
@@ -79,6 +80,11 @@ export default defineNuxtConfig({
 		},
 
 		pageTransition: { name: 'page', mode: 'out-in' },
+	},
+
+	// '@nuxtjs/web-vitals'
+	webVitals: {
+		provider: 'auto',
 	},
 
 	// nuxt-wordpress->@twicpics/components/nuxt3
