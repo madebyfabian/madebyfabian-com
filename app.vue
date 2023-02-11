@@ -28,7 +28,7 @@
 	useSeoMeta({
 		title: 'Home',
 		description: siteDescription,
-		ogImage: () => joinURL(runtimeConfig.public.siteUrl, '/images/og-image.png'),
+		ogImage: () => joinURL(runtimeConfig.public.siteUrl, '/images/og.jpg'),
 	})
 
 	useSchemaOrg([
