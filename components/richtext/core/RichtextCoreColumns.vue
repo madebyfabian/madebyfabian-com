@@ -6,7 +6,7 @@
 			<div
 				v-for="item of props.innerBlocks"
 				:key="item.id"
-				class="px-0 md:px-6 py-6 md:py-0"
+				class="px-0 md:px-6 py-6 md:py-0 !w-full md:w-auto"
 				:style="{ width: (item as any).block?.width || '50%' }">
 				<RichtextResolver v-bind="{ item, mediaItemsStorageKey: props.mediaItemsStorageKey }" />
 			</div>
