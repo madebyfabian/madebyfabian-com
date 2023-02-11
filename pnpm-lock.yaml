@@ -16,7 +16,7 @@ specifiers:
   npm-run-all: ^4.1.5
   nuxt: ^3.2.0
   nuxt-calendly: ^0.1.11
-  nuxt-seo-kit: ^1.2.2
+  nuxt-seo-kit: ^1.2.3
   nuxt-typed-router: ^2.3.4
   nuxt-wordpress: 1.0.0-beta.1
   superjson: ^1.12.2
@@ -2430,7 +2430,7 @@ packages:
   /@types/sax/1.2.4:
     resolution: {integrity: sha512-pSAff4IAxJjfAXUG6tFkO7dsSbTmf8CtUpfhhZ5VhkRpC4628tJhh3+V6H1E+/Gs9piSzYKT5yzHO5M4GG9jkw==}
     dependencies:
-      '@types/node': 17.0.45
+      '@types/node': 18.13.0
     dev: true
 
   /@types/web-bluetooth/0.0.16:
