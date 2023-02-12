@@ -119,7 +119,7 @@
 	}
 
 	.PreLike {
-		@apply bg-frost-200 shadow-border-and-inner p-4 rounded-box text-sm overflow-x-auto;
+		@apply !border-none shadow-inner p-4 rounded-box text-sm overflow-x-auto;
 	}
 
 	.safari-overflow-fix {

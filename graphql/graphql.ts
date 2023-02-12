@@ -2102,9 +2102,12 @@ export type CoreCodeBlockAttributes = {
   fontFamily?: Maybe<Scalars['String']>;
   fontSize?: Maybe<Scalars['String']>;
   gradient?: Maybe<Scalars['String']>;
+  language?: Maybe<Scalars['String']>;
+  lineNumbers?: Maybe<Scalars['Boolean']>;
   lock?: Maybe<Scalars['BlockAttributesObject']>;
   style?: Maybe<Scalars['BlockAttributesObject']>;
   textColor?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
 };
 
 /** core/column block */

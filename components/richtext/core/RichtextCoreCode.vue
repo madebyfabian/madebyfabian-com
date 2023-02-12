@@ -1,5 +1,13 @@
 <template>
-	<pre class="RichtextCoreCode" v-html="props.attributes?.content" :id="id" />
+	<pre class="RichtextCoreCode" :id="id"><code
+		v-html="props.attributes?.content"
+		:class="[
+			`language-${props.attributes?.language}`,
+			{
+				'line-numbers': props.attributes?.lineNumbers,
+			},
+		]"
+	/></pre>
 </template>
 
 <script lang="ts">
@@ -15,6 +23,11 @@
 		innerBlocks?: RichtextCoreCodeProps['innerBlocks']
 		mediaItemsStorageKey: RichtextCoreCodeProps['mediaItemsStorageKey']
 	}>()
+
+	onMounted(() => {
+		// @ts-expect-error - Prism is not a module
+		Prism.highlightAll()
+	})
 
 	const id = computed(() => props.attributes?.anchor || undefined)
 </script>
