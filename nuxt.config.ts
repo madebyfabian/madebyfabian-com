@@ -85,6 +85,8 @@ export default defineNuxtConfig({
 		pageTransition: { name: 'page', mode: 'out-in' },
 	},
 
+	css: ['prismjs/themes/prism-twilight.css'],
+
 	// nuxt-wordpress->@twicpics/components/nuxt3
 	twicpics: {
 		domain: process.env.NUXT_PUBLIC_TWICPICS_DOMAIN,
