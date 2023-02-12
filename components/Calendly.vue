@@ -24,8 +24,6 @@
 	const calendlyIsPermitted = computed(() => useIsCookiePermitted('calendly'))
 
 	const handleOpen = () => {
-		if (!process.client) return
-
 		calendly.initPopupWidget({
 			url: runtimeConfig.public.calendlyUrl,
 		})
