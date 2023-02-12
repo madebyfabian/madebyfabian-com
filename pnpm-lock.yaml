@@ -16,7 +16,7 @@ specifiers:
   graphql-request: ^5.1.0
   npm-run-all: ^4.1.5
   nuxt: ^3.2.0
-  nuxt-calendly: ^0.1.11
+  nuxt-calendly: ^0.1.13
   nuxt-seo-kit: ^1.2.3
   nuxt-typed-router: ^2.3.4
   nuxt-wordpress: 1.0.0-beta.1
@@ -57,7 +57,7 @@ devDependencies:
   '@vercel/node': 2.9.2
   npm-run-all: 4.1.5
   nuxt: 3.2.0_z7s3t26cvpahyyxmdmot7g5b4m
-  nuxt-calendly: 0.1.11
+  nuxt-calendly: 0.1.13
   nuxt-seo-kit: 1.2.3
   prismjs: 1.29.0
   typescript: 4.9.5
@@ -6437,8 +6437,8 @@ packages:
     optionalDependencies:
       fsevents: 2.3.2
 
-  /nuxt-calendly/0.1.11:
-    resolution: {integrity: sha512-0VEpzC6ShgQGOSb1UzpqRK0NUmKZLCes9np0yiXzcvFEV8K1ZP67UMObE15fvu2J7d3qAjMbh9crTbYOGmz62Q==}
+  /nuxt-calendly/0.1.13:
+    resolution: {integrity: sha512-NvIhS8KPehD8sVdHScnZnw5OYxCsSyR6nJz0FgQ2cGB4Q9N1ioydZu5MK13M/I4qhXCmBDXkPCKBqbg9ayJmkw==}
     dependencies:
       '@nuxt/kit': 3.2.0
       defu: 6.1.2
