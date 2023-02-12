@@ -1,5 +1,6 @@
 <template>
 	<pre class="RichtextCoreCode" :id="id"><code
+		ref="element"
 		v-html="props.attributes?.content"
 		:class="[
 			`language-${props.attributes?.language}`,
@@ -24,9 +25,11 @@
 		mediaItemsStorageKey: RichtextCoreCodeProps['mediaItemsStorageKey']
 	}>()
 
+	const element = ref<HTMLElement | null>(null)
+
 	onMounted(() => {
 		// @ts-expect-error - Prism is not a module
-		Prism.highlightAll()
+		Prism.highlightElement(element.value)
 	})
 
 	const id = computed(() => props.attributes?.anchor || undefined)
