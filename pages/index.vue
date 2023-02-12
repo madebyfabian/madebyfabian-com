@@ -2,7 +2,7 @@
 	<LayoutPage containerSize="large">
 		<template #beforeRichtext>
 			<div class="flex items-center lg:px-8">
-				<div class="mt-10 lg:mt-12 mb-6">
+				<div>
 					<WrapBalancer as="h1"> Exceptional web experiences, crafted with passion. </WrapBalancer>
 					<WrapBalancer as="p" class="PLargeLike !leading-normal mb-10 -mt-1">
 						Hej! I am Fabian, a visual product designer and frontend developer, creating high-quality web
@@ -33,7 +33,7 @@
 			<LayoutProjectsList />
 			<div class="flex justify-center">
 				<NuxtLink class="UIButton UIButton-secondary" :to="{ name: 'contact' }"
-					>💬 Looks good? Get in touch!</NuxtLink
+					>💬 Get in touch to see all!</NuxtLink
 				>
 			</div>
 		</div>
