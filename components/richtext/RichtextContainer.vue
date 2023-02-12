@@ -58,8 +58,16 @@
 			}
 
 			code {
-				@apply bg-frost-200 shadow-border px-1 mx-0.5 rounded text-sm align-baseline font-bold inline-block;
+				@apply text-sm;
 			}
+		}
+
+		:deep(code) {
+			&:not([class*='language-']) {
+				@apply bg-frost-200 shadow-border;
+			}
+
+			@apply px-1 mx-0.5 rounded align-baseline font-bold inline-block;
 		}
 
 		:deep(figure):not(.reset) {
