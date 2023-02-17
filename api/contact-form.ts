@@ -121,14 +121,15 @@ type ValidRequestInput = ReturnType<typeof parseInput>
 /**
  * Helper to make Vercel Edge Function responses easier.
  */
-const response = (statusCode: number, body: any) => {
-	return new Response(JSON.stringify(body), {
+const responseParams = (statusCode: number, body: any): [string, ResponseInit] => [
+	JSON.stringify(body),
+	{
 		status: statusCode,
 		headers: {
 			'Content-Type': 'application/json',
 		},
-	})
-}
+	},
+]
 
 export default async function handler(request: Request) {
 	try {
@@ -137,16 +138,20 @@ export default async function handler(request: Request) {
 
 		const validationResponse = await verifyTurnstileToken(input.turnstileToken)
 		if (!validationResponse.success)
-			return response(401, {
-				error: 'Failed to verify the captcha token.',
-			})
+			return new Response(
+				...responseParams(401, {
+					error: 'Failed to verify the captcha token.',
+				})
+			)
 
 		const contactFormEmailRes = await getContactFormEmail()
 		const contactFormEmail = contactFormEmailRes.allSettings?.generalSettingsEmail
 		if (!contactFormEmail)
-			return response(500, {
-				error: 'Failed to get the receivers email adress from wp.',
-			})
+			return new Response(
+				...responseParams(500, {
+					error: 'Failed to get the receivers email adress from wp.',
+				})
+			)
 
 		const renderedBody = await renderBody({
 			name: input.name,
@@ -154,9 +159,11 @@ export default async function handler(request: Request) {
 			message: input.message,
 		})
 		if (!renderedBody)
-			return response(500, {
-				error: 'Failed to render the email body.',
-			})
+			return new Response(
+				...responseParams(500, {
+					error: 'Failed to render the email body.',
+				})
+			)
 
 		const sendEmailRes = await sendEmail({
 			contactFormEmail,
@@ -164,14 +171,22 @@ export default async function handler(request: Request) {
 			body: renderedBody,
 		})
 		if (!sendEmailRes?.sendEmail?.sent)
-			return response(500, {
-				error: 'Failed to send the email.',
-			})
+			return new Response(
+				...responseParams(500, {
+					error: 'Failed to send the email.',
+				})
+			)
 
-		return response(200, {})
+		return new Response(
+			...responseParams(200, {
+				message: 'Email sent successfully.',
+			})
+		)
 	} catch (error) {
-		return response(500, {
-			error: 'Something went wrong.',
-		})
+		return new Response(
+			...responseParams(500, {
+				error: (error as any)?.message || 'Something went wrong.',
+			})
+		)
 	}
 }
