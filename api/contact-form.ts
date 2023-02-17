@@ -118,19 +118,6 @@ const parseInput = ({ input }: { input: any }) => {
 
 type ValidRequestInput = ReturnType<typeof parseInput>
 
-/**
- * Helper to make Vercel Edge Function responses easier.
- */
-const responseParams = (statusCode: number, body: any): [string, ResponseInit] => [
-	JSON.stringify(body),
-	{
-		status: statusCode,
-		headers: {
-			'Content-Type': 'application/json',
-		},
-	},
-]
-
 export default async function handler(request: Request) {
 	try {
 		// First validate input
@@ -138,55 +125,36 @@ export default async function handler(request: Request) {
 
 		const validationResponse = await verifyTurnstileToken(input.turnstileToken)
 		if (!validationResponse.success)
-			return new Response(
-				...responseParams(401, {
-					error: 'Failed to verify the captcha token.',
-				})
-			)
+			return new Response(JSON.stringify({ error: 'Failed to verify the captcha token.' }), {
+				status: 401,
+				headers: { 'Content-Type': 'application/json' },
+			})
 
 		const contactFormEmailRes = await getContactFormEmail()
 		const contactFormEmail = contactFormEmailRes.allSettings?.generalSettingsEmail
-		if (!contactFormEmail)
-			return new Response(
-				...responseParams(500, {
-					error: 'Failed to get the receivers email adress from wp.',
-				})
-			)
+		if (!contactFormEmail) throw new Error('Failed to get the receivers email adress from wp.')
 
 		const renderedBody = await renderBody({
 			name: input.name,
 			email: input.email,
 			message: input.message,
 		})
-		if (!renderedBody)
-			return new Response(
-				...responseParams(500, {
-					error: 'Failed to render the email body.',
-				})
-			)
+		if (!renderedBody) throw new Error('Failed to render the email body.')
 
 		const sendEmailRes = await sendEmail({
 			contactFormEmail,
 			input,
 			body: renderedBody,
 		})
-		if (!sendEmailRes?.sendEmail?.sent)
-			return new Response(
-				...responseParams(500, {
-					error: 'Failed to send the email.',
-				})
-			)
+		if (!sendEmailRes?.sendEmail?.sent) throw new Error('Failed to send the email.')
 
-		return new Response(
-			...responseParams(200, {
-				message: 'Email sent successfully.',
-			})
-		)
+		return new Response(JSON.stringify({ error: 'Email sent.' }), {
+			headers: { 'Content-Type': 'application/json' },
+		})
 	} catch (error) {
-		return new Response(
-			...responseParams(500, {
-				error: (error as any)?.message || 'Something went wrong.',
-			})
-		)
+		return new Response(JSON.stringify({ error: 'Failed to verify the captcha token.' }), {
+			status: 500,
+			headers: { 'Content-Type': 'application/json' },
+		})
 	}
 }
