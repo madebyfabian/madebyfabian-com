@@ -6,7 +6,7 @@
 		<RichtextResolver
 			v-for="(item, key) of props.innerBlocks"
 			:key="key"
-			v-bind="{ item: item.block as any, name: item.name, mediaItemsStorageKey: props.mediaItemsStorageKey }" />
+			v-bind="{ item: item.block as any, name: item.name }" />
 	</section>
 </template>
 
@@ -27,7 +27,6 @@
 	const props = defineProps<{
 		attributes: RichtextLazyblockFaqGroupProps['attributes']
 		innerBlocks?: RichtextLazyblockFaqGroupProps['innerBlocks']
-		mediaItemsStorageKey: RichtextLazyblockFaqGroupProps['mediaItemsStorageKey']
 	}>()
 
 	useSchemaOrg([

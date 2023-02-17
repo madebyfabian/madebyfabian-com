@@ -22,7 +22,6 @@
 	const props = defineProps<{
 		attributes: RichtextCoreButtonProps['attributes']
 		innerBlocks?: RichtextCoreButtonProps['innerBlocks']
-		mediaItemsStorageKey: RichtextCoreButtonProps['mediaItemsStorageKey']
 	}>()
 
 	const isHashLink = computed(() => {

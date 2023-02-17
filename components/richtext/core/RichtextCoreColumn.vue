@@ -1,9 +1,6 @@
 <template>
 	<div class="RichtextCoreColumn" :id="id">
-		<RichtextResolver
-			v-for="item of props.innerBlocks"
-			:key="item.id"
-			v-bind="{ item, mediaItemsStorageKey: props.mediaItemsStorageKey }" />
+		<RichtextResolver v-for="item of props.innerBlocks" :key="item.id" :item="item" />
 	</div>
 </template>
 
@@ -18,7 +15,6 @@
 	const props = defineProps<{
 		attributes: RichtextCoreColumnProps['attributes']
 		innerBlocks?: RichtextCoreColumnProps['innerBlocks']
-		mediaItemsStorageKey: RichtextCoreColumnProps['mediaItemsStorageKey']
 	}>()
 
 	const id = computed(() => props.attributes?.anchor || undefined)

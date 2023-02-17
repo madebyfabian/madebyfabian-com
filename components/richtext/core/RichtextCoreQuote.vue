@@ -1,9 +1,6 @@
 <template>
 	<blockquote class="RichtextCoreQuote italic py-2 pl-6 border-l-4" :cite="props.attributes?.citation" :id="id">
-		<RichtextResolver
-			v-for="item of props.innerBlocks"
-			:key="item.id"
-			v-bind="{ item, mediaItemsStorageKey: props.mediaItemsStorageKey }" />
+		<RichtextResolver v-for="item of props.innerBlocks" :key="item.id" :item="item" />
 		<p v-if="hasCitiation" class="PLike mt-4">&mdash; {{ props.attributes?.citation }}</p>
 	</blockquote>
 </template>
@@ -19,7 +16,6 @@
 	const props = defineProps<{
 		attributes: RichtextCoreQuoteProps['attributes']
 		innerBlocks?: RichtextCoreQuoteProps['innerBlocks']
-		mediaItemsStorageKey: RichtextCoreQuoteProps['mediaItemsStorageKey']
 	}>()
 
 	const hasCitiation = computed(() => !!props.attributes?.citation?.length)

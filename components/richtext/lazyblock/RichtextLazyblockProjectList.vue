@@ -7,7 +7,7 @@
 				v-bind="{ item: {
 					name: item.block?.lazyblock.slug,
 					block: item.block,
-				} as any, name: item.block?.lazyblock.slug, mediaItemsStorageKey: props.mediaItemsStorageKey }" />
+				} as any, name: item.block?.lazyblock.slug }" />
 		</LayoutTeaserList>
 	</div>
 </template>
@@ -29,7 +29,6 @@
 	const props = defineProps<{
 		attributes: RichtextLazyblockProjectListProps['attributes']
 		innerBlocks?: RichtextLazyblockProjectListProps['innerBlocks']
-		mediaItemsStorageKey: RichtextLazyblockProjectListProps['mediaItemsStorageKey']
 	}>()
 
 	const id = computed(() => props.attributes?.anchor || undefined)

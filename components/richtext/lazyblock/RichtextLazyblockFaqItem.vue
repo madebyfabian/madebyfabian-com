@@ -5,9 +5,7 @@
 			<span class="group-open/details:rotate-180 select-none">⬇️</span>
 		</summary>
 		<div class="-mt-2 px-6 pb-6">
-			<RichtextCoreParagraph
-				:attributes="{ content: props.attributes?.content, dropCap: false }"
-				v-bind="{ mediaItemsStorageKey }" />
+			<RichtextCoreParagraph :attributes="{ content: props.attributes?.content, dropCap: false }" />
 		</div>
 	</details>
 </template>
@@ -23,7 +21,6 @@
 	const props = defineProps<{
 		attributes: RichtextLazyblockFaqItemProps['attributes']
 		innerBlocks?: RichtextLazyblockFaqItemProps['innerBlocks']
-		mediaItemsStorageKey: RichtextLazyblockFaqItemProps['mediaItemsStorageKey']
 	}>()
 
 	const id = computed(() => props.attributes?.anchor || undefined)

@@ -15,7 +15,6 @@
 	const props = defineProps<{
 		attributes: RichtextCoreParagraphProps['attributes']
 		innerBlocks?: RichtextCoreParagraphProps['innerBlocks']
-		mediaItemsStorageKey: RichtextCoreParagraphProps['mediaItemsStorageKey']
 	}>()
 
 	const balancerRatio = computed(() => {
