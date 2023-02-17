@@ -147,6 +147,7 @@ export default async function handler(request: Request) {
 		if (!sendEmailRes?.sendEmail?.sent) throw new Error('Failed to send the email.')
 
 		return new Response(JSON.stringify({ data: 'Email sent.' }), {
+			status: 200,
 			headers: { 'Content-Type': 'application/json' },
 		})
 	} catch (error) {
