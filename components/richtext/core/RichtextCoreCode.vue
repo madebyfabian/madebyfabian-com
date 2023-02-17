@@ -22,7 +22,6 @@
 	const props = defineProps<{
 		attributes: RichtextCoreCodeProps['attributes']
 		innerBlocks?: RichtextCoreCodeProps['innerBlocks']
-		mediaItemsStorageKey: RichtextCoreCodeProps['mediaItemsStorageKey']
 	}>()
 
 	const element = ref<HTMLElement | null>(null)

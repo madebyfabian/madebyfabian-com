@@ -10,10 +10,7 @@
 		<div class="flex-1">
 			<h3 v-if="props.attributes?.title">{{ props.attributes?.title }}</h3>
 			<template v-if="props.innerBlocks?.length">
-				<RichtextResolver
-					v-for="(item, key) of props.innerBlocks"
-					:key="key"
-					v-bind="{ item, mediaItemsStorageKey: props.mediaItemsStorageKey }" />
+				<RichtextResolver v-for="(item, key) of props.innerBlocks" :key="key" :item="item" />
 			</template>
 		</div>
 	</section>
@@ -30,7 +27,6 @@
 	const props = defineProps<{
 		attributes: RichtextLazyblockTeaserProps['attributes']
 		innerBlocks?: RichtextLazyblockTeaserProps['innerBlocks']
-		mediaItemsStorageKey: RichtextLazyblockTeaserProps['mediaItemsStorageKey']
 	}>()
 
 	const id = computed(() => props.attributes?.anchor || undefined)

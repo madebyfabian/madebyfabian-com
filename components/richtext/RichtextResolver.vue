@@ -1,8 +1,5 @@
 <template>
-	<component
-		v-if="dynamicComponent"
-		:is="dynamicComponent"
-		v-bind="{ attributes, innerBlocks, mediaItemsStorageKey }">
+	<component v-if="dynamicComponent" :is="dynamicComponent" v-bind="{ attributes, innerBlocks }">
 		<slot />
 	</component>
 
@@ -24,7 +21,7 @@
 </script>
 
 <script lang="ts" setup>
-	import type { InnerBlocksDefault, BlockDefault, ItemBase, RichtextPropsMinimum } from '@/types'
+	import type { InnerBlocksDefault, BlockDefault, ItemBase } from '@/types'
 
 	const components = {
 		'core/button': resolveComponent('RichtextCoreButton'),
@@ -58,7 +55,6 @@
 	const props = defineProps<{
 		name?: string
 		item: RichtextItem
-		mediaItemsStorageKey: RichtextPropsMinimum['mediaItemsStorageKey']
 	}>()
 
 	const dynamicComponent = components?.[props.item.name as keyof typeof components]

@@ -13,7 +13,6 @@
 	const props = defineProps<{
 		attributes: RichtextCoreSpacerProps['attributes']
 		innerBlocks?: RichtextCoreSpacerProps['innerBlocks']
-		mediaItemsStorageKey: RichtextCoreSpacerProps['mediaItemsStorageKey']
 	}>()
 
 	const heightRem = computed(() => {

@@ -13,7 +13,6 @@
 	const props = defineProps<{
 		attributes: RichtextHtTableOfContentsProps['attributes']
 		innerBlocks?: RichtextHtTableOfContentsProps['innerBlocks']
-		mediaItemsStorageKey: RichtextHtTableOfContentsProps['mediaItemsStorageKey']
 	}>()
 
 	const headerEntries = computed(() => {

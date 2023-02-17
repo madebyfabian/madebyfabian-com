@@ -1,25 +1,21 @@
 <template>
 	<article v-if="props.blocks.length" class="RichtextContainer">
-		<RichtextResolver
-			v-for="item of props.blocks"
-			:key="item.id"
-			v-bind="{ item, mediaItemsStorageKey: mediaItemsStorageKey }" />
+		<RichtextResolver v-for="item of props.blocks" :key="item.id" :item="item" />
 	</article>
 </template>
 
 <script lang="ts" setup>
 	import type { RichtextItem } from '@/components/richtext/RichtextResolver.vue'
 
+	const route = useRoute()
+
 	const props = defineProps<{
 		mediaItems: any
 		blocks: RichtextItem[]
-		uniqueKey: string
 	}>()
 
-	const mediaItemsStorageKey = `RichtextContainer:${props.uniqueKey}:mediaItems`
-
 	// Inject the media items data into the global storage
-	useState(mediaItemsStorageKey, () => {
+	useState(generateMediaItemsKey({ route }), () => {
 		return props.mediaItems
 	})
 </script>

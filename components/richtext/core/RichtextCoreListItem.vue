@@ -2,10 +2,7 @@
 	<li class="RichtextCoreListItem">
 		<p v-html="props.attributes?.content" />
 
-		<RichtextResolver
-			v-for="item of props.innerBlocks"
-			:key="item.id"
-			v-bind="{ item, mediaItemsStorageKey: props.mediaItemsStorageKey }" />
+		<RichtextResolver v-for="item of props.innerBlocks" :key="item.id" :item="item" />
 	</li>
 </template>
 
@@ -20,6 +17,5 @@
 	const props = defineProps<{
 		attributes: RichtextCoreListItemProps['attributes']
 		innerBlocks?: RichtextCoreListItemProps['innerBlocks']
-		mediaItemsStorageKey: RichtextCoreListItemProps['mediaItemsStorageKey']
 	}>()
 </script>

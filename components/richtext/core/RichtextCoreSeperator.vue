@@ -13,7 +13,6 @@
 	const props = defineProps<{
 		attributes: RichtextCoreSeperatorProps['attributes']
 		innerBlocks?: RichtextCoreSeperatorProps['innerBlocks']
-		mediaItemsStorageKey: RichtextCoreSeperatorProps['mediaItemsStorageKey']
 	}>()
 
 	const id = computed(() => props.attributes?.anchor || undefined)

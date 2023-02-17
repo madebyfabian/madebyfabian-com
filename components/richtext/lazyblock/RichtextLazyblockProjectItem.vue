@@ -29,7 +29,6 @@
 	const props = defineProps<{
 		attributes: RichtextLazyblockProjectItemProps['attributes']
 		innerBlocks?: RichtextLazyblockProjectItemProps['innerBlocks']
-		mediaItemsStorageKey: RichtextLazyblockProjectItemProps['mediaItemsStorageKey']
 	}>()
 
 	const mediaSrc = computed(() => {

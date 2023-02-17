@@ -18,7 +18,6 @@
 	const props = defineProps<{
 		attributes: RichtextCoreColumnsProps['attributes']
 		innerBlocks?: RichtextCoreColumnsProps['innerBlocks']
-		mediaItemsStorageKey: RichtextCoreColumnsProps['mediaItemsStorageKey']
 	}>()
 
 	const classes = computed(() => {

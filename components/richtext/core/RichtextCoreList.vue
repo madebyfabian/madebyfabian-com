@@ -1,15 +1,9 @@
 <template>
 	<ol class="RichtextCoreList" v-if="props.attributes?.ordered" :id="id">
-		<RichtextResolver
-			v-for="item of props.innerBlocks"
-			:key="item.id"
-			v-bind="{ item, mediaItemsStorageKey: props.mediaItemsStorageKey }" />
+		<RichtextResolver v-for="item of props.innerBlocks" :key="item.id" :item="item" />
 	</ol>
 	<ul class="RichtextCoreList" v-else-if="!props.attributes?.ordered" :id="id">
-		<RichtextResolver
-			v-for="item of props.innerBlocks"
-			:key="item.id"
-			v-bind="{ item, mediaItemsStorageKey: props.mediaItemsStorageKey }" />
+		<RichtextResolver v-for="item of props.innerBlocks" :key="item.id" :item="item" />
 	</ul>
 </template>
 
@@ -24,7 +18,6 @@
 	const props = defineProps<{
 		attributes: RichtextCoreListProps['attributes']
 		innerBlocks?: RichtextCoreListProps['innerBlocks']
-		mediaItemsStorageKey: RichtextCoreListProps['mediaItemsStorageKey']
 	}>()
 
 	const id = computed(() => props.attributes?.anchor || undefined)

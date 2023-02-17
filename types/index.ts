@@ -19,19 +19,15 @@ export type BlockDefault = Block
 
 type InnerBlocksExtended<BlockGeneric> = Maybe<Array<ItemBase & BlockGeneric>>
 
-export type RichtextPropsMinimum = {
-	mediaItemsStorageKey: string
-}
-
 export type RichtextPropsBase<
 	AttributesGeneric extends { innerBlocks?: unknown; attributes?: unknown },
 	SpecificInnerBlocksGeneric = void
 > = SpecificInnerBlocksGeneric extends void
-	? RichtextPropsMinimum & {
+	? {
 			innerBlocks?: InnerBlocksExtended<AttributesGeneric['innerBlocks']>
 			attributes: AttributesGeneric['attributes']
 	  }
-	: RichtextPropsMinimum & {
+	: {
 			innerBlocks?: SpecificInnerBlocksGeneric
 			attributes: AttributesGeneric['attributes']
 	  }

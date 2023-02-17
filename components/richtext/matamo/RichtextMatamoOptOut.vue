@@ -14,10 +14,9 @@
 <script setup lang="ts">
 	const runtimeConfig = useRuntimeConfig()
 
-	const props = defineProps<{
+	defineProps<{
 		attributes: RichtextMatomoOptOutProps['attributes']
 		innerBlocks?: RichtextMatomoOptOutProps['innerBlocks']
-		mediaItemsStorageKey: RichtextMatomoOptOutProps['mediaItemsStorageKey']
 	}>()
 
 	const iframeUrl = computed(() => {

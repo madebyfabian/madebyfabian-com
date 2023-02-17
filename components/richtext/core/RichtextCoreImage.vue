@@ -23,13 +23,14 @@
 </script>
 
 <script setup lang="ts">
+	const route = useRoute()
+
 	const props = defineProps<{
 		attributes: RichtextCoreImageProps['attributes']
 		innerBlocks?: RichtextCoreImageProps['innerBlocks']
-		mediaItemsStorageKey: RichtextCoreImageProps['mediaItemsStorageKey']
 	}>()
 
-	const mediaData = useMediaItemData({ key: props.mediaItemsStorageKey, id: props.attributes?.id })
+	const mediaData = useMediaItemData({ key: generateMediaItemsKey({ route }), id: props.attributes?.id })
 
 	const caption = computed(() => {
 		if (props.attributes?.caption) return `<p>${props.attributes?.caption}</p>`
