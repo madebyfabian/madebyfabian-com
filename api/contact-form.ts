@@ -49,7 +49,6 @@ const renderBody = async ({ name, email, message }: { name: string; email: strin
 	return ((await renderToString(ssrInput)) || undefined) as any
 }
 
-// New
 const verifyTurnstileToken = async (token: string) => {
 	const endpoint = 'https://challenges.cloudflare.com/turnstile/v0/siteverify'
 	const res = await fetch(endpoint, {
@@ -120,7 +119,6 @@ type ValidRequestInput = ReturnType<typeof parseInput>
 
 export default async function handler(request: Request) {
 	try {
-		// First validate input
 		const input = parseInput({ input: request.body })
 
 		const validationResponse = await verifyTurnstileToken(input.turnstileToken)
@@ -148,7 +146,7 @@ export default async function handler(request: Request) {
 		})
 		if (!sendEmailRes?.sendEmail?.sent) throw new Error('Failed to send the email.')
 
-		return new Response(JSON.stringify({ error: 'Email sent.' }), {
+		return new Response(JSON.stringify({ data: 'Email sent.' }), {
 			headers: { 'Content-Type': 'application/json' },
 		})
 	} catch (error) {
