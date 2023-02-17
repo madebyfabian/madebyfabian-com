@@ -3,7 +3,10 @@ import { renderToString } from 'vue/server-renderer'
 import { z } from 'zod'
 import xss from 'xss'
 import { fetch } from 'ofetch'
-import type { VercelRequest, VercelResponse } from '@vercel/node'
+
+export const config = {
+	runtime: 'edge',
+}
 
 // copy from graphQlClient.ts
 import { GraphQLClient } from 'graphql-request'
@@ -115,21 +118,33 @@ const parseInput = ({ input }: { input: any }) => {
 
 type ValidRequestInput = ReturnType<typeof parseInput>
 
-export default async function handler(request: VercelRequest, response: VercelResponse) {
+/**
+ * Helper to make Vercel Edge Function responses easier.
+ */
+const response = (statusCode: number, body: any) => {
+	return new Response(JSON.stringify(body), {
+		status: statusCode,
+		headers: {
+			'Content-Type': 'application/json',
+		},
+	})
+}
+
+export default async function handler(request: Request) {
 	try {
 		// First validate input
 		const input = parseInput({ input: request.body })
 
 		const validationResponse = await verifyTurnstileToken(input.turnstileToken)
 		if (!validationResponse.success)
-			return response.status(401).json({
+			return response(401, {
 				error: 'Failed to verify the captcha token.',
 			})
 
 		const contactFormEmailRes = await getContactFormEmail()
 		const contactFormEmail = contactFormEmailRes.allSettings?.generalSettingsEmail
 		if (!contactFormEmail)
-			return response.status(500).json({
+			return response(500, {
 				error: 'Failed to get the receivers email adress from wp.',
 			})
 
@@ -139,7 +154,7 @@ export default async function handler(request: VercelRequest, response: VercelRe
 			message: input.message,
 		})
 		if (!renderedBody)
-			return response.status(500).json({
+			return response(500, {
 				error: 'Failed to render the email body.',
 			})
 
@@ -149,13 +164,13 @@ export default async function handler(request: VercelRequest, response: VercelRe
 			body: renderedBody,
 		})
 		if (!sendEmailRes?.sendEmail?.sent)
-			return response.status(500).json({
+			return response(500, {
 				error: 'Failed to send the email.',
 			})
 
-		return response.status(200).json({})
+		return response(200, {})
 	} catch (error) {
-		return response.status(500).json({
+		return response(500, {
 			error: 'Something went wrong.',
 		})
 	}
