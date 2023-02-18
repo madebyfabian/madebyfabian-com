@@ -15,6 +15,7 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
 const documents = {
     "\n\t\tquery AdminEmail {\n\t\t\tallSettings {\n\t\t\t\tgeneralSettingsEmail\n\t\t\t}\n\t\t}\n\t": types.AdminEmailDocument,
     "\n\t\tmutation SendEmail($input: SendEmailInput!) {\n\t\t\tsendEmail(input: $input) {\n\t\t\t\tsent\n\t\t\t\tmessage\n\t\t\t}\n\t\t}\n\t": types.SendEmailDocument,
+    "\n\t\t\tquery AdminEmail {\n\t\t\t\tallSettings {\n\t\t\t\t\tgeneralSettingsEmail\n\t\t\t\t}\n\t\t\t}\n\t\t": types.AdminEmailDocument,
     "\n\t\t\tquery AllSettings {\n\t\t\t\tallSettings {\n\t\t\t\t\tgeneralSettingsTitle\n\t\t\t\t\tgeneralSettingsDescription\n\t\t\t\t}\n\t\t\t\tviewer {\n\t\t\t\t\tfirstName\n\t\t\t\t\tlastName\n\t\t\t\t\turl\n\t\t\t\t\tavatar(size: 360) {\n\t\t\t\t\t\turl\n\t\t\t\t\t\tfoundAvatar\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t": types.AllSettingsDocument,
     "\n\t\t\tquery SingleMenu($id: ID!) {\n\t\t\t\tmenu(id: $id, idType: ID) {\n\t\t\t\t\tid\n\t\t\t\t\tname\n\t\t\t\t\tmenuItems {\n\t\t\t\t\t\tedges {\n\t\t\t\t\t\t\tnode {\n\t\t\t\t\t\t\t\tid\n\t\t\t\t\t\t\t\tlabel\n\t\t\t\t\t\t\t\torder\n\t\t\t\t\t\t\t\turi\n\t\t\t\t\t\t\t\ttarget\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t": types.SingleMenuDocument,
     "\n\t\t\tquery ListPosts {\n\t\t\t\tposts(where: { status: PUBLISH }) {\n\t\t\t\t\tnodes {\n\t\t\t\t\t\tid\n\t\t\t\t\t\ttitle\n\t\t\t\t\t\tdateGmt\n\t\t\t\t\t\turi\n\t\t\t\t\t\texcerpt(format: RAW)\n\t\t\t\t\t\tauthor {\n\t\t\t\t\t\t\tnode {\n\t\t\t\t\t\t\t\tname\n\t\t\t\t\t\t\t\tdatabaseId\n\t\t\t\t\t\t\t\tavatar(size: 360) {\n\t\t\t\t\t\t\t\t\turl\n\t\t\t\t\t\t\t\t\tfoundAvatar\n\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t}\n\t\t\t\t\t\tfeaturedImage {\n\t\t\t\t\t\t\tnode {\n\t\t\t\t\t\t\t\tid\n\t\t\t\t\t\t\t\tsourceUrl\n\t\t\t\t\t\t\t\taltText\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t}\n\t\t\t\t\t\ttags {\n\t\t\t\t\t\t\tedges {\n\t\t\t\t\t\t\t\tnode {\n\t\t\t\t\t\t\t\t\tid\n\t\t\t\t\t\t\t\t\tname\n\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t": types.ListPostsDocument,
@@ -45,6 +46,10 @@ export function graphql(source: "\n\t\tquery AdminEmail {\n\t\t\tallSettings {\n
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(source: "\n\t\tmutation SendEmail($input: SendEmailInput!) {\n\t\t\tsendEmail(input: $input) {\n\t\t\t\tsent\n\t\t\t\tmessage\n\t\t\t}\n\t\t}\n\t"): (typeof documents)["\n\t\tmutation SendEmail($input: SendEmailInput!) {\n\t\t\tsendEmail(input: $input) {\n\t\t\t\tsent\n\t\t\t\tmessage\n\t\t\t}\n\t\t}\n\t"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n\t\t\tquery AdminEmail {\n\t\t\t\tallSettings {\n\t\t\t\t\tgeneralSettingsEmail\n\t\t\t\t}\n\t\t\t}\n\t\t"): (typeof documents)["\n\t\t\tquery AdminEmail {\n\t\t\t\tallSettings {\n\t\t\t\t\tgeneralSettingsEmail\n\t\t\t\t}\n\t\t\t}\n\t\t"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
