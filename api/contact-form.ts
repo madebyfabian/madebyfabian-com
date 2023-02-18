@@ -1,52 +1,35 @@
-import { createSSRApp, reactive } from 'vue'
-import { renderToString } from 'vue/server-renderer'
 import { z } from 'zod'
 import xss from 'xss'
-import { fetch } from 'ofetch'
-import type { VercelRequest, VercelResponse } from '@vercel/node'
-
-// copy from graphQlClient.ts
-import { GraphQLClient } from 'graphql-request'
 import { graphql as gql } from '../graphql'
-const gqlHost = process.env.NUXT_GQL_HOST || ''
-const gqlToken = process.env.NUXT_GQL_TOKEN || ''
-const graphQLClient = new GraphQLClient(gqlHost, {
-	headers: {
-		authorization: gqlToken,
-	},
-})
+import type { AdminEmailQuery, SendEmailMutation, SendEmailMutationVariables } from '../types'
 
-const renderBody = async ({ name, email, message }: { name: string; email: string; message: string }) => {
-	const ssrInput = createSSRApp({
-		setup() {
-			const getMessage = () => {
-				message = message.replace(/\n/g, '<br />')
-				message = xss(message)
-				return message
-			}
-
-			const input = reactive({
-				name,
-				email,
-				message: getMessage(),
-			})
-
-			return { input }
-		},
-		template: `<div class="email" :class="{ 'dynamic': true }">
-				<ul>
-					<li v-for="(value, key) in input" :key="key">
-						<div>{{ key }}: </div>
-						<div style="{ font-weight: bold; }" v-html="value"></div>
-					</li>
-				</ul>
-			</div>`,
-	})
-
-	return ((await renderToString(ssrInput)) || undefined) as any
+export const config = {
+	runtime: 'edge',
 }
 
-// New
+const gqlHost = process.env.NUXT_GQL_HOST || ''
+const gqlToken = process.env.NUXT_GQL_TOKEN || ''
+
+const renderBody = async (props: { name: string; email: string; message: string }) => {
+	props.message = props.message.replace(/\n/g, '<br />')
+	props.message = xss(props.message)
+
+	const listItems = Object.entries(props).map(
+		([key, value]) => `
+			<li>
+				<div>${key}:</div>
+				<div style="{ font-weight: bold; }">${value}</div>
+			</li>
+		`
+	)
+
+	return `
+		<ul>
+			${listItems.join('<br /></br />')}
+		</ul>
+	`
+}
+
 const verifyTurnstileToken = async (token: string) => {
 	const endpoint = 'https://challenges.cloudflare.com/turnstile/v0/siteverify'
 	const res = await fetch(endpoint, {
@@ -63,14 +46,35 @@ const verifyTurnstileToken = async (token: string) => {
 }
 
 const getContactFormEmail = async () => {
-	const query = gql(/* GraphQL */ `
+	const query = /* GraphQL */ `
 		query AdminEmail {
 			allSettings {
 				generalSettingsEmail
 			}
 		}
-	`)
-	return graphQLClient.request(query)
+	`
+
+	// Must be present for the generator to generate `AdminEmailQuery` type.
+	const typedQuery = gql(query)
+
+	const gqlRes = await fetch(gqlHost, {
+		method: 'POST',
+		headers: {
+			'authorization': gqlToken,
+			'content-type': 'application/json',
+		},
+		body: JSON.stringify({
+			query,
+			variables: {},
+		}),
+	})
+
+	const res = ((await gqlRes.json())?.data as AdminEmailQuery) || null
+	if (!res) {
+		throw new Error('Failed to fetch admin email')
+	}
+
+	return res
 }
 
 const sendEmail = async ({
@@ -83,16 +87,19 @@ const sendEmail = async ({
 	body: string
 }) => {
 	const admin = `Admin <${contactFormEmail}>`
-	const mutation = gql(/* GraphQL */ `
+	const mutation = /* GraphQL */ `
 		mutation SendEmail($input: SendEmailInput!) {
 			sendEmail(input: $input) {
 				sent
 				message
 			}
 		}
-	`)
+	`
 
-	return graphQLClient.request(mutation, {
+	// Must be present for the generator to generate `SendEmailMutation` type.
+	const typedMutation = gql(mutation)
+
+	const variables: SendEmailMutationVariables = {
 		input: {
 			to: admin,
 			from: admin,
@@ -100,7 +107,26 @@ const sendEmail = async ({
 			subject: 'New contact form request!',
 			body: body,
 		},
+	}
+
+	const gqlRes = await fetch(gqlHost, {
+		method: 'POST',
+		headers: {
+			'authorization': gqlToken,
+			'content-type': 'application/json',
+		},
+		body: JSON.stringify({
+			query: mutation,
+			variables,
+		}),
 	})
+
+	const res = ((await gqlRes.json())?.data as SendEmailMutation) || null
+	if (!res) {
+		throw new Error('Failed to send email')
+	}
+
+	return res
 }
 
 const parseInput = ({ input }: { input: any }) => {
@@ -115,48 +141,48 @@ const parseInput = ({ input }: { input: any }) => {
 
 type ValidRequestInput = ReturnType<typeof parseInput>
 
-export default async function handler(request: VercelRequest, response: VercelResponse) {
+export default async function handler(request: Request) {
 	try {
-		// First validate input
-		const input = parseInput({ input: request.body })
+		const body = await new Response(request.body).json()
+		if (!body) throw new Error('No body was provided. Please provide a body with the request.')
+
+		const input = parseInput({ input: body })
 
 		const validationResponse = await verifyTurnstileToken(input.turnstileToken)
-		if (!validationResponse.success)
-			return response.status(401).json({
-				error: 'Failed to verify the captcha token.',
+		if (!validationResponse.success) {
+			return new Response(JSON.stringify({ error: 'Failed to verify the captcha token.' }), {
+				status: 401,
+				headers: { 'Content-Type': 'application/json' },
 			})
+		}
 
 		const contactFormEmailRes = await getContactFormEmail()
 		const contactFormEmail = contactFormEmailRes.allSettings?.generalSettingsEmail
-		if (!contactFormEmail)
-			return response.status(500).json({
-				error: 'Failed to get the receivers email adress from wp.',
-			})
+		if (!contactFormEmail) throw new Error('Failed to get the receivers email adress from wp.')
 
 		const renderedBody = await renderBody({
 			name: input.name,
 			email: input.email,
 			message: input.message,
 		})
-		if (!renderedBody)
-			return response.status(500).json({
-				error: 'Failed to render the email body.',
-			})
+		if (!renderedBody) throw new Error('Failed to render the email body.')
 
 		const sendEmailRes = await sendEmail({
 			contactFormEmail,
 			input,
 			body: renderedBody,
 		})
-		if (!sendEmailRes?.sendEmail?.sent)
-			return response.status(500).json({
-				error: 'Failed to send the email.',
-			})
+		if (!sendEmailRes?.sendEmail?.sent) throw new Error('Failed to send the email.')
 
-		return response.status(200).json({})
+		return new Response(JSON.stringify({ data: 'Email sent.' }), {
+			status: 200,
+			headers: { 'Content-Type': 'application/json' },
+		})
 	} catch (error) {
-		return response.status(500).json({
-			error: 'Something went wrong.',
+		console.error(error)
+		return new Response(JSON.stringify({ error: (error as Error)?.message || 'Unknown error' }), {
+			status: 500,
+			headers: { 'Content-Type': 'application/json' },
 		})
 	}
 }
