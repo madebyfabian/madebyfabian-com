@@ -48,7 +48,7 @@
 		uniqueKey: string
 	}>()
 
-	const { data, error } = await useAsyncData(async () => {
+	const { data, error } = await useAsyncData(`ListPosts:${props.uniqueKey}`, async () => {
 		if (props.posts) {
 			return props.posts
 		}

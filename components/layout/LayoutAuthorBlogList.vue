@@ -30,7 +30,9 @@
 		authorId: string
 	}>()
 
-	const { data, error } = await useAsyncData(() => useGraphqlQuery('AuthorDetails', { id: props.authorId }))
+	const { data, error } = await useAsyncData(`AuthorDetails:${props.authorId}`, () =>
+		useGraphqlQuery('AuthorDetails', { id: props.authorId })
+	)
 	const user = computed(() => data.value?.data.user)
 	if (!user || error.value) {
 		throw createError({ statusCode: 500, message: 'Error fetching author details', fatal: true })

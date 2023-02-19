@@ -24,7 +24,7 @@
 		menuId: string
 	}>()
 
-	const { data, error } = await useAsyncData(() =>
+	const { data, error } = await useAsyncData(`SingleMenu:${props.menuId}`, () =>
 		useGraphqlQuery('SingleMenu', {
 			id: props.menuId,
 		})
