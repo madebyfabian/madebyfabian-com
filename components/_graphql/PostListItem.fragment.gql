@@ -1,0 +1,30 @@
+#import "~/components/_graphql/PostBase.fragment.gql"
+
+fragment PostListItem on Post {
+	...PostBase
+	author {
+		node {
+			name
+			databaseId
+			avatar(size: 360) {
+				url
+				foundAvatar
+			}
+		}
+	}
+	tags {
+		edges {
+			node {
+				id
+				name
+			}
+		}
+	}
+	featuredImage {
+		node {
+			id
+			sourceUrl
+			altText
+		}
+	}
+}

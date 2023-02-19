@@ -1,5 +1,5 @@
 import type { ItemBase, InnerBlocksDefault, BlockDefault, CoreImageBlock, UbTableOfContentsHeaderEntry } from '@/types'
-import { generalRouter } from '@/server/trpc/routers/general'
+import type { MediaItemsQuery } from '#graphql-operations'
 
 type Item = ItemBase & {
 	block: BlockDefault
@@ -157,9 +157,19 @@ export const generateBlocksData = async ({
 		// Map through all content to get all images Ids.
 		// This is necessary since the GraphQL API has a bug where it cannot
 		// display image info like height/width, or srcsets for example.
-		const generalCaller = generalRouter.createCaller(ctx)
-		const { mediaItems } = await generalCaller.mediaItems({ imageIds })
-		return { blocks, mediaItems, tocEntriesList }
+		try {
+			const mediaItems = await $fetch<{
+				data: MediaItemsQuery
+			}>('/api/graphql_middleware/query/MediaItems', {
+				params: {
+					inIds: imageIds,
+				},
+			})
+
+			return { blocks, mediaItems: mediaItems?.data.mediaItems || undefined, tocEntriesList }
+		} catch (error) {
+			return { blocks, mediaItems: undefined, tocEntriesList }
+		}
 	}
 
 	return { blocks, mediaItems: undefined, tocEntriesList }

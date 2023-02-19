@@ -43,8 +43,6 @@
 <script lang="ts" setup>
 	import type { Post } from '@/types'
 
-	const { $client } = useNuxtApp()
-
 	const props = defineProps<{
 		posts?: Partial<Post>[]
 		uniqueKey: string
@@ -55,12 +53,12 @@
 			return props.posts
 		}
 
-		const { data: queryData, error: queryError } = await $client.general.listPosts.useQuery()
-		if (queryError.value) {
+		const { data: queryData } = await useGraphqlQuery('ListPosts')
+		if (!queryData.posts) {
 			throw createError({ statusCode: 500, message: 'Error fetching posts in blog list', fatal: true })
 		}
 
-		return queryData.value?.posts?.nodes
+		return queryData?.posts?.nodes
 	})
 
 	if (error.value) {

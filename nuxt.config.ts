@@ -12,6 +12,7 @@ export default defineNuxtConfig({
 		'nuxt-typed-router',
 		'@dargmuesli/nuxt-cookie-control',
 		'nuxt-calendly',
+		'nuxt-graphql-middleware',
 	],
 
 	runtimeConfig: {
@@ -41,12 +42,10 @@ export default defineNuxtConfig({
 				baseUrl: withHttps(process.env.NUXT_PUBLIC_WP_HOST || ''),
 				twicpicsDomain: process.env.NUXT_PUBLIC_TWICPICS_DOMAIN,
 				twicpicsPaths: [
-					// @ts-expect-error - This is a valid path
 					{
 						path: '/wordpress-madebyfabian/',
 						source: withHttps(process.env.NUXT_PUBLIC_WP_HOST || ''),
 					},
-					// @ts-expect-error - This is a valid path
 					{
 						path: '/gravatar/',
 						source: 'https://secure.gravatar.com/',
@@ -113,6 +112,21 @@ export default defineNuxtConfig({
 
 	// @dargmuesli/nuxt-cookie-control
 	cookieControl: cookieConfig,
+
+	// nuxt-graphql-middleware
+	graphqlMiddleware: {
+		graphqlEndpoint: process.env.NUXT_GQL_HOST,
+		serverFetchOptions: {
+			headers: {
+				'Authorization': process.env.NUXT_GQL_TOKEN || '',
+			},
+		},
+		codegenConfig: {
+			headers: {
+				'Authorization': process.env.NUXT_GQL_TOKEN || '',
+			},
+		} as any,
+	},
 
 	typescript: {
 		shim: false,

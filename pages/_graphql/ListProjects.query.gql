@@ -1,0 +1,20 @@
+#import "~/components/_graphql/ProjectListItem.fragment.gql"
+
+query ListProjects {
+	projects(where: { status: PUBLISH }) {
+		nodes {
+			...ProjectListItem
+			project {
+				logo {
+					id
+					sourceUrl
+					altText
+					mediaDetails {
+						width
+						height
+					}
+				}
+			}
+		}
+	}
+}

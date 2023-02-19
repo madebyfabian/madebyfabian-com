@@ -1,0 +1,15 @@
+query AllSettings {
+	allSettings {
+		generalSettingsTitle
+		generalSettingsDescription
+	}
+	viewer {
+		firstName
+		lastName
+		url
+		avatar(size: 360) {
+			url
+			foundAvatar
+		}
+	}
+}

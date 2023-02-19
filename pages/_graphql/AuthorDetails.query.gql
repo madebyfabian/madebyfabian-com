@@ -1,0 +1,30 @@
+#import "~/components/_graphql/PostListItem.fragment.gql"
+
+query AuthorDetails($id: ID!) {
+	user(id: $id, idType: DATABASE_ID) {
+		id
+		name
+		databaseId
+		avatar(size: 360) {
+			url
+			foundAvatar
+		}
+		roles {
+			edges {
+				node {
+					id
+					displayName
+				}
+			}
+		}
+
+		# Same as listPosts query
+		posts {
+			edges {
+				node {
+					...PostListItem
+				}
+			}
+		}
+	}
+}

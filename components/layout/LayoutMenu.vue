@@ -24,15 +24,17 @@
 		menuId: string
 	}>()
 
-	const { data, error } = await $client.general.singleMenu.useQuery({
-		menuId: props.menuId,
-	})
+	const { data, error } = await useAsyncData(() =>
+		useGraphqlQuery('SingleMenu', {
+			id: props.menuId,
+		})
+	)
 	if (!data.value || error.value) {
 		throw new Error('Error fetching menu')
 	}
 
 	const menuData = computed(() => {
-		const menuData = data.value?.menu?.menuItems?.edges?.map((edge: any) => ({
+		const menuData = data?.value?.data.menu?.menuItems?.edges?.map((edge: any) => ({
 			node: {
 				...edge.node,
 				uri: edge.node.uri,

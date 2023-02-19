@@ -1,0 +1,11 @@
+fragment PostBase on ContentNode {
+	id
+	dateGmt
+	uri
+	... on NodeWithExcerpt {
+		excerpt(format: RAW)
+	}
+	... on NodeWithTitle {
+		title
+	}
+}

@@ -1,0 +1,17 @@
+query MediaItems($inIds: [ID]!) {
+	mediaItems(where: { in: $inIds }) {
+		edges {
+			node {
+				id
+				databaseId
+				sourceUrl
+				description
+				caption
+				mediaDetails {
+					height
+					width
+				}
+			}
+		}
+	}
+}

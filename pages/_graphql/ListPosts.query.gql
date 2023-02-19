@@ -1,0 +1,9 @@
+#import "~/components/_graphql/PostListItem.fragment.gql"
+
+query ListPosts {
+	posts(where: { status: PUBLISH }) {
+		nodes {
+			...PostListItem
+		}
+	}
+}

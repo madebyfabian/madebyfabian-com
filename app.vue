@@ -16,14 +16,15 @@
 
 	const color = (tailwindConfig.theme?.extend?.colors as any)?.['accent']?.['700']
 
-	const { $client } = useNuxtApp()
-	const { data, error } = await $client.general.allSettings.useQuery()
-	if (!data.value?.allSettings || error.value) {
+	const { data, error } = await useAsyncData(() => useGraphqlQuery('AllSettings'))
+	const allSettings = computed(() => data.value?.data.allSettings)
+	const viewer = computed(() => data.value?.data.viewer)
+	if (!allSettings.value || error.value) {
 		throw createError({ statusCode: 500, message: 'Error fetching settings' })
 	}
 
-	const siteName = data.value.allSettings.generalSettingsTitle || ''
-	const siteDescription = data.value.allSettings.generalSettingsDescription || undefined
+	const siteName = allSettings.value.generalSettingsTitle || ''
+	const siteDescription = allSettings.value.generalSettingsDescription || undefined
 
 	useSeoMeta({
 		title: 'Home',
@@ -33,9 +34,9 @@
 
 	useSchemaOrg([
 		definePerson({
-			name: () => `${data.value?.viewer?.firstName} ${data.value?.viewer?.lastName}`,
-			logo: () => data.value?.viewer?.avatar?.url || undefined,
-			sameAs: () => data.value?.viewer?.url || undefined,
+			name: () => `${viewer.value?.firstName} ${viewer.value?.lastName}`,
+			logo: () => viewer.value?.avatar?.url || undefined,
+			sameAs: () => viewer.value?.url || undefined,
 		}),
 		defineWebSite({
 			name: siteName,
