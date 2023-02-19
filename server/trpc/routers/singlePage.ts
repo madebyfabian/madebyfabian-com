@@ -4,7 +4,7 @@ import { publicProcedure, router } from '../trpc'
 
 export const singlePageRouter = router({
 	get: publicProcedure.input(z.object({ uri: z.string() })).query(async ({ ctx, input }) => {
-		const query = gqlUntyped/* GraphQL */ `
+		const query = /* GraphQL */ `
 			query SinglePage($uri: ID!) {
 				page(id: $uri, idType: URI) {
 					id

@@ -1,5 +1,3 @@
-import type { TypedDocumentNode } from '@graphql-typed-document-node/core'
-import type { RequestDocument } from 'graphql-request'
 import type { RequestHeaders } from 'h3'
 
 /**
@@ -15,17 +13,17 @@ export const requestContent = async <I extends Record<string, any>>({
 	previewInput,
 }: {
 	headers: RequestHeaders
-	query: RequestDocument | TypedDocumentNode<any, I>
+	query: string
 	input: I
 	previewInput?: I
 }) => {
 	const currentlyInPreview = isPreview({ headers: headers })
 
 	// @ts-expect-error - @todo improve typings
-	const promises = [graphQLClient.request(query, input)]
+	const promises = [graphQLQuery<any>({ query, variables: input, fetch: $fetch })] as Promise<any>[]
 	if (currentlyInPreview) {
 		// @ts-expect-error - @todo improve typings
-		promises.push(graphQLClient.request(query, previewInput))
+		promises.push(graphQLQuery<any>({ query, variables: previewInput, fetch: $fetch }))
 	}
 
 	const [res, previewRes] = await Promise.allSettled(promises)

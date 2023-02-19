@@ -11,8 +11,6 @@
 	},
 	"devDependencies": {
 		"@dargmuesli/nuxt-cookie-control": "^4.4.0",
-		"@graphql-codegen/cli": "^2.16.5",
-		"@graphql-codegen/client-preset": "^1.3.0",
 		"@nuxtjs/tailwindcss": "^6.3.1",
 		"@nuxtjs/turnstile": "^0.1.3",
 		"@types/prismjs": "^1.26.0",
@@ -31,7 +29,6 @@
 		"@vueuse/nuxt": "^9.12.0",
 		"dotenv": "^16.0.3",
 		"graphql": "^16.6.0",
-		"graphql-request": "^5.1.0",
 		"nuxt-graphql-middleware": "^3.0.2",
 		"nuxt-typed-router": "^2.3.4",
 		"nuxt-wordpress": "1.0.0-beta.1",
