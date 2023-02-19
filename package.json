@@ -29,7 +29,7 @@
 		"@vueuse/nuxt": "^9.12.0",
 		"dotenv": "^16.0.3",
 		"graphql": "^16.6.0",
-		"nuxt-graphql-middleware": "^3.0.2",
+		"nuxt-graphql-middleware": "3.1.0-beta.3",
 		"nuxt-typed-router": "^2.3.4",
 		"nuxt-wordpress": "1.0.0-beta.1",
 		"superjson": "^1.12.2",

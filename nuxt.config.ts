@@ -116,16 +116,13 @@ export default defineNuxtConfig({
 	// nuxt-graphql-middleware
 	graphqlMiddleware: {
 		graphqlEndpoint: process.env.NUXT_GQL_HOST,
-		serverFetchOptions: {
-			headers: {
-				'Authorization': process.env.NUXT_GQL_TOKEN || '',
+		codegenSchemaConfig: {
+			urlSchemaOptions: {
+				headers: {
+					'Authorization': process.env.NUXT_GQL_TOKEN || '',
+				},
 			},
 		},
-		codegenConfig: {
-			headers: {
-				'Authorization': process.env.NUXT_GQL_TOKEN || '',
-			},
-		} as any,
 	},
 
 	typescript: {

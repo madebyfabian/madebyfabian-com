@@ -13,7 +13,7 @@ specifiers:
   npm-run-all: ^4.1.5
   nuxt: ^3.2.2
   nuxt-calendly: ^0.1.14
-  nuxt-graphql-middleware: ^3.0.2
+  nuxt-graphql-middleware: 3.1.0-beta.3
   nuxt-seo-kit: ^1.2.3
   nuxt-typed-router: ^2.3.4
   nuxt-wordpress: 1.0.0-beta.1
@@ -34,7 +34,7 @@ dependencies:
   '@vueuse/nuxt': 9.13.0_nuxt@3.2.2
   dotenv: 16.0.3
   graphql: 16.6.0
-  nuxt-graphql-middleware: 3.0.2_eazlma3y33dbvdncxeer5lwmsu
+  nuxt-graphql-middleware: 3.1.0-beta.3_eazlma3y33dbvdncxeer5lwmsu
   nuxt-typed-router: 2.3.5
   nuxt-wordpress: 1.0.0-beta.1
   superjson: 1.12.2
@@ -1534,7 +1534,7 @@ packages:
       graphql: ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
     dependencies:
       graphql: 16.6.0
-      tslib: 2.4.1
+      tslib: 2.5.0
     dev: false
 
   /@graphql-tools/prisma-loader/7.2.62_graphql@16.6.0:
@@ -1578,7 +1578,7 @@ packages:
       '@ardatan/relay-compiler': 12.0.0_graphql@16.6.0
       '@graphql-tools/utils': 9.2.1_graphql@16.6.0
       graphql: 16.6.0
-      tslib: 2.4.1
+      tslib: 2.5.0
     transitivePeerDependencies:
       - encoding
       - supports-color
@@ -1628,7 +1628,7 @@ packages:
       graphql: ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
     dependencies:
       graphql: 16.6.0
-      tslib: 2.4.1
+      tslib: 2.5.0
     dev: false
 
   /@graphql-tools/utils/9.2.1_graphql@16.6.0:
@@ -2461,7 +2461,7 @@ packages:
   /@types/sax/1.2.4:
     resolution: {integrity: sha512-pSAff4IAxJjfAXUG6tFkO7dsSbTmf8CtUpfhhZ5VhkRpC4628tJhh3+V6H1E+/Gs9piSzYKT5yzHO5M4GG9jkw==}
     dependencies:
-      '@types/node': 17.0.45
+      '@types/node': 18.13.0
     dev: true
 
   /@types/web-bluetooth/0.0.16:
@@ -4811,7 +4811,7 @@ packages:
       graphql: ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
     dependencies:
       graphql: 16.6.0
-      tslib: 2.4.1
+      tslib: 2.5.0
     dev: false
 
   /graphql-ws/5.11.3_graphql@16.6.0:
@@ -6329,8 +6329,8 @@ packages:
       - supports-color
     dev: true
 
-  /nuxt-graphql-middleware/3.0.2_eazlma3y33dbvdncxeer5lwmsu:
-    resolution: {integrity: sha512-EL7bgzWqiLLMwx+RJY9dmvTuvgMlnCIr1AmlpnDJRdT5bs8oqv2FXSmBAzwMszjrdXLcJlxIbxoWdNYUeNo7VA==}
+  /nuxt-graphql-middleware/3.1.0-beta.3_eazlma3y33dbvdncxeer5lwmsu:
+    resolution: {integrity: sha512-7LiMf+0fpKwj2wJIPE2lLml/LDS8JhFZoTAfsUwsFVv6YHe89eYo/IdfLUn71h0CHgjvDdJzCa5jD4gdCRp5HQ==}
     dependencies:
       '@graphql-codegen/cli': 2.16.5_eazlma3y33dbvdncxeer5lwmsu
       '@graphql-codegen/schema-ast': 2.6.1_graphql@16.6.0
