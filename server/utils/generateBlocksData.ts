@@ -142,14 +142,7 @@ const generateData = ({ blocksRaw }: GenerateBlocksDataProps) => {
 	return res
 }
 
-export const generateBlocksData = async ({
-	blocksRaw,
-	ctx,
-}: {
-	blocksRaw: GenerateBlocksDataProps['blocksRaw']
-	/** trpc context */
-	ctx: any
-}) => {
+export const generateBlocksData = async ({ blocksRaw }: { blocksRaw: GenerateBlocksDataProps['blocksRaw'] }) => {
 	if (!blocksRaw) return { blocks: [], mediaItems: undefined, tocEntriesList: undefined }
 
 	const { blocks, imageIds, tocEntriesList } = generateData({ blocksRaw })

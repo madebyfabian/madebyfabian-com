@@ -18,8 +18,6 @@
 </template>
 
 <script setup lang="ts">
-	const { $client } = useNuxtApp()
-
 	const props = defineProps<{
 		menuId: string
 	}>()

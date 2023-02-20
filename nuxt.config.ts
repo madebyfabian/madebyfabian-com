@@ -1,6 +1,6 @@
+import { withHttps } from 'ufo'
 import { generateSitemap } from './generateSitemap'
 import { cookieConfig } from './config'
-import { withHttps } from 'ufo'
 
 export default defineNuxtConfig({
 	extends: ['nuxt-wordpress', 'nuxt-seo-kit'],
@@ -130,7 +130,7 @@ export default defineNuxtConfig({
 	},
 
 	build: {
-		transpile: ['trpc-nuxt', 'prismjs'],
+		transpile: ['prismjs'],
 	},
 
 	nitro: {
