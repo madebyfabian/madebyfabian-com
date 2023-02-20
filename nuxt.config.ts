@@ -22,7 +22,6 @@ export default defineNuxtConfig({
 		gqlHost: process.env.NUXT_GQL_HOST,
 		gqlToken: process.env.NUXT_GQL_TOKEN,
 		public: {
-			siteUrlPreview: process.env.NUXT_PUBLIC_SITE_URL_PREVIEW,
 			siteUrlProd: process.env.NUXT_PUBLIC_SITE_URL_PROD,
 			wpHost: process.env.NUXT_PUBLIC_WP_HOST,
 			isProduction: process.env.NODE_ENV === 'production',
