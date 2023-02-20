@@ -19,7 +19,6 @@ NUXT_TURNSTILE_SECRET_KEY="xxx"
 # Public
 NUXT_PUBLIC_SITE_URL="https://example.vercel.app" # Where your Nuxt site is deployed to
 NUXT_PUBLIC_SITE_URL_PROD="https://example.com"
-NUXT_PUBLIC_SITE_URL_PREVIEW="https://example-preview.vercel.app"
 NUXT_PUBLIC_TURNSTILE_SITE_KEY="xxx"
 NUXT_PUBLIC_WP_HOST="example.com" # WordPress Installation host, e.g. mywordpressbackend.com
 NUXT_PUBLIC_CALENDLY_URL="https://calendly.com/xxx/30min"
@@ -53,6 +52,4 @@ npm run build:prod
 ```
 
 2. Add the env variables from the `.env` file to the vercel project.
-3. Configure 2 domains
-    1. Should be the same as `NUXT_PUBLIC_SITE_URL`
-    2. Should be the same as `NUXT_PUBLIC_SITE_URL_PREVIEW`
+3. Configure a domain, should be the same as `NUXT_PUBLIC_SITE_URL`. You eventually have to redeploy the project after changing the domain.

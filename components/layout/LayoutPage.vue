@@ -8,7 +8,6 @@
 </template>
 
 <script lang="ts" setup>
-	const { $client } = useNuxtApp()
 	const route = useRoute()
 
 	const props = defineProps<{
@@ -18,8 +17,12 @@
 
 	const uri = computed(() => route.path)
 
-	const { data, error } = await $client.singlePage.get.useQuery({
-		uri: uri.value,
+	const { data, error } = await useAsyncData(`LayoutPage:${uri.value}`, () => {
+		return $fetch('/api/singlePage', {
+			params: {
+				uri: uri.value,
+			},
+		})
 	})
 	if (!data.value?.page || error.value) {
 		throw createError({ statusCode: 404, message: 'Page not found', fatal: true })

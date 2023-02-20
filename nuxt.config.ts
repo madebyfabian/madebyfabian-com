@@ -1,6 +1,6 @@
+import { withHttps } from 'ufo'
 import { generateSitemap } from './generateSitemap'
 import { cookieConfig } from './config'
-import { withHttps } from 'ufo'
 
 export default defineNuxtConfig({
 	extends: ['nuxt-wordpress', 'nuxt-seo-kit'],
@@ -12,6 +12,7 @@ export default defineNuxtConfig({
 		'nuxt-typed-router',
 		'@dargmuesli/nuxt-cookie-control',
 		'nuxt-calendly',
+		'nuxt-graphql-middleware',
 	],
 
 	runtimeConfig: {
@@ -21,7 +22,6 @@ export default defineNuxtConfig({
 		gqlHost: process.env.NUXT_GQL_HOST,
 		gqlToken: process.env.NUXT_GQL_TOKEN,
 		public: {
-			siteUrlPreview: process.env.NUXT_PUBLIC_SITE_URL_PREVIEW,
 			siteUrlProd: process.env.NUXT_PUBLIC_SITE_URL_PROD,
 			wpHost: process.env.NUXT_PUBLIC_WP_HOST,
 			isProduction: process.env.NODE_ENV === 'production',
@@ -41,12 +41,10 @@ export default defineNuxtConfig({
 				baseUrl: withHttps(process.env.NUXT_PUBLIC_WP_HOST || ''),
 				twicpicsDomain: process.env.NUXT_PUBLIC_TWICPICS_DOMAIN,
 				twicpicsPaths: [
-					// @ts-expect-error - This is a valid path
 					{
 						path: '/wordpress-madebyfabian/',
 						source: withHttps(process.env.NUXT_PUBLIC_WP_HOST || ''),
 					},
-					// @ts-expect-error - This is a valid path
 					{
 						path: '/gravatar/',
 						source: 'https://secure.gravatar.com/',
@@ -114,12 +112,24 @@ export default defineNuxtConfig({
 	// @dargmuesli/nuxt-cookie-control
 	cookieControl: cookieConfig,
 
+	// nuxt-graphql-middleware
+	graphqlMiddleware: {
+		graphqlEndpoint: process.env.NUXT_GQL_HOST,
+		codegenSchemaConfig: {
+			urlSchemaOptions: {
+				headers: {
+					'Authorization': process.env.NUXT_GQL_TOKEN || '',
+				},
+			},
+		},
+	},
+
 	typescript: {
 		shim: false,
 	},
 
 	build: {
-		transpile: ['trpc-nuxt', 'prismjs'],
+		transpile: ['prismjs'],
 	},
 
 	nitro: {

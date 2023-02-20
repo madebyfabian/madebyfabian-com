@@ -1,14 +1,10 @@
 import { z } from 'zod'
 import xss from 'xss'
-import { graphql as gql } from '../graphql'
-import type { AdminEmailQuery, SendEmailMutation, SendEmailMutationVariables } from '../types'
+import { graphQLQuery } from '../server/utils/graphQLQuery'
 
 export const config = {
 	runtime: 'edge',
 }
-
-const gqlHost = process.env.NUXT_GQL_HOST || ''
-const gqlToken = process.env.NUXT_GQL_TOKEN || ''
 
 const renderBody = async (props: { name: string; email: string; message: string }) => {
 	props.message = props.message.replace(/\n/g, '<br />')
@@ -54,27 +50,11 @@ const getContactFormEmail = async () => {
 		}
 	`
 
-	// Must be present for the generator to generate `AdminEmailQuery` type.
-	const typedQuery = gql(query)
-
-	const gqlRes = await fetch(gqlHost, {
-		method: 'POST',
-		headers: {
-			'authorization': gqlToken,
-			'content-type': 'application/json',
-		},
-		body: JSON.stringify({
-			query,
-			variables: {},
-		}),
+	return await graphQLQuery<any>({
+		query,
+		variables: {},
+		fetch,
 	})
-
-	const res = ((await gqlRes.json())?.data as AdminEmailQuery) || null
-	if (!res) {
-		throw new Error('Failed to fetch admin email')
-	}
-
-	return res
 }
 
 const sendEmail = async ({
@@ -96,10 +76,7 @@ const sendEmail = async ({
 		}
 	`
 
-	// Must be present for the generator to generate `SendEmailMutation` type.
-	const typedMutation = gql(mutation)
-
-	const variables: SendEmailMutationVariables = {
+	const variables = {
 		input: {
 			to: admin,
 			from: admin,
@@ -109,24 +86,11 @@ const sendEmail = async ({
 		},
 	}
 
-	const gqlRes = await fetch(gqlHost, {
-		method: 'POST',
-		headers: {
-			'authorization': gqlToken,
-			'content-type': 'application/json',
-		},
-		body: JSON.stringify({
-			query: mutation,
-			variables,
-		}),
+	return await graphQLQuery<any>({
+		query: mutation,
+		variables: variables,
+		fetch,
 	})
-
-	const res = ((await gqlRes.json())?.data as SendEmailMutation) || null
-	if (!res) {
-		throw new Error('Failed to send email')
-	}
-
-	return res
 }
 
 const parseInput = ({ input }: { input: any }) => {
@@ -157,7 +121,7 @@ export default async function handler(request: Request) {
 		}
 
 		const contactFormEmailRes = await getContactFormEmail()
-		const contactFormEmail = contactFormEmailRes.allSettings?.generalSettingsEmail
+		const contactFormEmail = contactFormEmailRes?.allSettings?.generalSettingsEmail
 		if (!contactFormEmail) throw new Error('Failed to get the receivers email adress from wp.')
 
 		const renderedBody = await renderBody({
@@ -179,7 +143,7 @@ export default async function handler(request: Request) {
 			headers: { 'Content-Type': 'application/json' },
 		})
 	} catch (error) {
-		console.error(error)
+		console.error('contact-form.ts', error)
 		return new Response(JSON.stringify({ error: (error as Error)?.message || 'Unknown error' }), {
 			status: 500,
 			headers: { 'Content-Type': 'application/json' },

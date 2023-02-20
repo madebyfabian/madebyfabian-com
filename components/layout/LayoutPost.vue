@@ -29,14 +29,16 @@
 </template>
 
 <script setup lang="ts">
-	const { $client } = useNuxtApp()
-
 	const props = defineProps<{
 		uri: string
 	}>()
 
-	const { data, error } = await $client.singlePost.get.useQuery({
-		uri: props.uri,
+	const { data, error } = await useAsyncData(`LayoutPost:${props.uri}`, () => {
+		return $fetch('/api/singlePost', {
+			params: {
+				uri: props.uri,
+			},
+		})
 	})
 	if (!data.value?.post || error.value) {
 		throw createError({ statusCode: 404, message: 'Blog Post not found', fatal: true })
