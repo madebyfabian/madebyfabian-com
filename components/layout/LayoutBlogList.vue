@@ -20,13 +20,13 @@
 			</div>
 
 			<div class="p-6">
-				<WrapBalancer as="h2" class="H3Like mb-2">
+				<h2 class="H3Like mb-2">
 					{{ item.title }}
-				</WrapBalancer>
+				</h2>
 
-				<WrapBalancer as="p" class="my-2">
+				<p class="my-2">
 					<span v-text="item.excerpt"></span>
-				</WrapBalancer>
+				</p>
 
 				<UIArticleMetadata
 					class="mt-4"

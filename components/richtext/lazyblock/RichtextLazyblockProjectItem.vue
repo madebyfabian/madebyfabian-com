@@ -6,12 +6,12 @@
 		:id="id"
 		class="RichtextLazyblockProjectItem">
 		<template #title>{{ props.attributes?.title }}</template>
-		<WrapBalancer as="p" class="reset" :ratio="0.15">
+		<p class="reset">
 			{{ props.attributes?.description1 }}
-		</WrapBalancer>
-		<WrapBalancer as="p" class="reset" :ratio="0.15">
+		</p>
+		<p class="reset">
 			{{ props.attributes?.description2 }}
-		</WrapBalancer>
+		</p>
 		<template #linkLabel> {{ props.attributes?.linkLabel }} </template>
 	</LayoutTeaserItem>
 </template>

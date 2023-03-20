@@ -1,7 +1,7 @@
 <template>
-	<WrapBalancer :ratio="balancerRatio" as="div" class="RichtextCoreParagraph !block" :class="classes">
+	<div class="RichtextCoreParagraph" :class="classes">
 		<p v-html="props.attributes?.content" :id="id" />
-	</WrapBalancer>
+	</div>
 </template>
 
 <script lang="ts">
@@ -16,16 +16,6 @@
 		attributes: RichtextCoreParagraphProps['attributes']
 		innerBlocks?: RichtextCoreParagraphProps['innerBlocks']
 	}>()
-
-	const balancerRatio = computed(() => {
-		// For centered or large text, we want to have a high ratio to optimize.
-		if (props.attributes?.align === 'center' || props.attributes?.fontSize === 'large') {
-			return 1
-		}
-
-		// For regular text, we want to have a low ratio to optimize.
-		return 0.5
-	})
 
 	const classes = computed(() => {
 		const classList = ['']

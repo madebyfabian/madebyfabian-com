@@ -1,10 +1,10 @@
 <template>
-	<WrapBalancer as="div" class="RichtextCoreHeading !block" :class="classes">
+	<div class="RichtextCoreHeading" :class="classes">
 		<h1 v-if="props.attributes?.level === 1" v-html="props.attributes?.content" :id="id" />
 		<h2 v-else-if="props.attributes?.level === 2" v-html="props.attributes?.content" :id="id" />
 		<h3 v-else-if="props.attributes?.level === 3" v-html="props.attributes?.content" :id="id" />
 		<h4 v-else-if="props.attributes?.level === 4" v-html="props.attributes?.content" :id="id" />
-	</WrapBalancer>
+	</div>
 </template>
 
 <script lang="ts">

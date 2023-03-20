@@ -25,13 +25,13 @@
 
 			<!-- Title -->
 
-			<WrapBalancer as="h2" class="H3Like mb-2 reset" :ratio="0.15">
+			<h2 class="H3Like mb-2 reset">
 				{{ props.project.title }}
-			</WrapBalancer>
+			</h2>
 
-			<WrapBalancer as="p" class="reset" :ratio="0.15">
+			<p class="reset">
 				{{ props.project.excerpt }}
-			</WrapBalancer>
+			</p>
 
 			<UITagList class="mt-4" :tags="(project?.tags?.edges as any)" />
 		</div>

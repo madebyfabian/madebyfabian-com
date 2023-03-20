@@ -17,14 +17,6 @@ export default <Partial<Config>>{
 		hoverOnlyWhenSupported: true,
 	},
 
-	// vue-wrap-balancer adds a `<script>` after elements, that's
-	// why we need to override the default :last-child selector
-	plugins: [
-		plugin(({ addVariant }) => {
-			addVariant('last', ['&:last-child', '&:has(+ script:last-child)'])
-		}),
-	],
-
 	theme: {
 		container: {
 			center: true,

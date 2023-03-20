@@ -1,5 +1,5 @@
 <template>
-	<WrapBalancerProvider>
+	<div>
 		<BgBlur position="topLeft" />
 		<BgBlur position="bottomRight" />
 		<BgNoise />
@@ -10,9 +10,5 @@
 			</div>
 			<LayoutFooter />
 		</div>
-	</WrapBalancerProvider>
+	</div>
 </template>
-
-<script setup lang="ts">
-	import { Provider as WrapBalancerProvider } from 'vue-wrap-balancer'
-</script>

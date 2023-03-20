@@ -3,11 +3,11 @@
 		<template #beforeRichtext>
 			<div class="flex items-center lg:px-8">
 				<div>
-					<WrapBalancer as="h1"> Exceptional web experiences, crafted with passion. </WrapBalancer>
-					<WrapBalancer as="p" class="PLargeLike !leading-normal mb-10 -mt-1">
+					<h1>Exceptional web experiences, crafted with passion.</h1>
+					<p class="PLargeLike !leading-normal mb-10 -mt-1">
 						Hej! I am Fabian, a visual product designer and frontend developer, creating high-quality web
 						experiences for your unique needs.
-					</WrapBalancer>
+					</p>
 					<div class="UIButtonGroup">
 						<NuxtLink to="/#projects" external class="UIButton flex-1 md:flex-none">
 							👨🏼‍💻&nbsp;&nbsp;My Work

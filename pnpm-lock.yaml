@@ -24,7 +24,6 @@ specifiers:
   ufo: ^1.0.1
   vue-matomo: ^4.2.0
   vue-tsc: ^1.0.24
-  vue-wrap-balancer: ^0.4.1
   xss: ^1.0.14
   zod: ^3.20.2
 
@@ -38,7 +37,6 @@ dependencies:
   nuxt-wordpress: 1.0.0-beta.1
   superjson: 1.12.2
   vue-matomo: 4.2.0
-  vue-wrap-balancer: 0.4.1
   xss: 1.0.14
   zod: 3.20.6
 
@@ -8664,14 +8662,6 @@ packages:
       '@volar/vue-language-core': 1.1.3
       '@volar/vue-typescript': 1.1.3
       typescript: 4.9.5
-
-  /vue-wrap-balancer/0.4.1:
-    resolution: {integrity: sha512-VK7bIVw+eQXWt46w1adCoFRAT2bVqzpZnXM4i7RwA0XjfAfpyefY8A+uvq0ubevCkOM4NLArdMI1lcQffyz57A==}
-    peerDependencies:
-      vue: ^3.2.0
-    dependencies:
-      nanoid: 4.0.1
-    dev: false
 
   /vue/3.2.47:
     resolution: {integrity: sha512-60188y/9Dc9WVrAZeUVSDxRQOZ+z+y5nO2ts9jWXSTkMvayiWxCWOWtBQoYjLeccfXkiiPZWAHcV+WTPhkqJHQ==}
