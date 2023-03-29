@@ -18,7 +18,7 @@
 
 		<div class="flex flex-col lg:grid grid-cols-12 gap-12">
 			<div class="order-2 lg:order-1 lg:col-span-8">
-				<RichtextContainer :blocks="data.post?.blocks" :mediaItems="data.mediaItems" :uniqueKey="props.uri" />
+				<RichtextContainer :blocks="data.post?.blocks" :mediaItems="data.mediaItems" />
 			</div>
 
 			<div class="order-1 lg:order-2 col-span-4">

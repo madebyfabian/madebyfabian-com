@@ -2,7 +2,7 @@
 	<section v-if="data?.page" class="LayoutPage container" :class="{ 'max-w-3xl': props.containerSize !== 'large' }">
 		<slot name="beforeRichtext"></slot>
 		<h1 v-if="props.hasH1 && data.page?.title" class="mb-6 lg:mb-12">{{ data.page?.title }}</h1>
-		<RichtextContainer :blocks="data.page?.blocks" :mediaItems="data.mediaItems" :uniqueKey="uri" />
+		<RichtextContainer :blocks="data.page?.blocks" :mediaItems="data.mediaItems" />
 		<slot></slot>
 	</section>
 </template>
