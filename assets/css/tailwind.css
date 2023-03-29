@@ -28,7 +28,6 @@
 	*::after {
 		@apply scroll-mt-36;
 		text-underline-offset: 0.15em !important;
-		text-decoration-thickness: 0.15em !important;
 		text-decoration-style: dotted !important;
 	}
 
@@ -90,10 +89,6 @@
 		@apply text-4xl lg:text-5xl font-bold tracking-tight mb-8;
 	}
 
-	.H1Like span {
-		@apply !decoration-gray-300;
-	}
-
 	.H2Like {
 		@apply text-4xl font-bold tracking-tight;
 	}
@@ -130,7 +125,7 @@
 @layer components {
 	.UILink {
 		@apply underline font-semibold;
-		@apply text-accent-700 decoration-accent-700/30 underline;
+		@apply text-accent-700 decoration-accent-700/50 underline;
 		@apply transition hover:text-accent-700/80;
 	}
 
