@@ -2,14 +2,10 @@
 	<div class="RichtextCoreSpacer -mt-6 first:-mt-0" :id="id" />
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 	import type { RichtextPropsBase, CoreSpacerBlock } from '@/types'
 	export type RichtextCoreSpacerProps = RichtextPropsBase<CoreSpacerBlock>
 
-	//
-</script>
-
-<script setup lang="ts">
 	const props = defineProps<{
 		attributes: RichtextCoreSpacerProps['attributes']
 		innerBlocks?: RichtextCoreSpacerProps['innerBlocks']

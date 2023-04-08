@@ -7,17 +7,13 @@
 	</div>
 </template>
 
-<script lang="ts">
-	import type { RichtextPropsBase, CoreHeadingBlock } from '@/types'
-	export type RichtextCoreColumnsProps = RichtextPropsBase<CoreHeadingBlock>
-
-	//
-</script>
-
 <script setup lang="ts">
+	import type { RichtextPropsBase, CoreHeadingBlock } from '@/types'
+	export type RichtextCoreHeadingProps = RichtextPropsBase<CoreHeadingBlock>
+
 	const props = defineProps<{
-		attributes: RichtextCoreColumnsProps['attributes']
-		innerBlocks?: RichtextCoreColumnsProps['innerBlocks']
+		attributes: RichtextCoreHeadingProps['attributes']
+		innerBlocks?: RichtextCoreHeadingProps['innerBlocks']
 	}>()
 
 	const classes = computed(() => {

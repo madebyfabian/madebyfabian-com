@@ -7,14 +7,10 @@
 	</ul>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 	import type { RichtextPropsBase, CoreListBlock } from '@/types'
 	export type RichtextCoreListProps = RichtextPropsBase<CoreListBlock>
 
-	//
-</script>
-
-<script setup lang="ts">
 	const props = defineProps<{
 		attributes: RichtextCoreListProps['attributes']
 		innerBlocks?: RichtextCoreListProps['innerBlocks']

@@ -9,19 +9,15 @@
 	</div>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
+	import type { InnerBlocksDefault, BlockDefault, ItemBase } from '@/types'
+
 	export type RichtextItem = {
 		id?: ItemBase['id']
 		name: ItemBase['name']
 		block?: BlockDefault
 		innerBlocks?: InnerBlocksDefault<RichtextItem>
 	}
-
-	//
-</script>
-
-<script lang="ts" setup>
-	import type { InnerBlocksDefault, BlockDefault, ItemBase } from '@/types'
 
 	const components = {
 		'core/button': resolveComponent('RichtextCoreButton'),

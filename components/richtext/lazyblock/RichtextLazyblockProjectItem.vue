@@ -16,14 +16,10 @@
 	</LayoutTeaserItem>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 	import type { RichtextPropsBase, LazyblockProjectItemBlock } from '@/types'
 	export type RichtextLazyblockProjectItemProps = RichtextPropsBase<LazyblockProjectItemBlock>
 
-	//
-</script>
-
-<script setup lang="ts">
 	const { withoutWPHost } = useWPImage()
 
 	const props = defineProps<{

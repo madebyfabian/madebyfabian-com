@@ -5,14 +5,10 @@
 	</blockquote>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 	import type { RichtextPropsBase, CoreQuoteBlock } from '@/types'
 	export type RichtextCoreQuoteProps = RichtextPropsBase<CoreQuoteBlock>
 
-	//
-</script>
-
-<script setup lang="ts">
 	const props = defineProps<{
 		attributes: RichtextCoreQuoteProps['attributes']
 		innerBlocks?: RichtextCoreQuoteProps['innerBlocks']

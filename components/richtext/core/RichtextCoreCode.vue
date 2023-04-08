@@ -11,14 +11,10 @@
 	/></pre>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 	import type { RichtextPropsBase, CoreCodeBlock } from '@/types'
 	export type RichtextCoreCodeProps = RichtextPropsBase<CoreCodeBlock>
 
-	//
-</script>
-
-<script setup lang="ts">
 	const props = defineProps<{
 		attributes: RichtextCoreCodeProps['attributes']
 		innerBlocks?: RichtextCoreCodeProps['innerBlocks']

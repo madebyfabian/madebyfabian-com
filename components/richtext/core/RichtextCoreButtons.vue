@@ -4,15 +4,10 @@
 	</div>
 </template>
 
-<script lang="ts">
-	import type { RichtextPropsBase, CoreButtonsBlock } from '@/types'
-	export type RichtextCoreButtonsProps = RichtextPropsBase<CoreButtonsBlock>
-
-	//
-</script>
-
 <script setup lang="ts">
 	import type { StyleValue } from 'vue'
+	import type { RichtextPropsBase, CoreButtonsBlock } from '@/types'
+	export type RichtextCoreButtonsProps = RichtextPropsBase<CoreButtonsBlock>
 
 	const props = defineProps<{
 		attributes: RichtextCoreButtonsProps['attributes']

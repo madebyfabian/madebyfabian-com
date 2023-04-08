@@ -16,14 +16,10 @@
 	</section>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 	import type { RichtextPropsBase, LazyblockRichtextTeaserBlock } from '@/types'
 	export type RichtextLazyblockTeaserProps = RichtextPropsBase<LazyblockRichtextTeaserBlock>
 
-	//
-</script>
-
-<script setup lang="ts">
 	const props = defineProps<{
 		attributes: RichtextLazyblockTeaserProps['attributes']
 		innerBlocks?: RichtextLazyblockTeaserProps['innerBlocks']

@@ -4,14 +4,10 @@
 	</ClientOnly>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 	import type { RichtextPropsBase, MatomoMatomoOptOutBlock } from '@/types'
 	export type RichtextMatomoOptOutProps = RichtextPropsBase<MatomoMatomoOptOutBlock>
 
-	//
-</script>
-
-<script setup lang="ts">
 	const runtimeConfig = useRuntimeConfig()
 
 	defineProps<{

@@ -4,14 +4,10 @@
 	</div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 	import type { RichtextPropsBase, CoreColumnBlock } from '@/types'
 	export type RichtextCoreColumnProps = RichtextPropsBase<CoreColumnBlock>
 
-	//
-</script>
-
-<script setup lang="ts">
 	const props = defineProps<{
 		attributes: RichtextCoreColumnProps['attributes']
 		innerBlocks?: RichtextCoreColumnProps['innerBlocks']

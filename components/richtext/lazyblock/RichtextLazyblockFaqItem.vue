@@ -10,14 +10,10 @@
 	</details>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 	import type { RichtextPropsBase, LazyblockFaqItemBlock } from '@/types'
 	export type RichtextLazyblockFaqItemProps = RichtextPropsBase<LazyblockFaqItemBlock>
 
-	//
-</script>
-
-<script setup lang="ts">
 	const props = defineProps<{
 		attributes: RichtextLazyblockFaqItemProps['attributes']
 		innerBlocks?: RichtextLazyblockFaqItemProps['innerBlocks']

@@ -12,7 +12,7 @@
 	</div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 	import type { RichtextPropsBase, LazyblockProjectListBlock, LazyblockProjectItemBlock } from '@/types'
 	export type RichtextLazyblockProjectListProps = RichtextPropsBase<
 		LazyblockProjectListBlock,
@@ -22,10 +22,6 @@
 		}[]
 	>
 
-	//
-</script>
-
-<script setup lang="ts">
 	const props = defineProps<{
 		attributes: RichtextLazyblockProjectListProps['attributes']
 		innerBlocks?: RichtextLazyblockProjectListProps['innerBlocks']

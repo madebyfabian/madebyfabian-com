@@ -4,14 +4,10 @@
 	</div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 	import type { RichtextPropsBase, CoreParagraphBlock } from '@/types'
 	export type RichtextCoreParagraphProps = RichtextPropsBase<CoreParagraphBlock>
 
-	//
-</script>
-
-<script setup lang="ts">
 	const props = defineProps<{
 		attributes: RichtextCoreParagraphProps['attributes']
 		innerBlocks?: RichtextCoreParagraphProps['innerBlocks']

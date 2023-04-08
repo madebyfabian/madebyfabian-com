@@ -15,14 +15,10 @@
 	</figure>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 	import type { RichtextPropsBase, CoreImageBlock } from '@/types'
 	export type RichtextCoreImageProps = RichtextPropsBase<CoreImageBlock>
 
-	//
-</script>
-
-<script setup lang="ts">
 	const route = useRoute()
 
 	const props = defineProps<{

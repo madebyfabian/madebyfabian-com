@@ -14,14 +14,10 @@
 	</section>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 	import type { RichtextPropsBase, CoreColumnsBlock } from '@/types'
 	export type RichtextCoreColumnsProps = RichtextPropsBase<CoreColumnsBlock>
 
-	//
-</script>
-
-<script setup lang="ts">
 	const props = defineProps<{
 		attributes: RichtextCoreColumnsProps['attributes']
 		innerBlocks?: RichtextCoreColumnsProps['innerBlocks']

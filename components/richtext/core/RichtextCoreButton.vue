@@ -7,14 +7,10 @@
 	</a>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 	import type { RichtextPropsBase, CoreButtonBlock } from '@/types'
 	export type RichtextCoreButtonProps = RichtextPropsBase<CoreButtonBlock>
 
-	//
-</script>
-
-<script setup lang="ts">
 	const runtimeConfig = useRuntimeConfig()
 	const siteUrlProd = runtimeConfig.public.siteUrlProd
 	const NuxtLink = resolveComponent('NuxtLink')

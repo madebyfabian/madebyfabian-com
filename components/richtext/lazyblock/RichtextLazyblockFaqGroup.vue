@@ -10,7 +10,7 @@
 	</section>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 	import type { RichtextPropsBase, LazyblockFaqGroupBlock, LazyblockFaqItemBlock } from '@/types'
 	export type RichtextLazyblockFaqGroupProps = RichtextPropsBase<
 		LazyblockFaqGroupBlock,
@@ -20,10 +20,6 @@
 		}[]
 	>
 
-	//
-</script>
-
-<script setup lang="ts">
 	const props = defineProps<{
 		attributes: RichtextLazyblockFaqGroupProps['attributes']
 		innerBlocks?: RichtextLazyblockFaqGroupProps['innerBlocks']
