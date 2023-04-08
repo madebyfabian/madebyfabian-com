@@ -19,14 +19,12 @@
 	import type { RichtextPropsBase, CoreImageBlock } from '@/types'
 	export type RichtextCoreImageProps = RichtextPropsBase<CoreImageBlock>
 
-	const route = useRoute()
-
 	const props = defineProps<{
 		attributes: RichtextCoreImageProps['attributes']
 		innerBlocks?: RichtextCoreImageProps['innerBlocks']
 	}>()
 
-	const mediaData = useMediaItemData({ key: generateMediaItemsKey({ route }), id: props.attributes?.id })
+	const mediaData = useMediaItemData({ id: props.attributes?.id })
 
 	const caption = computed(() => {
 		if (props.attributes?.caption) return `<p>${props.attributes?.caption}</p>`
