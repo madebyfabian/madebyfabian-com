@@ -4,7 +4,7 @@
 			<div class="flex items-center lg:px-8">
 				<div>
 					<h1>Exceptional web experiences, crafted with passion.</h1>
-					<p class="PLargeLike !leading-normal mb-10 -mt-1">
+					<p class="PLargeLike !leading-normal mb-10 -mt-1 lg:mr-6">
 						Hej! I am Fabian, a visual product designer and frontend developer, creating high-quality web
 						experiences for your unique needs.
 					</p>
