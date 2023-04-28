@@ -33,6 +33,15 @@
 				{{ props.project.excerpt }}
 			</p>
 
+			<NuxtLink
+				v-if="props.project.id === 'cG9zdDo1NzA='"
+				class="UILink mt-3 mb-3 inline-block"
+				to="https://finanzwissen.de"
+				external
+				target="_blank">
+				Visit finanzwissen.de
+			</NuxtLink>
+
 			<UITagList class="mt-4" :tags="(project?.tags?.edges as any)" />
 		</div>
 	</article>
