@@ -13,6 +13,7 @@ export default defineNuxtConfig({
 		'@dargmuesli/nuxt-cookie-control',
 		'nuxt-calendly',
 		'nuxt-graphql-middleware',
+		'nuxt-cloudflare-analytics',
 	],
 
 	runtimeConfig: {
@@ -122,6 +123,13 @@ export default defineNuxtConfig({
 				},
 			},
 		},
+	},
+
+	// nuxt-cloudflare-analytics
+	cloudflareAnalytics: {
+		token: process.env.NUXT_PUBLIC_CLOUDFLARE_ANALYTICS_TOKEN,
+		proxyPath: false,
+		customProxyPath: '/cfa-p',
 	},
 
 	typescript: {

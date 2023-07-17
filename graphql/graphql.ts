@@ -17169,6 +17169,8 @@ export type User = Commenter & DatabaseIdentifier & Node & UniformResourceIdenti
   revisions?: Maybe<UserToRevisionsConnection>;
   /** Connection between the User type and the UserRole type */
   roles?: Maybe<UserToUserRoleConnection>;
+  /** Whether the Toolbar should be displayed when the user is viewing the site. */
+  shouldShowAdminToolbar?: Maybe<Scalars['Boolean']>;
   /** The slug for the user. This field is equivalent to WP_User-&gt;user_nicename */
   slug?: Maybe<Scalars['String']>;
   /** The unique resource identifier path */
@@ -17382,14 +17384,6 @@ export enum UserRoleEnum {
   Developer = 'DEVELOPER',
   /** User role with specific capabilities */
   Editor = 'EDITOR',
-  /** User role with specific capabilities */
-  MatomoAdmin = 'MATOMO_ADMIN',
-  /** User role with specific capabilities */
-  MatomoSuperUser = 'MATOMO_SUPER_USER',
-  /** User role with specific capabilities */
-  MatomoView = 'MATOMO_VIEW',
-  /** User role with specific capabilities */
-  MatomoWrite = 'MATOMO_WRITE',
   /** User role with specific capabilities */
   Subscriber = 'SUBSCRIBER'
 }

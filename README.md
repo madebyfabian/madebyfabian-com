@@ -23,6 +23,7 @@ NUXT_PUBLIC_TURNSTILE_SITE_KEY="xxx"
 NUXT_PUBLIC_WP_HOST="example.com" # WordPress Installation host, e.g. mywordpressbackend.com
 NUXT_PUBLIC_CALENDLY_URL="https://calendly.com/xxx/30min"
 NUXT_PUBLIC_TWICPICS_DOMAIN="https://example.twic.pics/"
+NUXT_PUBLIC_CLOUDFLARE_ANALYTICS_TOKEN="xxx" # See Cloudflare Web Analytics Dashboard
 ```
 
 3. Create a `vercel.json` file in the root of your project, with the following content:
@@ -30,16 +31,7 @@ NUXT_PUBLIC_TWICPICS_DOMAIN="https://example.twic.pics/"
 
 ```json
 {
-	"rewrites": [
-		{
-			"source": "/_mtmo/t",
-			"destination": "https://example.com/wp-content/plugins/matomo/app/matomo.php"
-		},
-		{
-			"source": "/_mtmo/s.js",
-			"destination": "https://example.com/wp-content/uploads/matomo/matomo.js"
-		}
-	]
+	"rewrites": [{ "source": "/cfa-p", "destination": "https://cloudflareinsights.com/cdn-cgi/rum" }]
 }
 ```
 

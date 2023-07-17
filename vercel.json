@@ -1,13 +1,4 @@
 {
 	"devCommand": "npm start",
-	"rewrites": [
-		{
-			"source": "/_mtmo/t",
-			"destination": "https://headlesstest-7dkcm5v4mp.live-website.com/wp-content/plugins/matomo/app/matomo.php"
-		},
-		{
-			"source": "/_mtmo/s.js",
-			"destination": "https://headlesstest-7dkcm5v4mp.live-website.com/wp-content/uploads/matomo/matomo.js"
-		}
-	]
+	"rewrites": [{ "source": "/cfa-p", "destination": "https://cloudflareinsights.com/cdn-cgi/rum" }]
 }

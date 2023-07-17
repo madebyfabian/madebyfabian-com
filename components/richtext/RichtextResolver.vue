@@ -41,9 +41,6 @@
 		'lazyblock/project-list': resolveComponent('RichtextLazyblockProjectList'),
 		'lazyblock/richtext-teaser': resolveComponent('RichtextLazyblockTeaser'),
 
-		// matomo
-		'matomo/matomo-opt-out': resolveComponent('RichtextMatamoOptOut'),
-
 		// Heroic Table of Contents
 		'ht/block-toc': resolveComponent('RichtextHtTableOfContents'),
 	}

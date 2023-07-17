@@ -31,11 +31,11 @@
 		"dotenv": "^16.0.3",
 		"graphql": "^16.6.0",
 		"h3-zod": "^0.3.10",
+		"nuxt-cloudflare-analytics": "^1.0.8",
 		"nuxt-graphql-middleware": "3.1.0-beta.3",
 		"nuxt-typed-router": "^2.3.4",
 		"nuxt-wordpress": "1.0.0-beta.1",
 		"superjson": "^1.12.2",
-		"vue-matomo": "^4.2.0",
 		"xss": "^1.0.14",
 		"zod": "^3.20.2"
 	}
