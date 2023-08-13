@@ -77,9 +77,9 @@
 			url: 'https://github.com/madebyfabian',
 		},
 		{
-			title: 'Twitter',
-			src: '/images/social-logos/twitter.svg',
-			url: 'https://twitter.com/madebyfabian',
+			title: 'X',
+			src: '/images/social-logos/x.svg',
+			url: 'https://x.com/madebyfabian',
 		},
 		{
 			title: 'Figma',
