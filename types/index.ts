@@ -1,7 +1,7 @@
 import type { Maybe } from '@graphql-tools/utils'
-import type { Block } from '@/types'
 
-export * from '@/graphql/graphql'
+export * from '#graphql-operations'
+import type { CoreBlock } from '#graphql-operations'
 
 export type DeepPartial<T> = T extends object
 	? {
@@ -15,7 +15,7 @@ export type ItemBase = {
 }
 
 export type InnerBlocksDefault<I> = Maybe<Array<I>>
-export type BlockDefault = Block
+export type BlockDefault = CoreBlock
 
 type InnerBlocksExtended<BlockGeneric> = Maybe<Array<ItemBase & BlockGeneric>>
 

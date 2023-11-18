@@ -1,9 +1,15 @@
-import { EnumChangefreq, type SitemapItemLoose } from 'sitemap'
 import { joinURL } from 'ufo'
 import { fetch } from 'ofetch'
 
-const sitemapDefaults: Pick<SitemapItemLoose, 'changefreq' | 'priority'> = {
-	changefreq: EnumChangefreq.MONTHLY,
+type SitemapItem = {
+	loc: string
+	changefreq?: 'weekly' | 'monthly'
+	priority?: 0 | 0.8 | 1 | 0.1 | 0.2 | 0.3 | 0.4 | 0.5 | 0.6 | 0.7 | 0.9
+	lastmod?: string
+}
+
+const sitemapDefaults: Pick<SitemapItem, 'changefreq' | 'priority'> = {
+	changefreq: 'monthly',
 	priority: 0.8,
 }
 
@@ -51,22 +57,22 @@ export const generateSitemap = async () => {
 		})
 		const json = await req.json()
 
-		const pages: SitemapItemLoose[] = []
+		const pages: SitemapItem[] = []
 
 		json.data.pages.edges?.forEach((edge: any) => {
 			pages.push({
 				priority: edge.node.isFrontPage ? 1 : 0.8,
-				changefreq: edge.node.isFrontPage ? EnumChangefreq.WEEKLY : EnumChangefreq.MONTHLY,
-				url: joinURL(siteUrl, edge.node.uri),
-				lastmodISO: new Date(edge.node.modifiedGmt).toISOString(),
+				changefreq: edge.node.isFrontPage ? 'weekly' : 'monthly',
+				loc: joinURL(siteUrl, edge.node.uri),
+				lastmod: new Date(edge.node.modifiedGmt).toISOString(),
 			})
 		})
 
 		json.data.posts.edges?.forEach((edge: any) => {
 			pages.push({
 				...sitemapDefaults,
-				url: joinURL(siteUrl, edge.node.uri),
-				lastmodISO: new Date(edge.node.modifiedGmt).toISOString(),
+				loc: joinURL(siteUrl, edge.node.uri),
+				lastmod: new Date(edge.node.modifiedGmt).toISOString(),
 			})
 		})
 

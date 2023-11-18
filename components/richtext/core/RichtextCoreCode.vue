@@ -12,6 +12,16 @@
 </template>
 
 <script setup lang="ts">
+	import Prism from 'prismjs'
+
+	// Languages
+	import 'prismjs/components/prism-bash'
+	import 'prismjs/components/prism-typescript'
+	import 'prismjs/components/prism-graphql'
+
+	// Styles
+	import 'prismjs/themes/prism-twilight.css'
+
 	import type { RichtextPropsBase, CoreCodeBlock } from '@/types'
 	export type RichtextCoreCodeProps = RichtextPropsBase<CoreCodeBlock>
 
@@ -23,8 +33,7 @@
 	const element = ref<HTMLElement | null>(null)
 
 	onMounted(() => {
-		// @ts-expect-error - Prism is not a module
-		Prism.highlightElement(element.value)
+		Prism.highlightAll()
 	})
 
 	const id = computed(() => props.attributes?.anchor || undefined)

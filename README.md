@@ -8,32 +8,7 @@
 pnpm i
 ```
 
-2. Create a `.env` file in the root of your project, add the following variables:
-
-```bash
-# Secret
-NUXT_GQL_HOST="https://example.com/graphql"
-NUXT_GQL_TOKEN="Basic xxx"
-NUXT_TURNSTILE_SECRET_KEY="xxx"
-
-# Public
-NUXT_PUBLIC_SITE_URL="https://example.vercel.app" # Where your Nuxt site is deployed to
-NUXT_PUBLIC_SITE_URL_PROD="https://example.com"
-NUXT_PUBLIC_TURNSTILE_SITE_KEY="xxx"
-NUXT_PUBLIC_WP_HOST="example.com" # WordPress Installation host, e.g. mywordpressbackend.com
-NUXT_PUBLIC_CALENDLY_URL="https://calendly.com/xxx/30min"
-NUXT_PUBLIC_TWICPICS_DOMAIN="https://example.twic.pics/"
-NUXT_PUBLIC_CLOUDFLARE_ANALYTICS_TOKEN="xxx" # See Cloudflare Web Analytics Dashboard
-```
-
-3. Create a `vercel.json` file in the root of your project, with the following content:
-   (of course you can change the `destination` to your liking)
-
-```json
-{
-	"rewrites": [{ "source": "/cfa-p", "destination": "https://cloudflareinsights.com/cdn-cgi/rum" }]
-}
-```
+2. Create a `.env` file in the root of your project, add the variables from `.env.example`
 
 ## Hosting
 

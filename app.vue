@@ -1,7 +1,6 @@
 <template>
 	<div>
 		<Page>
-			<SeoKit :siteName="siteName" />
 			<NuxtLoadingIndicator :color="color" :height="4" />
 			<CookieControlBanner />
 			<NuxtPage />
@@ -25,6 +24,12 @@
 
 	const siteName = allSettings.value.generalSettingsTitle || ''
 	const siteDescription = allSettings.value.generalSettingsDescription || undefined
+
+	useHead({
+		templateParams: {
+			siteName: siteName,
+		}
+	})
 
 	useSeoMeta({
 		title: 'Home',

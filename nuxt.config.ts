@@ -3,17 +3,21 @@ import { generateSitemap } from './generateSitemap'
 import { cookieConfig } from './config'
 
 export default defineNuxtConfig({
-	extends: ['nuxt-wordpress', 'nuxt-seo-kit'],
+	extends: ['nuxt-wordpress', 'nuxt-umami'],
+
+	experimental: {
+		typedPages: true,
+		componentIslands: true,
+	},
 
 	modules: [
+		'@nuxtseo/module',
 		'@vueuse/nuxt',
 		'@nuxtjs/tailwindcss',
 		'@nuxtjs/turnstile',
-		'nuxt-typed-router',
 		'@dargmuesli/nuxt-cookie-control',
 		'nuxt-calendly',
 		'nuxt-graphql-middleware',
-		'nuxt-cloudflare-analytics',
 	],
 
 	runtimeConfig: {
@@ -23,19 +27,12 @@ export default defineNuxtConfig({
 		gqlHost: process.env.NUXT_GQL_HOST,
 		gqlToken: process.env.NUXT_GQL_TOKEN,
 		public: {
+			siteUrl: process.env.NUXT_PUBLIC_SITE_URL,
 			siteUrlProd: process.env.NUXT_PUBLIC_SITE_URL_PROD,
 			wpHost: process.env.NUXT_PUBLIC_WP_HOST,
 			isProduction: process.env.NODE_ENV === 'production',
 			isVercelProduction: process.env.VERCEL_ENV === 'production',
 			calendlyUrl: process.env.NUXT_PUBLIC_CALENDLY_URL,
-
-			// nuxt-seo-kit
-			siteUrl: process.env.NUXT_PUBLIC_SITE_URL,
-			siteName: 'Fabian Beer',
-			siteDescription:
-				'Hej! I am Fabian, a visual product designer and frontend developer, creating high-quality web experiences for your unique needs.',
-			titleSeperator: '·',
-			language: 'en-US',
 
 			// nuxt-wordpress
 			wordpress: {
@@ -57,7 +54,10 @@ export default defineNuxtConfig({
 
 	app: {
 		head: {
-			titleTemplate: `${process.env.NODE_ENV === 'development' ? '⚙️ ' : ''}%s %titleSeperator %siteName`,
+			titleTemplate: `${process.env.NODE_ENV === 'development' ? '⚙️ ' : ''}%s %separator %siteName`,
+			templateParams: {
+				separator: '·',
+			},
 			link: [
 				// Favicons
 				{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
@@ -84,7 +84,29 @@ export default defineNuxtConfig({
 		pageTransition: { name: 'page', mode: 'out-in' },
 	},
 
-	css: ['prismjs/themes/prism-twilight.css'],
+	// nuxt-umami
+	appConfig: {
+		umami: {
+			host: process.env.NUXT_PUBLIC_UMAMI_HOST,
+			id: process.env.NUXT_PUBLIC_UMAMI_ID,
+			ignoreLocalhost: true,
+			version: 2,
+		},
+	},
+
+	// @nuxtseo/module
+	site: {
+		siteUrl: process.env.NUXT_PUBLIC_SITE_URL,
+		siteName: 'Fabian Beer',
+		siteDescription:
+			'Hej! I am Fabian, a visual product designer and frontend developer, creating high-quality web experiences for your unique needs.',
+		defaultLocale: 'en-US',
+	},
+
+	// @nuxtseo/module->nuxt-og-omage
+	ogImage: {
+		enabled: false,
+	},
 
 	// nuxt-wordpress->@twicpics/components/nuxt3
 	twicpics: {
@@ -93,15 +115,12 @@ export default defineNuxtConfig({
 
 	// nuxt-link-checker
 	linkChecker: {
-		failOn404: false,
+		failOnError: false,
 	},
 
 	// nuxt-simple-sitemap
 	sitemap: {
-		hostname: process.env.NUXT_PUBLIC_SITE_URL,
-		defaults: {
-			lastmod: new Date().toString(),
-		},
+		autoLastmod: true,
 		urls: generateSitemap,
 	},
 
@@ -116,6 +135,10 @@ export default defineNuxtConfig({
 	// nuxt-graphql-middleware
 	graphqlMiddleware: {
 		graphqlEndpoint: process.env.NUXT_GQL_HOST,
+		codegenConfig: {
+			// disabled so it generates every type from the schema (not only the ones used in operations).
+			onlyOperationTypes: false,
+		},
 		codegenSchemaConfig: {
 			urlSchemaOptions: {
 				headers: {
@@ -125,24 +148,19 @@ export default defineNuxtConfig({
 		},
 	},
 
-	// nuxt-cloudflare-analytics
-	cloudflareAnalytics: {
-		token: process.env.NUXT_PUBLIC_CLOUDFLARE_ANALYTICS_TOKEN,
-		proxyPath: false,
-		customProxyPath: '/cfa-p',
-	},
-
 	typescript: {
 		shim: false,
-	},
-
-	build: {
-		transpile: ['prismjs'],
 	},
 
 	nitro: {
 		externals: {
 			traceInclude: ['./node_modules/vue/server-renderer'],
+		},
+
+		// @nuxtseo/module
+		prerender: {
+			crawlLinks: true,
+			routes: ['/'],
 		},
 	},
 })
