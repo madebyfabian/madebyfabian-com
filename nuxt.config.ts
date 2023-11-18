@@ -3,13 +3,14 @@ import { generateSitemap } from './generateSitemap'
 import { cookieConfig } from './config'
 
 export default defineNuxtConfig({
-	extends: ['nuxt-wordpress', 'nuxt-seo-kit'],
+	extends: ['nuxt-wordpress'],
 
 	experimental: {
 		typedPages: true,
 	},
 
 	modules: [
+		'@nuxtseo/module',
 		'@vueuse/nuxt',
 		'@nuxtjs/tailwindcss',
 		'@nuxtjs/turnstile',
@@ -25,19 +26,12 @@ export default defineNuxtConfig({
 		gqlHost: process.env.NUXT_GQL_HOST,
 		gqlToken: process.env.NUXT_GQL_TOKEN,
 		public: {
+			siteUrl: process.env.NUXT_PUBLIC_SITE_URL,
 			siteUrlProd: process.env.NUXT_PUBLIC_SITE_URL_PROD,
 			wpHost: process.env.NUXT_PUBLIC_WP_HOST,
 			isProduction: process.env.NODE_ENV === 'production',
 			isVercelProduction: process.env.VERCEL_ENV === 'production',
 			calendlyUrl: process.env.NUXT_PUBLIC_CALENDLY_URL,
-
-			// nuxt-seo-kit
-			siteUrl: process.env.NUXT_PUBLIC_SITE_URL,
-			siteName: 'Fabian Beer',
-			siteDescription:
-				'Hej! I am Fabian, a visual product designer and frontend developer, creating high-quality web experiences for your unique needs.',
-			titleSeperator: '·',
-			language: 'en-US',
 
 			// nuxt-wordpress
 			wordpress: {
@@ -59,7 +53,10 @@ export default defineNuxtConfig({
 
 	app: {
 		head: {
-			titleTemplate: `${process.env.NODE_ENV === 'development' ? '⚙️ ' : ''}%s %titleSeperator %siteName`,
+			titleTemplate: `${process.env.NODE_ENV === 'development' ? '⚙️ ' : ''}%s %separator %siteName`,
+			templateParams: {
+				separator: '·',
+			},
 			link: [
 				// Favicons
 				{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
@@ -88,6 +85,20 @@ export default defineNuxtConfig({
 
 	css: ['prismjs/themes/prism-twilight.css'],
 
+	// @nuxtseo/module
+	site: {
+		siteUrl: process.env.NUXT_PUBLIC_SITE_URL,
+		siteName: 'Fabian Beer',
+		siteDescription:
+			'Hej! I am Fabian, a visual product designer and frontend developer, creating high-quality web experiences for your unique needs.',
+		defaultLocale: 'en-US',
+	},
+
+	// @nuxtseo/module->nuxt-og-omage
+	ogImage: {
+		enabled: false,
+	},
+
 	// nuxt-wordpress->@twicpics/components/nuxt3
 	twicpics: {
 		domain: process.env.NUXT_PUBLIC_TWICPICS_DOMAIN,
@@ -95,15 +106,12 @@ export default defineNuxtConfig({
 
 	// nuxt-link-checker
 	linkChecker: {
-		failOn404: false,
+		failOnError: false,
 	},
 
 	// nuxt-simple-sitemap
 	sitemap: {
-		hostname: process.env.NUXT_PUBLIC_SITE_URL,
-		defaults: {
-			lastmod: new Date().toString(),
-		},
+		autoLastmod: true,
 		urls: generateSitemap,
 	},
 
@@ -142,6 +150,12 @@ export default defineNuxtConfig({
 	nitro: {
 		externals: {
 			traceInclude: ['./node_modules/vue/server-renderer'],
+		},
+
+		// @nuxtseo/module
+		prerender: {
+			crawlLinks: true,
+			routes: ['/'],
 		},
 	},
 })
