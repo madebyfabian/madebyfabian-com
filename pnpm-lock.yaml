@@ -17,9 +17,6 @@ dependencies:
   h3-zod:
     specifier: ^0.3.10
     version: 0.3.10(h3@1.8.2)(zod@3.22.4)
-  nuxt-cloudflare-analytics:
-    specifier: ^1.0.8
-    version: 1.0.8
   nuxt-graphql-middleware:
     specifier: 3.1.0-beta.3
     version: 3.1.0-beta.3(@babel/core@7.23.3)(@types/node@18.18.9)(graphql-tag@2.12.6)(graphql@16.8.1)(typescript@4.9.5)
@@ -7200,16 +7197,6 @@ packages:
       - rollup
       - supports-color
     dev: true
-
-  /nuxt-cloudflare-analytics@1.0.8:
-    resolution: {integrity: sha512-gUBcxHfvR06tBNDszTj/cMx8EGwtNFqICk7IBM66JIebe/VG0HgDF6AFJfqqOFG5ACk6ApdAxREHhvnmgUSudA==}
-    engines: {npm: '>= 4.0.0'}
-    dependencies:
-      '@nuxt/kit': 3.8.1
-    transitivePeerDependencies:
-      - rollup
-      - supports-color
-    dev: false
 
   /nuxt-graphql-middleware@3.1.0-beta.3(@babel/core@7.23.3)(@types/node@18.18.9)(graphql-tag@2.12.6)(graphql@16.8.1)(typescript@4.9.5):
     resolution: {integrity: sha512-7LiMf+0fpKwj2wJIPE2lLml/LDS8JhFZoTAfsUwsFVv6YHe89eYo/IdfLUn71h0CHgjvDdJzCa5jD4gdCRp5HQ==}

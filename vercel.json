@@ -1,4 +1,3 @@
 {
-	"devCommand": "npm start",
-	"rewrites": [{ "source": "/cfa-p", "destination": "https://cloudflareinsights.com/cdn-cgi/rum" }]
+	"devCommand": "npm start"
 }
