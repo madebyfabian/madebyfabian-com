@@ -26,7 +26,6 @@
 		"dotenv": "^16.0.3",
 		"h3-zod": "^0.3.10",
 		"nuxt-graphql-middleware": "3.1.0-beta.3",
-		"nuxt-typed-router": "^2.3.4",
 		"nuxt-wordpress": "1.0.0-beta.2",
 		"superjson": "^1.12.2",
 		"xss": "^1.0.14",

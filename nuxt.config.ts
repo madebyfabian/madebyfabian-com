@@ -5,11 +5,14 @@ import { cookieConfig } from './config'
 export default defineNuxtConfig({
 	extends: ['nuxt-wordpress', 'nuxt-seo-kit'],
 
+	experimental: {
+		typedPages: true,
+	},
+
 	modules: [
 		'@vueuse/nuxt',
 		'@nuxtjs/tailwindcss',
 		'@nuxtjs/turnstile',
-		'nuxt-typed-router',
 		'@dargmuesli/nuxt-cookie-control',
 		'nuxt-calendly',
 		'nuxt-graphql-middleware',
