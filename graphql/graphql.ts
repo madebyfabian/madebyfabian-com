@@ -147,7 +147,7 @@ export type BlockEditorContentNodeConnectionWhereArgs = {
   nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
   notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** What paramater to use to order the objects by. */
+  /** What parameter to use to order the objects by. */
   orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
   /** Use ID to return only children. Use 0 to return only top-level items */
   parent?: InputMaybe<Scalars['ID']>;
@@ -658,7 +658,7 @@ export type CategoryToContentNodeConnectionWhereArgs = {
   nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
   notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** What paramater to use to order the objects by. */
+  /** What parameter to use to order the objects by. */
   orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
   /** Use ID to return only children. Use 0 to return only top-level items */
   parent?: InputMaybe<Scalars['ID']>;
@@ -754,7 +754,7 @@ export type CategoryToPostConnectionWhereArgs = {
   nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
   notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** What paramater to use to order the objects by. */
+  /** What parameter to use to order the objects by. */
   orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
   /** Use ID to return only children. Use 0 to return only top-level items */
   parent?: InputMaybe<Scalars['ID']>;
@@ -1609,7 +1609,7 @@ export type ContentTypeToContentNodeConnectionWhereArgs = {
   nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
   notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** What paramater to use to order the objects by. */
+  /** What parameter to use to order the objects by. */
   orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
   /** Use ID to return only children. Use 0 to return only top-level items */
   parent?: InputMaybe<Scalars['ID']>;
@@ -1879,6 +1879,7 @@ export type CoreButtonBlockAttributes = {
   __typename?: 'CoreButtonBlockAttributes';
   anchor?: Maybe<Scalars['String']>;
   backgroundColor?: Maybe<Scalars['String']>;
+  borderColor?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
   fontFamily?: Maybe<Scalars['String']>;
   fontSize?: Maybe<Scalars['String']>;
@@ -1902,6 +1903,7 @@ export type CoreButtonBlockDeprecatedV1Attributes = {
   __typename?: 'CoreButtonBlockDeprecatedV1Attributes';
   anchor?: Maybe<Scalars['String']>;
   backgroundColor?: Maybe<Scalars['String']>;
+  borderColor?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
   fontFamily?: Maybe<Scalars['String']>;
   fontSize?: Maybe<Scalars['String']>;
@@ -1923,6 +1925,7 @@ export type CoreButtonBlockDeprecatedV2Attributes = {
   __typename?: 'CoreButtonBlockDeprecatedV2Attributes';
   anchor?: Maybe<Scalars['String']>;
   backgroundColor?: Maybe<Scalars['String']>;
+  borderColor?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
   fontFamily?: Maybe<Scalars['String']>;
   fontSize?: Maybe<Scalars['String']>;
@@ -1944,6 +1947,7 @@ export type CoreButtonBlockDeprecatedV3Attributes = {
   __typename?: 'CoreButtonBlockDeprecatedV3Attributes';
   anchor?: Maybe<Scalars['String']>;
   backgroundColor?: Maybe<Scalars['String']>;
+  borderColor?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
   fontFamily?: Maybe<Scalars['String']>;
   fontSize?: Maybe<Scalars['String']>;
@@ -1965,6 +1969,7 @@ export type CoreButtonBlockDeprecatedV4Attributes = {
   __typename?: 'CoreButtonBlockDeprecatedV4Attributes';
   anchor?: Maybe<Scalars['String']>;
   backgroundColor?: Maybe<Scalars['String']>;
+  borderColor?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
   fontFamily?: Maybe<Scalars['String']>;
   fontSize?: Maybe<Scalars['String']>;
@@ -1986,6 +1991,7 @@ export type CoreButtonBlockDeprecatedV5Attributes = {
   __typename?: 'CoreButtonBlockDeprecatedV5Attributes';
   anchor?: Maybe<Scalars['String']>;
   backgroundColor?: Maybe<Scalars['String']>;
+  borderColor?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
   fontFamily?: Maybe<Scalars['String']>;
   fontSize?: Maybe<Scalars['String']>;
@@ -2007,6 +2013,7 @@ export type CoreButtonBlockDeprecatedV6Attributes = {
   __typename?: 'CoreButtonBlockDeprecatedV6Attributes';
   anchor?: Maybe<Scalars['String']>;
   backgroundColor?: Maybe<Scalars['String']>;
+  borderColor?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
   fontFamily?: Maybe<Scalars['String']>;
   fontSize?: Maybe<Scalars['String']>;
@@ -2028,6 +2035,7 @@ export type CoreButtonBlockDeprecatedV7Attributes = {
   __typename?: 'CoreButtonBlockDeprecatedV7Attributes';
   anchor?: Maybe<Scalars['String']>;
   backgroundColor?: Maybe<Scalars['String']>;
+  borderColor?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
   fontFamily?: Maybe<Scalars['String']>;
   fontSize?: Maybe<Scalars['String']>;
@@ -2049,6 +2057,7 @@ export type CoreButtonBlockDeprecatedV8Attributes = {
   __typename?: 'CoreButtonBlockDeprecatedV8Attributes';
   anchor?: Maybe<Scalars['String']>;
   backgroundColor?: Maybe<Scalars['String']>;
+  borderColor?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
   fontFamily?: Maybe<Scalars['String']>;
   fontSize?: Maybe<Scalars['String']>;
@@ -2070,6 +2079,7 @@ export type CoreButtonBlockDeprecatedV9Attributes = {
   __typename?: 'CoreButtonBlockDeprecatedV9Attributes';
   anchor?: Maybe<Scalars['String']>;
   backgroundColor?: Maybe<Scalars['String']>;
+  borderColor?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
   fontFamily?: Maybe<Scalars['String']>;
   fontSize?: Maybe<Scalars['String']>;
@@ -2091,6 +2101,7 @@ export type CoreButtonBlockDeprecatedV10Attributes = {
   __typename?: 'CoreButtonBlockDeprecatedV10Attributes';
   anchor?: Maybe<Scalars['String']>;
   backgroundColor?: Maybe<Scalars['String']>;
+  borderColor?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
   fontFamily?: Maybe<Scalars['String']>;
   fontSize?: Maybe<Scalars['String']>;
@@ -2112,6 +2123,7 @@ export type CoreButtonBlockDeprecatedV11Attributes = {
   __typename?: 'CoreButtonBlockDeprecatedV11Attributes';
   anchor?: Maybe<Scalars['String']>;
   backgroundColor?: Maybe<Scalars['String']>;
+  borderColor?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
   fontFamily?: Maybe<Scalars['String']>;
   fontSize?: Maybe<Scalars['String']>;
@@ -2298,6 +2310,7 @@ export type CoreCodeBlock = Block & {
 
 export type CoreCodeBlockAttributes = {
   __typename?: 'CoreCodeBlockAttributes';
+  align?: Maybe<Scalars['String']>;
   anchor?: Maybe<Scalars['String']>;
   backgroundColor?: Maybe<Scalars['String']>;
   borderColor?: Maybe<Scalars['String']>;
@@ -3042,7 +3055,9 @@ export type CoreCoverBlockAttributes = {
   allowedBlocks?: Maybe<Scalars['BlockAttributesArray']>;
   alt: Scalars['String'];
   anchor?: Maybe<Scalars['String']>;
+  backgroundColor?: Maybe<Scalars['String']>;
   backgroundType: Scalars['String'];
+  borderColor?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
   contentPosition?: Maybe<Scalars['String']>;
   customGradient?: Maybe<Scalars['String']>;
@@ -3056,12 +3071,14 @@ export type CoreCoverBlockAttributes = {
   id?: Maybe<Scalars['Float']>;
   isDark: Scalars['Boolean'];
   isRepeated: Scalars['Boolean'];
+  layout?: Maybe<Scalars['BlockAttributesObject']>;
   lock?: Maybe<Scalars['BlockAttributesObject']>;
   minHeight?: Maybe<Scalars['Float']>;
   minHeightUnit?: Maybe<Scalars['String']>;
   overlayColor?: Maybe<Scalars['String']>;
   style?: Maybe<Scalars['BlockAttributesObject']>;
   tagName: Scalars['String'];
+  textColor?: Maybe<Scalars['String']>;
   url?: Maybe<Scalars['String']>;
   useFeaturedImage: Scalars['Boolean'];
 };
@@ -3074,7 +3091,9 @@ export type CoreCoverBlockDeprecatedV1Attributes = {
   allowedBlocks?: Maybe<Scalars['BlockAttributesArray']>;
   alt: Scalars['String'];
   anchor?: Maybe<Scalars['String']>;
+  backgroundColor?: Maybe<Scalars['String']>;
   backgroundType: Scalars['String'];
+  borderColor?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
   contentPosition?: Maybe<Scalars['String']>;
   customGradient?: Maybe<Scalars['String']>;
@@ -3088,12 +3107,14 @@ export type CoreCoverBlockDeprecatedV1Attributes = {
   id?: Maybe<Scalars['Float']>;
   isDark: Scalars['Boolean'];
   isRepeated: Scalars['Boolean'];
+  layout?: Maybe<Scalars['BlockAttributesObject']>;
   lock?: Maybe<Scalars['BlockAttributesObject']>;
   minHeight?: Maybe<Scalars['Float']>;
   minHeightUnit?: Maybe<Scalars['String']>;
   overlayColor?: Maybe<Scalars['String']>;
   style?: Maybe<Scalars['BlockAttributesObject']>;
   tagName: Scalars['String'];
+  textColor?: Maybe<Scalars['String']>;
   url?: Maybe<Scalars['String']>;
   useFeaturedImage: Scalars['Boolean'];
 };
@@ -3104,7 +3125,9 @@ export type CoreCoverBlockDeprecatedV2Attributes = {
   allowedBlocks?: Maybe<Scalars['BlockAttributesArray']>;
   alt: Scalars['String'];
   anchor?: Maybe<Scalars['String']>;
+  backgroundColor?: Maybe<Scalars['String']>;
   backgroundType: Scalars['String'];
+  borderColor?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
   contentPosition?: Maybe<Scalars['String']>;
   customGradient?: Maybe<Scalars['String']>;
@@ -3118,12 +3141,14 @@ export type CoreCoverBlockDeprecatedV2Attributes = {
   id?: Maybe<Scalars['Float']>;
   isDark: Scalars['Boolean'];
   isRepeated: Scalars['Boolean'];
+  layout?: Maybe<Scalars['BlockAttributesObject']>;
   lock?: Maybe<Scalars['BlockAttributesObject']>;
   minHeight?: Maybe<Scalars['Float']>;
   minHeightUnit?: Maybe<Scalars['String']>;
   overlayColor?: Maybe<Scalars['String']>;
   style?: Maybe<Scalars['BlockAttributesObject']>;
   tagName: Scalars['String'];
+  textColor?: Maybe<Scalars['String']>;
   url?: Maybe<Scalars['String']>;
   useFeaturedImage: Scalars['Boolean'];
 };
@@ -3134,7 +3159,9 @@ export type CoreCoverBlockDeprecatedV3Attributes = {
   allowedBlocks?: Maybe<Scalars['BlockAttributesArray']>;
   alt: Scalars['String'];
   anchor?: Maybe<Scalars['String']>;
+  backgroundColor?: Maybe<Scalars['String']>;
   backgroundType: Scalars['String'];
+  borderColor?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
   contentPosition?: Maybe<Scalars['String']>;
   customGradient?: Maybe<Scalars['String']>;
@@ -3148,12 +3175,14 @@ export type CoreCoverBlockDeprecatedV3Attributes = {
   id?: Maybe<Scalars['Float']>;
   isDark: Scalars['Boolean'];
   isRepeated: Scalars['Boolean'];
+  layout?: Maybe<Scalars['BlockAttributesObject']>;
   lock?: Maybe<Scalars['BlockAttributesObject']>;
   minHeight?: Maybe<Scalars['Float']>;
   minHeightUnit?: Maybe<Scalars['String']>;
   overlayColor?: Maybe<Scalars['String']>;
   style?: Maybe<Scalars['BlockAttributesObject']>;
   tagName: Scalars['String'];
+  textColor?: Maybe<Scalars['String']>;
   url?: Maybe<Scalars['String']>;
   useFeaturedImage: Scalars['Boolean'];
 };
@@ -3164,7 +3193,9 @@ export type CoreCoverBlockDeprecatedV4Attributes = {
   allowedBlocks?: Maybe<Scalars['BlockAttributesArray']>;
   alt: Scalars['String'];
   anchor?: Maybe<Scalars['String']>;
+  backgroundColor?: Maybe<Scalars['String']>;
   backgroundType: Scalars['String'];
+  borderColor?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
   contentPosition?: Maybe<Scalars['String']>;
   customGradient?: Maybe<Scalars['String']>;
@@ -3178,12 +3209,14 @@ export type CoreCoverBlockDeprecatedV4Attributes = {
   id?: Maybe<Scalars['Float']>;
   isDark: Scalars['Boolean'];
   isRepeated: Scalars['Boolean'];
+  layout?: Maybe<Scalars['BlockAttributesObject']>;
   lock?: Maybe<Scalars['BlockAttributesObject']>;
   minHeight?: Maybe<Scalars['Float']>;
   minHeightUnit?: Maybe<Scalars['String']>;
   overlayColor?: Maybe<Scalars['String']>;
   style?: Maybe<Scalars['BlockAttributesObject']>;
   tagName: Scalars['String'];
+  textColor?: Maybe<Scalars['String']>;
   url?: Maybe<Scalars['String']>;
   useFeaturedImage: Scalars['Boolean'];
 };
@@ -3194,7 +3227,9 @@ export type CoreCoverBlockDeprecatedV5Attributes = {
   allowedBlocks?: Maybe<Scalars['BlockAttributesArray']>;
   alt: Scalars['String'];
   anchor?: Maybe<Scalars['String']>;
+  backgroundColor?: Maybe<Scalars['String']>;
   backgroundType: Scalars['String'];
+  borderColor?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
   contentPosition?: Maybe<Scalars['String']>;
   customGradient?: Maybe<Scalars['String']>;
@@ -3208,12 +3243,14 @@ export type CoreCoverBlockDeprecatedV5Attributes = {
   id?: Maybe<Scalars['Float']>;
   isDark: Scalars['Boolean'];
   isRepeated: Scalars['Boolean'];
+  layout?: Maybe<Scalars['BlockAttributesObject']>;
   lock?: Maybe<Scalars['BlockAttributesObject']>;
   minHeight?: Maybe<Scalars['Float']>;
   minHeightUnit?: Maybe<Scalars['String']>;
   overlayColor?: Maybe<Scalars['String']>;
   style?: Maybe<Scalars['BlockAttributesObject']>;
   tagName: Scalars['String'];
+  textColor?: Maybe<Scalars['String']>;
   url?: Maybe<Scalars['String']>;
   useFeaturedImage: Scalars['Boolean'];
 };
@@ -3224,7 +3261,9 @@ export type CoreCoverBlockDeprecatedV6Attributes = {
   allowedBlocks?: Maybe<Scalars['BlockAttributesArray']>;
   alt: Scalars['String'];
   anchor?: Maybe<Scalars['String']>;
+  backgroundColor?: Maybe<Scalars['String']>;
   backgroundType: Scalars['String'];
+  borderColor?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
   contentPosition?: Maybe<Scalars['String']>;
   customGradient?: Maybe<Scalars['String']>;
@@ -3238,12 +3277,14 @@ export type CoreCoverBlockDeprecatedV6Attributes = {
   id?: Maybe<Scalars['Float']>;
   isDark: Scalars['Boolean'];
   isRepeated: Scalars['Boolean'];
+  layout?: Maybe<Scalars['BlockAttributesObject']>;
   lock?: Maybe<Scalars['BlockAttributesObject']>;
   minHeight?: Maybe<Scalars['Float']>;
   minHeightUnit?: Maybe<Scalars['String']>;
   overlayColor?: Maybe<Scalars['String']>;
   style?: Maybe<Scalars['BlockAttributesObject']>;
   tagName: Scalars['String'];
+  textColor?: Maybe<Scalars['String']>;
   url?: Maybe<Scalars['String']>;
   useFeaturedImage: Scalars['Boolean'];
 };
@@ -3254,7 +3295,9 @@ export type CoreCoverBlockDeprecatedV7Attributes = {
   allowedBlocks?: Maybe<Scalars['BlockAttributesArray']>;
   alt: Scalars['String'];
   anchor?: Maybe<Scalars['String']>;
+  backgroundColor?: Maybe<Scalars['String']>;
   backgroundType: Scalars['String'];
+  borderColor?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
   contentPosition?: Maybe<Scalars['String']>;
   customGradient?: Maybe<Scalars['String']>;
@@ -3268,12 +3311,14 @@ export type CoreCoverBlockDeprecatedV7Attributes = {
   id?: Maybe<Scalars['Float']>;
   isDark: Scalars['Boolean'];
   isRepeated: Scalars['Boolean'];
+  layout?: Maybe<Scalars['BlockAttributesObject']>;
   lock?: Maybe<Scalars['BlockAttributesObject']>;
   minHeight?: Maybe<Scalars['Float']>;
   minHeightUnit?: Maybe<Scalars['String']>;
   overlayColor?: Maybe<Scalars['String']>;
   style?: Maybe<Scalars['BlockAttributesObject']>;
   tagName: Scalars['String'];
+  textColor?: Maybe<Scalars['String']>;
   url?: Maybe<Scalars['String']>;
   useFeaturedImage: Scalars['Boolean'];
 };
@@ -3284,7 +3329,9 @@ export type CoreCoverBlockDeprecatedV8Attributes = {
   allowedBlocks?: Maybe<Scalars['BlockAttributesArray']>;
   alt: Scalars['String'];
   anchor?: Maybe<Scalars['String']>;
+  backgroundColor?: Maybe<Scalars['String']>;
   backgroundType: Scalars['String'];
+  borderColor?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
   contentPosition?: Maybe<Scalars['String']>;
   customGradient?: Maybe<Scalars['String']>;
@@ -3298,12 +3345,14 @@ export type CoreCoverBlockDeprecatedV8Attributes = {
   id?: Maybe<Scalars['Float']>;
   isDark: Scalars['Boolean'];
   isRepeated: Scalars['Boolean'];
+  layout?: Maybe<Scalars['BlockAttributesObject']>;
   lock?: Maybe<Scalars['BlockAttributesObject']>;
   minHeight?: Maybe<Scalars['Float']>;
   minHeightUnit?: Maybe<Scalars['String']>;
   overlayColor?: Maybe<Scalars['String']>;
   style?: Maybe<Scalars['BlockAttributesObject']>;
   tagName: Scalars['String'];
+  textColor?: Maybe<Scalars['String']>;
   url?: Maybe<Scalars['String']>;
   useFeaturedImage: Scalars['Boolean'];
 };
@@ -3314,7 +3363,9 @@ export type CoreCoverBlockDeprecatedV9Attributes = {
   allowedBlocks?: Maybe<Scalars['BlockAttributesArray']>;
   alt: Scalars['String'];
   anchor?: Maybe<Scalars['String']>;
+  backgroundColor?: Maybe<Scalars['String']>;
   backgroundType: Scalars['String'];
+  borderColor?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
   contentPosition?: Maybe<Scalars['String']>;
   customGradient?: Maybe<Scalars['String']>;
@@ -3328,12 +3379,14 @@ export type CoreCoverBlockDeprecatedV9Attributes = {
   id?: Maybe<Scalars['Float']>;
   isDark: Scalars['Boolean'];
   isRepeated: Scalars['Boolean'];
+  layout?: Maybe<Scalars['BlockAttributesObject']>;
   lock?: Maybe<Scalars['BlockAttributesObject']>;
   minHeight?: Maybe<Scalars['Float']>;
   minHeightUnit?: Maybe<Scalars['String']>;
   overlayColor?: Maybe<Scalars['String']>;
   style?: Maybe<Scalars['BlockAttributesObject']>;
   tagName: Scalars['String'];
+  textColor?: Maybe<Scalars['String']>;
   url?: Maybe<Scalars['String']>;
   useFeaturedImage: Scalars['Boolean'];
 };
@@ -3344,7 +3397,9 @@ export type CoreCoverBlockDeprecatedV10Attributes = {
   allowedBlocks?: Maybe<Scalars['BlockAttributesArray']>;
   alt: Scalars['String'];
   anchor?: Maybe<Scalars['String']>;
+  backgroundColor?: Maybe<Scalars['String']>;
   backgroundType: Scalars['String'];
+  borderColor?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
   contentPosition?: Maybe<Scalars['String']>;
   customGradient?: Maybe<Scalars['String']>;
@@ -3358,12 +3413,14 @@ export type CoreCoverBlockDeprecatedV10Attributes = {
   id?: Maybe<Scalars['Float']>;
   isDark: Scalars['Boolean'];
   isRepeated: Scalars['Boolean'];
+  layout?: Maybe<Scalars['BlockAttributesObject']>;
   lock?: Maybe<Scalars['BlockAttributesObject']>;
   minHeight?: Maybe<Scalars['Float']>;
   minHeightUnit?: Maybe<Scalars['String']>;
   overlayColor?: Maybe<Scalars['String']>;
   style?: Maybe<Scalars['BlockAttributesObject']>;
   tagName: Scalars['String'];
+  textColor?: Maybe<Scalars['String']>;
   url?: Maybe<Scalars['String']>;
   useFeaturedImage: Scalars['Boolean'];
 };
@@ -3374,7 +3431,9 @@ export type CoreCoverBlockDeprecatedV11Attributes = {
   allowedBlocks?: Maybe<Scalars['BlockAttributesArray']>;
   alt: Scalars['String'];
   anchor?: Maybe<Scalars['String']>;
+  backgroundColor?: Maybe<Scalars['String']>;
   backgroundType: Scalars['String'];
+  borderColor?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
   contentPosition?: Maybe<Scalars['String']>;
   customGradient?: Maybe<Scalars['String']>;
@@ -3388,14 +3447,57 @@ export type CoreCoverBlockDeprecatedV11Attributes = {
   id?: Maybe<Scalars['Float']>;
   isDark: Scalars['Boolean'];
   isRepeated: Scalars['Boolean'];
+  layout?: Maybe<Scalars['BlockAttributesObject']>;
   lock?: Maybe<Scalars['BlockAttributesObject']>;
   minHeight?: Maybe<Scalars['Float']>;
   minHeightUnit?: Maybe<Scalars['String']>;
   overlayColor?: Maybe<Scalars['String']>;
   style?: Maybe<Scalars['BlockAttributesObject']>;
   tagName: Scalars['String'];
+  textColor?: Maybe<Scalars['String']>;
   url?: Maybe<Scalars['String']>;
   useFeaturedImage: Scalars['Boolean'];
+};
+
+/** core/details block */
+export type CoreDetailsBlock = Block & {
+  __typename?: 'CoreDetailsBlock';
+  attributes?: Maybe<CoreDetailsBlockAttributes>;
+  /** Block attributes, JSON encoded */
+  attributesJSON?: Maybe<Scalars['String']>;
+  /** Server side rendered content. */
+  dynamicContent?: Maybe<Scalars['String']>;
+  /** Gutenberg blocks */
+  innerBlocks?: Maybe<Array<Block>>;
+  /** Is block rendered server side. */
+  isDynamic: Scalars['Boolean'];
+  /** Name of the block. */
+  name: Scalars['String'];
+  order: Scalars['Int'];
+  /** Original HTML content. */
+  originalContent?: Maybe<Scalars['String']>;
+  /** Parent post. */
+  parentNode: Node;
+  /** Parent post id. */
+  parentNodeDatabaseId: Scalars['Int'];
+  /** Original HTML content with inner blocks. */
+  saveContent?: Maybe<Scalars['String']>;
+};
+
+export type CoreDetailsBlockAttributes = {
+  __typename?: 'CoreDetailsBlockAttributes';
+  align?: Maybe<Scalars['String']>;
+  backgroundColor?: Maybe<Scalars['String']>;
+  borderColor?: Maybe<Scalars['String']>;
+  className?: Maybe<Scalars['String']>;
+  fontFamily?: Maybe<Scalars['String']>;
+  fontSize?: Maybe<Scalars['String']>;
+  gradient?: Maybe<Scalars['String']>;
+  lock?: Maybe<Scalars['BlockAttributesObject']>;
+  showContent: Scalars['Boolean'];
+  style?: Maybe<Scalars['BlockAttributesObject']>;
+  summary?: Maybe<Scalars['String']>;
+  textColor?: Maybe<Scalars['String']>;
 };
 
 /** core/embed block */
@@ -3433,6 +3535,7 @@ export type CoreEmbedBlockAttributes = {
   previewable: Scalars['Boolean'];
   providerNameSlug?: Maybe<Scalars['String']>;
   responsive: Scalars['Boolean'];
+  style?: Maybe<Scalars['BlockAttributesObject']>;
   type?: Maybe<Scalars['String']>;
   url?: Maybe<Scalars['String']>;
 };
@@ -3449,6 +3552,7 @@ export type CoreEmbedBlockDeprecatedV1Attributes = {
   previewable: Scalars['Boolean'];
   providerNameSlug?: Maybe<Scalars['String']>;
   responsive: Scalars['Boolean'];
+  style?: Maybe<Scalars['BlockAttributesObject']>;
   type?: Maybe<Scalars['String']>;
   url?: Maybe<Scalars['String']>;
 };
@@ -3463,6 +3567,7 @@ export type CoreEmbedBlockDeprecatedV2Attributes = {
   previewable: Scalars['Boolean'];
   providerNameSlug?: Maybe<Scalars['String']>;
   responsive: Scalars['Boolean'];
+  style?: Maybe<Scalars['BlockAttributesObject']>;
   type?: Maybe<Scalars['String']>;
   url?: Maybe<Scalars['String']>;
 };
@@ -3496,16 +3601,20 @@ export type CoreFileBlockAttributes = {
   __typename?: 'CoreFileBlockAttributes';
   align?: Maybe<Scalars['String']>;
   anchor?: Maybe<Scalars['String']>;
+  backgroundColor?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
   displayPreview?: Maybe<Scalars['Boolean']>;
   downloadButtonText?: Maybe<Scalars['String']>;
   fileId?: Maybe<Scalars['String']>;
   fileName?: Maybe<Scalars['String']>;
+  gradient?: Maybe<Scalars['String']>;
   href?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['Float']>;
   lock?: Maybe<Scalars['BlockAttributesObject']>;
   previewHeight: Scalars['Float'];
   showDownloadButton: Scalars['Boolean'];
+  style?: Maybe<Scalars['BlockAttributesObject']>;
+  textColor?: Maybe<Scalars['String']>;
   textLinkHref?: Maybe<Scalars['String']>;
   textLinkTarget?: Maybe<Scalars['String']>;
 };
@@ -3516,16 +3625,20 @@ export type CoreFileBlockDeprecatedV1Attributes = {
   __typename?: 'CoreFileBlockDeprecatedV1Attributes';
   align?: Maybe<Scalars['String']>;
   anchor?: Maybe<Scalars['String']>;
+  backgroundColor?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
   displayPreview?: Maybe<Scalars['Boolean']>;
   downloadButtonText?: Maybe<Scalars['String']>;
   fileId?: Maybe<Scalars['String']>;
   fileName?: Maybe<Scalars['String']>;
+  gradient?: Maybe<Scalars['String']>;
   href?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['Float']>;
   lock?: Maybe<Scalars['BlockAttributesObject']>;
   previewHeight: Scalars['Float'];
   showDownloadButton: Scalars['Boolean'];
+  style?: Maybe<Scalars['BlockAttributesObject']>;
+  textColor?: Maybe<Scalars['String']>;
   textLinkHref?: Maybe<Scalars['String']>;
   textLinkTarget?: Maybe<Scalars['String']>;
 };
@@ -3534,16 +3647,20 @@ export type CoreFileBlockDeprecatedV2Attributes = {
   __typename?: 'CoreFileBlockDeprecatedV2Attributes';
   align?: Maybe<Scalars['String']>;
   anchor?: Maybe<Scalars['String']>;
+  backgroundColor?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
   displayPreview?: Maybe<Scalars['Boolean']>;
   downloadButtonText?: Maybe<Scalars['String']>;
   fileId?: Maybe<Scalars['String']>;
   fileName?: Maybe<Scalars['String']>;
+  gradient?: Maybe<Scalars['String']>;
   href?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['Float']>;
   lock?: Maybe<Scalars['BlockAttributesObject']>;
   previewHeight: Scalars['Float'];
   showDownloadButton: Scalars['Boolean'];
+  style?: Maybe<Scalars['BlockAttributesObject']>;
+  textColor?: Maybe<Scalars['String']>;
   textLinkHref?: Maybe<Scalars['String']>;
   textLinkTarget?: Maybe<Scalars['String']>;
 };
@@ -3552,18 +3669,53 @@ export type CoreFileBlockDeprecatedV3Attributes = {
   __typename?: 'CoreFileBlockDeprecatedV3Attributes';
   align?: Maybe<Scalars['String']>;
   anchor?: Maybe<Scalars['String']>;
+  backgroundColor?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
   displayPreview?: Maybe<Scalars['Boolean']>;
   downloadButtonText?: Maybe<Scalars['String']>;
   fileId?: Maybe<Scalars['String']>;
   fileName?: Maybe<Scalars['String']>;
+  gradient?: Maybe<Scalars['String']>;
   href?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['Float']>;
   lock?: Maybe<Scalars['BlockAttributesObject']>;
   previewHeight: Scalars['Float'];
   showDownloadButton: Scalars['Boolean'];
+  style?: Maybe<Scalars['BlockAttributesObject']>;
+  textColor?: Maybe<Scalars['String']>;
   textLinkHref?: Maybe<Scalars['String']>;
   textLinkTarget?: Maybe<Scalars['String']>;
+};
+
+/** core/footnotes block */
+export type CoreFootnotesBlock = Block & {
+  __typename?: 'CoreFootnotesBlock';
+  attributes?: Maybe<CoreFootnotesBlockAttributes>;
+  /** Block attributes, JSON encoded */
+  attributesJSON?: Maybe<Scalars['String']>;
+  /** Server side rendered content. */
+  dynamicContent?: Maybe<Scalars['String']>;
+  /** Gutenberg blocks */
+  innerBlocks?: Maybe<Array<Block>>;
+  /** Is block rendered server side. */
+  isDynamic: Scalars['Boolean'];
+  /** Name of the block. */
+  name: Scalars['String'];
+  order: Scalars['Int'];
+  /** Original HTML content. */
+  originalContent?: Maybe<Scalars['String']>;
+  /** Parent post. */
+  parentNode: Node;
+  /** Parent post id. */
+  parentNodeDatabaseId: Scalars['Int'];
+  /** Original HTML content with inner blocks. */
+  saveContent?: Maybe<Scalars['String']>;
+};
+
+export type CoreFootnotesBlockAttributes = {
+  __typename?: 'CoreFootnotesBlockAttributes';
+  className?: Maybe<Scalars['String']>;
+  lock?: Maybe<Scalars['BlockAttributesObject']>;
 };
 
 /** core/freeform block */
@@ -3924,6 +4076,7 @@ export type CoreGroupBlock = Block & {
 export type CoreGroupBlockAttributes = {
   __typename?: 'CoreGroupBlockAttributes';
   align?: Maybe<Scalars['String']>;
+  allowedBlocks?: Maybe<Scalars['BlockAttributesArray']>;
   anchor?: Maybe<Scalars['String']>;
   ariaLabel?: Maybe<Scalars['String']>;
   backgroundColor?: Maybe<Scalars['String']>;
@@ -3945,6 +4098,7 @@ export type CoreGroupBlockAttributesUnion = CoreGroupBlockAttributes | CoreGroup
 export type CoreGroupBlockDeprecatedV1Attributes = {
   __typename?: 'CoreGroupBlockDeprecatedV1Attributes';
   align?: Maybe<Scalars['String']>;
+  allowedBlocks?: Maybe<Scalars['BlockAttributesArray']>;
   anchor?: Maybe<Scalars['String']>;
   ariaLabel?: Maybe<Scalars['String']>;
   backgroundColor?: Maybe<Scalars['String']>;
@@ -3964,6 +4118,7 @@ export type CoreGroupBlockDeprecatedV1Attributes = {
 export type CoreGroupBlockDeprecatedV2Attributes = {
   __typename?: 'CoreGroupBlockDeprecatedV2Attributes';
   align?: Maybe<Scalars['String']>;
+  allowedBlocks?: Maybe<Scalars['BlockAttributesArray']>;
   anchor?: Maybe<Scalars['String']>;
   ariaLabel?: Maybe<Scalars['String']>;
   backgroundColor?: Maybe<Scalars['String']>;
@@ -3983,6 +4138,7 @@ export type CoreGroupBlockDeprecatedV2Attributes = {
 export type CoreGroupBlockDeprecatedV3Attributes = {
   __typename?: 'CoreGroupBlockDeprecatedV3Attributes';
   align?: Maybe<Scalars['String']>;
+  allowedBlocks?: Maybe<Scalars['BlockAttributesArray']>;
   anchor?: Maybe<Scalars['String']>;
   ariaLabel?: Maybe<Scalars['String']>;
   backgroundColor?: Maybe<Scalars['String']>;
@@ -4002,6 +4158,7 @@ export type CoreGroupBlockDeprecatedV3Attributes = {
 export type CoreGroupBlockDeprecatedV4Attributes = {
   __typename?: 'CoreGroupBlockDeprecatedV4Attributes';
   align?: Maybe<Scalars['String']>;
+  allowedBlocks?: Maybe<Scalars['BlockAttributesArray']>;
   anchor?: Maybe<Scalars['String']>;
   ariaLabel?: Maybe<Scalars['String']>;
   backgroundColor?: Maybe<Scalars['String']>;
@@ -4021,6 +4178,7 @@ export type CoreGroupBlockDeprecatedV4Attributes = {
 export type CoreGroupBlockDeprecatedV5Attributes = {
   __typename?: 'CoreGroupBlockDeprecatedV5Attributes';
   align?: Maybe<Scalars['String']>;
+  allowedBlocks?: Maybe<Scalars['BlockAttributesArray']>;
   anchor?: Maybe<Scalars['String']>;
   ariaLabel?: Maybe<Scalars['String']>;
   backgroundColor?: Maybe<Scalars['String']>;
@@ -4270,6 +4428,7 @@ export type CoreImageBlockAttributes = {
   align?: Maybe<Scalars['String']>;
   alt: Scalars['String'];
   anchor?: Maybe<Scalars['String']>;
+  aspectRatio?: Maybe<Scalars['String']>;
   borderColor?: Maybe<Scalars['String']>;
   caption?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
@@ -4281,6 +4440,7 @@ export type CoreImageBlockAttributes = {
   linkTarget?: Maybe<Scalars['String']>;
   lock?: Maybe<Scalars['BlockAttributesObject']>;
   rel?: Maybe<Scalars['String']>;
+  scale?: Maybe<Scalars['String']>;
   sizeSlug?: Maybe<Scalars['String']>;
   style?: Maybe<Scalars['BlockAttributesObject']>;
   title?: Maybe<Scalars['String']>;
@@ -4288,13 +4448,14 @@ export type CoreImageBlockAttributes = {
   width?: Maybe<Scalars['Float']>;
 };
 
-export type CoreImageBlockAttributesUnion = CoreImageBlockAttributes | CoreImageBlockDeprecatedV1Attributes | CoreImageBlockDeprecatedV2Attributes | CoreImageBlockDeprecatedV3Attributes | CoreImageBlockDeprecatedV4Attributes | CoreImageBlockDeprecatedV5Attributes;
+export type CoreImageBlockAttributesUnion = CoreImageBlockAttributes | CoreImageBlockDeprecatedV1Attributes | CoreImageBlockDeprecatedV2Attributes | CoreImageBlockDeprecatedV3Attributes | CoreImageBlockDeprecatedV4Attributes | CoreImageBlockDeprecatedV5Attributes | CoreImageBlockDeprecatedV6Attributes;
 
 export type CoreImageBlockDeprecatedV1Attributes = {
   __typename?: 'CoreImageBlockDeprecatedV1Attributes';
   align?: Maybe<Scalars['String']>;
   alt: Scalars['String'];
   anchor?: Maybe<Scalars['String']>;
+  aspectRatio?: Maybe<Scalars['String']>;
   borderColor?: Maybe<Scalars['String']>;
   caption?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
@@ -4306,6 +4467,7 @@ export type CoreImageBlockDeprecatedV1Attributes = {
   linkTarget?: Maybe<Scalars['String']>;
   lock?: Maybe<Scalars['BlockAttributesObject']>;
   rel?: Maybe<Scalars['String']>;
+  scale?: Maybe<Scalars['String']>;
   sizeSlug?: Maybe<Scalars['String']>;
   style?: Maybe<Scalars['BlockAttributesObject']>;
   title?: Maybe<Scalars['String']>;
@@ -4318,6 +4480,7 @@ export type CoreImageBlockDeprecatedV2Attributes = {
   align?: Maybe<Scalars['String']>;
   alt: Scalars['String'];
   anchor?: Maybe<Scalars['String']>;
+  aspectRatio?: Maybe<Scalars['String']>;
   borderColor?: Maybe<Scalars['String']>;
   caption?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
@@ -4329,6 +4492,7 @@ export type CoreImageBlockDeprecatedV2Attributes = {
   linkTarget?: Maybe<Scalars['String']>;
   lock?: Maybe<Scalars['BlockAttributesObject']>;
   rel?: Maybe<Scalars['String']>;
+  scale?: Maybe<Scalars['String']>;
   sizeSlug?: Maybe<Scalars['String']>;
   style?: Maybe<Scalars['BlockAttributesObject']>;
   title?: Maybe<Scalars['String']>;
@@ -4341,6 +4505,7 @@ export type CoreImageBlockDeprecatedV3Attributes = {
   align?: Maybe<Scalars['String']>;
   alt: Scalars['String'];
   anchor?: Maybe<Scalars['String']>;
+  aspectRatio?: Maybe<Scalars['String']>;
   borderColor?: Maybe<Scalars['String']>;
   caption?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
@@ -4352,6 +4517,7 @@ export type CoreImageBlockDeprecatedV3Attributes = {
   linkTarget?: Maybe<Scalars['String']>;
   lock?: Maybe<Scalars['BlockAttributesObject']>;
   rel?: Maybe<Scalars['String']>;
+  scale?: Maybe<Scalars['String']>;
   sizeSlug?: Maybe<Scalars['String']>;
   style?: Maybe<Scalars['BlockAttributesObject']>;
   title?: Maybe<Scalars['String']>;
@@ -4364,6 +4530,7 @@ export type CoreImageBlockDeprecatedV4Attributes = {
   align?: Maybe<Scalars['String']>;
   alt: Scalars['String'];
   anchor?: Maybe<Scalars['String']>;
+  aspectRatio?: Maybe<Scalars['String']>;
   borderColor?: Maybe<Scalars['String']>;
   caption?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
@@ -4375,6 +4542,7 @@ export type CoreImageBlockDeprecatedV4Attributes = {
   linkTarget?: Maybe<Scalars['String']>;
   lock?: Maybe<Scalars['BlockAttributesObject']>;
   rel?: Maybe<Scalars['String']>;
+  scale?: Maybe<Scalars['String']>;
   sizeSlug?: Maybe<Scalars['String']>;
   style?: Maybe<Scalars['BlockAttributesObject']>;
   title?: Maybe<Scalars['String']>;
@@ -4387,6 +4555,7 @@ export type CoreImageBlockDeprecatedV5Attributes = {
   align?: Maybe<Scalars['String']>;
   alt: Scalars['String'];
   anchor?: Maybe<Scalars['String']>;
+  aspectRatio?: Maybe<Scalars['String']>;
   borderColor?: Maybe<Scalars['String']>;
   caption?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
@@ -4398,6 +4567,32 @@ export type CoreImageBlockDeprecatedV5Attributes = {
   linkTarget?: Maybe<Scalars['String']>;
   lock?: Maybe<Scalars['BlockAttributesObject']>;
   rel?: Maybe<Scalars['String']>;
+  scale?: Maybe<Scalars['String']>;
+  sizeSlug?: Maybe<Scalars['String']>;
+  style?: Maybe<Scalars['BlockAttributesObject']>;
+  title?: Maybe<Scalars['String']>;
+  url?: Maybe<Scalars['String']>;
+  width?: Maybe<Scalars['Float']>;
+};
+
+export type CoreImageBlockDeprecatedV6Attributes = {
+  __typename?: 'CoreImageBlockDeprecatedV6Attributes';
+  align?: Maybe<Scalars['String']>;
+  alt: Scalars['String'];
+  anchor?: Maybe<Scalars['String']>;
+  aspectRatio?: Maybe<Scalars['String']>;
+  borderColor?: Maybe<Scalars['String']>;
+  caption?: Maybe<Scalars['String']>;
+  className?: Maybe<Scalars['String']>;
+  height?: Maybe<Scalars['Float']>;
+  href?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['Float']>;
+  linkClass?: Maybe<Scalars['String']>;
+  linkDestination?: Maybe<Scalars['String']>;
+  linkTarget?: Maybe<Scalars['String']>;
+  lock?: Maybe<Scalars['BlockAttributesObject']>;
+  rel?: Maybe<Scalars['String']>;
+  scale?: Maybe<Scalars['String']>;
   sizeSlug?: Maybe<Scalars['String']>;
   style?: Maybe<Scalars['BlockAttributesObject']>;
   title?: Maybe<Scalars['String']>;
@@ -4447,6 +4642,8 @@ export type CoreLatestCommentsBlockAttributes = {
   displayAvatar: Scalars['Boolean'];
   displayDate: Scalars['Boolean'];
   displayExcerpt: Scalars['Boolean'];
+  fontFamily?: Maybe<Scalars['String']>;
+  fontSize?: Maybe<Scalars['String']>;
   lock?: Maybe<Scalars['BlockAttributesObject']>;
   style?: Maybe<Scalars['BlockAttributesObject']>;
 };
@@ -4723,8 +4920,11 @@ export type CoreLoginoutBlockAttributes = {
   __typename?: 'CoreLoginoutBlockAttributes';
   className?: Maybe<Scalars['String']>;
   displayLoginAsForm: Scalars['Boolean'];
+  fontFamily?: Maybe<Scalars['String']>;
+  fontSize?: Maybe<Scalars['String']>;
   lock?: Maybe<Scalars['BlockAttributesObject']>;
   redirectToCurrent: Scalars['Boolean'];
+  style?: Maybe<Scalars['BlockAttributesObject']>;
 };
 
 /** core/media-text block */
@@ -4755,6 +4955,7 @@ export type CoreMediaTextBlock = Block & {
 export type CoreMediaTextBlockAttributes = {
   __typename?: 'CoreMediaTextBlockAttributes';
   align: Scalars['String'];
+  allowedBlocks?: Maybe<Scalars['BlockAttributesArray']>;
   anchor?: Maybe<Scalars['String']>;
   backgroundColor?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
@@ -4783,11 +4984,12 @@ export type CoreMediaTextBlockAttributes = {
   verticalAlignment?: Maybe<Scalars['String']>;
 };
 
-export type CoreMediaTextBlockAttributesUnion = CoreMediaTextBlockAttributes | CoreMediaTextBlockDeprecatedV1Attributes | CoreMediaTextBlockDeprecatedV2Attributes | CoreMediaTextBlockDeprecatedV3Attributes | CoreMediaTextBlockDeprecatedV4Attributes | CoreMediaTextBlockDeprecatedV5Attributes;
+export type CoreMediaTextBlockAttributesUnion = CoreMediaTextBlockAttributes | CoreMediaTextBlockDeprecatedV1Attributes | CoreMediaTextBlockDeprecatedV2Attributes | CoreMediaTextBlockDeprecatedV3Attributes | CoreMediaTextBlockDeprecatedV4Attributes | CoreMediaTextBlockDeprecatedV5Attributes | CoreMediaTextBlockDeprecatedV6Attributes;
 
 export type CoreMediaTextBlockDeprecatedV1Attributes = {
   __typename?: 'CoreMediaTextBlockDeprecatedV1Attributes';
   align: Scalars['String'];
+  allowedBlocks?: Maybe<Scalars['BlockAttributesArray']>;
   anchor?: Maybe<Scalars['String']>;
   backgroundColor?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
@@ -4819,6 +5021,7 @@ export type CoreMediaTextBlockDeprecatedV1Attributes = {
 export type CoreMediaTextBlockDeprecatedV2Attributes = {
   __typename?: 'CoreMediaTextBlockDeprecatedV2Attributes';
   align: Scalars['String'];
+  allowedBlocks?: Maybe<Scalars['BlockAttributesArray']>;
   anchor?: Maybe<Scalars['String']>;
   backgroundColor?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
@@ -4850,6 +5053,7 @@ export type CoreMediaTextBlockDeprecatedV2Attributes = {
 export type CoreMediaTextBlockDeprecatedV3Attributes = {
   __typename?: 'CoreMediaTextBlockDeprecatedV3Attributes';
   align: Scalars['String'];
+  allowedBlocks?: Maybe<Scalars['BlockAttributesArray']>;
   anchor?: Maybe<Scalars['String']>;
   backgroundColor?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
@@ -4881,6 +5085,7 @@ export type CoreMediaTextBlockDeprecatedV3Attributes = {
 export type CoreMediaTextBlockDeprecatedV4Attributes = {
   __typename?: 'CoreMediaTextBlockDeprecatedV4Attributes';
   align: Scalars['String'];
+  allowedBlocks?: Maybe<Scalars['BlockAttributesArray']>;
   anchor?: Maybe<Scalars['String']>;
   backgroundColor?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
@@ -4912,6 +5117,39 @@ export type CoreMediaTextBlockDeprecatedV4Attributes = {
 export type CoreMediaTextBlockDeprecatedV5Attributes = {
   __typename?: 'CoreMediaTextBlockDeprecatedV5Attributes';
   align: Scalars['String'];
+  allowedBlocks?: Maybe<Scalars['BlockAttributesArray']>;
+  anchor?: Maybe<Scalars['String']>;
+  backgroundColor?: Maybe<Scalars['String']>;
+  className?: Maybe<Scalars['String']>;
+  focalPoint?: Maybe<Scalars['BlockAttributesObject']>;
+  fontFamily?: Maybe<Scalars['String']>;
+  fontSize?: Maybe<Scalars['String']>;
+  gradient?: Maybe<Scalars['String']>;
+  href?: Maybe<Scalars['String']>;
+  imageFill?: Maybe<Scalars['Boolean']>;
+  isStackedOnMobile: Scalars['Boolean'];
+  linkClass?: Maybe<Scalars['String']>;
+  linkDestination?: Maybe<Scalars['String']>;
+  linkTarget?: Maybe<Scalars['String']>;
+  lock?: Maybe<Scalars['BlockAttributesObject']>;
+  mediaAlt: Scalars['String'];
+  mediaId?: Maybe<Scalars['Float']>;
+  mediaLink?: Maybe<Scalars['String']>;
+  mediaPosition: Scalars['String'];
+  mediaSizeSlug?: Maybe<Scalars['String']>;
+  mediaType?: Maybe<Scalars['String']>;
+  mediaUrl?: Maybe<Scalars['String']>;
+  mediaWidth: Scalars['Float'];
+  rel?: Maybe<Scalars['String']>;
+  style?: Maybe<Scalars['BlockAttributesObject']>;
+  textColor?: Maybe<Scalars['String']>;
+  verticalAlignment?: Maybe<Scalars['String']>;
+};
+
+export type CoreMediaTextBlockDeprecatedV6Attributes = {
+  __typename?: 'CoreMediaTextBlockDeprecatedV6Attributes';
+  align: Scalars['String'];
+  allowedBlocks?: Maybe<Scalars['BlockAttributesArray']>;
   anchor?: Maybe<Scalars['String']>;
   backgroundColor?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
@@ -5911,6 +6149,7 @@ export type CorePostExcerptBlockAttributes = {
   __typename?: 'CorePostExcerptBlockAttributes';
   backgroundColor?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
+  excerptLength: Scalars['Float'];
   fontFamily?: Maybe<Scalars['String']>;
   fontSize?: Maybe<Scalars['String']>;
   gradient?: Maybe<Scalars['String']>;
@@ -5950,6 +6189,7 @@ export type CorePostFeaturedImageBlock = Block & {
 export type CorePostFeaturedImageBlockAttributes = {
   __typename?: 'CorePostFeaturedImageBlockAttributes';
   align?: Maybe<Scalars['String']>;
+  aspectRatio?: Maybe<Scalars['String']>;
   borderColor?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
   customGradient?: Maybe<Scalars['String']>;
@@ -6375,7 +6615,6 @@ export type CoreQueryBlockAttributes = {
   __typename?: 'CoreQueryBlockAttributes';
   align?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
-  displayLayout: Scalars['BlockAttributesObject'];
   layout?: Maybe<Scalars['BlockAttributesObject']>;
   lock?: Maybe<Scalars['BlockAttributesObject']>;
   namespace?: Maybe<Scalars['String']>;
@@ -6384,13 +6623,12 @@ export type CoreQueryBlockAttributes = {
   tagName: Scalars['String'];
 };
 
-export type CoreQueryBlockAttributesUnion = CoreQueryBlockAttributes | CoreQueryBlockDeprecatedV1Attributes | CoreQueryBlockDeprecatedV2Attributes | CoreQueryBlockDeprecatedV3Attributes | CoreQueryBlockDeprecatedV4Attributes;
+export type CoreQueryBlockAttributesUnion = CoreQueryBlockAttributes | CoreQueryBlockDeprecatedV1Attributes | CoreQueryBlockDeprecatedV2Attributes | CoreQueryBlockDeprecatedV3Attributes | CoreQueryBlockDeprecatedV4Attributes | CoreQueryBlockDeprecatedV5Attributes;
 
 export type CoreQueryBlockDeprecatedV1Attributes = {
   __typename?: 'CoreQueryBlockDeprecatedV1Attributes';
   align?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
-  displayLayout: Scalars['BlockAttributesObject'];
   layout?: Maybe<Scalars['BlockAttributesObject']>;
   lock?: Maybe<Scalars['BlockAttributesObject']>;
   namespace?: Maybe<Scalars['String']>;
@@ -6403,7 +6641,6 @@ export type CoreQueryBlockDeprecatedV2Attributes = {
   __typename?: 'CoreQueryBlockDeprecatedV2Attributes';
   align?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
-  displayLayout: Scalars['BlockAttributesObject'];
   layout?: Maybe<Scalars['BlockAttributesObject']>;
   lock?: Maybe<Scalars['BlockAttributesObject']>;
   namespace?: Maybe<Scalars['String']>;
@@ -6416,7 +6653,6 @@ export type CoreQueryBlockDeprecatedV3Attributes = {
   __typename?: 'CoreQueryBlockDeprecatedV3Attributes';
   align?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
-  displayLayout: Scalars['BlockAttributesObject'];
   layout?: Maybe<Scalars['BlockAttributesObject']>;
   lock?: Maybe<Scalars['BlockAttributesObject']>;
   namespace?: Maybe<Scalars['String']>;
@@ -6429,7 +6665,18 @@ export type CoreQueryBlockDeprecatedV4Attributes = {
   __typename?: 'CoreQueryBlockDeprecatedV4Attributes';
   align?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
-  displayLayout: Scalars['BlockAttributesObject'];
+  layout?: Maybe<Scalars['BlockAttributesObject']>;
+  lock?: Maybe<Scalars['BlockAttributesObject']>;
+  namespace?: Maybe<Scalars['String']>;
+  query: Scalars['BlockAttributesObject'];
+  queryId?: Maybe<Scalars['Float']>;
+  tagName: Scalars['String'];
+};
+
+export type CoreQueryBlockDeprecatedV5Attributes = {
+  __typename?: 'CoreQueryBlockDeprecatedV5Attributes';
+  align?: Maybe<Scalars['String']>;
+  className?: Maybe<Scalars['String']>;
   layout?: Maybe<Scalars['BlockAttributesObject']>;
   lock?: Maybe<Scalars['BlockAttributesObject']>;
   namespace?: Maybe<Scalars['String']>;
@@ -6512,6 +6759,7 @@ export type CoreQueryPaginationBlockAttributes = {
   layout?: Maybe<Scalars['BlockAttributesObject']>;
   lock?: Maybe<Scalars['BlockAttributesObject']>;
   paginationArrow: Scalars['String'];
+  showLabel: Scalars['Boolean'];
   style?: Maybe<Scalars['BlockAttributesObject']>;
   textColor?: Maybe<Scalars['String']>;
 };
@@ -6529,6 +6777,7 @@ export type CoreQueryPaginationBlockDeprecatedV1Attributes = {
   layout?: Maybe<Scalars['BlockAttributesObject']>;
   lock?: Maybe<Scalars['BlockAttributesObject']>;
   paginationArrow: Scalars['String'];
+  showLabel: Scalars['Boolean'];
   style?: Maybe<Scalars['BlockAttributesObject']>;
   textColor?: Maybe<Scalars['String']>;
 };
@@ -6926,6 +7175,7 @@ export type CoreSearchBlockAttributes = {
   align?: Maybe<Scalars['String']>;
   backgroundColor?: Maybe<Scalars['String']>;
   borderColor?: Maybe<Scalars['String']>;
+  buttonBehavior: Scalars['String'];
   buttonPosition: Scalars['String'];
   buttonText?: Maybe<Scalars['String']>;
   buttonUseIcon: Scalars['Boolean'];
@@ -6933,6 +7183,7 @@ export type CoreSearchBlockAttributes = {
   fontFamily?: Maybe<Scalars['String']>;
   fontSize?: Maybe<Scalars['String']>;
   gradient?: Maybe<Scalars['String']>;
+  isSearchFieldHidden: Scalars['Boolean'];
   label?: Maybe<Scalars['String']>;
   lock?: Maybe<Scalars['BlockAttributesObject']>;
   placeholder: Scalars['String'];
@@ -7802,6 +8053,7 @@ export type CoreVerseBlockAttributes = {
   __typename?: 'CoreVerseBlockAttributes';
   anchor?: Maybe<Scalars['String']>;
   backgroundColor?: Maybe<Scalars['String']>;
+  borderColor?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
   content: Scalars['String'];
   fontFamily?: Maybe<Scalars['String']>;
@@ -7819,6 +8071,7 @@ export type CoreVerseBlockDeprecatedV1Attributes = {
   __typename?: 'CoreVerseBlockDeprecatedV1Attributes';
   anchor?: Maybe<Scalars['String']>;
   backgroundColor?: Maybe<Scalars['String']>;
+  borderColor?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
   content: Scalars['String'];
   fontFamily?: Maybe<Scalars['String']>;
@@ -7834,6 +8087,7 @@ export type CoreVerseBlockDeprecatedV2Attributes = {
   __typename?: 'CoreVerseBlockDeprecatedV2Attributes';
   anchor?: Maybe<Scalars['String']>;
   backgroundColor?: Maybe<Scalars['String']>;
+  borderColor?: Maybe<Scalars['String']>;
   className?: Maybe<Scalars['String']>;
   content: Scalars['String'];
   fontFamily?: Maybe<Scalars['String']>;
@@ -8419,7 +8673,7 @@ export type DeleteCategoryInput = {
 /** The payload for the deleteCategory mutation. */
 export type DeleteCategoryPayload = {
   __typename?: 'DeleteCategoryPayload';
-  /** The deteted term object */
+  /** The deleted term object */
   category?: Maybe<Category>;
   /** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
   clientMutationId?: Maybe<Scalars['String']>;
@@ -8507,7 +8761,7 @@ export type DeletePostFormatPayload = {
   clientMutationId?: Maybe<Scalars['String']>;
   /** The ID of the deleted object */
   deletedId?: Maybe<Scalars['ID']>;
-  /** The deteted term object */
+  /** The deleted term object */
   postFormat?: Maybe<PostFormat>;
 };
 
@@ -8595,7 +8849,7 @@ export type DeleteTagPayload = {
   clientMutationId?: Maybe<Scalars['String']>;
   /** The ID of the deleted object */
   deletedId?: Maybe<Scalars['ID']>;
-  /** The deteted term object */
+  /** The deleted term object */
   tag?: Maybe<Tag>;
 };
 
@@ -8933,7 +9187,7 @@ export type HierarchicalContentNodeToContentNodeAncestorsConnectionWhereArgs = {
   nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
   notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** What paramater to use to order the objects by. */
+  /** What parameter to use to order the objects by. */
   orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
   /** Use ID to return only children. Use 0 to return only top-level items */
   parent?: InputMaybe<Scalars['ID']>;
@@ -9006,7 +9260,7 @@ export type HierarchicalContentNodeToContentNodeChildrenConnectionWhereArgs = {
   nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
   notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** What paramater to use to order the objects by. */
+  /** What parameter to use to order the objects by. */
   orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
   /** Use ID to return only children. Use 0 to return only top-level items */
   parent?: InputMaybe<Scalars['ID']>;
@@ -10938,7 +11192,7 @@ export type PageToRevisionConnectionWhereArgs = {
   nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
   notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** What paramater to use to order the objects by. */
+  /** What parameter to use to order the objects by. */
   orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
   /** Use ID to return only children. Use 0 to return only top-level items */
   parent?: InputMaybe<Scalars['ID']>;
@@ -11648,7 +11902,7 @@ export type PostFormatToContentNodeConnectionWhereArgs = {
   nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
   notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** What paramater to use to order the objects by. */
+  /** What parameter to use to order the objects by. */
   orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
   /** Use ID to return only children. Use 0 to return only top-level items */
   parent?: InputMaybe<Scalars['ID']>;
@@ -11735,7 +11989,7 @@ export type PostFormatToPostConnectionWhereArgs = {
   nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
   notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** What paramater to use to order the objects by. */
+  /** What parameter to use to order the objects by. */
   orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
   /** Use ID to return only children. Use 0 to return only top-level items */
   parent?: InputMaybe<Scalars['ID']>;
@@ -12237,7 +12491,7 @@ export type PostToRevisionConnectionWhereArgs = {
   nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
   notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** What paramater to use to order the objects by. */
+  /** What parameter to use to order the objects by. */
   orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
   /** Use ID to return only children. Use 0 to return only top-level items */
   parent?: InputMaybe<Scalars['ID']>;
@@ -13234,7 +13488,7 @@ export type ReusableBlockToRevisionConnectionWhereArgs = {
   nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
   notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** What paramater to use to order the objects by. */
+  /** What parameter to use to order the objects by. */
   orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
   /** Use ID to return only children. Use 0 to return only top-level items */
   parent?: InputMaybe<Scalars['ID']>;
@@ -14222,7 +14476,7 @@ export type RootQueryToBlockEditorPreviewConnectionWhereArgs = {
   nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
   notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** What paramater to use to order the objects by. */
+  /** What parameter to use to order the objects by. */
   orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
   /** Use ID to return only children. Use 0 to return only top-level items */
   parent?: InputMaybe<Scalars['ID']>;
@@ -14471,7 +14725,7 @@ export type RootQueryToContentNodeConnectionWhereArgs = {
   nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
   notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** What paramater to use to order the objects by. */
+  /** What parameter to use to order the objects by. */
   orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
   /** Use ID to return only children. Use 0 to return only top-level items */
   parent?: InputMaybe<Scalars['ID']>;
@@ -14649,7 +14903,7 @@ export type RootQueryToMediaItemConnectionWhereArgs = {
   nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
   notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** What paramater to use to order the objects by. */
+  /** What parameter to use to order the objects by. */
   orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
   /** Use ID to return only children. Use 0 to return only top-level items */
   parent?: InputMaybe<Scalars['ID']>;
@@ -14816,7 +15070,7 @@ export type RootQueryToPageConnectionWhereArgs = {
   nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
   notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** What paramater to use to order the objects by. */
+  /** What parameter to use to order the objects by. */
   orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
   /** Use ID to return only children. Use 0 to return only top-level items */
   parent?: InputMaybe<Scalars['ID']>;
@@ -14958,7 +15212,7 @@ export type RootQueryToPostConnectionWhereArgs = {
   nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
   notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** What paramater to use to order the objects by. */
+  /** What parameter to use to order the objects by. */
   orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
   /** Use ID to return only children. Use 0 to return only top-level items */
   parent?: InputMaybe<Scalars['ID']>;
@@ -15120,7 +15374,7 @@ export type RootQueryToProjectConnectionWhereArgs = {
   nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
   notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** What paramater to use to order the objects by. */
+  /** What parameter to use to order the objects by. */
   orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
   /** Use ID to return only children. Use 0 to return only top-level items */
   parent?: InputMaybe<Scalars['ID']>;
@@ -15203,7 +15457,7 @@ export type RootQueryToReusableBlockConnectionWhereArgs = {
   nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
   notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** What paramater to use to order the objects by. */
+  /** What parameter to use to order the objects by. */
   orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
   /** Use ID to return only children. Use 0 to return only top-level items */
   parent?: InputMaybe<Scalars['ID']>;
@@ -15276,7 +15530,7 @@ export type RootQueryToRevisionsConnectionWhereArgs = {
   nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
   notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** What paramater to use to order the objects by. */
+  /** What parameter to use to order the objects by. */
   orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
   /** Use ID to return only children. Use 0 to return only top-level items */
   parent?: InputMaybe<Scalars['ID']>;
@@ -15575,7 +15829,7 @@ export type RootQueryToUserConnectionWhereArgs = {
   nicenameIn?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   /** An array of nicenames to exclude. Users matching one of these nicenames will not be included in results. */
   nicenameNotIn?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
-  /** What paramater to use to order the objects by. */
+  /** What parameter to use to order the objects by. */
   orderby?: InputMaybe<Array<InputMaybe<UsersConnectionOrderbyInput>>>;
   /** An array of role names that users must match to be included in results. Note that this is an inclusive list: users must match *each* role. */
   role?: InputMaybe<UserRoleEnum>;
@@ -15925,7 +16179,7 @@ export type TagToContentNodeConnectionWhereArgs = {
   nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
   notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** What paramater to use to order the objects by. */
+  /** What parameter to use to order the objects by. */
   orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
   /** Use ID to return only children. Use 0 to return only top-level items */
   parent?: InputMaybe<Scalars['ID']>;
@@ -16004,7 +16258,7 @@ export type TagToPageConnectionWhereArgs = {
   nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
   notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** What paramater to use to order the objects by. */
+  /** What parameter to use to order the objects by. */
   orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
   /** Use ID to return only children. Use 0 to return only top-level items */
   parent?: InputMaybe<Scalars['ID']>;
@@ -16103,7 +16357,7 @@ export type TagToPostConnectionWhereArgs = {
   nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
   notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** What paramater to use to order the objects by. */
+  /** What parameter to use to order the objects by. */
   orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
   /** Use ID to return only children. Use 0 to return only top-level items */
   parent?: InputMaybe<Scalars['ID']>;
@@ -16186,7 +16440,7 @@ export type TagToProjectConnectionWhereArgs = {
   nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
   notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** What paramater to use to order the objects by. */
+  /** What parameter to use to order the objects by. */
   orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
   /** Use ID to return only children. Use 0 to return only top-level items */
   parent?: InputMaybe<Scalars['ID']>;
@@ -16232,6 +16486,8 @@ export type Taxonomy = Node & {
   __typename?: 'Taxonomy';
   /** List of Content Types associated with the Taxonomy */
   connectedContentTypes?: Maybe<TaxonomyToContentTypeConnection>;
+  /** List of Term Nodes associated with the Taxonomy */
+  connectedTerms?: Maybe<TaxonomyToTermNodeConnection>;
   /** Description of the taxonomy. This field is equivalent to WP_Taxonomy-&gt;description */
   description?: Maybe<Scalars['String']>;
   /** The plural name of the post type within the GraphQL Schema. */
@@ -16250,7 +16506,7 @@ export type Taxonomy = Node & {
   name?: Maybe<Scalars['String']>;
   /** Whether the taxonomy is publicly queryable */
   public?: Maybe<Scalars['Boolean']>;
-  /** Name of content type to diplay in REST API &quot;wp/v2&quot; namespace. */
+  /** Name of content type to display in REST API &quot;wp/v2&quot; namespace. */
   restBase?: Maybe<Scalars['String']>;
   /** The REST Controller class assigned to handling this content type. */
   restControllerClass?: Maybe<Scalars['String']>;
@@ -16275,6 +16531,15 @@ export type Taxonomy = Node & {
 
 /** A taxonomy object */
 export type TaxonomyConnectedContentTypesArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  before?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  last?: InputMaybe<Scalars['Int']>;
+};
+
+
+/** A taxonomy object */
+export type TaxonomyConnectedTermsArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Int']>;
@@ -16352,6 +16617,39 @@ export type TaxonomyToContentTypeConnectionEdge = ContentTypeConnectionEdge & Ed
 /** Page Info on the &quot;TaxonomyToContentTypeConnection&quot; */
 export type TaxonomyToContentTypeConnectionPageInfo = ContentTypeConnectionPageInfo & PageInfo & WpPageInfo & {
   __typename?: 'TaxonomyToContentTypeConnectionPageInfo';
+  /** When paginating forwards, the cursor to continue. */
+  endCursor?: Maybe<Scalars['String']>;
+  /** When paginating forwards, are there more items? */
+  hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  hasPreviousPage: Scalars['Boolean'];
+  /** When paginating backwards, the cursor to continue. */
+  startCursor?: Maybe<Scalars['String']>;
+};
+
+/** Connection between the Taxonomy type and the TermNode type */
+export type TaxonomyToTermNodeConnection = Connection & TermNodeConnection & {
+  __typename?: 'TaxonomyToTermNodeConnection';
+  /** Edges for the TaxonomyToTermNodeConnection connection */
+  edges: Array<TaxonomyToTermNodeConnectionEdge>;
+  /** The nodes of the connection, without the edges */
+  nodes: Array<TermNode>;
+  /** Information about pagination in a connection. */
+  pageInfo: TaxonomyToTermNodeConnectionPageInfo;
+};
+
+/** An edge in a connection */
+export type TaxonomyToTermNodeConnectionEdge = Edge & TermNodeConnectionEdge & {
+  __typename?: 'TaxonomyToTermNodeConnectionEdge';
+  /** A cursor for use in pagination */
+  cursor?: Maybe<Scalars['String']>;
+  /** The item at the end of the edge */
+  node: TermNode;
+};
+
+/** Page Info on the &quot;TaxonomyToTermNodeConnection&quot; */
+export type TaxonomyToTermNodeConnectionPageInfo = PageInfo & TermNodeConnectionPageInfo & WpPageInfo & {
+  __typename?: 'TaxonomyToTermNodeConnectionPageInfo';
   /** When paginating forwards, the cursor to continue. */
   endCursor?: Maybe<Scalars['String']>;
   /** When paginating forwards, are there more items? */
@@ -17122,7 +17420,7 @@ export type User = Commenter & DatabaseIdentifier & Node & UniformResourceIdenti
   locale?: Maybe<Scalars['String']>;
   /** Connection between the User type and the mediaItem type */
   mediaItems?: Maybe<UserToMediaItemConnection>;
-  /** Display name of the user. This is equivalent to the WP_User-&gt;dispaly_name property. */
+  /** Display name of the user. This is equivalent to the WP_User-&gt;display_name property. */
   name?: Maybe<Scalars['String']>;
   /** The nicename for the user. This field is equivalent to WP_User-&gt;user_nicename */
   nicename?: Maybe<Scalars['String']>;
@@ -17416,7 +17714,7 @@ export type UserToBlockEditorPreviewConnectionWhereArgs = {
   nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
   notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** What paramater to use to order the objects by. */
+  /** What parameter to use to order the objects by. */
   orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
   /** Use ID to return only children. Use 0 to return only top-level items */
   parent?: InputMaybe<Scalars['ID']>;
@@ -17656,7 +17954,7 @@ export type UserToMediaItemConnectionWhereArgs = {
   nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
   notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** What paramater to use to order the objects by. */
+  /** What parameter to use to order the objects by. */
   orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
   /** Use ID to return only children. Use 0 to return only top-level items */
   parent?: InputMaybe<Scalars['ID']>;
@@ -17735,7 +18033,7 @@ export type UserToPageConnectionWhereArgs = {
   nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
   notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** What paramater to use to order the objects by. */
+  /** What parameter to use to order the objects by. */
   orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
   /** Use ID to return only children. Use 0 to return only top-level items */
   parent?: InputMaybe<Scalars['ID']>;
@@ -17834,7 +18132,7 @@ export type UserToPostConnectionWhereArgs = {
   nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
   notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** What paramater to use to order the objects by. */
+  /** What parameter to use to order the objects by. */
   orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
   /** Use ID to return only children. Use 0 to return only top-level items */
   parent?: InputMaybe<Scalars['ID']>;
@@ -17919,7 +18217,7 @@ export type UserToRevisionsConnectionWhereArgs = {
   nameIn?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   /** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
   notIn?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>;
-  /** What paramater to use to order the objects by. */
+  /** What parameter to use to order the objects by. */
   orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
   /** Use ID to return only children. Use 0 to return only top-level items */
   parent?: InputMaybe<Scalars['ID']>;
