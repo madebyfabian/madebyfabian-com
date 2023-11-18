@@ -3,7 +3,7 @@ import { generateSitemap } from './generateSitemap'
 import { cookieConfig } from './config'
 
 export default defineNuxtConfig({
-	extends: ['nuxt-wordpress'],
+	extends: ['nuxt-wordpress', 'nuxt-umami'],
 
 	experimental: {
 		typedPages: true,
@@ -82,6 +82,16 @@ export default defineNuxtConfig({
 		},
 
 		pageTransition: { name: 'page', mode: 'out-in' },
+	},
+
+	// nuxt-umami
+	appConfig: {
+		umami: {
+			host: process.env.NUXT_PUBLIC_UMAMI_HOST,
+			id: process.env.NUXT_PUBLIC_UMAMI_ID,
+			ignoreLocalhost: true,
+			version: 2,
+		},
 	},
 
 	// @nuxtseo/module

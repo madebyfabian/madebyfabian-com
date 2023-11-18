@@ -17,6 +17,9 @@ dependencies:
   nuxt-graphql-middleware:
     specifier: 3.1.0-beta.3
     version: 3.1.0-beta.3(@babel/core@7.23.3)(@types/node@18.18.9)(graphql-tag@2.12.6)(graphql@16.8.1)(typescript@4.9.5)
+  nuxt-umami:
+    specifier: ^2.5.5
+    version: 2.5.5(vue@3.3.8)
   nuxt-wordpress:
     specifier: 1.0.0-beta.2
     version: 1.0.0-beta.2
@@ -3018,7 +3021,6 @@ packages:
 
   /@types/web-bluetooth@0.0.20:
     resolution: {integrity: sha512-g9gZnnXVq7gM7v3tJCWV/qw7w+KeOlSHAhgF9RytFyifW6AF61hdT2ucrYhPq9hLs5JIryeupHV3qGk95dH9ow==}
-    dev: true
 
   /@types/ws@8.5.9:
     resolution: {integrity: sha512-jbdrY0a8lxfdTp/+r7Z4CkycbOFN8WX+IOchLJr3juT/xzbJ8URyTVSJ/hvNdadTgM1mnedb47n+Y31GsFnQlg==}
@@ -3510,7 +3512,6 @@ packages:
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
-    dev: true
 
   /@vueuse/core@9.13.0(vue@3.3.8):
     resolution: {integrity: sha512-pujnclbeHWxxPRqXWmdkKV5OX4Wk4YeK7wusHqRwU0Q7EFusHoqNA/aPhB6KCh9hEqJkLAJo7bb0Lh9b+OIVzw==}
@@ -3577,7 +3578,6 @@ packages:
 
   /@vueuse/metadata@10.6.1:
     resolution: {integrity: sha512-qhdwPI65Bgcj23e5lpGfQsxcy0bMjCAsUGoXkJ7DsoeDUdasbZ2DBa4dinFCOER3lF4gwUv+UD2AlA11zdzMFw==}
-    dev: true
 
   /@vueuse/metadata@9.13.0:
     resolution: {integrity: sha512-gdU7TKNAUVlXXLbaF+ZCfte8BjRJQWPCa2J55+7/h+yDtzw3vOoGQDRXzI6pyKyo6bXFT5/QoPE4hAknExjRLQ==}
@@ -3626,7 +3626,6 @@ packages:
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
-    dev: true
 
   /@vueuse/shared@9.13.0(vue@3.3.8):
     resolution: {integrity: sha512-UrnhU+Cnufu4S6JLCPZnkWh0WwZGUp72ktOF2DFptMlOs3TOdVv8xJN53zhHGARmVOsz5KqOls09+J1NR6sBKw==}
@@ -7978,6 +7977,15 @@ packages:
       - vue
       - webpack
     dev: true
+
+  /nuxt-umami@2.5.5(vue@3.3.8):
+    resolution: {integrity: sha512-awB5MEa6Me7eAumUdr2sqtfAjaWAW6JmABKGzJpszw/+cmAfDleoRQxWw4X9Aql2jOxqxa6BQCPRbDKQo+QZSA==}
+    dependencies:
+      '@vueuse/core': 10.6.1(vue@3.3.8)
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - vue
+    dev: false
 
   /nuxt-wordpress@1.0.0-beta.2:
     resolution: {integrity: sha512-bV/H4ZBedE1ddkWLj7NBYvpOgFKf8oB1GeN9V61AcbyYUo5LwkanU8z2rshY3NP95HuQGUqi4b/zAx24T0TGwQ==}
