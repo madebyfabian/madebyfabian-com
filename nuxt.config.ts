@@ -7,6 +7,7 @@ export default defineNuxtConfig({
 
 	experimental: {
 		typedPages: true,
+		componentIslands: true,
 	},
 
 	modules: [
@@ -83,8 +84,6 @@ export default defineNuxtConfig({
 		pageTransition: { name: 'page', mode: 'out-in' },
 	},
 
-	css: ['prismjs/themes/prism-twilight.css'],
-
 	// @nuxtseo/module
 	site: {
 		siteUrl: process.env.NUXT_PUBLIC_SITE_URL,
@@ -141,10 +140,6 @@ export default defineNuxtConfig({
 
 	typescript: {
 		shim: false,
-	},
-
-	build: {
-		transpile: ['prismjs'],
 	},
 
 	nitro: {
