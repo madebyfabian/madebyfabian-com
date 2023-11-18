@@ -115,6 +115,10 @@ export default defineNuxtConfig({
 	// nuxt-graphql-middleware
 	graphqlMiddleware: {
 		graphqlEndpoint: process.env.NUXT_GQL_HOST,
+		codegenConfig: {
+			// disabled so it generates every type from the schema (not only the ones used in operations).
+			onlyOperationTypes: false,
+		},
 		codegenSchemaConfig: {
 			urlSchemaOptions: {
 				headers: {
