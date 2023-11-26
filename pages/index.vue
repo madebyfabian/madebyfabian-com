@@ -27,9 +27,9 @@
 					</p>
 					<div class="UIButtonGroup flex-wrap justify-center lg:justify-start">
 						<NuxtLink :to="{ name: 'contact' }" class="UIButton flex-1 md:flex-none">
-							<span>Got an idea?</span>
+							Got an idea?
 							<span class="mx-1.5 font-bold opacity-30 -mt-1 inline-block">·</span>
-							<span>Get in contact&nbsp;&nbsp;💬</span>
+							Contact me&nbsp;&nbsp;💬
 						</NuxtLink>
 						<NuxtLink to="/#projects" external class="UIButton UIButton-secondary flex-1 md:flex-none">
 							See my work
@@ -39,13 +39,14 @@
 			</div>
 		</template>
 
-		<div id="projects" class="lg:px-8">
+		<div id="projects">
 			<h2 class="H2-Like">Selected Projects <span class="font-normal"> — what yours could look like.</span></h2>
 			<LayoutProjectsList />
 			<div class="flex justify-center">
 				<NuxtLink class="UIButton UIButton-secondary" :to="{ name: 'contact' }"
-					>💬 Get in touch to see all!</NuxtLink
-				>
+					>Looks good?<span class="mx-1.5 font-bold opacity-30 -mt-1 inline-block">·</span>Get in
+					touch!&nbsp;&nbsp;💬
+				</NuxtLink>
 			</div>
 		</div>
 

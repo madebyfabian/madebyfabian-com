@@ -5,6 +5,7 @@ query ListProjects {
 		nodes {
 			...ProjectListItem
 			project {
+				linkUrl
 				logo {
 					id
 					sourceUrl

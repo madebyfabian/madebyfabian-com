@@ -1,5 +1,5 @@
 <template>
-	<section v-if="projects?.length" class="LayoutProjectList divide-y-2">
+	<section v-if="projects?.length" class="LayoutProjectList my-8 lg:my-12 flex flex-col gap-12 lg:gap-16">
 		<LayoutProjectsItem v-for="(project, key) of projects" :project="project" :index="key" />
 	</section>
 </template>
