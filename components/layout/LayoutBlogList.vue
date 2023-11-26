@@ -3,14 +3,14 @@
 		<NuxtLink
 			v-for="item of data"
 			:key="item.id"
-			:to="(item.uri as string)"
-			class="UICard my-6 flex flex-col md:flex-row">
+			:to="item.uri"
+			class="UICard my-6 flex flex-col gap-6 md:flex-row p-6">
 			<div class="shrink-0">
 				<WPImage
 					:src="item.featuredImage?.node?.sourceUrl || undefined"
 					:alt="item.featuredImage?.node?.altText || ''"
 					:path="'/wordpress-madebyfabian/'"
-					class="w-full md:w-[296px] h-56 md:h-full">
+					class="w-full md:w-[296px] h-56 md:h-full rounded-md">
 					<template #fallback>
 						<div class="flex items-center justify-center bg-gradient-to-b from-gray-50 to-gray-100">
 							<span class="text-3xl">🏡</span>
@@ -19,7 +19,7 @@
 				</WPImage>
 			</div>
 
-			<div class="p-6">
+			<div>
 				<h2 class="H3Like mb-2">
 					{{ item.title }}
 				</h2>
@@ -32,8 +32,8 @@
 					class="mt-4"
 					:item="{
 						dateGmt: item.dateGmt || undefined,
-						author: item.author || undefined as any,
-						tags: item.tags || undefined as any,
+						author: item.author || (undefined as any),
+						tags: item.tags || (undefined as any),
 					}" />
 			</div>
 		</NuxtLink>

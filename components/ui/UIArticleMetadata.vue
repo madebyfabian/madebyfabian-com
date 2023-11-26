@@ -1,5 +1,5 @@
 <template>
-	<div class="UIArticleMetadata flex gap-x-6 gap-y-2 flex-wrap items-center">
+	<div class="UIArticleMetadata flex gap-x-6 gap-y-5 flex-wrap items-center">
 		<component
 			v-if="item.author?.node.name"
 			:is="linkAvatar ? NuxtLink : 'div'"
