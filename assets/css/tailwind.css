@@ -26,9 +26,8 @@
 	*,
 	*::before,
 	*::after {
-		@apply scroll-mt-36;
+		@apply scroll-mt-36 decoration-gray-body/25;
 		text-underline-offset: 0.15em !important;
-		text-decoration-style: dotted !important;
 	}
 
 	*:focus-visible {
@@ -125,7 +124,7 @@
 @layer components {
 	.UILink {
 		@apply underline font-semibold;
-		@apply text-accent-700 decoration-accent-700/50 underline;
+		@apply text-accent-700 decoration-accent-700/25 underline;
 		@apply transition hover:text-accent-700/80;
 	}
 
