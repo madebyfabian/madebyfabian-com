@@ -1,34 +1,40 @@
 <template>
 	<LayoutPage containerSize="large">
 		<template #beforeRichtext>
-			<div class="flex items-center lg:px-8">
-				<div>
-					<h1>
+			<div class="flex flex-col lg:flex-row items-center lg:pl-8 gap-8 lg:gap-12">
+				<div class="relative rounded-3xl overflow-hidden">
+					<!-- overlay -->
+					<div
+						class="absolute z-10 inset-0 w-full h-full bg-gradient-to-br from-white/50 via-transparent to-transparent" />
+					<WPImage
+						src="/wp-content/uploads/2023/11/portrait-final.jpg"
+						alt=""
+						path="/wordpress-madebyfabian/"
+						class="w-80 h-72 lg:w-72 lg:h-96" />
+				</div>
+
+				<div class="relative text-center lg:text-left">
+					<h1
+						class="from-secondary via-accent-700 to-accent-700 bg-gradient-to-br bg-clip-text text-transparent mb-6">
 						Exceptional web experiences,
-						<br class="hidden md:block" />
-						crafted with passion.
+						<br />
+						<span>crafted with passion.</span>
 					</h1>
 					<p class="PLargeLike !leading-normal mb-10 -mt-1">
 						Hej! I am Fabian, a visual product designer and frontend developer,
 						<br class="hidden md:block" />
 						creating high-quality web experiences for your unique needs.
 					</p>
-					<div class="UIButtonGroup">
-						<NuxtLink to="/#projects" external class="UIButton flex-1 md:flex-none">
-							👨🏼‍💻&nbsp;&nbsp;My Work
+					<div class="UIButtonGroup flex-wrap justify-center lg:justify-start">
+						<NuxtLink :to="{ name: 'contact' }" class="UIButton flex-1 md:flex-none">
+							<span>Got an idea?</span>
+							<span class="mx-1.5 font-bold opacity-30 -mt-1 inline-block">·</span>
+							<span>Get in contact&nbsp;&nbsp;💬</span>
 						</NuxtLink>
-						<NuxtLink :to="{ name: 'contact' }" class="UIButton UIButton-secondary flex-1 md:flex-none">
-							💬&nbsp;&nbsp;Say hello!
+						<NuxtLink to="/#projects" external class="UIButton UIButton-secondary flex-1 md:flex-none">
+							See my work
 						</NuxtLink>
 					</div>
-				</div>
-
-				<div class="overflow-hidden shrink-0 w-0 lg:w-[240px] lg:-ml-[3vw]">
-					<WPImage
-						src="/wp-content/uploads/2023/02/avatar.svg"
-						alt=""
-						path="/wordpress-madebyfabian/"
-						class="w-[7rem] -mr-[3rem] lg:-mr-0 lg:w-full aspect-[0.66]" />
 				</div>
 			</div>
 		</template>

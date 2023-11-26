@@ -36,6 +36,9 @@ export default <Partial<Config>>{
 				accent: {
 					700: accentColor700,
 				},
+				secondary: {
+					DEFAULT: 'rgb(212, 178, 255)',
+				},
 				gray: {
 					body: colors.gray[700],
 				},

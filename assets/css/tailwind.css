@@ -85,7 +85,7 @@
 
 @layer utilities {
 	.H1Like {
-		@apply text-4xl lg:text-5xl font-bold tracking-tight mb-8;
+		@apply text-4xl lg:text-5xl font-bold tracking-tighter !leading-[1.15] mb-8;
 	}
 
 	.H2Like {
