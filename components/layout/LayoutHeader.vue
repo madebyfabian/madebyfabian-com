@@ -46,7 +46,7 @@
 					<li v-for="logo of brandNavLogos" :key="logo.src">
 						<NuxtLink
 							:to="logo.url"
-							class="transition hover:opacity-80 h-9 w-9 p-1 -m-1 block"
+							class="transition hover:opacity-80 h-8 w-8 p-1 -m-1 block"
 							external
 							:title="logo.title">
 							<img :src="logo.src" class="h-full w-full block" :alt="`${logo.title} Logo`" />
@@ -71,6 +71,12 @@
 	const isSticky = computed(() => y.value >= offset.value)
 
 	const brandNavLogos: { title: string; src: string; url: string }[] = [
+		{
+			title: 'LinkedIn',
+			src: '/images/social-logos/linkedin.svg',
+			url: 'https://www.linkedin.com/in/fabian-beer/',
+		},
+
 		{
 			title: 'GitHub',
 			src: '/images/social-logos/github.svg',
