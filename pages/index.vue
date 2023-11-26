@@ -4,13 +4,14 @@
 			<div class="flex flex-col lg:flex-row items-center lg:pl-8 gap-8 lg:gap-12">
 				<div class="relative rounded-3xl overflow-hidden">
 					<!-- overlay -->
-					<div
-						class="absolute z-10 inset-0 w-full h-full bg-gradient-to-br from-white/50 via-transparent to-transparent" />
+
 					<WPImage
 						src="/wp-content/uploads/2023/11/portrait-final.jpg"
 						alt=""
 						path="/wordpress-madebyfabian/"
-						class="w-80 h-72 lg:w-72 lg:h-96" />
+						class="relative w-80 h-72 lg:w-72 lg:h-96" />
+					<div
+						class="absolute inset-0 w-full h-full bg-gradient-to-br from-white/60 via-transparent to-transparent" />
 				</div>
 
 				<div class="relative text-center lg:text-left">
