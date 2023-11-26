@@ -8,7 +8,7 @@ const accentColor700 = 'rgb(42, 90, 203)' // custom accent color
 export const breakpoints = {
 	'sm': 640,
 	'md': 768,
-	'lg': 1024,
+	'lg': 1104,
 }
 
 export default <Partial<Config>>{
