@@ -1,5 +1,7 @@
 <template>
-	<div class="RichtextCoreCode" :id="id" v-html="html" />
+	<div class="RichtextCoreCode" :id="id">
+		<div v-html="html" />
+	</div>
 </template>
 
 <script setup lang="ts">
@@ -21,9 +23,8 @@
 		return content.replaceAll('&gt;', '>').replaceAll('&lt;', '<')
 	})
 
-	console.log(props.attributes?.language)
-	const html = computed(() => {
-		const languages = {
+	const language = computed(() => {
+		const options = {
 			'markup': 'html',
 			'typescript': 'ts',
 			'bash': 'bash',
@@ -31,9 +32,13 @@
 			'graphql': 'graphql',
 		}
 
+		return options[(props.attributes?.language || 'typescript') as unknown as keyof typeof options] || 'ts'
+	})
+
+	const html = computed(() => {
 		return shiki.codeToHtml(transformedContent.value, {
 			...shiki.$defaults,
-			lang: languages[(props.attributes?.language || 'typescript') as unknown as keyof typeof languages] || 'ts',
+			lang: language.value,
 		})
 	})
 </script>
