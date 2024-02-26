@@ -10,6 +10,22 @@ export default defineNuxtConfig({
 		componentIslands: true,
 	},
 
+	typescript: {
+		shim: false,
+	},
+
+	nitro: {
+		externals: {
+			traceInclude: ['./node_modules/vue/server-renderer'],
+		},
+
+		// @nuxtseo/module
+		prerender: {
+			crawlLinks: true,
+			routes: ['/'],
+		},
+	},
+
 	modules: [
 		'@nuxtseo/module',
 		'@vueuse/nuxt',
@@ -17,6 +33,7 @@ export default defineNuxtConfig({
 		'@nuxtjs/turnstile',
 		'@dargmuesli/nuxt-cookie-control',
 		'nuxt-graphql-middleware',
+		'nuxt-shiki',
 	],
 
 	runtimeConfig: {
@@ -147,19 +164,11 @@ export default defineNuxtConfig({
 		},
 	},
 
-	typescript: {
-		shim: false,
-	},
-
-	nitro: {
-		externals: {
-			traceInclude: ['./node_modules/vue/server-renderer'],
-		},
-
-		// @nuxtseo/module
-		prerender: {
-			crawlLinks: true,
-			routes: ['/'],
-		},
+	// nuxt-shiki
+	shiki: {
+		theme: 'github-light',
+		lang: 'typescript',
+		themes: [],
+		langs: ['typescript', 'html', 'bash', 'php', 'graphql'],
 	},
 })

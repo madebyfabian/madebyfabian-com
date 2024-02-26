@@ -59,11 +59,18 @@
 		}
 
 		:deep(code) {
-			&:not([class*='language-']) {
-				@apply bg-frost-200 shadow-border;
-			}
+			/** Inline */
+			@apply bg-frost-200 shadow-border px-1 mx-0.5 rounded align-baseline font-bold inline-block;
+		}
 
-			@apply px-1 mx-0.5 rounded align-baseline font-bold inline-block;
+		:deep(pre):not(.reset) {
+			@apply PreLike my-6 first:mt-0 last:mb-0;
+			tab-size: 2;
+
+			code {
+				/** Reset inline */
+				@apply !bg-transparent !shadow-none !px-0 !mx-0 !rounded-none !font-normal !block;
+			}
 		}
 
 		:deep(figure):not(.reset) {
@@ -140,10 +147,6 @@
 					@apply text-gray-400;
 				}
 			}
-		}
-
-		:deep(pre):not(.reset) {
-			@apply PreLike my-6 first:mt-0 last:mb-0;
 		}
 	}
 </style>

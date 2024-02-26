@@ -1,27 +1,8 @@
 <template>
-	<pre class="RichtextCoreCode" :id="id"><code
-		ref="element"
-		v-html="props.attributes?.content"
-		:class="[
-			`language-${props.attributes?.language}`,
-			{
-				'line-numbers': props.attributes?.lineNumbers,
-			},
-		]"
-	/></pre>
+	<div class="RichtextCoreCode" :id="id" v-html="html" />
 </template>
 
 <script setup lang="ts">
-	import Prism from 'prismjs'
-
-	// Languages
-	import 'prismjs/components/prism-bash'
-	import 'prismjs/components/prism-typescript'
-	import 'prismjs/components/prism-graphql'
-
-	// Styles
-	import 'prismjs/themes/prism-twilight.css'
-
 	import type { RichtextPropsBase, CoreCodeBlock } from '@/types'
 	export type RichtextCoreCodeProps = RichtextPropsBase<CoreCodeBlock>
 
@@ -30,11 +11,29 @@
 		innerBlocks?: RichtextCoreCodeProps['innerBlocks']
 	}>()
 
-	const element = ref<HTMLElement | null>(null)
+	const id = computed(() => props.attributes?.anchor || undefined)
 
-	onMounted(() => {
-		Prism.highlightAll()
+	// Init shiki
+	const shiki = await loadShiki()
+
+	const transformedContent = computed(() => {
+		const content = props.attributes?.content || ''
+		return content.replaceAll('&gt;', '>').replaceAll('&lt;', '<')
 	})
 
-	const id = computed(() => props.attributes?.anchor || undefined)
+	console.log(props.attributes?.language)
+	const html = computed(() => {
+		const languages = {
+			'markup': 'html',
+			'typescript': 'ts',
+			'bash': 'bash',
+			'php': 'php',
+			'graphql': 'graphql',
+		}
+
+		return shiki.codeToHtml(transformedContent.value, {
+			...shiki.$defaults,
+			lang: languages[(props.attributes?.language || 'typescript') as unknown as keyof typeof languages] || 'ts',
+		})
+	})
 </script>
