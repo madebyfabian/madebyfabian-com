@@ -131,6 +131,7 @@ export default defineNuxtConfig({
 
 	// nuxt-link-checker
 	linkChecker: {
+		enabled: false,
 		failOnError: false,
 	},
 
