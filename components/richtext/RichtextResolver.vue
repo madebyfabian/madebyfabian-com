@@ -13,7 +13,7 @@
 	import type { InnerBlocksDefault, BlockDefault, ItemBase } from '@/types'
 
 	export type RichtextItem = {
-		id?: ItemBase['id']
+		id: ItemBase['id']
 		name: ItemBase['name']
 		block?: BlockDefault
 		innerBlocks?: InnerBlocksDefault<RichtextItem>

@@ -14,6 +14,9 @@ dependencies:
   h3-zod:
     specifier: ^0.3.10
     version: 0.3.10(h3@1.9.0)(zod@3.22.4)
+  nanoid:
+    specifier: ^5.0.6
+    version: 5.0.6
   nuxt-graphql-middleware:
     specifier: 3.1.0-beta.3
     version: 3.1.0-beta.3(@babel/core@7.23.9)(@types/node@18.19.18)(graphql-tag@2.12.6)(graphql@16.8.1)(typescript@4.9.5)
@@ -7541,6 +7544,12 @@ packages:
     resolution: {integrity: sha512-7ZtY5KTCNheRGfEFxnedV5zFiORN1+Y1N6zvPTnHQd8ENUvfaDBeuJDZb2bN/oXwXxu3qkTXDzy57W5vAmDTBw==}
     engines: {node: ^14 || ^16 || >=18}
     hasBin: true
+
+  /nanoid@5.0.6:
+    resolution: {integrity: sha512-rRq0eMHoGZxlvaFOUdK1Ev83Bd1IgzzR+WJ3IbDJ7QOSdAxYjlurSPqFs9s4lJg29RT6nPwizFtJhQS6V5xgiA==}
+    engines: {node: ^18 || >=20}
+    hasBin: true
+    dev: false
 
   /napi-wasm@1.1.0:
     resolution: {integrity: sha512-lHwIAJbmLSjF9VDRm9GoVOy9AGp3aIvkjv+Kvz9h16QR3uSVYH78PNQUnT2U4X53mhlnV2M7wrhibQ3GHicDmg==}

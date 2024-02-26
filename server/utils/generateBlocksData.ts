@@ -1,3 +1,4 @@
+import { nanoid } from 'nanoid'
 import type { ItemBase, InnerBlocksDefault, BlockDefault, CoreImageBlock, UbTableOfContentsHeaderEntry } from '@/types'
 import type { MediaItemsQuery } from '#graphql-operations'
 
@@ -11,8 +12,6 @@ type ImageId = string
 type TOCEntry = UbTableOfContentsHeaderEntry
 
 type BlockRawItem = Pick<BlockDefault, 'attributesJSON' | 'name' | 'innerBlocks'>
-
-const uid = () => Math.random().toString(36).slice(2, 9)
 
 type ParseItemJsonProps = {
 	item: BlockRawItem
@@ -45,7 +44,7 @@ const parseItemJson = ({ item }: ParseItemJsonProps) => {
 	let tocEntries: TOCEntry[] | undefined
 
 	const newItem: Item = {
-		id: uid(),
+		id: nanoid(),
 		name: item.name,
 		block: JSON.parse(item.attributesJSON || '{}'),
 		innerBlocks: undefined,

@@ -1,6 +1,6 @@
 <template>
 	<article v-if="props.blocks.length" class="RichtextContainer">
-		<RichtextResolver v-for="(item, key) of props.blocks" :key="key" :item="item" />
+		<RichtextResolver v-for="item of props.blocks" :key="item.id" :item="item" />
 	</article>
 </template>
 
@@ -13,6 +13,9 @@
 		mediaItems: any
 		blocks: RichtextItem[]
 	}>()
+
+	/** @todo remove debug */
+	console.log(JSON.stringify(props.blocks))
 
 	// Inject the media items data into the global storage
 	useState(generateMediaItemsKey({ route }), () => {
