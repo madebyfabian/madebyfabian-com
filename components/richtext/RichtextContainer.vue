@@ -14,9 +14,6 @@
 		blocks: RichtextItem[]
 	}>()
 
-	/** @todo remove debug */
-	console.log(JSON.stringify(props.blocks))
-
 	// Inject the media items data into the global storage
 	useState(generateMediaItemsKey({ route }), () => {
 		return props.mediaItems

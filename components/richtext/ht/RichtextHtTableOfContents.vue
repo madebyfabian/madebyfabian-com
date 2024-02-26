@@ -1,17 +1,15 @@
 <template>
-	<!-- don't render anything for now. later: <UITableOfContents class="RichtextHtTableOfContents md:w-1/2 my-12 first:mt-0 last:mb-0" :entries="headerEntries" />-->
+	<div>
+		<!-- Should remain empty, we are displaying the table of contents elsewhere. -->
+	</div>
 </template>
 
 <script setup lang="ts">
-	import type { RichtextPropsBase, HtBlockTocBlock, UbTableOfContentsHeaderEntry } from '@/types'
+	import type { RichtextPropsBase, HtBlockTocBlock } from '@/types'
 	export type RichtextHtTableOfContentsProps = RichtextPropsBase<HtBlockTocBlock>
 
-	const props = defineProps<{
+	defineProps<{
 		attributes: RichtextHtTableOfContentsProps['attributes']
 		innerBlocks?: RichtextHtTableOfContentsProps['innerBlocks']
 	}>()
-
-	const headerEntries = computed(() => {
-		return (props.attributes?.headerEntries as any as UbTableOfContentsHeaderEntry[]) || []
-	})
 </script>
