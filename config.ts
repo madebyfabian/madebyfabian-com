@@ -2,7 +2,7 @@ import type { Cookie, ModuleOptions, Locale } from '@dargmuesli/nuxt-cookie-cont
 
 // --- Cookie ---
 
-export const cookieIds = ['cookieControl', 'cloudflare', 'calendly'] as const
+export const cookieIds = ['cookieControl', 'cloudflare'] as const
 export const locale: Locale = 'en'
 
 export type CookieId = (typeof cookieIds)[number]
@@ -53,26 +53,6 @@ export const cookieConfig: Partial<ModuleOptions> & {
 				],
 			},
 		],
-		optional: [
-			{
-				id: 'calendly',
-				description: {
-					en: 'Used to schedule a meeting with me.',
-				},
-				name: {
-					en: 'Calendly',
-				},
-				targetCookieIds: [
-					'__cf_bm',
-					'__cfruid',
-					'_dd_s',
-					'OptanonConsent',
-					'OptanonAlertBoxClosed',
-					'_calendly_session',
-					'gdpr_trackable',
-					'login_email',
-				],
-			},
-		],
+		optional: [],
 	},
 }

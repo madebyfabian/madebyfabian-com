@@ -1,7 +1,33 @@
 <template>
 	<LayoutPage>
 		<ClientOnly>
-			<Calendly />
+			<div class="mt-8 mb-16 border-b pb-16">
+				<section class="bg-frost-200 p-6 shadow-border first:mt-0 last:mb-0 rounded-box">
+					<div class="flex flex-col md:flex-row gap-6 md:items-center">
+						<div class="flex-1">
+							<h2 class="H3Like mb-2">Book a free call</h2>
+							<p>Let's talk about your project and how I can help you.</p>
+						</div>
+						<NuxtLink
+							:href="useRuntimeConfig().public.calcomUrl"
+							external
+							target="_blank"
+							class="UIButton w-full md:w-auto"
+							>Book now</NuxtLink
+						>
+					</div>
+					<PrivacyNotice>
+						By clicking the button, you agree to my
+						<NuxtLink :to="{ name: 'datenschutz' }" target="_blank" class="UILink">
+							Privacy Policy
+						</NuxtLink>
+						and the
+						<NuxtLink href="https://cal.com/de/privacy" external target="_blank" class="UILink">
+							cal.com Privacy Policy
+						</NuxtLink>
+					</PrivacyNotice>
+				</section>
+			</div>
 
 			<form @submit.prevent="send">
 				<h2 class="H3Like">Or send me some words</h2>
@@ -25,7 +51,12 @@
 
 						<CookieControlDenied v-else />
 
-						<PrivacyNotice actionLabel="submitting this form" />
+						<PrivacyNotice>
+							By submitting this form, you agree to my
+							<NuxtLink :to="{ name: 'datenschutz' }" target="_blank" class="UILink">
+								Privacy Policy
+							</NuxtLink>
+						</PrivacyNotice>
 					</div>
 
 					<button :disabled="!turnstileIsDone" class="order-1 md:order-2 w-full md:w-[33%] UIButton">

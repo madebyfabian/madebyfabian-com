@@ -16,7 +16,6 @@ export default defineNuxtConfig({
 		'@nuxtjs/tailwindcss',
 		'@nuxtjs/turnstile',
 		'@dargmuesli/nuxt-cookie-control',
-		'nuxt-calendly',
 		'nuxt-graphql-middleware',
 	],
 
@@ -32,7 +31,7 @@ export default defineNuxtConfig({
 			wpHost: process.env.NUXT_PUBLIC_WP_HOST,
 			isProduction: process.env.NODE_ENV === 'production',
 			isVercelProduction: process.env.VERCEL_ENV === 'production',
-			calendlyUrl: process.env.NUXT_PUBLIC_CALENDLY_URL,
+			calcomUrl: process.env.NUXT_PUBLIC_CALCOM_URL,
 
 			// nuxt-wordpress
 			wordpress: {
