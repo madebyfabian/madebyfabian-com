@@ -1,6 +1,6 @@
 <template>
 	<article v-if="props.blocks.length" class="RichtextContainer">
-		<RichtextResolver v-for="item of props.blocks" :key="item.id" :item="item" />
+		<RichtextResolver v-for="(item, key) of props.blocks" :key="key" :item="item" />
 	</article>
 </template>
 
