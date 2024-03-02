@@ -8,6 +8,7 @@ export default defineNuxtConfig({
 	experimental: {
 		typedPages: true,
 		componentIslands: true,
+		inlineRouteRules: true,
 	},
 
 	typescript: {
@@ -27,7 +28,7 @@ export default defineNuxtConfig({
 	},
 
 	modules: [
-		'@nuxtseo/module',
+		'@nuxtjs/seo',
 		'@vueuse/nuxt',
 		'@nuxtjs/tailwindcss',
 		'@nuxtjs/turnstile',
@@ -135,7 +136,7 @@ export default defineNuxtConfig({
 		failOnError: false,
 	},
 
-	// nuxt-simple-sitemap
+	// @nuxtjs/sitemap
 	sitemap: {
 		autoLastmod: true,
 		urls: generateSitemap,
