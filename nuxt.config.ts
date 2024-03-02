@@ -139,6 +139,7 @@ export default defineNuxtConfig({
 	// @nuxtjs/sitemap
 	sitemap: {
 		autoLastmod: true,
+		exclude: ['/impressum', '/datenschutz'],
 		urls: generateSitemap,
 	},
 
