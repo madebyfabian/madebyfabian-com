@@ -1,13 +1,15 @@
 <template>
-	<section
-		v-if="props.innerBlocks?.length"
-		class="RichtextLazyblockFaqGroup my-6 first:mt-0 last:mb-0 rounded-box bg-frost shadow-border divide-y"
-		:id="id">
-		<RichtextResolver
-			v-for="(item, key) of props.innerBlocks"
-			:key="key"
-			v-bind="{ item: item.block as any, name: item.name }" />
-	</section>
+	<div class="RichtextLazyblockFaqGroup">
+		<section
+			v-if="props.innerBlocks?.length"
+			class="my-6 first:mt-0 last:mb-0 rounded-box bg-frost shadow-border divide-y"
+			:id="id">
+			<RichtextResolver
+				v-for="(item, key) of props.innerBlocks"
+				:key="key"
+				v-bind="{ item: item.block as any, name: item.name }" />
+		</section>
+	</div>
 </template>
 
 <script setup lang="ts">

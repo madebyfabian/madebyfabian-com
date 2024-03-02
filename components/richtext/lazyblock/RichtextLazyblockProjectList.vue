@@ -1,13 +1,16 @@
 <template>
-	<div v-if="props.innerBlocks?.length" class="RichtextLazyblockProjectList" :id="id">
-		<LayoutTeaserList>
+	<div class="RichtextLazyblockProjectList" :id="id">
+		<LayoutTeaserList v-if="props.innerBlocks?.length">
 			<RichtextResolver
 				v-for="(item, key) of props.innerBlocks"
 				:key="key"
-				v-bind="{ item: {
+				v-bind="{
+					item: {
+						name: item.block?.lazyblock.slug,
+						block: item.block,
+					} as any,
 					name: item.block?.lazyblock.slug,
-					block: item.block,
-				} as any, name: item.block?.lazyblock.slug }" />
+				}" />
 		</LayoutTeaserList>
 	</div>
 </template>
