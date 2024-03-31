@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@openpanel/web':
+    specifier: 0.0.6-beta
+    version: 0.0.6-beta
   '@vueuse/nuxt':
     specifier: ^9.12.0
     version: 9.13.0(nuxt@3.10.3)(vue@3.4.21)
@@ -20,9 +23,6 @@ dependencies:
   nuxt-graphql-middleware:
     specifier: 3.1.0-beta.3
     version: 3.1.0-beta.3(@babel/core@7.24.0)(@types/node@18.19.21)(graphql-tag@2.12.6)(graphql@16.8.1)(typescript@4.9.5)
-  nuxt-umami:
-    specifier: ^2.5.5
-    version: 2.5.7(vue@3.4.21)
   nuxt-wordpress:
     specifier: 1.0.0-beta.2
     version: 1.0.0-beta.2
@@ -2698,6 +2698,16 @@ packages:
       - supports-color
     dev: true
 
+  /@openpanel/sdk@0.0.6-beta:
+    resolution: {integrity: sha512-siUvMTgaHb7ZT9BVIBPIhEhPz5PaBQLCik9SuibwufsO6QWBz7nYqkMMPtqcuAjGFq6V7LcHWBl+Wq7NGZ8obA==}
+    dev: false
+
+  /@openpanel/web@0.0.6-beta:
+    resolution: {integrity: sha512-7FwtbBWb8XqIUZ4DjdzMFsEWZo85RDhKkfgC/m6bV71QlQ3iMr+c/XuH6dO3bL7O+q0uFodD9IPksyF/u+P+KA==}
+    dependencies:
+      '@openpanel/sdk': 0.0.6-beta
+    dev: false
+
   /@parcel/watcher-android-arm64@2.4.1:
     resolution: {integrity: sha512-LOi/WTbbh3aTn2RYddrO8pnapixAziFl6SMxHM69r3tvdSm94JtCenaKgk1GRg5FJ5wpMCpHeW+7yqPlvZv7kg==}
     engines: {node: '>= 10.0.0'}
@@ -3409,6 +3419,7 @@ packages:
 
   /@types/web-bluetooth@0.0.20:
     resolution: {integrity: sha512-g9gZnnXVq7gM7v3tJCWV/qw7w+KeOlSHAhgF9RytFyifW6AF61hdT2ucrYhPq9hLs5JIryeupHV3qGk95dH9ow==}
+    dev: true
 
   /@types/ws@8.5.10:
     resolution: {integrity: sha512-vmQSUcfalpIq0R9q7uTo2lXs6eGIpt9wtnLdMv9LVpIjCA/+ufZRozlVoVelIYixx1ugCBKDhn89vnsEGOCx9A==}
@@ -3914,6 +3925,7 @@ packages:
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
+    dev: true
 
   /@vueuse/core@9.13.0(vue@3.4.21):
     resolution: {integrity: sha512-pujnclbeHWxxPRqXWmdkKV5OX4Wk4YeK7wusHqRwU0Q7EFusHoqNA/aPhB6KCh9hEqJkLAJo7bb0Lh9b+OIVzw==}
@@ -3980,6 +3992,7 @@ packages:
 
   /@vueuse/metadata@10.9.0:
     resolution: {integrity: sha512-iddNbg3yZM0X7qFY2sAotomgdHK7YJ6sKUvQqbvwnf7TmaVPxS4EJydcNsVejNdS8iWCtDk+fYXr7E32nyTnGA==}
+    dev: true
 
   /@vueuse/metadata@9.13.0:
     resolution: {integrity: sha512-gdU7TKNAUVlXXLbaF+ZCfte8BjRJQWPCa2J55+7/h+yDtzw3vOoGQDRXzI6pyKyo6bXFT5/QoPE4hAknExjRLQ==}
@@ -4028,6 +4041,7 @@ packages:
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
+    dev: true
 
   /@vueuse/shared@9.13.0(vue@3.4.21):
     resolution: {integrity: sha512-UrnhU+Cnufu4S6JLCPZnkWh0WwZGUp72ktOF2DFptMlOs3TOdVv8xJN53zhHGARmVOsz5KqOls09+J1NR6sBKw==}
@@ -8496,15 +8510,6 @@ packages:
       - vue
       - webpack
     dev: true
-
-  /nuxt-umami@2.5.7(vue@3.4.21):
-    resolution: {integrity: sha512-HvWqfKKtIzsABrCfvjAtbMap1ceOkt626Bxjjs3oVk44IEnRwwiecoAXwqLpu0DNtoizjJe163AavvSGOacBGA==}
-    dependencies:
-      '@vueuse/core': 10.9.0(vue@3.4.21)
-    transitivePeerDependencies:
-      - '@vue/composition-api'
-      - vue
-    dev: false
 
   /nuxt-wordpress@1.0.0-beta.2:
     resolution: {integrity: sha512-bV/H4ZBedE1ddkWLj7NBYvpOgFKf8oB1GeN9V61AcbyYUo5LwkanU8z2rshY3NP95HuQGUqi4b/zAx24T0TGwQ==}

@@ -20,12 +20,12 @@
 		"ufo": "^1.0.1"
 	},
 	"dependencies": {
+		"@openpanel/web": "0.0.6-beta",
 		"@vueuse/nuxt": "^9.12.0",
 		"dotenv": "^16.0.3",
 		"h3-zod": "^0.3.10",
 		"nanoid": "^5.0.6",
 		"nuxt-graphql-middleware": "3.1.0-beta.3",
-		"nuxt-umami": "^2.5.5",
 		"nuxt-wordpress": "1.0.0-beta.2",
 		"superjson": "^1.12.2",
 		"xss": "^1.0.14",
