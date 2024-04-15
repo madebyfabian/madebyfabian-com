@@ -76,6 +76,10 @@ export const generateSitemap = async () => {
 			})
 		})
 
+		// Filter out impressum
+		const impressum = pages.findIndex(page => page.loc.includes('impressum'))
+		if (impressum > -1) pages.splice(impressum, 1)
+
 		return pages
 	} catch (error) {
 		console.error(error)
