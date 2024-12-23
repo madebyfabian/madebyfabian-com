@@ -17,10 +17,10 @@
 </template>
 
 <script setup lang="ts">
+	import { withoutHost } from 'ufo'
 	import type { RichtextPropsBase, LazyblockProjectItemBlock } from '@/types'
-	export type RichtextLazyblockProjectItemProps = RichtextPropsBase<LazyblockProjectItemBlock>
 
-	const { withoutWPHost } = useWPImage()
+	export type RichtextLazyblockProjectItemProps = RichtextPropsBase<LazyblockProjectItemBlock>
 
 	const props = defineProps<{
 		attributes: RichtextLazyblockProjectItemProps['attributes']
@@ -28,7 +28,7 @@
 	}>()
 
 	const mediaSrc = computed(() => {
-		return withoutWPHost((props.attributes?.image as any).url)
+		return withoutHost((props.attributes?.image as any).url)
 	})
 
 	const id = computed(() => props.attributes?.anchor || undefined)

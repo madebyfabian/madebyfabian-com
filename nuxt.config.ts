@@ -1,5 +1,7 @@
 import { withHttps } from 'ufo'
 import { generateSitemap } from './generateSitemap'
+/** @temp fix @see https://github.com/pi0/nuxt-shiki/issues/41#issuecomment-2401330248 */
+import wasm from '@rollup/plugin-wasm'
 
 export default defineNuxtConfig({
 	extends: ['nuxt-wordpress'],
@@ -11,6 +13,9 @@ export default defineNuxtConfig({
 	},
 	typescript: {
 		shim: false,
+	},
+	vite: {
+		plugins: [wasm()],
 	},
 	nitro: {
 		externals: {

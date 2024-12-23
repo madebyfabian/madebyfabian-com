@@ -12,6 +12,7 @@
 		"@nuxtjs/seo": "2.0.2",
 		"@nuxtjs/tailwindcss": "^6.12.2",
 		"@nuxtjs/turnstile": "^0.9.11",
+		"@rollup/plugin-wasm": "^6.2.2",
 		"nuxt": "^3.14.1592",
 		"nuxt-shiki": "^0.3.0",
 		"prettier": "^3.4.2",
