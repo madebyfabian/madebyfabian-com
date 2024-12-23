@@ -3,20 +3,14 @@
 		<NuxtLink
 			v-for="item of data"
 			:key="item.id"
-			:to="item.uri"
+			:to="item.uri || ''"
 			class="UICard my-6 flex flex-col gap-6 md:flex-row p-6">
 			<div class="shrink-0">
-				<WPImage
-					:src="item.featuredImage?.node?.sourceUrl || undefined"
+				<NuxtImg
+					v-if="item.featuredImage?.node?.sourceUrl"
+					:src="item.featuredImage.node.sourceUrl"
 					:alt="item.featuredImage?.node?.altText || ''"
-					:path="'/wordpress-madebyfabian/'"
-					class="w-full md:w-[296px] h-56 md:h-full rounded-md">
-					<template #fallback>
-						<div class="flex items-center justify-center bg-gradient-to-b from-gray-50 to-gray-100">
-							<span class="text-3xl">🏡</span>
-						</div>
-					</template>
-				</WPImage>
+					class="w-full md:w-[296px] h-56 md:h-full rounded-md object-cover" />
 			</div>
 
 			<div>

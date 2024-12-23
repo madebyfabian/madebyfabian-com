@@ -5,11 +5,10 @@
 				<div class="relative rounded-3xl overflow-hidden">
 					<!-- overlay -->
 
-					<WPImage
-						src="/wp-content/uploads/2023/11/portrait-final.jpg"
+					<NuxtImg
+						src="https://wp.madebyfabian.com/wp-content/uploads/2023/11/portrait-final.jpg"
 						alt=""
-						path="/wordpress-madebyfabian/"
-						class="relative w-80 h-72 lg:w-72 lg:h-96" />
+						class="relative w-80 h-72 lg:w-72 lg:h-96 object-cover" />
 					<div
 						class="absolute inset-0 w-full h-full bg-gradient-to-br from-white/60 via-transparent to-transparent" />
 				</div>

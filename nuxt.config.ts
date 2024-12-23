@@ -1,11 +1,10 @@
-import { withHttps } from 'ufo'
 import { generateSitemap } from './generateSitemap'
-import { rollup as unwasm } from 'unwasm/plugin'
+import { breakpoints } from './tailwind.config'
 
 /** @temp fix @see https://github.com/pi0/nuxt-shiki/issues/41#issuecomment-2401330248 */
+import { rollup as unwasm } from 'unwasm/plugin'
 
 export default defineNuxtConfig({
-	extends: ['nuxt-wordpress'],
 	compatibilityDate: '2024-12-23',
 	experimental: {
 		typedPages: true,
@@ -42,27 +41,10 @@ export default defineNuxtConfig({
 		public: {
 			siteUrl: process.env.NUXT_PUBLIC_SITE_URL,
 			siteUrlProd: process.env.NUXT_PUBLIC_SITE_URL_PROD,
-			wpHost: process.env.NUXT_PUBLIC_WP_HOST,
 			isProduction: process.env.NODE_ENV === 'production',
 			isVercelProduction: process.env.VERCEL_ENV === 'production',
 			calcomUrl: process.env.NUXT_PUBLIC_CALCOM_URL,
 			openpanelClientId: process.env.NUXT_PUBLIC_OPENPANEL_CLIENT_ID,
-
-			// nuxt-wordpress
-			wordpress: {
-				baseUrl: withHttps(process.env.NUXT_PUBLIC_WP_HOST || ''),
-				twicpicsDomain: process.env.NUXT_PUBLIC_TWICPICS_DOMAIN,
-				twicpicsPaths: [
-					{
-						path: '/wordpress-madebyfabian/',
-						source: withHttps(process.env.NUXT_PUBLIC_WP_HOST || ''),
-					},
-					{
-						path: '/gravatar/',
-						source: 'https://secure.gravatar.com/',
-					},
-				],
-			},
 		},
 	},
 	app: {
@@ -97,6 +79,7 @@ export default defineNuxtConfig({
 		pageTransition: { name: 'page', mode: 'out-in' },
 	},
 	modules: [
+		'@nuxt/image',
 		'@nuxtjs/seo',
 		'@vueuse/nuxt',
 		'@nuxtjs/tailwindcss',
@@ -104,6 +87,12 @@ export default defineNuxtConfig({
 		'nuxt-graphql-middleware',
 		'nuxt-shiki',
 	],
+
+	// @nuxt/image
+	image: {
+		screens: breakpoints,
+		domains: [process.env.NUXT_PUBLIC_WP_HOST || '', 'secure.gravatar.com'],
+	},
 
 	// @nuxtseo/module
 	site: {
@@ -117,11 +106,6 @@ export default defineNuxtConfig({
 	// @nuxtseo/module->nuxt-og-omage
 	ogImage: {
 		enabled: false,
-	},
-
-	// nuxt-wordpress->@twicpics/components/nuxt3
-	twicpics: {
-		domain: process.env.NUXT_PUBLIC_TWICPICS_DOMAIN,
 	},
 
 	// nuxt-link-checker

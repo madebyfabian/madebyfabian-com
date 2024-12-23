@@ -2,26 +2,22 @@
 	<article
 		class="LayoutProjectsItem bg-frost-200 shadow-border rounded-3xl flex flex-col lg:flex-row gap-x-10 gap-y-8 p-6 md:p-8">
 		<div class="flex-1" :class="{ 'lg:order-2': isOdd }">
-			<WPImage
+			<NuxtImg
 				:src="project.featuredImage?.node?.sourceUrl || undefined"
 				:alt="project.featuredImage?.node?.altText || ''"
-				:path="'/wordpress-madebyfabian/'"
-				class="w-full aspect-[4/3] rounded-xl safari-overflow-fix shadow-border select-none">
-			</WPImage>
+				class="w-full aspect-[4/3] rounded-xl safari-overflow-fix shadow-border select-none object-cover">
+			</NuxtImg>
 		</div>
 
 		<div class="flex-1" :class="{ 'lg:order-1': isOdd }">
 			<!-- Logo -->
 			<div v-if="project.project?.logo?.sourceUrl" class="LayoutProjectsItem-logo h-8 mb-6 md:mb-8">
-				<WPImage
+				<NuxtImg
 					:src="project.project?.logo?.sourceUrl || undefined"
 					:alt="project.project?.logo?.altText || ''"
-					:ratio="{
-						width: project.project?.logo?.mediaDetails?.width || 1,
-						height: project.project?.logo?.mediaDetails?.height || 1,
-					}"
-					:path="'/wordpress-madebyfabian/'">
-				</WPImage>
+					:width="project.project?.logo?.mediaDetails?.width || undefined"
+					:height="project.project?.logo?.mediaDetails?.height || undefined">
+				</NuxtImg>
 			</div>
 
 			<!-- Title -->

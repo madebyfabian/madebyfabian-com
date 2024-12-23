@@ -1,16 +1,6 @@
 <template>
 	<div class="UIAvatar shrink-0 shadow-border-and-inner overflow-hidden relative safari-overflow-fix">
-		<WPImage
-			:src="url || undefined"
-			:style="{ width: `${props.size}px`, height: `${props.size}px` }"
-			:alt="name || ''"
-			:path="'/gravatar/'">
-			<template #fallback>
-				<div class="flex items-center justify-center bg-gradient-to-b from-gray-50 to-gray-100">
-					<span class="text-2xl">🙋</span>
-				</div>
-			</template>
-		</WPImage>
+		<NuxtImg :src="url || undefined" :width="size" :height="size" :alt="name || ''" />
 	</div>
 </template>
 

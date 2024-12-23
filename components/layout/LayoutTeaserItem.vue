@@ -14,11 +14,10 @@
 		</div>
 
 		<div class="h-0 select-none pointer-events-none">
-			<WPImage
+			<NuxtImg
 				:src="props.imageSrc"
 				:alt="props.imageAlt"
 				:style="props.imageStyle"
-				:path="'/wordpress-madebyfabian/'"
 				class="absolute h-[200px] w-[200px] right-0 z-0" />
 		</div>
 	</article>
