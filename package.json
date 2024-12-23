@@ -2,7 +2,7 @@
 	"private": true,
 	"scripts": {
 		"start": "nuxt dev",
-		"build": "nuxt generate",
+		"build": "nuxt build",
 		"preview": "nuxt preview",
 		"typecheck": "nuxt typecheck",
 		"postinstall": "nuxt prepare",
