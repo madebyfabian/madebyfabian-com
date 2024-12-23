@@ -12,12 +12,12 @@
 		"@nuxtjs/seo": "2.0.2",
 		"@nuxtjs/tailwindcss": "^6.12.2",
 		"@nuxtjs/turnstile": "^0.9.11",
-		"@rollup/plugin-wasm": "^6.2.2",
 		"nuxt": "^3.14.1592",
 		"nuxt-shiki": "^0.3.0",
 		"prettier": "^3.4.2",
 		"typescript": "^5.7.2",
-		"ufo": "^1.5.4"
+		"ufo": "^1.5.4",
+		"unwasm": "^0.3.9"
 	},
 	"dependencies": {
 		"@openpanel/web": "0.0.6-beta",

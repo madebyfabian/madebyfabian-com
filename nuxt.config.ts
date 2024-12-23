@@ -1,7 +1,8 @@
 import { withHttps } from 'ufo'
 import { generateSitemap } from './generateSitemap'
+import { rollup as unwasm } from 'unwasm/plugin'
+
 /** @temp fix @see https://github.com/pi0/nuxt-shiki/issues/41#issuecomment-2401330248 */
-import wasm from '@rollup/plugin-wasm'
 
 export default defineNuxtConfig({
 	extends: ['nuxt-wordpress'],
@@ -14,19 +15,23 @@ export default defineNuxtConfig({
 	typescript: {
 		shim: false,
 	},
-	vite: {
-		plugins: [wasm()],
-	},
 	nitro: {
-		externals: {
-			traceInclude: ['./node_modules/vue/server-renderer'],
+		experimental: {
+			/** @see https://github.com/pi0/nuxt-shiki/issues/29 inject onig.wasm warning */
+			wasm: true,
 		},
+		/** @see https://github.com/pi0/nuxt-shiki/issues/45 cannot find module core.mjs */
+		externals: { traceInclude: ['./node_modules/vue/server-renderer', 'shiki/dist/core.mjs'] },
 
 		// @nuxtseo/module
 		prerender: {
 			crawlLinks: true,
 			routes: ['/'],
 		},
+	},
+	vite: {
+		/** @see fix https://github.com/pi0/nuxt-shiki/issues/41 [vite:wasm-fallback] Could not load */
+		plugins: import.meta.env.NODE_ENV === 'production' ? [unwasm({})] : undefined,
 	},
 	runtimeConfig: {
 		turnstile: {
