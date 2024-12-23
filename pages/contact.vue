@@ -41,15 +41,12 @@
 
 				<div class="flex justify-between flex-wrap gap-8 mt-8 mb-4">
 					<div class="order-2 md:order-1">
-						<Turnstile
-							v-if="turnstileIsPermitted"
+						<NuxtTurnstile
 							ref="turnstileRef"
 							v-model="turnstileToken"
 							:options="{
 								theme: 'light',
 							}" />
-
-						<CookieControlDenied v-else />
 
 						<PrivacyNotice>
 							By submitting this form, you agree to my
@@ -75,11 +72,9 @@
 </template>
 
 <script lang="ts" setup>
-	const turnstileIsPermitted = computed(() => useIsCookiePermitted('cloudflare'))
 	const turnstileRef = ref()
 	const turnstileToken = ref()
 	const turnstileIsDone = computed(() => {
-		if (!turnstileIsPermitted.value) return false
 		return !!turnstileToken.value?.length
 	})
 

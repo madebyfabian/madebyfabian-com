@@ -1,8 +1,7 @@
-import { useValidatedQuery } from 'h3-zod'
 import { z } from 'zod'
 
 export default defineEventHandler(async event => {
-	const input = useValidatedQuery(event, z.object({ uri: z.string() }))
+	const input = await getValidatedQuery(event, z.object({ uri: z.string() }).parse)
 
 	const query = /* GraphQL */ `
 		query SinglePost($uri: ID!) {

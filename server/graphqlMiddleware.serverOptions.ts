@@ -1,4 +1,4 @@
-import { defineGraphqlServerOptions } from '#graphql-server-options'
+import { defineGraphqlServerOptions } from 'nuxt-graphql-middleware/dist/runtime/serverOptions'
 
 export default defineGraphqlServerOptions({
 	serverFetchOptions: () => {

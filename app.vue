@@ -2,7 +2,6 @@
 	<div>
 		<Page>
 			<NuxtLoadingIndicator :color="color" :height="4" />
-			<CookieControlBanner />
 			<NuxtPage />
 		</Page>
 	</div>
@@ -28,7 +27,7 @@
 	useHead({
 		templateParams: {
 			siteName: siteName,
-		}
+		},
 	})
 
 	useSeoMeta({

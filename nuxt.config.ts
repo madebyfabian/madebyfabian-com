@@ -1,20 +1,17 @@
 import { withHttps } from 'ufo'
 import { generateSitemap } from './generateSitemap'
-import { cookieConfig } from './config'
 
 export default defineNuxtConfig({
 	extends: ['nuxt-wordpress'],
-
+	compatibilityDate: '2024-12-23',
 	experimental: {
 		typedPages: true,
 		componentIslands: true,
 		inlineRouteRules: true,
 	},
-
 	typescript: {
 		shim: false,
 	},
-
 	nitro: {
 		externals: {
 			traceInclude: ['./node_modules/vue/server-renderer'],
@@ -26,17 +23,6 @@ export default defineNuxtConfig({
 			routes: ['/'],
 		},
 	},
-
-	modules: [
-		'@nuxtjs/seo',
-		'@vueuse/nuxt',
-		'@nuxtjs/tailwindcss',
-		'@nuxtjs/turnstile',
-		'@dargmuesli/nuxt-cookie-control',
-		'nuxt-graphql-middleware',
-		'nuxt-shiki',
-	],
-
 	runtimeConfig: {
 		turnstile: {
 			secretKey: process.env.NUXT_TURNSTILE_SECRET_KEY,
@@ -69,7 +55,6 @@ export default defineNuxtConfig({
 			},
 		},
 	},
-
 	app: {
 		head: {
 			titleTemplate: `${process.env.NODE_ENV === 'development' ? '⚙️ ' : ''}%s %separator %siteName`,
@@ -101,6 +86,14 @@ export default defineNuxtConfig({
 
 		pageTransition: { name: 'page', mode: 'out-in' },
 	},
+	modules: [
+		'@nuxtjs/seo',
+		'@vueuse/nuxt',
+		'@nuxtjs/tailwindcss',
+		'@nuxtjs/turnstile',
+		'nuxt-graphql-middleware',
+		'nuxt-shiki',
+	],
 
 	// @nuxtseo/module
 	site: {
@@ -139,9 +132,6 @@ export default defineNuxtConfig({
 		siteKey: process.env.NUXT_PUBLIC_TURNSTILE_SITE_KEY || '',
 	},
 
-	// @dargmuesli/nuxt-cookie-control
-	cookieControl: cookieConfig,
-
 	// nuxt-graphql-middleware
 	graphqlMiddleware: {
 		graphqlEndpoint: process.env.NUXT_GQL_HOST,
@@ -160,9 +150,9 @@ export default defineNuxtConfig({
 
 	// nuxt-shiki
 	shiki: {
-		theme: 'github-light',
-		lang: 'typescript',
-		themes: [],
-		langs: ['typescript', 'html', 'bash', 'php', 'graphql'],
+		defaultTheme: 'github-light',
+		defaultLang: 'typescript',
+		bundledThemes: [],
+		bundledLangs: ['typescript', 'html', 'bash', 'php', 'graphql'],
 	},
 })

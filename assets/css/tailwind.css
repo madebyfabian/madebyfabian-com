@@ -31,8 +31,7 @@
 	}
 
 	*:focus-visible {
-		/* important because it will be overridden by @dargmuesli/nuxt-cookie-control */
-		@apply !outline-accent-700 !outline-offset-4 !outline-dashed !outline-2;
+		@apply outline-accent-700 outline-offset-4 outline-dashed outline-2;
 	}
 
 	@screen md {

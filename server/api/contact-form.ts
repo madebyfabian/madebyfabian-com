@@ -1,6 +1,5 @@
 import { z } from 'zod'
 import xss from 'xss'
-import { graphQLQuery } from '../server/utils/graphQLQuery'
 
 export const config = {
 	runtime: 'edge',
@@ -24,21 +23,6 @@ const renderBody = async (props: { name: string; email: string; message: string 
 			${listItems.join('<br /></br />')}
 		</ul>
 	`
-}
-
-const verifyTurnstileToken = async (token: string) => {
-	const endpoint = 'https://challenges.cloudflare.com/turnstile/v0/siteverify'
-	const res = await fetch(endpoint, {
-		method: 'POST',
-		body: `secret=${encodeURIComponent(process.env.NUXT_TURNSTILE_SECRET_KEY || '')}&response=${encodeURIComponent(
-			token
-		)}`,
-		headers: {
-			'content-type': 'application/x-www-form-urlencoded',
-		},
-	})
-	const json = await res.json()
-	return json
 }
 
 const getContactFormEmail = async () => {
@@ -93,26 +77,20 @@ const sendEmail = async ({
 	})
 }
 
-const parseInput = ({ input }: { input: any }) => {
-	const schema = z.object({
-		name: z.string(),
-		email: z.string(),
-		message: z.string(),
-		turnstileToken: z.string(),
-	})
-	return schema.parse(input)
-}
+const bodySchema = z.object({
+	name: z.string(),
+	email: z.string(),
+	message: z.string(),
+	turnstileToken: z.string(),
+})
 
-type ValidRequestInput = ReturnType<typeof parseInput>
+type ValidRequestInput = z.infer<typeof bodySchema>
 
-export default async function handler(request: Request) {
+export default defineEventHandler(async event => {
 	try {
-		const body = await new Response(request.body).json()
-		if (!body) throw new Error('No body was provided. Please provide a body with the request.')
+		const input = await readValidatedBody(event, bodySchema.parse)
 
-		const input = parseInput({ input: body })
-
-		const validationResponse = await verifyTurnstileToken(input.turnstileToken)
+		const validationResponse = await verifyTurnstileToken(input.turnstileToken, event)
 		if (!validationResponse.success) {
 			return new Response(JSON.stringify({ error: 'Failed to verify the captcha token.' }), {
 				status: 401,
@@ -149,4 +127,4 @@ export default async function handler(request: Request) {
 			headers: { 'Content-Type': 'application/json' },
 		})
 	}
-}
+})

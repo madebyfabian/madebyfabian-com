@@ -1,6 +1,6 @@
 <template>
 	<div class="RichtextCoreCode" :id="id">
-		<div v-html="html" />
+		<Shiki :lang="language" :code="transformedCode" />
 	</div>
 </template>
 
@@ -15,10 +15,7 @@
 
 	const id = computed(() => props.attributes?.anchor || undefined)
 
-	// Init shiki
-	const shiki = await loadShiki()
-
-	const transformedContent = computed(() => {
+	const transformedCode = computed(() => {
 		const content = props.attributes?.content || ''
 		return content.replaceAll('&gt;', '>').replaceAll('&lt;', '<')
 	})
@@ -30,15 +27,8 @@
 			'bash': 'bash',
 			'php': 'php',
 			'graphql': 'graphql',
-		}
+		} as const
 
 		return options[(props.attributes?.language || 'typescript') as unknown as keyof typeof options] || 'ts'
-	})
-
-	const html = computed(() => {
-		return shiki.codeToHtml(transformedContent.value, {
-			...shiki.$defaults,
-			lang: language.value,
-		})
 	})
 </script>
