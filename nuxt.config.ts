@@ -108,6 +108,11 @@ export default defineNuxtConfig({
 		enabled: false,
 	},
 
+	// @nuxtseo/module robots
+	robots: {
+		disallow: ['/api/*'],
+	},
+
 	// nuxt-link-checker
 	linkChecker: {
 		enabled: false,
