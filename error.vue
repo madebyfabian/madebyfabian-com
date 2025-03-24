@@ -22,6 +22,6 @@
 <template>
 	<div>
 		<h2>Error</h2>
-		<p>Page Not Found or other enknown error</p>
+		<p>Page Not Found or other unknown error</p>
 	</div>
 </template>
