@@ -21,7 +21,7 @@
 	},
 	"dependencies": {
 		"@nuxt/image": "^1.8.1",
-		"@openpanel/web": "0.0.6-beta",
+		"@nuxtjs/plausible": "^1.2.0",
 		"@vueuse/nuxt": "^12.2.0",
 		"dotenv": "^16.4.7",
 		"nanoid": "^5.0.9",

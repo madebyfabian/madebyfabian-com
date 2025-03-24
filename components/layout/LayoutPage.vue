@@ -24,7 +24,12 @@
 			},
 		})
 	})
+	console.log({
+		data: data.value,
+		error: error.value,
+	})
 	if (!data.value?.page || error.value) {
+		console.log(error.value)
 		throw createError({ statusCode: 404, message: 'Page not found', fatal: true })
 	}
 

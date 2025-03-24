@@ -44,7 +44,6 @@ export default defineNuxtConfig({
 			isProduction: process.env.NODE_ENV === 'production',
 			isVercelProduction: process.env.VERCEL_ENV === 'production',
 			calcomUrl: process.env.NUXT_PUBLIC_CALCOM_URL,
-			openpanelClientId: process.env.NUXT_PUBLIC_OPENPANEL_CLIENT_ID,
 		},
 	},
 	app: {
@@ -86,6 +85,7 @@ export default defineNuxtConfig({
 		'@nuxtjs/turnstile',
 		'nuxt-graphql-middleware',
 		'nuxt-shiki',
+		'@nuxtjs/plausible',
 	],
 
 	// @nuxt/image
@@ -153,5 +153,12 @@ export default defineNuxtConfig({
 		defaultLang: 'typescript',
 		bundledThemes: [],
 		bundledLangs: ['typescript', 'html', 'bash', 'php', 'graphql'],
+	},
+
+	// @nuxtjs/plausible
+	plausible: {
+		proxy: true,
+		apiHost: process.env.NUXT_PUBLIC_PLAUSIBLE_API_HOST,
+		ignoredHostnames: ['localhost'],
 	},
 })

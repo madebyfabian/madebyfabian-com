@@ -35,7 +35,7 @@ export default defineEventHandler(async event => {
 	`
 
 	const data = await graphQLQuery<any>({ query, variables: input, fetch: $fetch as any })
-	if (!data) return { page: null, tocEntriesList: [], mediaItems: [] }
+	if (!data?.page) return { page: null, tocEntriesList: [], mediaItems: [] }
 	const blocksData = await generateBlocksData({ blocksRaw: data?.page?.blocks })
 	return {
 		page: {
